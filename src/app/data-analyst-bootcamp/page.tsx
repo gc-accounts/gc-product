@@ -22,6 +22,11 @@ import {
   Instagram
 } from 'lucide-react';
 
+
+import DaHeroSection from '@/components/data-analyst-bootcamp-page/DaHeroSection';
+import DaEnrollmentFormSection from '@/components/data-analyst-bootcamp-page/DaEnrollmentFormSection';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 // Form state management
 interface FormData {
   fullName: string;
@@ -128,154 +133,7 @@ export default function DataAnalystBootcampPage() {
     }, 1000);
   };
 
-  // Hero Section
-  const HeroSection = () => (
-    <section className="min-h-screen bg-gradient-hero flex items-center py-16 sm:py-20 lg:py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-16 items-center">
-          {/* Left Content - 60% */}
-          <div className="lg:col-span-3 space-y-6 lg:space-y-8">
-            <div className="space-y-6">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-dark-gray leading-tight">
-                Master Data Analytics at{' '}
-                <span className="text-gradient">Just ₹5,000</span>
-              </h1>
-              
-              <p className="text-base sm:text-lg md:text-xl text-medium-gray leading-relaxed">
-                Job aligned curriculum. Real career transformation. Affordable pricing.
-              </p>
-              
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <Target className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green flex-shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base text-dark-gray leading-relaxed">
-                    Project based learning
-                  </span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green flex-shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base text-dark-gray leading-relaxed">
-                    Learn from industry experts
-                  </span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <Briefcase className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green flex-shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base text-dark-gray leading-relaxed">
-                    100% Job assistance
-                  </span>
-                </div>
-              </div>
-              
-              <div className="pt-2">
-                <Button 
-                  size="lg" 
-                  className="bg-primary-green hover:bg-secondary-green text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto"
-                  onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  Enroll Now
-                </Button>
-              </div>
-            </div>
-          </div>
-          
-          {/* Right Content - 40% */}
-          <div className="lg:col-span-2 mt-8 lg:mt-0">
-            <Card className="bg-white shadow-lg border-0 w-full">
-              <CardHeader className="pb-4">
-                <CardTitle className="text-lg sm:text-xl font-semibold text-dark-gray text-center">
-                  Get Started in 30 Seconds
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4 px-4 sm:px-6 pb-6">
-                <div className="space-y-2">
-                  <Label htmlFor="hero-fullName" className="text-sm font-medium text-dark-gray">Full Name</Label>
-                  <Input
-                    id="hero-fullName"
-                    type="text"
-                    placeholder="Your full name"
-                    value={heroFormData.fullName}
-                    onChange={(e) => setHeroFormData({ ...heroFormData, fullName: e.target.value })}
-                    className={`h-11 ${formErrors.fullName ? 'border-red-500' : ''}`}
-                  />
-                  {formErrors.fullName && (
-                    <p className="text-xs text-red-500 mt-1">{formErrors.fullName}</p>
-                  )}
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="hero-email" className="text-sm font-medium text-dark-gray">Email Address</Label>
-                  <Input
-                    id="hero-email"
-                    type="email"
-                    placeholder="you@example.com"
-                    value={heroFormData.email}
-                    onChange={(e) => setHeroFormData({ ...heroFormData, email: e.target.value })}
-                    className={`h-11 ${formErrors.email ? 'border-red-500' : ''}`}
-                  />
-                  {formErrors.email && (
-                    <p className="text-xs text-red-500 mt-1">{formErrors.email}</p>
-                  )}
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="hero-phone" className="text-sm font-medium text-dark-gray">Phone Number</Label>
-                  <Input
-                    id="hero-phone"
-                    type="tel"
-                    placeholder="+91 XXXXXXXXXX"
-                    value={heroFormData.phone}
-                    onChange={(e) => setHeroFormData({ ...heroFormData, phone: e.target.value })}
-                    className={`h-11 ${formErrors.phone ? 'border-red-500' : ''}`}
-                  />
-                  {formErrors.phone && (
-                    <p className="text-xs text-red-500 mt-1">{formErrors.phone}</p>
-                  )}
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="hero-experience" className="text-sm font-medium text-dark-gray">Experience Level</Label>
-                  <Select
-                    value={heroFormData.experienceLevel}
-                    onValueChange={(value) => setHeroFormData({ ...heroFormData, experienceLevel: value })}
-                  >
-                    <SelectTrigger className={`h-11 ${formErrors.experienceLevel ? 'border-red-500' : ''}`}>
-                      <SelectValue placeholder="Select your level" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="beginner">Beginner</SelectItem>
-                      <SelectItem value="intermediate">Intermediate</SelectItem>
-                      <SelectItem value="advanced">Advanced</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {formErrors.experienceLevel && (
-                    <p className="text-xs text-red-500 mt-1">{formErrors.experienceLevel}</p>
-                  )}
-                </div>
-                
-                <Button
-                  onClick={() => handleFormSubmit(heroFormData, 'hero')}
-                  disabled={isSubmitting}
-                  className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 h-11"
-                >
-                  {isSubmitting ? 'Submitting...' : 'Get Course Guide'}
-                </Button>
-                
-                {submitSuccess && (
-                  <div className="text-center text-green-600 font-medium text-sm">
-                    ✓ Check your email for the course guide!
-                  </div>
-                )}
-                
-                <p className="text-xs text-medium-gray text-center leading-relaxed">
-                  I agree to receive course updates and career tips
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+
 
   // Why Choose Greycampus Section
   const WhyChooseSection = () => (
@@ -1333,9 +1191,9 @@ export default function DataAnalystBootcampPage() {
                   <Button className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold h-12">
                     Enroll Now
                   </Button>
-                  <Button variant="outline" className="w-full border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white py-3 text-lg font-semibold h-12">
+                  {/* <Button variant="outline" className="w-full border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white py-3 text-lg font-semibold h-12">
                     Enquire Now
-                  </Button>
+                  </Button> */}
                 </div>
               </CardContent>
             </Card>
@@ -1924,10 +1782,11 @@ export default function DataAnalystBootcampPage() {
 
   return (
     <div className="min-h-screen">
-      <NavigationHeader />
+      {/* <NavigationHeader /> */}
+      <Navigation/>
       <main className="pt-16">
         {/* Hero Section */}
-        <HeroSection />
+        <DaHeroSection />
         {/* Why Choose Greycampus Section */}
         <WhyChooseSection />
         {/* Why Become a Data Analyst Section */}
@@ -1947,12 +1806,13 @@ export default function DataAnalystBootcampPage() {
         {/* Pricing & Enrollment Section */}
         <PricingEnrollmentSection />
         {/* Enrollment Form Section */}
-        <EnrollmentFormSection />
+       <DaEnrollmentFormSection/>
         {/* Testimonials Section */}
         <TestimonialsSection />
         {/* FAQ Section */}
         <FAQSection />
       </main>
+      <Footer/>
     </div>
   );
 }

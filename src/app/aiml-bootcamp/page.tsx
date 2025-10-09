@@ -21,7 +21,10 @@ import {
   Facebook,
   Instagram
 } from 'lucide-react';
-
+import HeroSection from '@/components/aiml-bootcamp-page/HeroSection';
+import EnrollmentFormSection from '@/components/aiml-bootcamp-page/EnrollmentFormSection';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 // Form state management
 interface FormData {
   fullName: string;
@@ -180,154 +183,7 @@ export default function AIMLBootcampPage() {
     </header>
   );
 
-  // Hero Section
-  const HeroSection = () => (
-    <section className="min-h-screen bg-gradient-hero flex items-center py-16 sm:py-20 lg:py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-16 items-center">
-          {/* Left Content - 60% */}
-          <div className="lg:col-span-3 space-y-6 lg:space-y-8">
-            <div className="space-y-6">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-dark-gray leading-tight">
-                Master AI/ML at{' '}
-                <span className="text-gradient">Just ₹5,000</span>
-              </h1>
-              
-              <p className="text-base sm:text-lg md:text-xl text-medium-gray leading-relaxed">
-                Cutting-edge AI curriculum. Real career transformation. Affordable pricing.
-              </p>
-              
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <Target className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green flex-shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base text-dark-gray leading-relaxed">
-                    Production-ready AI projects
-                  </span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green flex-shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base text-dark-gray leading-relaxed">
-                    Learn from AI engineers at Google, Meta, Amazon
-                  </span>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <Briefcase className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green flex-shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base text-dark-gray leading-relaxed">
-                    90%+ placement at ₹12L-18L range
-                  </span>
-                </div>
-              </div>
-              
-              <div className="pt-2">
-                <Button 
-                  size="lg" 
-                  className="bg-primary-green hover:bg-secondary-green text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto"
-                  onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  Launch Now
-                </Button>
-              </div>
-            </div>
-          </div>
-          
-          {/* Right Content - 40% */}
-          <div className="lg:col-span-2 mt-8 lg:mt-0">
-            <Card className="bg-white shadow-lg border-0 w-full">
-              <CardHeader className="pb-4">
-                <CardTitle className="text-lg sm:text-xl font-semibold text-dark-gray text-center">
-                  Get Started in 30 Seconds
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4 px-4 sm:px-6 pb-6">
-                <div className="space-y-2">
-                  <Label htmlFor="hero-fullName" className="text-sm font-medium text-dark-gray">Full Name</Label>
-                  <Input
-                    id="hero-fullName"
-                    type="text"
-                    placeholder="Your full name"
-                    value={heroFormData.fullName}
-                    onChange={(e) => setHeroFormData({ ...heroFormData, fullName: e.target.value })}
-                    className={`h-11 ${formErrors.fullName ? 'border-red-500' : ''}`}
-                  />
-                  {formErrors.fullName && (
-                    <p className="text-xs text-red-500 mt-1">{formErrors.fullName}</p>
-                  )}
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="hero-email" className="text-sm font-medium text-dark-gray">Email Address</Label>
-                  <Input
-                    id="hero-email"
-                    type="email"
-                    placeholder="you@example.com"
-                    value={heroFormData.email}
-                    onChange={(e) => setHeroFormData({ ...heroFormData, email: e.target.value })}
-                    className={`h-11 ${formErrors.email ? 'border-red-500' : ''}`}
-                  />
-                  {formErrors.email && (
-                    <p className="text-xs text-red-500 mt-1">{formErrors.email}</p>
-                  )}
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="hero-phone" className="text-sm font-medium text-dark-gray">Phone Number</Label>
-                  <Input
-                    id="hero-phone"
-                    type="tel"
-                    placeholder="+91 XXXXXXXXXX"
-                    value={heroFormData.phone}
-                    onChange={(e) => setHeroFormData({ ...heroFormData, phone: e.target.value })}
-                    className={`h-11 ${formErrors.phone ? 'border-red-500' : ''}`}
-                  />
-                  {formErrors.phone && (
-                    <p className="text-xs text-red-500 mt-1">{formErrors.phone}</p>
-                  )}
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="hero-experience" className="text-sm font-medium text-dark-gray">Experience Level</Label>
-                  <Select
-                    value={heroFormData.experienceLevel}
-                    onValueChange={(value) => setHeroFormData({ ...heroFormData, experienceLevel: value })}
-                  >
-                    <SelectTrigger className={`h-11 ${formErrors.experienceLevel ? 'border-red-500' : ''}`}>
-                      <SelectValue placeholder="Select your level" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="beginner">Beginner</SelectItem>
-                      <SelectItem value="intermediate">Intermediate</SelectItem>
-                      <SelectItem value="advanced">Advanced</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {formErrors.experienceLevel && (
-                    <p className="text-xs text-red-500 mt-1">{formErrors.experienceLevel}</p>
-                  )}
-                </div>
-                
-                <Button
-                  onClick={() => handleFormSubmit(heroFormData, 'hero')}
-                  disabled={isSubmitting}
-                  className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 h-11"
-                >
-                  {isSubmitting ? 'Submitting...' : 'Get AI Guide'}
-                </Button>
-                
-                {submitSuccess && (
-                  <div className="text-center text-green-600 font-medium text-sm">
-                    ✓ Check your email for the AI guide!
-                  </div>
-                )}
-                
-                <p className="text-xs text-medium-gray text-center leading-relaxed">
-                  I agree to receive course updates and career tips
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+
 
   // Why Choose Greycampus Section
   const WhyChooseSection = () => (
@@ -1437,11 +1293,11 @@ export default function AIMLBootcampPage() {
                 
                 <div className="space-y-3">
                   <Button className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold h-12">
-                    Launch Now
+                    Enroll Now
                   </Button>
-                  <Button variant="outline" className="w-full border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white py-3 text-lg font-semibold h-12">
+                  {/* <Button variant="outline" className="w-full border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white py-3 text-lg font-semibold h-12">
                     Enquire Now
-                  </Button>
+                  </Button> */}
                 </div>
               </CardContent>
             </Card>
@@ -1476,185 +1332,6 @@ export default function AIMLBootcampPage() {
                 </CardContent>
               </Card>
             ))}
-          </div>
-        </div>
-      </section>
-    );
-  };
-
-  // Enrollment Form Section
-  const EnrollmentFormSection = () => {
-    const taglines = [
-      {
-        icon: '🔬',
-        text: 'Cutting-edge AI curriculum at affordable prices'
-      },
-      {
-        icon: '👨‍💻',
-        text: 'Learn from engineers at Google, Meta, Amazon'
-      },
-      {
-        icon: '🏆',
-        text: 'Build production-grade AI projects'
-      },
-      {
-        icon: '💰',
-        text: '90%+ placement at ₹12L-18L range'
-      },
-      {
-        icon: '♾️',
-        text: 'Lifetime mentorship and career support'
-      }
-    ];
-
-    return (
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left Content */}
-            <div className="space-y-6 lg:space-y-8">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-6 lg:mb-8">
-                Your AI/ML Career Starts Here
-              </h2>
-              
-              <div className="space-y-4 lg:space-y-6">
-                {taglines.map((tagline, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <div className="text-2xl flex-shrink-0">{tagline.icon}</div>
-                    <p className="text-lg text-dark-gray leading-relaxed">
-                      {tagline.text}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Right Content - Form */}
-            <div className="mt-8 lg:mt-0">
-              <Card className="bg-white shadow-lg border-0 w-full">
-                <CardHeader className="pb-4">
-                  <CardTitle className="text-xl font-semibold text-dark-gray text-center">
-                    Let's Launch Your Career
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4 px-6 pb-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="enrollment-fullName" className="text-sm font-medium text-dark-gray">Full Name</Label>
-                    <Input
-                      id="enrollment-fullName"
-                      type="text"
-                      placeholder="Your full name"
-                      value={enrollmentFormData.fullName}
-                      onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, fullName: e.target.value })}
-                      className={`h-11 ${formErrors.fullName ? 'border-red-500' : ''}`}
-                    />
-                    {formErrors.fullName && (
-                      <p className="text-xs text-red-500 mt-1">{formErrors.fullName}</p>
-                    )}
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="enrollment-email" className="text-sm font-medium text-dark-gray">Email Address</Label>
-                    <Input
-                      id="enrollment-email"
-                      type="email"
-                      placeholder="you@example.com"
-                      value={enrollmentFormData.email}
-                      onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, email: e.target.value })}
-                      className={`h-11 ${formErrors.email ? 'border-red-500' : ''}`}
-                    />
-                    {formErrors.email && (
-                      <p className="text-xs text-red-500 mt-1">{formErrors.email}</p>
-                    )}
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="enrollment-phone" className="text-sm font-medium text-dark-gray">Phone Number</Label>
-                    <Input
-                      id="enrollment-phone"
-                      type="tel"
-                      placeholder="+91 XXXXXXXXXX"
-                      value={enrollmentFormData.phone}
-                      onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, phone: e.target.value })}
-                      className={`h-11 ${formErrors.phone ? 'border-red-500' : ''}`}
-                    />
-                    {formErrors.phone && (
-                      <p className="text-xs text-red-500 mt-1">{formErrors.phone}</p>
-                    )}
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="enrollment-experience" className="text-sm font-medium text-dark-gray">Experience Level</Label>
-                    <Select
-                      value={enrollmentFormData.experienceLevel}
-                      onValueChange={(value) => setEnrollmentFormData({ ...enrollmentFormData, experienceLevel: value })}
-                    >
-                      <SelectTrigger className="h-11">
-                        <SelectValue placeholder="Select your level" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="beginner">Beginner</SelectItem>
-                        <SelectItem value="intermediate">Intermediate</SelectItem>
-                        <SelectItem value="advanced">Advanced</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="enrollment-background" className="text-sm font-medium text-dark-gray">Background</Label>
-                    <Select
-                      value={enrollmentFormData.background}
-                      onValueChange={(value) => setEnrollmentFormData({ ...enrollmentFormData, background: value })}
-                    >
-                      <SelectTrigger className="h-11">
-                        <SelectValue placeholder="Select your background" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="software-engineer">Software Engineer</SelectItem>
-                        <SelectItem value="data-scientist">Data Scientist</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="enrollment-interest" className="text-sm font-medium text-dark-gray">Interest Track</Label>
-                    <Select
-                      value={enrollmentFormData.interestTrack}
-                      onValueChange={(value) => setEnrollmentFormData({ ...enrollmentFormData, interestTrack: value })}
-                    >
-                      <SelectTrigger className="h-11">
-                        <SelectValue placeholder="Select your interest" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="ml-engineering">ML Engineering</SelectItem>
-                        <SelectItem value="deep-learning">Deep Learning</SelectItem>
-                        <SelectItem value="ai-apps">AI Apps</SelectItem>
-                        <SelectItem value="llms">LLMs</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  
-                  <Button
-                    onClick={() => handleFormSubmit(enrollmentFormData, 'enrollment')}
-                    disabled={isSubmitting}
-                    className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 h-12 text-lg font-semibold"
-                  >
-                    {isSubmitting ? 'Submitting...' : "Let's Get Started"}
-                  </Button>
-                  
-                  {submitSuccess && (
-                    <div className="text-center text-green-600 font-medium text-sm">
-                      ✓ Welcome to the AI revolution!
-                    </div>
-                  )}
-                  
-                  <p className="text-xs text-medium-gray text-center leading-relaxed">
-                    I want updates on AI trends and job market
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
           </div>
         </div>
       </section>
@@ -2111,7 +1788,7 @@ export default function AIMLBootcampPage() {
 
   return (
     <div className="min-h-screen">
-      <NavigationHeader />
+      <Navigation/>
       <main className="pt-16">
         <HeroSection />
         <WhyChooseSection />
@@ -2127,7 +1804,7 @@ export default function AIMLBootcampPage() {
         <TestimonialsSection />
         <FAQSection />
       </main>
-      <FooterSection />
+      <Footer/>
     </div>
   );
 }

@@ -1,27 +1,20 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { 
-  Target, 
-  BookOpen, 
-  Briefcase, 
   CheckCircle,
   Star,
   ChevronLeft,
   ChevronRight,
-  Menu,
-  X,
-  Linkedin,
-  Twitter,
-  Facebook,
-  Instagram
+  ArrowRight
 } from 'lucide-react';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 
 // Form state management
 interface FormData {
@@ -48,28 +41,12 @@ export default function HomePage() {
     preferredLearning: ''
   });
 
-  const [enrollmentFormData, setEnrollmentFormData] = useState<FormData>({
-    fullName: '',
-    email: '',
-    phone: '',
-    experienceLevel: '',
-    currentBackground: '',
-    preferredLearning: ''
-  });
-
   const [formErrors, setFormErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   // Carousel states
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-
-  // FAQ states
-  const [activeFAQCategory, setActiveFAQCategory] = useState('curriculum');
-  const [expandedFAQs, setExpandedFAQs] = useState<{ [key: string]: boolean }>({});
-
-  // Navigation state
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Form validation
   const validateForm = (data: FormData): FormErrors => {
@@ -101,7 +78,7 @@ export default function HomePage() {
   };
 
   // Form submission
-  const handleFormSubmit = async (formData: FormData, formType: 'hero' | 'enrollment') => {
+  const handleFormSubmit = async (formData: FormData) => {
     const errors = validateForm(formData);
     setFormErrors(errors);
     
@@ -113,499 +90,219 @@ export default function HomePage() {
     
     // Simulate API call
     setTimeout(() => {
-      console.log(`${formType} form submitted:`, formData);
+      console.log('Hero form submitted:', formData);
       setSubmitSuccess(true);
       setIsSubmitting(false);
       
       // Clear form after 2 seconds
       setTimeout(() => {
         setSubmitSuccess(false);
-        if (formType === 'hero') {
-          setHeroFormData({ fullName: '', email: '', phone: '', experienceLevel: '', currentBackground: '', preferredLearning: '' });
-        } else {
-          setEnrollmentFormData({ fullName: '', email: '', phone: '', experienceLevel: '', currentBackground: '', preferredLearning: '' });
-        }
+        setHeroFormData({ fullName: '', email: '', phone: '', experienceLevel: '', currentBackground: '', preferredLearning: '' });
       }, 2000);
     }, 1000);
   };
 
-  // Navigation Header
-  const NavigationHeader = () => (
-    <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-border-gray z-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary-green rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">GC</span>
-            </div>
-            <span className="text-xl font-bold text-dark-gray">Greycampus</span>
-          </div>
-          
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="/data-analyst-bootcamp" className="text-medium-gray hover:text-primary-green transition-colors">Data Analyst Bootcamp</a>
-            <a href="#curriculum" className="text-medium-gray hover:text-primary-green transition-colors">Curriculum</a>
-            <a href="#careers" className="text-medium-gray hover:text-primary-green transition-colors">Careers</a>
-            <a href="#pricing" className="text-medium-gray hover:text-primary-green transition-colors">Pricing</a>
-            <a href="#faq" className="text-medium-gray hover:text-primary-green transition-colors">FAQ</a>
-            <Button className="bg-primary-green hover:bg-secondary-green text-white">
-              Enroll Now
-            </Button>
-          </nav>
-          
-          <button 
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-        
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border-gray">
-            <nav className="flex flex-col space-y-4">
-              <a href="/data-analyst-bootcamp" className="text-medium-gray hover:text-primary-green transition-colors">Data Analyst Bootcamp</a>
-              <a href="#curriculum" className="text-medium-gray hover:text-primary-green transition-colors">Curriculum</a>
-              <a href="#careers" className="text-medium-gray hover:text-primary-green transition-colors">Careers</a>
-              <a href="#pricing" className="text-medium-gray hover:text-primary-green transition-colors">Pricing</a>
-              <a href="#faq" className="text-medium-gray hover:text-primary-green transition-colors">FAQ</a>
-              <Button className="bg-primary-green hover:bg-secondary-green text-white w-full">
-                Enroll Now
-              </Button>
-            </nav>
-          </div>
-        )}
-      </div>
-    </header>
-  );
-
-  // Hero Section - IMPROVED ALIGNMENT
+  // SECTION 1: HERO SECTION
   const HeroSection = () => (
-    <section className="min-h-screen bg-gradient-hero flex items-center py-16 sm:py-20 lg:py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-16 items-center">
-          {/* Left Content - 60% */}
-          <div className="lg:col-span-3 space-y-6 lg:space-y-8">
-            <div
-              
-
-              
-              className="space-y-6"
-            >
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-dark-gray leading-tight">
-                Master Data Science at{' '}
-                <span className="text-gradient">Just ₹5,000</span>
+    <section className="min-h-screen bg-gradient-to-br from-off-white via-white to-green-50 flex items-center py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-green/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent-blue/10 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left Content */}
+          <div className="space-y-8">
+            <div className="space-y-6">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-dark-gray leading-tight">
+                Transform Your Career with{' '}
+                <span className="text-gradient">Affordable Tech Bootcamps</span>
               </h1>
               
-              <p className="text-base sm:text-lg md:text-xl text-medium-gray leading-relaxed">
-                Job aligned curriculum. Real career transformation. Affordable pricing.
+              <p className="text-lg sm:text-xl text-medium-gray leading-relaxed max-w-2xl">
+                Master Data Science, Analytics, and AI/ML at 1/3 the market price. Real skills. Real careers. Real transformation.
               </p>
               
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <Target className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green flex-shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base text-dark-gray leading-relaxed">
-                    Project based learning
-                  </span>
+                  <div className="w-6 h-6 bg-primary-green rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-white text-sm">💰</span>
+                  </div>
+                  <div>
+                    <span className="text-base font-semibold text-dark-gray">Most Affordable</span>
+                    <p className="text-sm text-medium-gray">₹5,000 vs competitors&apos; ₹15,000+</p>
+                  </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green flex-shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base text-dark-gray leading-relaxed">
-                    Learn from industry experts
-                  </span>
+                  <div className="w-6 h-6 bg-primary-green rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-white text-sm">🎯</span>
+                  </div>
+                  <div>
+                    <span className="text-base font-semibold text-dark-gray">95% Placement Rate</span>
+                    <p className="text-sm text-medium-gray">Average 120% salary increase</p>
+                  </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <Briefcase className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green flex-shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base text-dark-gray leading-relaxed">
-                   100% Job assistance
-                  </span>
+                  <div className="w-6 h-6 bg-primary-green rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-white text-sm">🚀</span>
+                  </div>
+                  <div>
+                    <span className="text-base font-semibold text-dark-gray">Industry-Ready</span>
+                    <p className="text-sm text-medium-gray">Production-grade projects and mentorship</p>
+                  </div>
                 </div>
               </div>
               
-              <div className="pt-2">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button 
                   size="lg" 
-                  className="bg-primary-green hover:bg-secondary-green text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto"
-                  onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-primary-green hover:bg-secondary-green text-white px-8 py-4 text-lg font-semibold"
+                  onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  Enroll Now
+                  Explore Bootcamps
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  className="border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white px-8 py-4 text-lg font-semibold"
+                  onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  View Success Stories
                 </Button>
               </div>
             </div>
           </div>
           
-          {/* Right Content - 40% */}
-          <div className="lg:col-span-2 mt-8 lg:mt-0">
-            <div
-              
-              
-              
-            >
-              <Card className="bg-white shadow-lg border-0 w-full">
-                <CardHeader className="pb-4">
-                  <CardTitle className="text-lg sm:text-xl font-semibold text-dark-gray text-center">
-                    Get Started in 30 Seconds
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4 px-4 sm:px-6 pb-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="hero-fullName" className="text-sm font-medium text-dark-gray">Full Name</Label>
-                    <Input
-                      id="hero-fullName"
-                      type="text"
-                      placeholder="Your full name"
-                      value={heroFormData.fullName}
-                      onChange={(e) => setHeroFormData({ ...heroFormData, fullName: e.target.value })}
-                      className={`h-11 ${formErrors.fullName ? 'border-red-500' : ''}`}
-                    />
-                    {formErrors.fullName && (
-                      <p className="text-xs text-red-500 mt-1">{formErrors.fullName}</p>
-                    )}
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="hero-email" className="text-sm font-medium text-dark-gray">Email Address</Label>
-                    <Input
-                      id="hero-email"
-                      type="email"
-                      placeholder="you@example.com"
-                      value={heroFormData.email}
-                      onChange={(e) => setHeroFormData({ ...heroFormData, email: e.target.value })}
-                      className={`h-11 ${formErrors.email ? 'border-red-500' : ''}`}
-                    />
-                    {formErrors.email && (
-                      <p className="text-xs text-red-500 mt-1">{formErrors.email}</p>
-                    )}
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="hero-phone" className="text-sm font-medium text-dark-gray">Phone Number</Label>
-                    <Input
-                      id="hero-phone"
-                      type="tel"
-                      placeholder="+91 XXXXXXXXXX"
-                      value={heroFormData.phone}
-                      onChange={(e) => setHeroFormData({ ...heroFormData, phone: e.target.value })}
-                      className={`h-11 ${formErrors.phone ? 'border-red-500' : ''}`}
-                    />
-                    {formErrors.phone && (
-                      <p className="text-xs text-red-500 mt-1">{formErrors.phone}</p>
-                    )}
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="hero-experience" className="text-sm font-medium text-dark-gray">Experience Level</Label>
-                    <Select
-                      value={heroFormData.experienceLevel}
-                      onValueChange={(value) => setHeroFormData({ ...heroFormData, experienceLevel: value })}
-                    >
-                      <SelectTrigger className={`h-11 ${formErrors.experienceLevel ? 'border-red-500' : ''}`}>
-                        <SelectValue placeholder="Select your level" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="beginner">Beginner</SelectItem>
-                        <SelectItem value="intermediate">Intermediate</SelectItem>
-                        <SelectItem value="advanced">Advanced</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    {formErrors.experienceLevel && (
-                      <p className="text-xs text-red-500 mt-1">{formErrors.experienceLevel}</p>
-                    )}
-                  </div>
-                  
-                  <Button
-                    onClick={() => handleFormSubmit(heroFormData, 'hero')}
-                    disabled={isSubmitting}
-                    className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 h-11"
-                  >
-                    {isSubmitting ? 'Submitting...' : 'Get Course Guide'}
-                  </Button>
-                  
-                  {submitSuccess && (
-                    <div className="text-center text-green-600 font-medium text-sm">
-                      ✓ Check your email for the course guide!
-                    </div>
+          {/* Right Content - Form */}
+          <div className="mt-8 lg:mt-0">
+            <Card className="bg-white shadow-2xl border-0 w-full">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-xl font-semibold text-dark-gray text-center">
+                  Start Your Transformation Today
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4 px-6 pb-6">
+                <div className="space-y-2">
+                  <Label htmlFor="hero-fullName" className="text-sm font-medium text-dark-gray">Full Name</Label>
+                  <Input
+                    id="hero-fullName"
+                    type="text"
+                    placeholder="Your full name"
+                    value={heroFormData.fullName}
+                    onChange={(e) => setHeroFormData({ ...heroFormData, fullName: e.target.value })}
+                    className={`h-11 ${formErrors.fullName ? 'border-red-500' : ''}`}
+                  />
+                  {formErrors.fullName && (
+                    <p className="text-xs text-red-500 mt-1">{formErrors.fullName}</p>
                   )}
-                  
-                  <p className="text-xs text-medium-gray text-center leading-relaxed">
-                    I agree to receive course updates and career tips
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="hero-email" className="text-sm font-medium text-dark-gray">Email Address</Label>
+                  <Input
+                    id="hero-email"
+                    type="email"
+                    placeholder="you@example.com"
+                    value={heroFormData.email}
+                    onChange={(e) => setHeroFormData({ ...heroFormData, email: e.target.value })}
+                    className={`h-11 ${formErrors.email ? 'border-red-500' : ''}`}
+                  />
+                  {formErrors.email && (
+                    <p className="text-xs text-red-500 mt-1">{formErrors.email}</p>
+                  )}
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="hero-phone" className="text-sm font-medium text-dark-gray">Phone Number</Label>
+                  <Input
+                    id="hero-phone"
+                    type="tel"
+                    placeholder="+91 XXXXXXXXXX"
+                    value={heroFormData.phone}
+                    onChange={(e) => setHeroFormData({ ...heroFormData, phone: e.target.value })}
+                    className={`h-11 ${formErrors.phone ? 'border-red-500' : ''}`}
+                  />
+                  {formErrors.phone && (
+                    <p className="text-xs text-red-500 mt-1">{formErrors.phone}</p>
+                  )}
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="hero-experience" className="text-sm font-medium text-dark-gray">Experience Level</Label>
+                  <Select
+                    value={heroFormData.experienceLevel}
+                    onValueChange={(value) => setHeroFormData({ ...heroFormData, experienceLevel: value })}
+                  >
+                    <SelectTrigger className={`h-11 ${formErrors.experienceLevel ? 'border-red-500' : ''}`}>
+                      <SelectValue placeholder="Select your level" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="beginner">Beginner</SelectItem>
+                      <SelectItem value="intermediate">Intermediate</SelectItem>
+                      <SelectItem value="advanced">Advanced</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {formErrors.experienceLevel && (
+                    <p className="text-xs text-red-500 mt-1">{formErrors.experienceLevel}</p>
+                  )}
+                </div>
+                
+                <Button
+                  onClick={() => handleFormSubmit(heroFormData)}
+                  disabled={isSubmitting}
+                  className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 h-12 text-lg font-semibold"
+                >
+                  {isSubmitting ? 'Submitting...' : 'Get Free Career Guide'}
+                </Button>
+                
+                {submitSuccess && (
+                  <div className="text-center text-green-600 font-medium text-sm">
+                    ✓ Check your email for the career guide!
+                  </div>
+                )}
+                
+                <p className="text-xs text-medium-gray text-center leading-relaxed">
+                  I agree to receive course updates and career tips
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
     </section>
   );
 
-  // Why Choose Greycampus Section - IMPROVED ALIGNMENT
-  const WhyChooseSection = () => (
-    <section id="why-choose" className="py-16 sm:py-20 lg:py-24 bg-off-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
-            Why Choose Greycampus?
-          </h2>
-          <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
-            Affordable education meets world-class quality
-          </p>
-        </div>
-        
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {[
-            {
-              icon: '💰',
-              title: 'Most Affordable',
-              description: 'High-quality education at 1/3 the market price'
-            },
-            {
-              icon: '👨‍🏫',
-              title: 'Expert Instructors',
-              description: '10+ years industry experience. Real-world projects taught'
-            },
-            {
-              icon: '🎯',
-              title: '100% Job Focused',
-              description: 'Resume building, interview prep, placement support'
-            },
-            {
-              icon: '🕐',
-              title: 'Flexible Learning',
-              description: 'Self-paced with live sessions. Learn at your speed'
-            },
-            {
-              icon: '♾️',
-              title: 'Lifetime Access',
-              description: 'Access all course materials forever. Never expires'
-            },
-            {
-              icon: '✅',
-              title: 'Career Assistance',
-              description: '100% assistance untill career starts'
-            }
-          ].map((feature, index) => (
-            <div
-              key={index}
-              
-              
-              
-              
-            >
-              <Card className="h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-l-4 border-l-transparent hover:border-l-primary-green">
-                <CardContent className="p-6 lg:p-8 h-full flex flex-col">
-                  <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-semibold text-dark-gray mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-medium-gray leading-relaxed flex-grow">
-                    {feature.description}
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-
-  // Why Learn Data Science Section - IMPROVED ALIGNMENT
-  const WhyLearnSection = () => (
-    <section className="py-16 sm:py-20 lg:py-24 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
-            Why Learn Data Science?
-          </h2>
-          <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
-            Market demand, growth potential, and career opportunities
-          </p>
-        </div>
-  
-        
-        {/* Insights Row */}
-        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
-          {[
-            {
-              icon: "📈",
-              title: "High Demand, Higher Pay",
-              description: "3x more job openings than available candidates. Companies competing for talent.",
-              bg: "bg-green-50"
-            },
-            {
-              icon: "🤖",
-              title: "Future-Proof Career",
-              description: "AI and ML driving business decisions across all industries. Secure your future.",
-              bg: "bg-blue-50"
-            },
-            {
-              icon: "🏠",
-              title: "Remote Work Opportunities",
-              description: "70% of data science jobs offer remote or flexible work arrangements.",
-              bg: "bg-amber-50"
-            }
-          ].map((insight, index) => (
-            <div
-              key={index}
-              
-              
-              
-              
-            >
-              <Card className={`${insight.bg} border border-border-gray hover:border-primary-green transition-all duration-300 h-full`}>
-                <CardContent className="p-6 text-center h-full flex flex-col justify-center">
-                  <div className="text-3xl mb-3">{insight.icon}</div>
-                  <h3 className="text-lg font-semibold text-dark-gray mb-3">
-                    {insight.title}
-                  </h3>
-                  <p className="text-sm lg:text-base text-medium-gray leading-relaxed">
-                    {insight.description}
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-
-  // Careers Section - IMPROVED ALIGNMENT
-  const CareersSection = () => {
-    const careers = [
-      {
-        title: "Data Analyst",
-        salary: "₹65K-85K",
-        companies: "Google, Amazon, Microsoft",
-        responsibilities: [
-          "Extract and analyze datasets",
-          "Create dashboards and reports",
-          "Present insights to stakeholders"
-        ],
-        skills: ["SQL", "Excel", "BI Tools", "Statistics"]
-      },
-      {
-        title: "Data Scientist",
-        salary: "₹95K-130K",
-        companies: "Meta, Netflix, Uber",
-        responsibilities: [
-          "Build predictive models",
-          "Design experiments",
-          "Drive data-driven decisions"
-        ],
-        skills: ["Python", "Machine Learning", "Statistics", "SQL"]
-      },
-      {
-        title: "Machine Learning Engineer",
-        salary: "₹120K-180K",
-        companies: "Apple, Tesla, OpenAI",
-        responsibilities: [
-          "Deploy ML models to production",
-          "Optimize model performance",
-          "Build ML infrastructure"
-        ],
-        skills: ["Python", "TensorFlow", "Docker", "AWS"]
-      },
-      {
-        title: "Business Analyst",
-        salary: "₹70K-95K",
-        companies: "McKinsey, Deloitte, Accenture",
-        responsibilities: [
-          "Analyze business processes",
-          "Create financial models",
-          "Present strategic recommendations"
-        ],
-        skills: ["Excel", "Power BI", "SQL", "Statistics"]
-      }
+  // SECTION 2: HIRING ORGANIZATIONS
+  const HiringOrganizationsSection = () => {
+    const companies = [
+      "Google", "Amazon", "Microsoft", "Meta", "Apple", "Netflix", "Adobe", "IBM", 
+      "Salesforce", "LinkedIn", "Uber", "Airbnb", "OpenAI", "DeepMind", "Nvidia", 
+      "Hugging Face", "Anthropic", "Databricks", "Palantir", "Goldman Sachs", 
+      "JPMorgan Chase", "McKinsey", "Deloitte", "Accenture", "Stripe", "Shopify", 
+      "Slack", "Figma", "Notion", "Vercel", "GitHub", "Flipkart", "Swiggy", 
+      "Zomato", "PhonePe", "Paytm", "Ola", "Razorpay"
     ];
 
     return (
-      <section id="careers" className="py-16 sm:py-20 lg:py-24 bg-gradient-subtle">
+      <section className="py-16 sm:py-20 lg:py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
-              Careers After Bootcamp
-            </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
-              Multiple paths to success with competitive salaries
-            </p>
-          </div>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {careers.map((career, index) => (
-              <div
-                key={index}
-                
-                
-                
-                
-              >
-                <Card className="h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2 border-border-gray hover:border-primary-green">
-                  <CardContent className="p-6 h-full flex flex-col">
-                
-                    
-                    <h3 className="text-lg lg:text-xl font-bold text-dark-gray mb-2">
-                      {career.title}
-                    </h3>
-                    
-                    <p className="text-xs text-medium-gray italic mb-4">
-                      {career.companies}
-                    </p>
-                    
-                    <div className="space-y-2 mb-4 flex-grow">
-                      {career.responsibilities.map((resp, idx) => (
-                        <div key={idx} className="flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 bg-primary-green rounded-full mt-2 flex-shrink-0"></div>
-                          <span className="text-sm text-dark-gray leading-relaxed">{resp}</span>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <div className="flex flex-wrap gap-2">
-                      {career.skills.map((skill, idx) => (
-                        <span key={idx} className="bg-primary-green text-white text-xs px-2 py-1 rounded">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  };
-
-  // Hiring Organizations Section - IMPROVED ALIGNMENT
-  const HiringOrganizationsSection = () => {
-    const companies = [
-      "Google", "Amazon", "Microsoft", "Meta", "Apple", "IBM",
-      "Salesforce", "LinkedIn", "Uber", "Airbnb", "Netflix", "Adobe",
-      "Intel", "Accenture", "Deloitte", "McKinsey", "Goldman Sachs",
-      "JPMorgan", "PayPal", "Shopify", "Stripe", "Slack", "Palantir",
-      "Databricks"
-    ];
-
-    return (
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-8 lg:mb-12">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
               Trusted by Leading Companies
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
-              Our graduates work at Fortune 500 companies and innovative startups
+            <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-3xl">
+              Our graduates work at Fortune 500 companies and innovative startups worldwide
             </p>
           </div>
           
           <div className="overflow-hidden">
-            <div className="flex space-x-6 lg:space-x-8 animate-scroll">
+            <div className="flex space-x-8 animate-scroll">
               {[...companies, ...companies].map((company, index) => (
-                <div key={index} className="flex-shrink-0 w-32 h-16 lg:w-40 lg:h-20 bg-off-white rounded-lg flex items-center justify-center border border-border-gray">
-                  <span className="text-sm lg:text-base font-semibold text-dark-gray">{company}</span>
+                <div key={index} className="flex-shrink-0 w-40 h-20 bg-off-white rounded-lg flex items-center justify-center border border-border-gray hover:border-primary-green transition-colors group">
+                  <span className="text-sm font-semibold text-dark-gray group-hover:text-primary-green transition-colors">{company}</span>
                 </div>
               ))}
             </div>
@@ -615,511 +312,127 @@ export default function HomePage() {
     );
   };
 
-  // Curriculum Section
-  const CurriculumSection = () => {
-    const modules = [
+  // SECTION 3: PROGRAMS SECTION
+  const ProgramsSection = () => {
+    const programs = [
       {
-        id: 'statistics',
-        title: 'Statistics Fundamentals',
-        duration: '2 weeks',
-        difficulty: 1,
-        topics: [
-          'Descriptive statistics',
-          'Probability theory',
-          'Distributions and hypothesis testing',
-          'Statistical inference',
-          'Application to real-world problems'
+        id: 'data-science',
+        title: 'Data Science Bootcamp',
+        price: '₹5,000 + GST',
+        duration: '20 weeks • Self-paced + Live sessions',
+        description: 'Master Python, SQL, ML, and Power BI. Build data pipelines and predictive models for business impact.',
+        highlights: [
+          'Python & SQL mastery',
+          'Machine Learning algorithms',
+          'Power BI dashboards',
+          'Real-world projects',
+          '95% placement rate'
         ],
-        outcomes: [
-          'Understand statistical fundamentals',
-          'Perform statistical analysis',
-          'Interpret results for business insights'
-        ],
-        tools: ['Python', 'SciPy', 'Statsmodels'],
-        projects: 'None yet (foundation module)'
-      },
-      {
-        id: 'python',
-        title: 'Python for Data Wizards',
-        duration: '2 weeks',
-        difficulty: 1,
-        topics: [
-          'Python basics and data structures',
-          'NumPy and Pandas mastery',
-          'Data manipulation and cleaning',
-          'File I/O and data formats',
-          'Basic visualization with Matplotlib'
-        ],
-        outcomes: [
-          'Master Python for data science',
-          'Handle large datasets efficiently',
-          'Clean and preprocess data'
-        ],
-        tools: ['Python', 'NumPy', 'Pandas', 'Matplotlib'],
-        projects: 'Data cleaning challenge'
-      },
-      {
-        id: 'sql',
-        title: 'SQL Mastery',
-        duration: '2 weeks',
-        difficulty: 2,
-        topics: [
-          'Database fundamentals',
-          'Complex queries and joins',
-          'Window functions and CTEs',
-          'Query optimization',
-          'Database design principles'
-        ],
-        outcomes: [
-          'Write complex SQL queries',
-          'Optimize database performance',
-          'Design efficient database schemas'
-        ],
-        tools: ['PostgreSQL', 'MySQL', 'SQLite'],
-        projects: 'E-commerce database analysis'
-      },
-      {
-        id: 'eda',
-        title: 'EDA in Python',
-        duration: '2 weeks',
-        difficulty: 2,
-        topics: [
-          'Exploratory data analysis techniques',
-          'Statistical visualization',
-          'Correlation and causation',
-          'Outlier detection and treatment',
-          'Data quality assessment'
-        ],
-        outcomes: [
-          'Perform comprehensive EDA',
-          'Create compelling visualizations',
-          'Identify data quality issues'
-        ],
-        tools: ['Seaborn', 'Plotly', 'Pandas', 'Matplotlib'],
-        projects: 'Customer behavior analysis'
-      },
-      {
-        id: 'powerbi',
-        title: 'Power BI',
-        duration: '2 weeks',
-        difficulty: 2,
-        topics: [
-          'Power BI interface and basics',
-          'Data modeling and relationships',
-          'DAX formulas and measures',
-          'Interactive dashboards',
-          'Report publishing and sharing'
-        ],
-        outcomes: [
-          'Build interactive dashboards',
-          'Create business intelligence reports',
-          'Share insights with stakeholders'
-        ],
-        tools: ['Power BI', 'DAX', 'Power Query'],
-        projects: 'Sales performance dashboard'
-      },
-      {
-        id: 'ml',
-        title: 'Machine Learning',
-        duration: '4 weeks',
-        difficulty: 4,
-        topics: [
-          'Supervised and unsupervised learning',
-          'Regression and classification algorithms',
-          'Model evaluation and validation',
-          'Feature engineering and selection',
-          'Hyperparameter tuning'
-        ],
-        outcomes: [
-          'Build and deploy ML models',
-          'Evaluate model performance',
-          'Apply ML to real business problems'
-        ],
-        tools: ['Scikit-learn', 'XGBoost', 'TensorFlow'],
-        projects: 'Predictive modeling challenge'
-      },
-      {
-        id: 'genai',
-        title: 'Generative AI Frontier',
-        duration: '2 weeks',
-        difficulty: 3,
-        topics: [
-          'Large Language Models (LLMs)',
-          'Prompt engineering techniques',
-          'AI integration in data workflows',
-          'Ethical AI considerations',
-          'Future of AI in data science'
-        ],
-        outcomes: [
-          'Leverage AI tools effectively',
-          'Integrate LLMs in data projects',
-          'Stay ahead of AI trends'
-        ],
-        tools: ['OpenAI API', 'Hugging Face', 'LangChain'],
-        projects: 'AI-powered data analysis tool'
-      },
-      {
-        id: 'capstone',
-        title: 'Capstone Challenge',
-        duration: '4 weeks',
-        difficulty: 5,
-        topics: [
-          'End-to-end project planning',
-          'Data pipeline development',
-          'Model deployment and monitoring',
-          'Business presentation skills',
-          'Portfolio development'
-        ],
-        outcomes: [
-          'Complete a full data science project',
-          'Present findings to stakeholders',
-          'Build a professional portfolio'
-        ],
-        tools: ['All previous tools', 'Docker', 'AWS', 'Git'],
-        projects: 'Industry capstone project'
-      }
-    ];
-
-    const [activeModule, setActiveModule] = useState('statistics');
-
-    const getDifficultyStars = (difficulty: number) => {
-      return '⭐'.repeat(difficulty) + '☆'.repeat(5 - difficulty);
-    };
-
-    return (
-      <section id="curriculum" className="py-16 sm:py-20 lg:py-24 bg-off-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
-              What You&apos;ll Learn
-            </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
-              3 months of comprehensive, industry-aligned curriculum
-            </p>
-          </div>
-          
-          <div className="max-w-6xl mx-auto">
-            {/* Module Tabs */}
-            <div className="flex flex-wrap justify-center gap-2 mb-8 lg:mb-12">
-              {modules.map((module) => (
-                <button
-                  key={module.id}
-                  onClick={() => setActiveModule(module.id)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    activeModule === module.id
-                      ? 'bg-primary-green text-white shadow-md'
-                      : 'bg-light-gray text-dark-gray hover:bg-medium-gray hover:text-white'
-                  }`}
-                >
-                  {module.title}
-                </button>
-              ))}
-            </div>
-            
-            {/* Module Content */}
-            <div className="bg-white rounded-2xl shadow-lg border border-border-gray overflow-hidden">
-              {modules.map((module) => (
-                <div
-                  key={module.id}
-                  className={`transition-all duration-500 ${
-                    activeModule === module.id ? 'block' : 'hidden'
-                  }`}
-                >
-                  <div className="p-6 lg:p-8">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
-                      <div>
-                        <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-2">
-                          {module.title}
-                        </h3>
-                        <div className="flex items-center space-x-4">
-                          <span className="bg-primary-green text-white px-3 py-1 rounded-full text-sm font-semibold">
-                            {module.duration}
-                          </span>
-                          <span className="text-sm text-medium-gray">
-                            Difficulty: {getDifficultyStars(module.difficulty)} ({module.difficulty}/5)
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="grid lg:grid-cols-2 gap-8">
-                      <div>
-                        <h4 className="text-lg font-semibold text-dark-gray mb-3">Topics Covered</h4>
-                        <ul className="space-y-2">
-                          {module.topics.map((topic, index) => (
-                            <li key={index} className="flex items-start space-x-2">
-                              <div className="w-1.5 h-1.5 bg-primary-green rounded-full mt-2 flex-shrink-0"></div>
-                              <span className="text-dark-gray text-sm leading-relaxed">{topic}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <div>
-                        <h4 className="text-lg font-semibold text-dark-gray mb-3">Key Outcomes</h4>
-                        <ul className="space-y-2">
-                          {module.outcomes.map((outcome, index) => (
-                            <li key={index} className="flex items-start space-x-2">
-                              <CheckCircle className="w-4 h-4 text-primary-green flex-shrink-0 mt-0.5" />
-                              <span className="text-dark-gray text-sm leading-relaxed">{outcome}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-6 pt-6 border-t border-border-gray">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                        <div>
-                          <h4 className="text-lg font-semibold text-dark-gray mb-2">Tools & Technologies</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {module.tools.map((tool, index) => (
-                              <span key={index} className="bg-accent-blue text-white px-3 py-1 rounded-full text-sm font-medium">
-                                {tool}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                        
-                        <div className="text-right">
-                          <h4 className="text-lg font-semibold text-dark-gray mb-2">Projects</h4>
-                          <p className="text-medium-gray text-sm">{module.projects}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  };
-
-  // Outcomes Section
-  const OutcomesSection = () => {
-    const outcomes = [
-      {
-        icon: '🔄',
-        title: 'Build Data Pipelines',
-        description: 'Design and implement end-to-end data workflows',
-        color: 'border-t-primary-green'
-      },
-      {
+        badge: 'Most Popular',
         icon: '📊',
-        title: 'Statistical Analysis',
-        description: 'Perform advanced statistical tests and interpretation',
-        color: 'border-t-accent-blue'
+        link: '/data-science-bootcamp'
       },
       {
-        icon: '🗄️',
-        title: 'SQL Expertise',
-        description: 'Write optimized queries to extract and analyze data',
-        color: 'border-t-primary-green'
-      },
-      {
+        id: 'data-analyst',
+        title: 'Data Analyst Bootcamp',
+        price: '₹5,000 + GST',
+        duration: '16 weeks • Self-paced + Live sessions',
+        description: 'Transform data into insights. Learn SQL, Excel, Power BI, and Tableau for data-driven decision making.',
+        highlights: [
+          'SQL & Excel expertise',
+          'Power BI & Tableau',
+          'Statistical analysis',
+          'Business intelligence',
+          '95% placement rate'
+        ],
+        badge: 'Highest ROI',
         icon: '📈',
-        title: 'Data Visualization',
-        description: 'Create compelling dashboards and visualizations',
-        color: 'border-t-accent-blue'
+        link: '/data-analyst-bootcamp'
       },
       {
+        id: 'aiml',
+        title: 'AI/ML Bootcamp',
+        price: '₹5,000 + GST',
+        duration: '20 weeks • Self-paced + Live sessions',
+        description: 'Build production AI systems. Deep learning, LLMs, RAG systems, and autonomous agents.',
+        highlights: [
+          'Deep Learning & Neural Networks',
+          'LLMs & Transformers',
+          'RAG systems',
+          'AI agents',
+          '90%+ placement rate'
+        ],
+        badge: 'Cutting Edge',
         icon: '🤖',
-        title: 'Machine Learning Models',
-        description: 'Build and optimize ML models for predictions',
-        color: 'border-t-primary-green'
-      },
-      {
-        icon: '✨',
-        title: 'AI Integration',
-        description: 'Leverage generative AI and LLMs effectively',
-        color: 'border-t-accent-blue'
-      },
-      {
-        icon: '💬',
-        title: 'Business Communication',
-        description: 'Present data insights to stakeholders clearly',
-        color: 'border-t-primary-green'
-      },
-      {
-        icon: '📁',
-        title: 'Portfolio Development',
-        description: 'Build professional portfolio with real-world projects',
-        color: 'border-t-accent-blue'
-      },
-      {
-        icon: '🧩',
-        title: 'Problem Solving',
-        description: 'Apply analytical thinking to business problems',
-        color: 'border-t-primary-green'
-      },
-      {
-        icon: '📚',
-        title: 'Continuous Learning',
-        description: 'Stay updated with latest tools and techniques',
-        color: 'border-t-accent-blue'
+        link: '/aiml-bootcamp'
       }
     ];
 
     return (
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section id="programs" className="py-16 sm:py-20 lg:py-24 bg-off-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
-              You&apos;ll Be Able To
+              Choose Your Path to Success
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
-              Real skills. Real impact. Real career transformation.
-            </p>
-          </div>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8">
-            {outcomes.map((outcome, index) => (
-              <div
-                key={index}
-                
-                
-                
-                
-              >
-                <Card className={`h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-t-4 ${outcome.color} border border-border-gray`}>
-                  <CardContent className="p-5 h-full flex flex-col">
-                    <div className="text-3xl mb-3">{outcome.icon}</div>
-                    <h3 className="text-lg font-semibold text-dark-gray mb-3">
-                      {outcome.title}
-                    </h3>
-                    <p className="text-sm text-medium-gray leading-relaxed flex-grow">
-                      {outcome.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  };
-
-  // Projects Section
-  const ProjectsSection = () => {
-    const projects = [
-      {
-        title: 'Retail Sales Analytics',
-        duration: '2 weeks',
-        difficulty: 3,
-        description: 'Analyze 1M+ transactions from an e-commerce platform. Extract insights on customer behavior, product performance, and seasonal trends. Create interactive dashboards for business teams.',
-        techStack: ['Python', 'SQL', 'Power BI', 'Pandas'],
-        learnings: [
-          'Data pipeline creation',
-          'SQL optimization',
-          'Dashboard design'
-        ],
-        outcome: 'Interactive dashboard, insights report, 20-page analysis',
-        gradient: 'from-primary-green to-accent-blue'
-      },
-      {
-        title: 'Client Churn Risk Analysis',
-        duration: '3 weeks',
-        difficulty: 4,
-        description: 'Build a machine learning model to predict customer churn for a telecom company. Use advanced feature engineering and ensemble methods to achieve 85%+ accuracy.',
-        techStack: ['Python', 'Scikit-learn', 'XGBoost', 'Pandas'],
-        learnings: [
-          'Feature engineering techniques',
-          'Model ensemble methods',
-          'Business impact measurement'
-        ],
-        outcome: 'Production-ready ML model, business recommendations, ROI analysis',
-        gradient: 'from-accent-blue to-primary-green'
-      },
-      {
-        title: 'Housing Market Analytics',
-        duration: '2 weeks',
-        difficulty: 3,
-        description: 'Develop a comprehensive model to predict property prices using location, amenities, and market data. Create a web application for real estate agents.',
-        techStack: ['Python', 'Flask', 'PostgreSQL', 'Plotly'],
-        learnings: [
-          'Web application development',
-          'Geospatial data analysis',
-          'Model deployment'
-        ],
-        outcome: 'Web app, API endpoints, market analysis report',
-        gradient: 'from-accent-gold to-primary-green'
-      }
-    ];
-
-    return (
-      <section className="py-16 sm:py-20 lg:py-24 bg-off-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
-              Build Real-World Projects
-            </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
-              Apply your skills to projects used by real companies
+            <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-3xl">
+              Three comprehensive bootcamps designed for career transformation
             </p>
           </div>
           
           <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                
-                
-               
-                
-              >
-                <Card className="h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2 border-border-gray hover:border-primary-green overflow-hidden">
-                  {/* Header with gradient */}
-                  <div className={`bg-gradient-to-r ${project.gradient} p-6 text-white relative`}>
-                    <h3 className="text-xl lg:text-2xl font-bold mb-2">
-                      {project.title}
-                    </h3>
-                    <div className="flex items-center space-x-4">
-                   
-                      <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                        ⭐{'⭐'.repeat(project.difficulty - 1)}☆{'☆'.repeat(5 - project.difficulty)} ({project.difficulty}/5)
-                      </span>
-                    </div>
+            {programs.map((program) => (
+              <div key={program.id}>
+                <Card className="h-full hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-border-gray hover:border-primary-green bg-white relative overflow-hidden">
+                  {/* Badge */}
+                  <div className="absolute top-4 right-4 z-10">
+                    <span className="bg-primary-green text-white px-3 py-1 rounded-full text-xs font-semibold">
+                      {program.badge}
+                    </span>
                   </div>
                   
-                  <CardContent className="p-6 h-fit flex flex-col">
-                    <p className="text-dark-gray text-sm leading-relaxed mb-6 flex-grow">
-                      {project.description}
+                  <CardContent className="p-8 h-full flex flex-col">
+                    {/* Icon */}
+                    <div className="text-6xl mb-6">{program.icon}</div>
+                    
+                    {/* Title */}
+                    <h3 className="text-2xl font-bold text-dark-gray mb-4">
+                      {program.title}
+                    </h3>
+                    
+                    {/* Price */}
+                    <div className="text-3xl font-bold text-primary-green mb-2">
+                      {program.price}
+                    </div>
+                    
+                    {/* Duration */}
+                    <p className="text-sm text-medium-gray mb-6">
+                      {program.duration}
                     </p>
                     
-                    <div className="space-y-4">
-                      <div>
-                        <h4 className="text-sm font-semibold text-dark-gray mb-2">Tech Stack</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {project.techStack.map((tech, idx) => (
-                            <span key={idx} className="bg-primary-green text-white px-2 py-1 rounded text-xs font-medium">
-                              {tech}
-                            </span>
-                          ))}
+                    {/* Description */}
+                    <p className="text-base text-dark-gray leading-relaxed mb-6 flex-grow">
+                      {program.description}
+                    </p>
+                    
+                    {/* Highlights */}
+                    <div className="space-y-2 mb-8">
+                      {program.highlights.map((highlight, idx) => (
+                        <div key={idx} className="flex items-center space-x-2">
+                          <CheckCircle className="w-4 h-4 text-primary-green flex-shrink-0" />
+                          <span className="text-sm text-dark-gray">{highlight}</span>
                         </div>
-                      </div>
-                      
-                      <div>
-                        <h4 className="text-sm font-semibold text-dark-gray mb-2">Key Learnings</h4>
-                        <ul className="space-y-1">
-                          {project.learnings.map((learning, idx) => (
-                            <li key={idx} className="flex items-start space-x-2">
-                              <div className="w-1 h-1 bg-primary-green rounded-full mt-2 flex-shrink-0"></div>
-                              <span className="text-xs text-dark-gray leading-relaxed">{learning}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <div className="pt-4 border-t border-border-gray">
-                        <h4 className="text-sm font-bold text-primary-green mb-1">Outcome</h4>
-                        <p className="text-xs text-dark-gray leading-relaxed">
-                          {project.outcome}
-                        </p>
-                      </div>
+                      ))}
                     </div>
+                    
+                    {/* CTA Button */}
+                    <Button 
+                      className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold"
+                      onClick={() => window.location.href = program.link}
+                    >
+                      Learn More
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
                   </CardContent>
                 </Card>
               </div>
@@ -1130,369 +443,212 @@ export default function HomePage() {
     );
   };
 
-  // Enrollment Steps Section
-  const EnrollmentStepsSection = () => {
-    const steps = [
-      {
-        number: 1,
-        icon: '✍️',
-        title: 'Sign Up',
-        description: 'Fill out registration form. Takes 30 seconds.'
-      },
-      {
-        number: 2,
-        icon: '📥',
-        title: 'Get Course Guide',
-        description: 'Receive personalized guide via email'
-      },
-      {
-        number: 3,
-        icon: '📞',
-        title: 'Consultation Call',
-        description: 'Free 15-minute call with counselor (optional)'
-      },
-      {
-        number: 4,
-        icon: '🎓',
-        title: 'Enroll & Start',
-        description: 'Choose plan, pay, get instant access'
-      },
-      {
-        number: 5,
-        icon: '🚀',
-        title: 'Learn & Succeed',
-        description: 'Start learning, build projects, get hired'
-      }
-    ];
-
-    return (
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
-              How Do I Enroll?
-            </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
-              Simple 5-step process to start your data science journey
-            </p>
+  // SECTION 4: WHO ARE WE?
+  const WhoAreWeSection = () => (
+    <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left Content */}
+          <div className="space-y-8">
+            <div className="space-y-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray">
+                Empowering Careers Through Affordable Education
+              </h2>
+              <p className="text-lg text-medium-gray leading-relaxed">
+                Bridging the gap between ambition and opportunity
+              </p>
+              
+              <div className="space-y-6">
+                <p className="text-lg text-medium-gray leading-relaxed">
+                  Greycampus is on a mission to democratize tech education. We believe world-class training shouldn&apos;t cost a fortune. Our bootcamps combine industry expertise, practical curriculum, and personalized mentorship—all at prices that don&apos;t break the bank.
+                </p>
+                <p className="text-lg text-medium-gray leading-relaxed">
+                  Founded by industry veterans who&apos;ve worked at Google, Amazon, and Microsoft, we&apos;ve trained over 5,000+ students who&apos;ve gone on to transform their careers at leading companies worldwide.
+                </p>
+              </div>
+              
+              {/* Stats Row */}
+              <div className="grid grid-cols-3 gap-6 pt-6">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-primary-green mb-2">5,000+</div>
+                  <div className="text-sm text-medium-gray">Students Trained</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-primary-green mb-2">95%</div>
+                  <div className="text-sm text-medium-gray">Placement Rate</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-primary-green mb-2">120%</div>
+                  <div className="text-sm text-medium-gray">Avg Salary Increase</div>
+                </div>
+              </div>
+              
+              <Button 
+                variant="outline" 
+                className="border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white"
+              >
+                Read Our Story
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </div>
           </div>
           
-          <div className="max-w-6xl mx-auto">
-            {/* Desktop Layout */}
-            <div className="hidden lg:flex items-center justify-between relative">
-              {steps.map((step, index) => (
-                <div key={index} className="flex flex-col items-center relative z-10">
-                  <div
-                    
-                    
-                    
-                    
-                  >
-                    <Card className="w-48 h-fit hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-border-gray">
-                      <CardContent className="p-5 h-full flex flex-col items-center text-center">
-                        <div className="w-16 h-16 bg-primary-green rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
-                          {step.number}
-                        </div>
-                        <div className="text-2xl mb-3">{step.icon}</div>
-                        <h3 className="text-base font-bold text-dark-gray mb-2">
-                          {step.title}
-                        </h3>
-                        <p className="text-xs text-medium-gray leading-relaxed">
-                          {step.description}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                  
-                  {/* Connector Line */}
-                  {index < steps.length - 1 && (
-                    <div className="absolute top-8 left-full w-12 h-0.5 bg-primary-green transform translate-x-6 z-0">
-                      <div className="absolute right-0 top-0 w-0 h-0 border-l-4 border-l-primary-green border-t-2 border-t-transparent border-b-2 border-b-transparent transform translate-x-1"></div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-            
-            {/* Mobile Layout */}
-            <div className="lg:hidden space-y-6">
-              {steps.map((step, index) => (
-                <div
-                  key={index}
-                  
-                  
-                  
-                  
-                  className="flex items-center space-x-4"
-                >
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center text-white font-bold text-lg">
-                      {step.number}
-                    </div>
-                  </div>
-                  
-                  <Card className="flex-1 hover:shadow-lg transition-all duration-300 border border-border-gray">
-                    <CardContent className="p-4">
-                      <div className="flex items-center space-x-3">
-                        <div className="text-2xl">{step.icon}</div>
-                        <div>
-                          <h3 className="text-base font-bold text-dark-gray mb-1">
-                            {step.title}
-                          </h3>
-                          <p className="text-sm text-medium-gray leading-relaxed">
-                            {step.description}
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                  
-                  {/* Vertical Connector */}
-                  {index < steps.length - 1 && (
-                    <div className="absolute left-6 top-12 w-0.5 h-6 bg-primary-green transform translate-y-4"></div>
-                  )}
-                </div>
-              ))}
+          {/* Right Content - Visual */}
+          <div className="relative">
+            <div className="relative">
+              {/* Abstract illustration representing transformation */}
+              <div className="w-full h-96 bg-gradient-to-br from-primary-green/20 to-accent-blue/20 rounded-2xl flex items-center justify-center relative overflow-hidden">
+                {/* Floating elements */}
+                <div className="absolute top-8 left-8 w-16 h-16 bg-primary-green/30 rounded-full animate-pulse"></div>
+                <div className="absolute top-16 right-12 w-12 h-12 bg-accent-blue/30 rounded-full animate-pulse delay-1000"></div>
+                <div className="absolute bottom-12 left-12 w-20 h-20 bg-accent-gold/30 rounded-full animate-pulse delay-2000"></div>
+                <div className="absolute bottom-8 right-8 w-14 h-14 bg-primary-green/30 rounded-full animate-pulse delay-500"></div>
+                
+                {/* Central icon */}
+                <div className="text-8xl">🚀</div>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-    );
-  };
+      </div>
+    </section>
+  );
 
-  // Enrollment Form Section
-  const EnrollmentFormSection = () => {
-    const taglines = [
+  // SECTION 5: WHY GREYCAMPUS?
+  const WhyGreycampusSection = () => {
+    const features = [
       {
-        icon: '💡',
-        text: 'Affordable education. World-class quality.'
+        icon: '💰',
+        title: 'Most Affordable',
+        description: 'World-class education at 1/3 the market price. No compromise on quality.'
       },
       {
         icon: '👨‍🏫',
-        text: 'Learn from industry experts with 10+ years experience.'
+        title: 'Expert Instructors',
+        description: 'Learn from engineers with 10+ years at Google, Meta, Amazon, and Microsoft.'
       },
       {
-        icon: '📁',
-        text: 'Build a portfolio of real-world projects.'
-      },
-      {
-        icon: '💼',
-        text: '100% placement assistance.'
+        icon: '🎯',
+        title: '100% Job-Focused',
+        description: 'Career-first curriculum. Resume building, interview prep, and placement support.'
       },
       {
         icon: '♾️',
-        text: '18 months career support and career guidance.'
+        title: 'Lifetime Access',
+        description: 'Access all materials forever. Continuous updates with latest tools and technologies.'
+      },
+      {
+        icon: '🚀',
+        title: 'Production-Ready Projects',
+        description: 'Build real-world projects used by actual companies. Portfolio-worthy work.'
+      },
+      {
+        icon: '✅',
+        title: 'Career Guarantee',
+        description: '95% placement within 3 months or 100% money-back guarantee.'
       }
     ];
 
     return (
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-off-white to-green-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left Content */}
-            <div className="space-y-6 lg:space-y-8">
-              <div
-                
-                
-                
-                
-              >
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-6 lg:mb-8">
-                  Your Data Science Career Starts Here
-                </h2>
-                
-                <div className="space-y-4 lg:space-y-6">
-                  {taglines.map((tagline, index) => (
-                    <div
-                      key={index}
-                      
-                      
-                      
-                      
-                      className="flex items-start space-x-4"
-                    >
-                      <div className="text-2xl flex-shrink-0">{tagline.icon}</div>
-                      <p className="text-lg text-dark-gray leading-relaxed">
-                        {tagline.text}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            
-            {/* Right Content - Form */}
-            <div className="mt-8 lg:mt-0">
-              <div
-                
-                
-                
-                
-              >
-                <Card className="bg-white shadow-lg border-0 w-full">
-                  <CardHeader className="pb-4">
-                    <CardTitle className="text-xl font-semibold text-dark-gray text-center">
-                      Start Your Journey
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4 px-6 pb-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="enrollment-fullName" className="text-sm font-medium text-dark-gray">Full Name</Label>
-                      <Input
-                        id="enrollment-fullName"
-                        type="text"
-                        placeholder="Your full name"
-                        value={enrollmentFormData.fullName}
-                        onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, fullName: e.target.value })}
-                        className={`h-11 ${formErrors.fullName ? 'border-red-500' : ''}`}
-                      />
-                      {formErrors.fullName && (
-                        <p className="text-xs text-red-500 mt-1">{formErrors.fullName}</p>
-                      )}
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="enrollment-email" className="text-sm font-medium text-dark-gray">Email Address</Label>
-                      <Input
-                        id="enrollment-email"
-                        type="email"
-                        placeholder="you@example.com"
-                        value={enrollmentFormData.email}
-                        onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, email: e.target.value })}
-                        className={`h-11 ${formErrors.email ? 'border-red-500' : ''}`}
-                      />
-                      {formErrors.email && (
-                        <p className="text-xs text-red-500 mt-1">{formErrors.email}</p>
-                      )}
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="enrollment-phone" className="text-sm font-medium text-dark-gray">Phone Number</Label>
-                      <Input
-                        id="enrollment-phone"
-                        type="tel"
-                        placeholder="+91 XXXXXXXXXX"
-                        value={enrollmentFormData.phone}
-                        onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, phone: e.target.value })}
-                        className={`h-11 ${formErrors.phone ? 'border-red-500' : ''}`}
-                      />
-                      {formErrors.phone && (
-                        <p className="text-xs text-red-500 mt-1">{formErrors.phone}</p>
-                      )}
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="enrollment-background" className="text-sm font-medium text-dark-gray">Current Background</Label>
-                      <Select
-                        value={enrollmentFormData.currentBackground}
-                        onValueChange={(value) => setEnrollmentFormData({ ...enrollmentFormData, currentBackground: value })}
-                      >
-                        <SelectTrigger className="h-11">
-                          <SelectValue placeholder="Select your background" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="student">Student</SelectItem>
-                          <SelectItem value="working-professional">Working Professional</SelectItem>
-                          <SelectItem value="career-changer">Career Changer</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="enrollment-learning" className="text-sm font-medium text-dark-gray">Preferred Learning Style</Label>
-                      <Select
-                        value={enrollmentFormData.preferredLearning}
-                        onValueChange={(value) => setEnrollmentFormData({ ...enrollmentFormData, preferredLearning: value })}
-                      >
-                        <SelectTrigger className="h-11">
-                          <SelectValue placeholder="Select learning style" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="self-paced">Self-paced</SelectItem>
-                          <SelectItem value="live-sessions">Live Sessions</SelectItem>
-                          <SelectItem value="mix">Mix of Both</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    
-                    <Button
-                      onClick={() => handleFormSubmit(enrollmentFormData, 'enrollment')}
-                      disabled={isSubmitting}
-                      className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 h-12 text-lg font-semibold"
-                    >
-                      {isSubmitting ? 'Submitting...' : "Let's Get Started"}
-                    </Button>
-                    
-                    {submitSuccess && (
-                      <div className="text-center text-green-600 font-medium text-sm">
-                        ✓ Welcome aboard! Check your email.
-                      </div>
-                    )}
-                    
-                    <p className="text-xs text-medium-gray text-center leading-relaxed">
-                      I agree to receive course updates and career tips
+          <div className="text-center mb-12 lg:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+              Why Choose Greycampus?
+            </h2>
+            <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-3xl">
+              Uncompromising quality at unbeatable prices
+            </p>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+            {features.map((feature, index) => (
+              <div key={index}>
+                <Card className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-border-gray hover:border-primary-green bg-white">
+                  <CardContent className="p-8 h-full flex flex-col">
+                    <div className="text-5xl mb-6">{feature.icon}</div>
+                    <h3 className="text-xl font-semibold text-dark-gray mb-4">
+                      {feature.title}
+                    </h3>
+                    <p className="text-medium-gray leading-relaxed flex-grow">
+                      {feature.description}
                     </p>
                   </CardContent>
                 </Card>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
     );
   };
 
-  // Testimonials Section
+  // SECTION 6: TESTIMONIALS
   const TestimonialsSection = () => {
     const testimonials = [
       {
-        name: 'Rajesh Kumar',
-        role: 'Data Analyst at Google India',
-        achievement: 'Salary: ₹4L → ₹9.5L (+137%)',
-        quote: 'The curriculum was practical and affordable. Within 2 months of completing the bootcamp, I landed my dream job at Google. The instructors were amazing!',
+        name: 'Amit Sharma',
+        role: 'Data Scientist at Google India',
+        achievement: '₹4L → ₹11L (+175%)',
+        quote: 'The Data Science bootcamp changed my life. Within 2 months of completion, I had offers from Google and Amazon. The hands-on projects made all the difference.',
         rating: 5,
         avatar: '👨‍💼'
       },
       {
-        name: 'Priya Sharma',
-        role: 'ML Engineer at Amazon',
-        achievement: 'First tech role after career change',
-        quote: 'Coming from a non-tech background, I was nervous. But the structured curriculum and mentorship helped me transition smoothly into data science.',
+        name: 'Priya Gupta',
+        role: 'Data Analyst at Microsoft',
+        achievement: 'First tech role after CA',
+        quote: 'Coming from finance, I was nervous. But the curriculum was so clear and practical. Now analyzing data at Microsoft and loving every moment.',
         rating: 5,
         avatar: '👩‍💻'
       },
       {
-        name: 'Amit Patel',
-        role: 'Senior Data Scientist at Microsoft',
-        achievement: 'Developer to DS transition',
-        quote: 'The real-world projects and industry insights were invaluable. The bootcamp gave me the confidence to switch from software development to data science.',
+        name: 'Rohan Patel',
+        role: 'ML Engineer at Meta',
+        achievement: '₹8L → ₹16L (+100%)',
+        quote: 'AI/ML bootcamp gave me production-ready skills. The LLM and RAG modules were incredible. Got placed at Meta within 3 weeks.',
         rating: 5,
         avatar: '👨‍🔬'
       },
       {
-        name: 'Neha Verma',
-        role: 'Data Analyst at Flipkart',
-        achievement: 'CS to Analytics transition',
-        quote: 'The hands-on approach and practical projects made all the difference. I could immediately apply what I learned in my new role.',
+        name: 'Sneha Das',
+        role: 'Business Analyst at Amazon',
+        achievement: 'Career switch in 3 months',
+        quote: 'I was stuck in marketing. The Data Analyst bootcamp opened doors I didn&apos;t know existed. Now working with data at Amazon.',
         rating: 5,
         avatar: '👩‍📊'
       },
       {
         name: 'Vikram Singh',
-        role: 'Analytics Engineer at Stripe',
-        achievement: 'Startup ecosystem success',
-        quote: 'The bootcamp prepared me for the fast-paced startup environment. The skills I gained are directly applicable to my current role.',
+        role: 'Deep Learning Engineer at Nvidia',
+        achievement: '₹10L → ₹20L (+100%)',
+        quote: 'The depth of AI/ML curriculum is unmatched. Computer vision and deployment modules prepared me perfectly for Nvidia.',
         rating: 5,
         avatar: '👨‍💼'
       },
       {
-        name: 'Sneha Das',
-        role: 'BI Developer at Accenture',
-        achievement: 'Banking to tech transition',
-        quote: 'Leaving banking for tech was scary, but this bootcamp made the transition seamless. The career support was exceptional.',
+        name: 'Ananya Verma',
+        role: 'Analytics Lead at Flipkart',
+        achievement: 'Promoted twice in 1 year',
+        quote: 'Data Science bootcamp gave me confidence to lead analytics initiatives. Skills learned here transformed my career trajectory.',
         rating: 5,
         avatar: '👩‍💻'
+      },
+      {
+        name: 'Karthik Reddy',
+        role: 'AI Product Manager at OpenAI',
+        achievement: 'From backend to AI leadership',
+        quote: 'AI/ML bootcamp taught me not just coding but product thinking. Now shaping AI products at OpenAI.',
+        rating: 5,
+        avatar: '👨‍🔬'
+      },
+      {
+        name: 'Divya Malhotra',
+        role: 'Senior Data Analyst at LinkedIn',
+        achievement: '₹5L → ₹9L (+80%)',
+        quote: 'The SQL and visualization modules were game-changing. Built dashboards that impressed LinkedIn interviewers.',
+        rating: 5,
+        avatar: '👩‍📊'
       }
     ];
 
@@ -1513,33 +669,31 @@ export default function HomePage() {
     }, [testimonials.length]);
 
     return (
-      <section className="py-16 sm:py-20 lg:py-24 bg-off-white">
+      <section id="testimonials" className="py-16 sm:py-20 lg:py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
               Success Stories
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
-              Real students, real transformations, real careers
+            <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-3xl">
+              Real students. Real transformations. Real careers.
             </p>
           </div>
           
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               {/* Testimonial Card */}
-              <div
+              <div 
                 key={currentTestimonial}
-                
-                
-                className="bg-white rounded-2xl shadow-lg border border-border-gray overflow-hidden"
+                className="bg-white rounded-2xl shadow-xl border border-border-gray overflow-hidden"
               >
                 {/* Green Header Bar */}
-                <div className="h-10 bg-primary-green"></div>
+                <div className="h-12 bg-primary-green"></div>
                 
-                <div className="p-6 lg:p-8">
+                <div className="p-8">
                   {/* Avatar */}
-                  <div className="flex justify-center -mt-8 mb-6">
-                    <div className="w-16 h-16 bg-white rounded-full border-4 border-primary-green flex items-center justify-center text-2xl">
+                  <div className="flex justify-center -mt-10 mb-6">
+                    <div className="w-20 h-20 bg-white rounded-full border-4 border-primary-green flex items-center justify-center text-3xl">
                       {testimonials[currentTestimonial].avatar}
                     </div>
                   </div>
@@ -1576,16 +730,16 @@ export default function HomePage() {
               {/* Navigation Arrows */}
               <button
                 onClick={prevTestimonial}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-primary-green hover:text-white transition-all duration-300"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-primary-green hover:text-white transition-all duration-300"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-6 h-6" />
               </button>
               
               <button
                 onClick={nextTestimonial}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-primary-green hover:text-white transition-all duration-300"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-primary-green hover:text-white transition-all duration-300"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-6 h-6" />
               </button>
             </div>
             
@@ -1607,437 +761,85 @@ export default function HomePage() {
     );
   };
 
-  // FAQ Section
-  const FAQSection = () => {
-    const faqCategories = [
-      {
-        id: 'curriculum',
-        name: 'Curriculum & Content'
-      },
-      {
-        id: 'job',
-        name: 'Job & Placement'
-      },
-      {
-        id: 'practical',
-        name: 'Practical Details'
-      },
-      {
-        id: 'enrollment',
-        name: 'Enrollment & Payment'
-      }
-    ];
-
-    const faqs = {
-      curriculum: [
-        {
-          question: 'What programming languages will I learn?',
-          answer: 'You will learn Python (primary), SQL, and R. Python is the main language used throughout the bootcamp as it\'s the industry standard for data science.'
-        },
-        {
-          question: 'Do I need prior programming experience?',
-          answer: 'No prior programming experience is required. We start from the basics and gradually build up to advanced concepts. Our curriculum is designed for complete beginners.'
-        },
-        {
-          question: 'What tools and technologies are covered?',
-          answer: 'We cover Python, SQL, Power BI, Tableau, Jupyter Notebooks, Git, AWS basics, and various machine learning libraries like scikit-learn, pandas, and numpy.'
-        },
-        {
-          question: 'How is the curriculum updated?',
-          answer: 'Our curriculum is updated monthly based on industry trends and feedback from our hiring partners. We ensure you learn the most current tools and techniques.'
-        }
-      ],
-      job: [
-        {
-          question: 'What is the job placement rate?',
-          answer: 'We have a 95% placement rate within 3 months of graduation. Our career support team works closely with students to ensure successful job placement.'
-        },
-        {
-          question: 'What types of companies hire your graduates?',
-          answer: 'Our graduates work at top companies including Google, Amazon, Microsoft, Meta, Netflix, and many Fortune 500 companies across various industries.'
-        },
-        {
-          question: 'Do you provide career support after graduation?',
-          answer: 'Yes, we provide lifetime career support including resume reviews, interview preparation, networking opportunities, and job placement assistance.'
-        },
-        {
-          question: 'What salary can I expect after graduation?',
-          answer: 'Our graduates typically see salary increases of 120% on average. Entry-level data science roles start at ₹6-8 LPA, with experienced professionals earning ₹12-20 LPA.'
-        }
-      ],
-      practical: [
-        {
-          question: 'How long is the bootcamp?',
-          answer: 'The bootcamp is 3 months long, with 8 comprehensive modules covering all aspects of data science from fundamentals to advanced topics.'
-        },
-        {
-          question: 'What is the time commitment required?',
-          answer: 'We recommend 15-20 hours per week for optimal learning. The program is designed to be flexible for working professionals and students.'
-        },
-        {
-          question: 'Are there live sessions or is it self-paced?',
-          answer: 'We offer both live sessions and self-paced learning. You can attend live sessions for real-time interaction or watch recordings at your convenience.'
-        },
-        {
-          question: 'What if I miss a live session?',
-          answer: 'All live sessions are recorded and available for replay. You can access them anytime during the bootcamp and even after graduation.'
-        }
-      ],
-      enrollment: [
-        {
-          question: 'What is the total cost of the bootcamp?',
-          answer: 'The bootcamp costs ₹5,000 + GST (originally ₹7,500). This includes all course materials, projects, career support, and lifetime access to resources.'
-        },
-        {
-          question: 'Are there any hidden fees?',
-          answer: 'No hidden fees. The price includes everything: course materials, software licenses, career support, and lifetime access to the learning platform.'
-        },
-        {
-          question: 'Do you offer payment plans?',
-          answer: 'Yes, we offer flexible payment plans. You can pay in full or choose from our installment options to make it more affordable.'
-        },
-        {
-          question: 'What is your refund policy?',
-          answer: 'We offer a 30-day money-back guarantee. If you\'re not satisfied with the bootcamp within the first 30 days, we\'ll provide a full refund.'
-        }
-      ]
-    };
-
-    const toggleFAQ = (category: string, index: number) => {
-      const key = `${category}-${index}`;
-      setExpandedFAQs(prev => ({
-        ...prev,
-        [key]: !prev[key]
-      }));
-    };
-
-    return (
-      <section id="faq" className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
-              Frequently Asked Questions
+  // SECTION 7: READY TO GET STARTED?
+  const ReadyToStartSection = () => (
+    <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-off-white via-white to-blue-50 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 right-20 w-64 h-64 bg-primary-green/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-64 h-64 bg-accent-blue/10 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
+        <div className="text-center space-y-8">
+          <div className="space-y-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray">
+              Start Your Transformation Today
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
-              Everything you need to know about the bootcamp
+            <p className="text-xl text-dark-gray max-w-3xl mx-auto">
+              Join 5,000+ students who&apos;ve transformed their careers with Greycampus
             </p>
           </div>
           
           <div className="max-w-4xl mx-auto">
-            {/* Category Tabs */}
-            <div className="flex flex-wrap justify-center gap-2 mb-8 lg:mb-12">
-              {faqCategories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setActiveFAQCategory(category.id)}
-                  className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                    activeFAQCategory === category.id
-                      ? 'bg-primary-green text-white shadow-md'
-                      : 'bg-light-gray text-dark-gray hover:bg-medium-gray hover:text-white'
-                  }`}
-                >
-                  {category.name}
-                </button>
-              ))}
+            <p className="text-lg text-medium-gray leading-relaxed mb-8">
+              Choose your bootcamp, invest ₹5,000, and unlock a career that pays 3-5x more. With our 30-day money-back guarantee, there&apos;s zero risk.
+            </p>
+            
+            {/* Stats Row */}
+            <div className="grid grid-cols-3 gap-8 mb-12">
+              <div className="text-center">
+                <div className="text-4xl font-bold text-primary-green mb-2">95%</div>
+                <div className="text-sm text-medium-gray">Placement Rate</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-primary-green mb-2">120%</div>
+                <div className="text-sm text-medium-gray">Avg Salary Increase</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-primary-green mb-2">30-Day</div>
+                <div className="text-sm text-medium-gray">Money-Back Guarantee</div>
+              </div>
             </div>
             
-            {/* FAQ Items */}
-            <div className="space-y-4">
-              {faqs[activeFAQCategory as keyof typeof faqs]?.map((faq, index) => {
-                const key = `${activeFAQCategory}-${index}`;
-                const isExpanded = expandedFAQs[key];
-                
-                return (
-                  <div
-                    key={index}
-                   
-                    
-                    
-                    
-                  >
-                    <div className="border border-border-gray rounded-lg overflow-hidden">
-                      <button
-                        onClick={() => toggleFAQ(activeFAQCategory, index)}
-                        className="w-full px-6 py-4 text-left bg-light-gray hover:bg-white transition-all duration-300 flex items-center justify-between"
-                      >
-                        <h3 className="text-base font-semibold text-dark-gray pr-4">
-                          {faq.question}
-                        </h3>
-                        <div className={`transform transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
-                          <svg className="w-5 h-5 text-primary-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </div>
-                      </button>
-                      
-                      <div
-                        className="overflow-hidden"
-                      >
-                        <div className="px-6 py-4 bg-off-white">
-                          <p className="text-sm text-medium-gray leading-relaxed">
-                            {faq.answer}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="lg" 
+                className="bg-primary-green hover:bg-secondary-green text-white px-12 py-4 text-lg font-semibold w-full sm:w-auto"
+                onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Explore Bootcamps
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white px-12 py-4 text-lg font-semibold w-full sm:w-auto"
+                onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Talk to Counselor
+              </Button>
             </div>
           </div>
-        </div>
-      </section>
-    );
-  };
-
-  // Footer Section
-  const FooterSection = () => {
-    const [newsletterEmail, setNewsletterEmail] = useState('');
-
-    const handleNewsletterSubmit = (e: React.FormEvent) => {
-      e.preventDefault();
-      console.log('Newsletter subscription:', newsletterEmail);
-      setNewsletterEmail('');
-      // Show success message
-    };
-
-    return (
-      <footer className="bg-dark-gray text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="py-12 lg:py-16">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-              {/* Column 1: About Greycampus */}
-              <div className="space-y-4">
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-primary-green rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">GC</span>
-                  </div>
-                  <span className="text-xl font-bold">Greycampus</span>
-                </div>
-                <p className="text-sm text-light-gray leading-relaxed">
-                  Affordable, high-quality bootcamps for career transformation
-                </p>
-                <div className="flex space-x-4">
-                  <a href="#" className="text-light-gray hover:text-primary-green transition-colors">
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-light-gray hover:text-primary-green transition-colors">
-                    <Twitter className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-light-gray hover:text-primary-green transition-colors">
-                    <Facebook className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-light-gray hover:text-primary-green transition-colors">
-                    <Instagram className="w-5 h-5" />
-                  </a>
-                </div>
               </div>
-              
-              {/* Column 2: Quick Links */}
-              <div className="space-y-4">
-                <h3 className="text-sm font-bold text-white">Quick Links</h3>
-                <ul className="space-y-2">
-                  <li><a href="#" className="text-sm text-light-gray hover:text-primary-green transition-colors">Home</a></li>
-                  <li><a href="#curriculum" className="text-sm text-light-gray hover:text-primary-green transition-colors">Curriculum</a></li>
-                  <li><a href="#careers" className="text-sm text-light-gray hover:text-primary-green transition-colors">Careers</a></li>
-                  <li><a href="#faq" className="text-sm text-light-gray hover:text-primary-green transition-colors">FAQ</a></li>
-                  <li><a href="#pricing" className="text-sm text-light-gray hover:text-primary-green transition-colors">Pricing</a></li>
-                  <li><a href="#" className="text-sm text-light-gray hover:text-primary-green transition-colors">Contact Us</a></li>
-                </ul>
-              </div>
-              
-              {/* Column 3: Resources */}
-              <div className="space-y-4">
-                <h3 className="text-sm font-bold text-white">Resources</h3>
-                <ul className="space-y-2">
-                  <li><a href="#" className="text-sm text-light-gray hover:text-primary-green transition-colors">Blog</a></li>
-                  <li><a href="#" className="text-sm text-light-gray hover:text-primary-green transition-colors">Career Guide</a></li>
-                  <li><a href="#" className="text-sm text-light-gray hover:text-primary-green transition-colors">Student Success Stories</a></li>
-                  <li><a href="#" className="text-sm text-light-gray hover:text-primary-green transition-colors">Tech Blog</a></li>
-                  <li><a href="#" className="text-sm text-light-gray hover:text-primary-green transition-colors">Community</a></li>
-                </ul>
-              </div>
-              
-              {/* Column 4: Newsletter */}
-              <div className="space-y-4">
-                <h3 className="text-sm font-bold text-white">Stay Updated</h3>
-                <p className="text-xs text-light-gray leading-relaxed">
-                  Subscribe for course updates and career tips
-                </p>
-                <form onSubmit={handleNewsletterSubmit} className="space-y-3">
-                  <Input
-                    type="email"
-                    placeholder="your@email.com"
-                    value={newsletterEmail}
-                    onChange={(e) => setNewsletterEmail(e.target.value)}
-                    className="h-10 bg-white/10 border-white/20 text-white placeholder:text-light-gray focus:border-primary-green"
-                  />
-                  <Button
-                    type="submit"
-                    className="w-full bg-primary-green hover:bg-secondary-green text-white h-10 text-sm"
-                  >
-                    Subscribe
-                  </Button>
-                </form>
-              </div>
-            </div>
-          </div>
-          
-          {/* Footer Bottom */}
-          <div className="border-t border-white/10 py-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
-              <p className="text-xs text-light-gray">
-                © 2025 Greycampus. All rights reserved.
-              </p>
-              <div className="flex space-x-6">
-                <a href="#" className="text-xs text-light-gray hover:text-primary-green transition-colors">
-                  Privacy Policy
-                </a>
-                <a href="#" className="text-xs text-light-gray hover:text-primary-green transition-colors">
-                  Terms of Service
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-    );
-  };
-
-  // Pricing Section - IMPROVED ALIGNMENT
-  const PricingSection = () => {
-    const cohorts = [
-      { startDate: "31 October 2025", status: "Open", color: "bg-primary-green", spots: "Available: 25/30" },
-      { startDate: "28 November, 2025", status: "Limited", color: "bg-accent-gold", spots: "Available: 5/30" },
-    ];
-
-    return (
-      <section id="pricing" className="py-16 sm:py-20 lg:py-24 bg-gradient-subtle">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
-              Invest in Your Future at Affordable Prices
-            </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
-              The most cost-effective bootcamp without compromising quality
-            </p>
-          </div>
-          
-          {/* Main Pricing Card */}
-          <div className="mx-auto mb-12 lg:mb-16">
-            <Card className="bg-white shadow-lg border-0 relative overflow-hidden">
-          
-              <CardContent className="p-8 lg:p-12">
-                <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-6 lg:mb-8 text-center">
-                  Data Science Bootcamp
-                </h3>
-                
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4 mb-8">
-  {[
-   
-    "8 modules covering all aspects",
-    "3+ capstone projects",
-    "1:1 mentorship sessions",
-    "Resume and portfolio guidance",
-    "Interview preparation",
-    "Certificate of completion",
-  ].map((feature, index) => (
-    <div key={index} className="flex items-start space-x-3">
-      <CheckCircle className="w-5 h-5 text-primary-green flex-shrink-0 mt-0.5" />
-      <span className="text-dark-gray text-sm leading-relaxed">{feature}</span>
-    </div>
-  ))}
-</div>
-
-
-                <div className="text-center mb-8">
-                  <div className="flex items-center justify-center space-x-2 mb-3">
-                    <span className="text-red-500 line-through text-lg">
-                      ₹7,500
-                    </span>
-                    <span className="text-red-500 line-through text-lg">
-                      + GST
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-center space-x-2 mb-3">
-                    <span className="text-4xl lg:text-5xl font-bold text-primary-green">
-                      ₹5,000
-                    </span>
-                    <span className="text-xl lg:text-2xl font-bold text-primary-green">
-                      + GST
-                    </span>
-                  </div>
-                  <p className="text-sm text-medium-gray italic">
-                    Valid till March 31, 2025
-                  </p>
-                </div>
-                
-                
-                
-                <div className="space-y-3">
-                  <Button className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold h-12">
-                    Enroll Now
-                  </Button>
-                  <Button variant="outline" className="w-full border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white py-3 text-lg font-semibold h-12">
-                    Enquire Now
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-          
-          {/* Cohort Dates */}
-          <div className="text-center mb-8 lg:mb-12">
-            <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-2 lg:mb-4">
-              Upcoming Cohorts
-            </h3>
-            <p className="text-medium-gray leading-relaxed">
-              Choose a cohort date that works best for you
-            </p>
-          </div>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
-            {cohorts.map((cohort, index) => (
-              <Card key={index} className={`${cohort.color} text-white border-0 hover:shadow-lg transition-all duration-300 h-full`}>
-                <CardContent className="p-6 text-center h-full flex flex-col justify-center">
-                  <div className="bg-white text-primary-green px-3 py-1 rounded-full text-xs font-semibold mb-4 inline-block">
-                    {cohort.status}
-                  </div>
-                  <div className="text-lg font-bold mb-2">
-                    Start: {cohort.startDate}
-                  </div>
-                 
-                  <div className="text-xs opacity-90 leading-relaxed">
-                    {cohort.spots}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  };
+      </div>
+    </section>
+  );
 
   return (
     <div className="min-h-screen">
-      <NavigationHeader />
+      <Navigation currentPage="home" />
       <main className="pt-16">
         <HeroSection />
-        <WhyChooseSection />
-        <WhyLearnSection />
-        <CareersSection />
         <HiringOrganizationsSection />
-        <CurriculumSection />
-        <OutcomesSection />
-        <ProjectsSection />
-        <EnrollmentStepsSection />
-         <PricingSection />
-        <EnrollmentFormSection />
+        <ProgramsSection />
+        <WhoAreWeSection />
+        <WhyGreycampusSection />
         <TestimonialsSection />
-        <FAQSection />
+        <ReadyToStartSection />
       </main>
-      <FooterSection />
+      <Footer />
     </div>
   );
 }
