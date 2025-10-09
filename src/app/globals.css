@@ -1,0 +1,375 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Design System Colors */
+  --primary-green: #10B981;
+  --secondary-green: #059669;
+  --accent-gold: #F59E0B;
+  --accent-blue: #3B82F6;
+  --dark-gray: #1F2937;
+  --medium-gray: #6B7280;
+  --light-gray: #9CA3AF;
+  --off-white: #F9FAFB;
+  --border-gray: #E5E7EB;
+  --red: #EF4444;
+  --success-green: #10B981;
+  
+  /* Background and foreground */
+  --background: #ffffff;
+  --foreground: #1F2937;
+}
+
+@theme inline {
+  /* Colors */
+  --color-primary-green: var(--primary-green);
+  --color-secondary-green: var(--secondary-green);
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-blue: var(--accent-blue);
+  --color-dark-gray: var(--dark-gray);
+  --color-medium-gray: var(--medium-gray);
+  --color-light-gray: var(--light-gray);
+  --color-off-white: var(--off-white);
+  --color-border-gray: var(--border-gray);
+  --color-red: var(--red);
+  --color-success-green: var(--success-green);
+  
+  /* Background and foreground */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+  --spacing-3xl: 4rem;     /* 64px */
+  
+  /* Border radius */
+  --radius-sm: 0.5rem;     /* 8px */
+  --radius-md: 0.75rem;    /* 12px */
+  --radius-lg: 1rem;       /* 16px */
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Fix text flow issues - Force override Tailwind */
+* {
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+  hyphens: auto !important;
+}
+
+/* Ensure proper paragraph spacing */
+p {
+  margin-bottom: 1rem !important;
+  line-height: 1.6 !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+/* Fix text alignment and flow */
+.text-center p {
+  text-align: center !important;
+}
+
+.text-left p {
+  text-align: left !important;
+}
+
+/* Prevent unwanted word breaks in headings */
+h1, h2, h3, h4, h5, h6 {
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+  white-space: normal !important;
+}
+
+/* Ensure proper text flow in cards and containers */
+.card, .container, .max-w-2xl, .max-w-4xl, .max-w-lg {
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+/* Fix specific text elements */
+.leading-relaxed {
+  line-height: 1.7 !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+.leading-tight {
+  line-height: 1.2 !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  white-space: normal !important;
+}
+
+/* Ensure proper spacing in flex containers */
+.flex {
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Fix text in grid items */
+.grid > * {
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+/* Fix specific Tailwind classes that might be causing issues */
+.text-lg, .text-xl, .text-2xl, .text-3xl, .text-4xl, .text-5xl, .text-6xl {
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+/* Fix text in specific containers */
+.space-y-4 > *, .space-y-6 > *, .space-y-8 > * {
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+/* Force fix for hero section and all text elements */
+.max-w-2xl p, .max-w-4xl p, .max-w-lg p {
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+  line-height: 1.6 !important;
+}
+
+/* Fix all span elements */
+span {
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+/* Fix text in motion divs and cards */
+.motion-div, [data-framer-component-type] {
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+/* Override any Tailwind word-break utilities */
+.break-normal {
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+.break-words {
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+.break-all {
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Nuclear option - force all text to behave normally */
+html, body, div, span, p, h1, h2, h3, h4, h5, h6, a, button, input, textarea, select {
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+  hyphens: auto !important;
+}
+
+/* Force override for all Tailwind text utilities */
+[class*="text-"] {
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+/* Force override for all Tailwind spacing utilities */
+[class*="space-"] > * {
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+/* Custom utility classes */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary-green), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient-hero {
+  background: linear-gradient(135deg, var(--off-white) 0%, #F0FDF4 100%);
+}
+
+.bg-gradient-subtle {
+  background: linear-gradient(135deg, var(--off-white) 0%, #F0FDF4 100%);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 2px;
+}
+
+/* Custom animations */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+/* Pause animation on hover */
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Counter animation */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-count-up {
+  animation: countUp 0.8s ease-out forwards;
+}
+
+/* Fade in on scroll */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Pulse animation for CTAs */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-cta {
+  animation: pulse 2s infinite;
+}
+
+/* Gradient text animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, input, select {
+  transition: all 0.2s ease;
+}
+
+/* Focus styles for better accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 2px;
+}
+
+/* Loading states */
+.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
