@@ -30,6 +30,8 @@ import Link from 'next/link';
 import HiringOrganizationSection from '@/components/HiringOrganizationSection';
 import AImlCurriculumSection from '@/components/aiml-bootcamp-page/AImlCurriculumSection';
 import AimlFaqs from '@/components/aiml-bootcamp-page/AimlFaqs';
+
+import { AIMLCertificateData } from '@/components/data/AIMLCertificateData';
 // Form state management
 interface FormData {
   fullName: string;
