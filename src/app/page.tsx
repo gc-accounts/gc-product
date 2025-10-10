@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
 
 interface FormData {
   fullName: string;
@@ -175,14 +176,14 @@ export default function HomePage() {
         id: 'data-science',
         title: 'Data Science Bootcamp',
         price: '₹5,000 + GST',
-        duration: '3 months • Self-paced + Live sessions',
+        duration: '3 Months',
         description: 'Master Python, SQL, ML, and Power BI. Build data pipelines and predictive models for business impact.',
         highlights: [
           'Python & SQL mastery',
           'Machine Learning algorithms',
           'Power BI dashboards',
           'Real-world projects',
-          '95% placement rate'
+          '100% placement assistance'
         ],
         badge: 'Most Popular',
         icon: '📊',
@@ -192,14 +193,14 @@ export default function HomePage() {
         id: 'data-analyst',
         title: 'Data Analyst Bootcamp',
         price: '₹5,000 + GST',
-        duration: '3 months • Self-paced + Live sessions',
+        duration: '3 Months',
         description: 'Transform data into insights. Learn SQL, Excel, Power BI, and Tableau for data-driven decision making.',
         highlights: [
           'SQL & Excel expertise',
           'Power BI & Tableau',
           'Statistical analysis',
           'Business intelligence',
-          '95% placement rate'
+          '100% placement assistance'
         ],
         badge: 'Highest ROI',
         icon: '📈',
@@ -209,7 +210,7 @@ export default function HomePage() {
         id: 'aiml',
         title: 'AI/ML Bootcamp',
         price: '₹5,000 + GST',
-        duration: '3 months • Self-paced + Live sessions',
+        duration: '3 Months',
         description: 'Build production AI systems. Deep learning, LLMs, RAG systems, and autonomous agents.',
         highlights: [
           'Deep Learning & Neural Networks',
@@ -330,15 +331,15 @@ export default function HomePage() {
                   <div className="text-sm text-medium-gray">Students Trained</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-green mb-2">95%</div>
-                  <div className="text-sm text-medium-gray">Placement Rate</div>
+                  <div className="text-3xl font-bold text-primary-green mb-2">100%</div>
+                  <div className="text-sm text-medium-gray">Placement Assistance</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary-green mb-2">120%</div>
                   <div className="text-sm text-medium-gray">Avg Salary Increase</div>
                 </div>
               </div>
-              
+              <Link href={'/about'}>
               <Button 
                 variant="outline" 
                 className="border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white"
@@ -346,6 +347,7 @@ export default function HomePage() {
                 Read Our Story
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
+              </Link>
             </div>
           </div>
           
@@ -376,7 +378,7 @@ export default function HomePage() {
       {
         icon: '💰',
         title: 'Most Affordable',
-        description: 'World-class education at 1/3 the market price. No compromise on quality.'
+        description: 'World-class education at ₹5,000. No compromise on quality.'
       },
       {
         icon: '👨‍🏫',
@@ -400,8 +402,8 @@ export default function HomePage() {
       },
       {
         icon: '✅',
-        title: 'Career Assistance',
-        description: '95% placement within 3 months.'
+        title: 'Career Guarantee',
+        description: '100% assistance until career starts'
       }
     ];
 
@@ -643,7 +645,7 @@ export default function HomePage() {
             </p>
             
             {/* Stats Row */}
-            <div className="grid grid-cols-3 gap-8 mb-12">
+            {/* <div className="grid grid-cols-3 gap-8 mb-12">
               <div className="text-center">
                 <div className="text-4xl font-bold text-primary-green mb-2">95%</div>
                 <div className="text-sm text-medium-gray">Placement Rate</div>
@@ -656,7 +658,7 @@ export default function HomePage() {
                 <div className="text-4xl font-bold text-primary-green mb-2">30-Day</div>
                 <div className="text-sm text-medium-gray">Job Assistance</div>
               </div>
-            </div>
+            </div> */}
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -667,14 +669,6 @@ export default function HomePage() {
               >
                 Explore Bootcamps
                 <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white px-12 py-4 text-lg font-semibold w-full sm:w-auto"
-                onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Talk to Counselor
               </Button>
             </div>
           </div>

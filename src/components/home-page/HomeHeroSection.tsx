@@ -36,7 +36,7 @@ const HomeHeroSection = () => (
               </h1>
               
               <p className="text-lg sm:text-xl text-medium-gray leading-relaxed max-w-8xl">
-                Master Data Science, Analytics, and AI/ML at 1/3 the market price. Real skills. Real careers. Real transformation.
+                Master Data Science, Analytics, and AI/ML at ₹5,000. Real skills. Real careers. Real transformation.
               </p>
               
               <div className="space-y-4">
@@ -46,7 +46,6 @@ const HomeHeroSection = () => (
                   </div>
                   <div>
                     <span className="text-base font-semibold text-dark-gray">Most Affordable</span>
-                    <p className="text-sm text-medium-gray">₹5,000 vs competitors&apos; ₹15,000+</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -54,8 +53,7 @@ const HomeHeroSection = () => (
                     <span className="text-white text-sm">🎯</span>
                   </div>
                   <div>
-                    <span className="text-base font-semibold text-dark-gray">95% Placement Rate</span>
-                    <p className="text-sm text-medium-gray">Average 120% salary increase</p>
+                    <span className="text-base font-semibold text-dark-gray">100% Placement Assistance</span>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -64,7 +62,6 @@ const HomeHeroSection = () => (
                   </div>
                   <div>
                     <span className="text-base font-semibold text-dark-gray">Industry-Ready</span>
-                    <p className="text-sm text-medium-gray">Production-grade projects and mentorship</p>
                   </div>
                 </div>
               </div>
@@ -77,14 +74,6 @@ const HomeHeroSection = () => (
                 >
                   Explore Bootcamps
                   <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white px-8 py-4 text-lg font-semibold"
-                  onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  View Success Stories
                 </Button>
               </div>
             </div>
