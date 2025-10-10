@@ -25,7 +25,7 @@ export interface FieldConfig {
   rules?: {
     required?: boolean | string;
     minLength?: { value: number; message: string };
-    maxLength?: { value: { value: number; message: string } | number; message?: string };
+    maxLength?: number | { value: number; message: string };   // ✅ fixed type
     pattern?: { value: RegExp; message: string };
     validate?: (value: string) => boolean | string;
   };
@@ -273,7 +273,6 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
                             />
                           </SelectTrigger>
 
-                          {/* ✅ Fix: Wrap dropdown in Portal to escape clipping */}
                           <Portal>
                             <SelectContent className="z-[9999] bg-white border border-gray-200 rounded-md shadow-lg">
                               {field.options?.map((opt) => (
@@ -427,7 +426,6 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
 
         <Button
           type="submit"
-          variant="yellow"
           disabled={isSubmitting}
           className="w-full mt-6 flex items-center justify-center rounded-md bg-green-500 cursor-pointer"
         >
