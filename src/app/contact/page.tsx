@@ -349,7 +349,7 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <h3 className="text-lg font-semibold text-dark-gray mb-2">Phone Number</h3>
-                          <p className="text-sm text-medium-gray">+91 630 010 5523</p>
+                          <p className="text-sm text-medium-gray">+91 935 501 1033</p>
                         </div>
                       </div>
                     </CardContent>
