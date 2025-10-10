@@ -11,7 +11,12 @@ import { fetchUserLocation } from '../utils/fetchUserLocation';
 import { getOriginalTrafficSource } from '../utils/getOriginalTrafficSource';
 import { CountryCodeData } from '../data/CountryCodeData';
 
-const AIMLForm = () => {
+interface AIMLFormProps {
+  isModal?: boolean;
+  onClose?: () => void;
+}
+
+const AIMLForm: React.FC<AIMLFormProps> = ({ isModal = false, onClose }) => {
   const { toast } = useToast();
   const [utm, setUtm] = useState<Record<string, string>>({});
   const [gaClientId, setGaClientId] = useState('');
@@ -19,7 +24,6 @@ const AIMLForm = () => {
   const [state, setState] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Country selector
   const [countrySearch, setCountrySearch] = useState('');
   const [filteredCountries, setFilteredCountries] = useState(CountryCodeData);
   const [selectedCountry, setSelectedCountry] = useState({
@@ -28,7 +32,6 @@ const AIMLForm = () => {
   });
   const [showDropdown, setShowDropdown] = useState(false);
 
-  // Fetch UTM, GA, and location data on mount
   useEffect(() => {
     setUtm(getUTMTrackingData());
     setGaClientId(getGaCookieValue());
@@ -77,10 +80,10 @@ const AIMLForm = () => {
       const token = await getAccessToken();
 
       formData.append('accessToken', token);
-      formData.append('Program', 'AI/ML Bootcamp');
+      formData.append('Program', 'GC AI/ML Bootcamp');
       formData.append('Ga_client_id', gaClientId);
       formData.append('Business Unit', 'Greycampus');
-      formData.append('Source_Domain', 'GC Course Form');
+      formData.append('Source_Domain', isModal ? 'GC Brochure Form' : 'GC Course Form');
       formData.append('Other_City', city);
       formData.append('Other_State', state);
 
@@ -108,6 +111,13 @@ const AIMLForm = () => {
         description: 'Your details have been submitted successfully!',
       });
 
+      // ✅ If used in modal
+      if (isModal) {
+        const brochurePath = '/AI and ML Bootcamp.pdf';
+        window.open(brochurePath, '_blank');
+        if (onClose) onClose();
+      }
+
       form.reset();
       setCountrySearch(selectedCountry.country);
     } catch (err: any) {
@@ -123,19 +133,16 @@ const AIMLForm = () => {
   };
 
   return (
-    <Card className="bg-white shadow-lg rounded-2xl p-6 sm:p-8">
+    <Card className={`${isModal ? '' : 'bg-white shadow-lg rounded-2xl p-6 sm:p-8'}`}>
       <CardContent className="p-0">
         <form className="space-y-5" onSubmit={handleSubmit}>
-          {/* Name Fields */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input name="First Name" placeholder="First Name" required />
             <Input name="Last Name" placeholder="Last Name" required />
           </div>
 
-          {/* Email */}
           <Input name="Email" placeholder="you@example.com" type="email" required />
 
-          {/* Country + Phone */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative">
             <div className="relative">
               <Input
@@ -166,14 +173,10 @@ const AIMLForm = () => {
                 </ul>
               )}
             </div>
-            <Input
-              name="Phone"
-              placeholder={`+${selectedCountry.code} 99999 99999`}
-              required
-            />
+
+            <Input name="Phone" placeholder={`+${selectedCountry.code} 99999 99999`} required />
           </div>
 
-          {/* Year of Graduation */}
           <select
             name="Year of Graduation"
             className="w-full border border-gray-300 rounded-md p-2"
@@ -192,7 +195,6 @@ const AIMLForm = () => {
             <option value="After 2025">After 2025</option>
           </select>
 
-          {/* Work Experience */}
           <select
             name="Work Experience Level"
             className="w-full border border-gray-300 rounded-md p-2"

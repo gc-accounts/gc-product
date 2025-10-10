@@ -3,14 +3,16 @@
 import React from 'react'
 import { BookOpen, Briefcase, Target } from 'lucide-react'
 import { Button } from '../ui/button'
-// import ReusableForm from '../common/ReusableForm'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import AimlForm from './AimlForm'
 import Link from 'next/link'
+
 const HeroSection = () => (
   <section className="min-h-screen bg-gradient-hero flex items-center py-16 sm:py-20 lg:py-24">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
       <div className="grid lg:grid-cols-5 gap-8 lg:gap-16 items-center">
-        {/* Left Content - 60% */}
+        
+        {/* Left Content */}
         <div className="lg:col-span-3 space-y-6 lg:space-y-8">
           <div className="space-y-6">
             <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight">
@@ -43,22 +45,58 @@ const HeroSection = () => (
               </div>
             </div>
 
-            <div className="pt-2">
+            {/* Buttons */}
+            <div className="pt-4 flex flex-col sm:flex-row gap-4">
               <Link href={'/course-checkout/aiml-bootcamp'}>
-              <Button
-                size="lg"
-                className="bg-primary-green hover:bg-secondary-green text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto"
-              >
-                Enroll Now
-              </Button>
+                <Button
+                  size="lg"
+                  className="bg-primary-green hover:bg-secondary-green text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto"
+                >
+                  Enroll Now
+                </Button>
               </Link>
+
+              {/* Download Brochure Modal */}
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-primary-green text-primary-green hover:bg-primary-green hover:text-white"
+                  >
+                    Download Brochure
+                  </Button>
+                </DialogTrigger>
+
+                <DialogContent
+                  className="max-w-[90vw] sm:max-w-[28rem] md:max-w-[32rem] w-full rounded-2xl p-0 overflow-hidden"
+                >
+                  <div className="sticky top-0 z-10 bg-white border-b border-gray-100 flex items-center justify-between px-6 py-4">
+                    <DialogTitle className="text-lg sm:text-xl font-semibold text-dark-gray text-center w-full">
+                      Download Brochure
+                    </DialogTitle>
+                    <button
+                      type="button"
+                      className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 transition"
+                      aria-label="Close"
+                      onClick={() => document.body.click()}
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  <div className="max-h-[85vh] overflow-y-auto px-6 pb-6 pt-2">
+                    <AimlForm isModal={true} />
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
 
-        {/* Right Side Form */}
+        {/* Right Form */}
         <div className="lg:col-span-2">
-            <AimlForm/>
+          <AimlForm />
         </div>
       </div>
     </div>
