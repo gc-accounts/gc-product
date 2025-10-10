@@ -16,7 +16,6 @@ import {
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import Link from 'next/link';
 
 interface FormData {
   fullName: string;
@@ -135,12 +134,25 @@ export default function HomePage() {
   // SECTION 2: HIRING ORGANIZATIONS
   const HiringOrganizationsSection = () => {
     const companies = [
-      "Google", "Amazon", "Microsoft", "Meta", "Apple", "Netflix", "Adobe", "IBM", 
-      "Salesforce", "LinkedIn", "Uber", "Airbnb", "OpenAI", "DeepMind", "Nvidia", 
-      "Hugging Face", "Anthropic", "Databricks", "Palantir", "Goldman Sachs", 
-      "JPMorgan Chase", "McKinsey", "Deloitte", "Accenture", "Stripe", "Shopify", 
-      "Slack", "Figma", "Notion", "Vercel", "GitHub", "Flipkart", "Swiggy", 
-      "Zomato", "PhonePe", "Paytm", "Ola", "Razorpay"
+      "https://strapi.odinschool.com/uploads/Meesho_100x40_individual_81f680e677.webp",
+      "https://strapi.odinschool.com/uploads/prolifics_100_X40_Individual_02765c8bbc.webp",
+      "https://strapi.odinschool.com/uploads/Ensoft100_X40_105ed0f32a.webp",
+      "https://strapi.odinschool.com/uploads/Deloitte_100_X40_1_1_ca02ecb519.webp",
+      "https://strapi.odinschool.com/uploads/Tatvic_100_X40_92af98eb92.webp",
+      "https://strapi.odinschool.com/uploads/genpact_100_X40_280d97151b.webp",
+      "https://strapi.odinschool.com/uploads/Pepsico100_X40_a3d789f2d4.webp",
+      "https://strapi.odinschool.com/uploads/Synchrony_INDIVIDUAL_100_X40_6cc77d6f53.webp",
+      "https://strapi.odinschool.com/uploads/TCS_100_X40_Individual_7ceeb6c515.webp",
+      "https://strapi.odinschool.com/uploads/Cognizant_100_X40_1_20f9d634ed.webp",
+      "https://strapi.odinschool.com/uploads/sutherland100_X40_d68abd31db.webp",
+      "https://strapi.odinschool.com/uploads/swiggy_100x40_indv_2fad998515.webp",
+      "https://strapi.odinschool.com/uploads/Infosys_100_X40_285cf1a2c6.webp",
+      "https://strapi.odinschool.com/uploads/IBM_100_X40_a4922015b6.webp",
+      "https://strapi.odinschool.com/uploads/JKTECH_100_X40_5229c19c27.webp",
+      "https://strapi.odinschool.com/uploads/Saarthi_Individual_100_x40_39ee46a45c.webp",
+      "https://strapi.odinschool.com/uploads/Tech_Mahindra100_X40_769822fb36.webp",
+      "https://strapi.odinschool.com/uploads/Bodhtree_INDIVIDUAL_100_X40_e4c952b088.webp",
+
     ];
 
     return (
@@ -151,7 +163,7 @@ export default function HomePage() {
               Trusted by Leading Companies
             </h2>
             <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
-              Our graduates work at Fortune 500 companies and innovative startups worldwide
+              Our graduates work at Fortune 600+ companies and innovative startups worldwide
             </p>
           </div>
           
@@ -159,7 +171,8 @@ export default function HomePage() {
             <div className="flex space-x-8 animate-scroll">
               {[...companies, ...companies].map((company, index) => (
                 <div key={index} className="flex-shrink-0 w-40 h-20 bg-off-white rounded-lg flex items-center justify-center border border-border-gray hover:border-primary-green transition-colors group">
-                  <span className="text-sm font-semibold text-dark-gray group-hover:text-primary-green transition-colors">{company}</span>
+                  <img src={company} alt="logo" />
+                  {/* <span className="text-sm font-semibold text-dark-gray group-hover:text-primary-green transition-colors">{company}</span> */}
                 </div>
               ))}
             </div>
@@ -176,14 +189,14 @@ export default function HomePage() {
         id: 'data-science',
         title: 'Data Science Bootcamp',
         price: '₹5,000 + GST',
-        duration: '3 Months',
+        duration: '3 months • Self-paced + Live sessions',
         description: 'Master Python, SQL, ML, and Power BI. Build data pipelines and predictive models for business impact.',
         highlights: [
           'Python & SQL mastery',
           'Machine Learning algorithms',
           'Power BI dashboards',
           'Real-world projects',
-          '100% placement assistance'
+          '100% placement rate'
         ],
         badge: 'Most Popular',
         icon: '📊',
@@ -193,14 +206,14 @@ export default function HomePage() {
         id: 'data-analyst',
         title: 'Data Analyst Bootcamp',
         price: '₹5,000 + GST',
-        duration: '3 Months',
+        duration: '3 months • Self-paced + Live sessions',
         description: 'Transform data into insights. Learn SQL, Excel, Power BI, and Tableau for data-driven decision making.',
         highlights: [
           'SQL & Excel expertise',
           'Power BI & Tableau',
           'Statistical analysis',
           'Business intelligence',
-          '100% placement assistance'
+          '100% placement rate'
         ],
         badge: 'Highest ROI',
         icon: '📈',
@@ -210,14 +223,14 @@ export default function HomePage() {
         id: 'aiml',
         title: 'AI/ML Bootcamp',
         price: '₹5,000 + GST',
-        duration: '3 Months',
+        duration: '3 months • Self-paced + Live sessions',
         description: 'Build production AI systems. Deep learning, LLMs, RAG systems, and autonomous agents.',
         highlights: [
           'Deep Learning & Neural Networks',
           'LLMs & Transformers',
           'RAG systems',
           'AI agents',
-          '90%+ placement rate'
+          '100% placement rate'
         ],
         badge: 'Cutting Edge',
         icon: '🤖',
@@ -320,7 +333,7 @@ export default function HomePage() {
                   Greycampus is on a mission to democratize tech education. We believe world-class training shouldn&apos;t cost a fortune. Our bootcamps combine industry expertise, practical curriculum, and personalized mentorship—all at prices that don&apos;t break the bank.
                 </p>
                 <p className="text-lg text-medium-gray leading-relaxed">
-                  Founded by industry veterans who&apos;ve worked at Google, Amazon, and Microsoft, we&apos;ve trained over 5,000+ students who&apos;ve gone on to transform their careers at leading companies worldwide.
+                  We&apos;ve trained over 5,000+ students who&apos;ve gone on to transform their careers at leading companies worldwide.
                 </p>
               </div>
               
@@ -331,15 +344,15 @@ export default function HomePage() {
                   <div className="text-sm text-medium-gray">Students Trained</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-green mb-2">100%</div>
-                  <div className="text-sm text-medium-gray">Placement Assistance</div>
+                  <div className="text-3xl font-bold text-primary-green mb-2">95%</div>
+                  <div className="text-sm text-medium-gray">Placement Rate</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary-green mb-2">120%</div>
                   <div className="text-sm text-medium-gray">Avg Salary Increase</div>
                 </div>
               </div>
-              <Link href={'/about'}>
+              
               <Button 
                 variant="outline" 
                 className="border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white"
@@ -347,7 +360,6 @@ export default function HomePage() {
                 Read Our Story
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
-              </Link>
             </div>
           </div>
           
@@ -378,7 +390,7 @@ export default function HomePage() {
       {
         icon: '💰',
         title: 'Most Affordable',
-        description: 'World-class education at ₹5,000. No compromise on quality.'
+        description: 'World-class education at 1/3 the market price. No compromise on quality.'
       },
       {
         icon: '👨‍🏫',
@@ -392,18 +404,18 @@ export default function HomePage() {
       },
       {
         icon: '♾️',
-        title: 'Lifetime Access',
+        title: 'Working professinal',
         description: 'Access all materials forever. Continuous updates with latest tools and technologies.'
       },
       {
         icon: '🚀',
-        title: 'Production-Ready Projects',
+        title: 'Project based training',
         description: 'Build real-world projects used by actual companies. Portfolio-worthy work.'
       },
       {
         icon: '✅',
-        title: 'Career Guarantee',
-        description: '100% assistance until career starts'
+        title: 'Career services',
+        description: '100% placement assistance.'
       }
     ];
 
@@ -550,11 +562,11 @@ export default function HomePage() {
                 
                 <div className="p-8">
                   {/* Avatar */}
-                  <div className="flex justify-center -mt-10 mb-6">
+                  {/* <div className="flex justify-center -mt-10 mb-6">
                     <div className="w-20 h-20 bg-white rounded-full border-4 border-primary-green flex items-center justify-center text-3xl">
                       {testimonials[currentTestimonial].avatar}
                     </div>
-                  </div>
+                  </div> */}
                   
                   {/* Quote */}
                   <blockquote className="text-center mb-6">
@@ -571,9 +583,9 @@ export default function HomePage() {
                     <p className="text-primary-green font-medium">
                       {testimonials[currentTestimonial].role}
                     </p>
-                    <p className="text-sm font-bold text-primary-green mt-1">
+                    {/* <p className="text-sm font-bold text-primary-green mt-1">
                       {testimonials[currentTestimonial].achievement}
-                    </p>
+                    </p> */}
                   </div>
                   
                   {/* Rating */}
@@ -645,7 +657,7 @@ export default function HomePage() {
             </p>
             
             {/* Stats Row */}
-            {/* <div className="grid grid-cols-3 gap-8 mb-12">
+            <div className="grid grid-cols-3 gap-8 mb-12">
               <div className="text-center">
                 <div className="text-4xl font-bold text-primary-green mb-2">95%</div>
                 <div className="text-sm text-medium-gray">Placement Rate</div>
@@ -658,7 +670,7 @@ export default function HomePage() {
                 <div className="text-4xl font-bold text-primary-green mb-2">30-Day</div>
                 <div className="text-sm text-medium-gray">Job Assistance</div>
               </div>
-            </div> */}
+            </div>
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -669,6 +681,14 @@ export default function HomePage() {
               >
                 Explore Bootcamps
                 <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white px-12 py-4 text-lg font-semibold w-full sm:w-auto"
+                onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Talk to Counselor
               </Button>
             </div>
           </div>

@@ -50,10 +50,24 @@ const teamMembers = [
 
 // Company Logos Data
 const companyLogos = [
-  "Google", "Amazon", "Microsoft", "Meta", "Apple", "IBM", "Salesforce", 
-  "LinkedIn", "Deloitte", "Accenture", "Goldman Sachs", "JPMorgan Chase", 
-  "McKinsey", "PayPal", "Shopify", "Adobe", "Intel", "Uber", "Airbnb", 
-  "Netflix", "Slack", "Stripe"
+   "https://strapi.odinschool.com/uploads/Meesho_100x40_individual_81f680e677.webp",
+      "https://strapi.odinschool.com/uploads/prolifics_100_X40_Individual_02765c8bbc.webp",
+      "https://strapi.odinschool.com/uploads/Ensoft100_X40_105ed0f32a.webp",
+      "https://strapi.odinschool.com/uploads/Deloitte_100_X40_1_1_ca02ecb519.webp",
+      "https://strapi.odinschool.com/uploads/Tatvic_100_X40_92af98eb92.webp",
+      "https://strapi.odinschool.com/uploads/genpact_100_X40_280d97151b.webp",
+      "https://strapi.odinschool.com/uploads/Pepsico100_X40_a3d789f2d4.webp",
+      "https://strapi.odinschool.com/uploads/Synchrony_INDIVIDUAL_100_X40_6cc77d6f53.webp",
+      "https://strapi.odinschool.com/uploads/TCS_100_X40_Individual_7ceeb6c515.webp",
+      "https://strapi.odinschool.com/uploads/Cognizant_100_X40_1_20f9d634ed.webp",
+      "https://strapi.odinschool.com/uploads/sutherland100_X40_d68abd31db.webp",
+      "https://strapi.odinschool.com/uploads/swiggy_100x40_indv_2fad998515.webp",
+      "https://strapi.odinschool.com/uploads/Infosys_100_X40_285cf1a2c6.webp",
+      "https://strapi.odinschool.com/uploads/IBM_100_X40_a4922015b6.webp",
+      "https://strapi.odinschool.com/uploads/JKTECH_100_X40_5229c19c27.webp",
+      "https://strapi.odinschool.com/uploads/Saarthi_Individual_100_x40_39ee46a45c.webp",
+      "https://strapi.odinschool.com/uploads/Tech_Mahindra100_X40_769822fb36.webp",
+      "https://strapi.odinschool.com/uploads/Bodhtree_INDIVIDUAL_100_X40_e4c952b088.webp",
 ];
 
 // Bootcamp Data
@@ -65,7 +79,7 @@ const bootcamps = [
     duration: "20 weeks",
     students: "8,000+",
     topics: "Python, SQL, ML, Power BI, Generative AI",
-    placement: "95%+",
+    placement: "100%+",
     link: "/data-science-bootcamp"
   },
   {
@@ -75,7 +89,7 @@ const bootcamps = [
     duration: "16 weeks",
     students: "6,000+",
     topics: "Excel, SQL, Power BI, Python, Analytics",
-    placement: "95%+",
+    placement: "100%+",
     link: "/data-analyst-bootcamp"
   },
   {
@@ -85,7 +99,7 @@ const bootcamps = [
     duration: "20 weeks",
     students: "4,000+",
     topics: "LLMs, Deep Learning, RAGs, AI Agents",
-    placement: "90%+",
+    placement: "100%+",
     link: "/aiml-bootcamp"
   }
 ];
@@ -328,7 +342,7 @@ export default function AboutPage() {
               </p>
             </div>
             
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
               <div className="text-center">
                 <div ref={studentsCount.ref} className="text-4xl lg:text-5xl font-bold text-primary-green mb-4">
                   {studentsCount.count.toLocaleString()}+
@@ -336,22 +350,22 @@ export default function AboutPage() {
                 <h3 className="text-xl font-semibold text-dark-gray mb-2">Students Trained</h3>
                 <p className="text-medium-gray">Professionals who&apos;ve transformed their careers</p>
               </div>
-
+{/* 
               <div className="text-center">
                 <div ref={placementCount.ref} className="text-4xl lg:text-5xl font-bold text-primary-green mb-4">
                   {placementCount.count}%
                 </div>
                 <h3 className="text-xl font-semibold text-dark-gray mb-2">Placement Rate</h3>
                 <p className="text-medium-gray">Success rate in career transitions</p>
-              </div>
+              </div> */}
 
-              <div className="text-center">
+              {/* <div className="text-center">
                 <div ref={salaryCount.ref} className="text-4xl lg:text-5xl font-bold text-primary-green mb-4">
                   {salaryCount.count}%
                 </div>
                 <h3 className="text-xl font-semibold text-dark-gray mb-2">Average Salary Increase</h3>
                 <p className="text-medium-gray">Typical salary boost after completion</p>
-              </div>
+              </div> */}
 
               <div className="text-center">
                 <div ref={partnersCount.ref} className="text-4xl lg:text-5xl font-bold text-primary-green mb-4">
@@ -409,14 +423,14 @@ export default function AboutPage() {
                       {member.bio}
                     </p>
                     
-                    <div className="flex justify-center">
+                    {/* <div className="flex justify-center">
                       <a 
                         href={member.social.linkedin}
                         className="w-10 h-10 bg-primary-green/10 rounded-full flex items-center justify-center hover:bg-primary-green hover:text-white transition-colors"
                       >
                         <Linkedin className="w-5 h-5" />
                       </a>
-                    </div>
+                    </div> */}
                   </CardContent>
                 </Card>
               ))}
@@ -499,7 +513,8 @@ export default function AboutPage() {
               <div className="flex space-x-8 animate-scroll">
                 {[...companyLogos, ...companyLogos].map((company, index) => (
                   <div key={index} className="flex-shrink-0 w-40 h-20 bg-white rounded-lg flex items-center justify-center border border-border-gray hover:border-primary-green transition-colors group">
-                    <span className="text-sm font-semibold text-dark-gray group-hover:text-primary-green transition-colors">{company}</span>
+                    <img src={company} alt="logo" />
+                    {/* <span className="text-sm font-semibold text-dark-gray group-hover:text-primary-green transition-colors">{company}</span> */}
                   </div>
                 ))}
               </div>
