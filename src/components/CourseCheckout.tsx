@@ -105,7 +105,7 @@ const CourseCheckout = () => {
       toast({
         title: 'Error',
         description: 'Failed to load payment system. Please refresh the page.',
-        variant: 'destructive',
+        type: 'error',
       });
     });
   }, [toast]);
@@ -173,7 +173,7 @@ const CourseCheckout = () => {
       toast({
         title: 'Error',
         description: 'There was a problem submitting your details.',
-        variant: 'destructive',
+        type: 'error',
       });
     } finally {
       setSubmitting(false);
@@ -236,7 +236,7 @@ const CourseCheckout = () => {
             toast({
               title: 'Payment Failed',
               description: 'Something went wrong verifying your payment.',
-              variant: 'destructive',
+              type: 'error',
             });
           }
         },
@@ -255,7 +255,7 @@ const CourseCheckout = () => {
       toast({
         title: 'Payment Error',
         description: 'Could not initialize payment. Please try again.',
-        variant: 'destructive',
+        type: 'error',
       });
     }
   };

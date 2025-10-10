@@ -128,7 +128,7 @@ const DsForm = () => {
       toast({
         title: 'Error',
         description: err.message || 'Failed to submit the form',
-        variant: 'destructive',
+        type: 'error',
       });
     } finally {
       setLoading(false);
