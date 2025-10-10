@@ -32,7 +32,7 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link 
+            {/* <Link 
               href="/" 
               className={`transition-colors ${
                 currentPage === 'home' 
@@ -41,7 +41,7 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
               }`}
             >
               Home
-            </Link>
+            </Link> */}
             
             {/* Products Dropdown */}
             <div className="relative">
@@ -116,7 +116,7 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border-gray">
             <nav className="flex flex-col space-y-4">
-              <Link 
+              {/* <Link 
                 href="/" 
                 className={`transition-colors ${
                   currentPage === 'home' 
@@ -126,7 +126,7 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
                 onClick={toggleMenu}
               >
                 Home
-              </Link>
+              </Link> */}
               
               {/* Mobile Products Section */}
               <div>

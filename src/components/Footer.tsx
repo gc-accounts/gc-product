@@ -52,7 +52,7 @@ export default function Footer() {
             <div className="space-y-4">
               <h3 className="text-sm font-bold text-white">Quick Links</h3>
               <ul className="space-y-2">
-                <li><Link href="/" className="text-sm text-light-gray hover:text-primary-green transition-colors">Home</Link></li>
+                {/* <li><Link href="/" className="text-sm text-light-gray hover:text-primary-green transition-colors">Home</Link></li> */}
                 <li><Link href="/data-science-bootcamp" className="text-sm text-light-gray hover:text-primary-green transition-colors">Data Science Bootcamp</Link></li>
                 <li><Link href="/data-analyst-bootcamp" className="text-sm text-light-gray hover:text-primary-green transition-colors">Data Analyst Bootcamp</Link></li>
                 <li><Link href="/aiml-bootcamp" className="text-sm text-light-gray hover:text-primary-green transition-colors">AI/ML Bootcamp</Link></li>

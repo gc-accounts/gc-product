@@ -11,11 +11,23 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
 
-  // ✅ (Optional) Add other global Next.js settings here
-  // Example:
+  // ✅ Example: Images domains
   // images: {
   //   domains: ["images.unsplash.com", "cdn.pixabay.com"],
   // },
+
+  // ✅ Redirects configuration
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: 'https://www.greycampus.com/',
+        permanent: true,
+      },
+    ];
+  },
+
+  // ✅ (Optional) Add other global Next.js settings here
   // experimental: {
   //   optimizeCss: true,
   // },

@@ -19,14 +19,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://greycampus.com"),
+  metadataBase: new URL("https://bootcamp.greycampus.com"),
   alternates: {
-    canonical: "/data-science-bootcamp",
+    canonical: "/"
   },
   openGraph: {
     title: "Data Science Bootcamp - Learn at ₹5,000 | Greycampus",
     description: "Master data science in 20 weeks. ₹5,000 bootcamp with 95% placement. Expert instructors, real-world projects, lifetime access.",
-    url: "https://greycampus.com/data-science-bootcamp",
+    url: "https://bootcamp.greycampus.com/",
     siteName: "Greycampus",
     images: [
       {
@@ -66,6 +66,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <style dangerouslySetInnerHTML={{
@@ -84,12 +90,12 @@ export default function RootLayout({
               word-break: normal !important;
               overflow-wrap: normal !important;
             }
-          `
+          `,
         }} />
       </head>
       <body className="font-sans antialiased">
         {children}
-        <Toaster/>
+        <Toaster />
       </body>
     </html>
   );
