@@ -1261,7 +1261,7 @@ export default function HomePage() {
         },
         {
           question: 'What is your refund policy?',
-          answer: 'We offer a 30-day money-back guarantee. If you\'re not satisfied with the bootcamp within the first 30 days, we\'ll provide a full refund.'
+          answer: 'We offer 90%+ placement support within 3 months. Our career team provides resume review, interview prep, mock interviews, and job connections with hiring companies.'
         }
       ]
     };

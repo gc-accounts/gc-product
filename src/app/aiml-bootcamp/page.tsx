@@ -264,7 +264,7 @@ export default function AIMLBootcampPage() {
         </div>
         
         {/* 4 Stat Cards Row */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12 lg:mb-16">
+        {/* <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12 lg:mb-16">
           {[
             {
               number: "₹12L-18L",
@@ -303,7 +303,7 @@ export default function AIMLBootcampPage() {
               </Card>
             </div>
           ))}
-        </div>
+        </div> */}
         
         {/* 3 Insight Cards Row */}
         <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
@@ -968,7 +968,7 @@ export default function AIMLBootcampPage() {
   const ProjectsSection = () => {
     const projects = [
       {
-        title: 'Image Classification & Deployment',
+        title: 'AI-Powered Market Competitor Scanner',
         duration: '4 weeks',
         difficulty: 4,
         description: 'Build CNN model for image classification. Preprocess data, train, evaluate, and deploy model. Create web interface for predictions. Learn production best practices.',
@@ -982,7 +982,7 @@ export default function AIMLBootcampPage() {
         gradient: 'from-primary-green to-accent-blue'
       },
       {
-        title: 'Retrieval Augmented Generation System',
+        title: 'Smart Prompt Library Builder',
         duration: '3 weeks',
         difficulty: 4,
         description: 'Build RAG system integrating OpenAI APIs. Implement semantic search with vector databases. Deploy intelligent chatbot. Learn LLM integration patterns.',
@@ -996,7 +996,7 @@ export default function AIMLBootcampPage() {
         gradient: 'from-accent-blue to-primary-green'
       },
       {
-        title: 'Self-Improving AI Agent System',
+        title: 'AI Content Calendar Generator',
         duration: '3 weeks',
         difficulty: 5,
         description: 'Create autonomous AI agent for data analysis. Implement self-improving system with feedback loops. Deploy as production service with monitoring.',
@@ -1249,7 +1249,7 @@ export default function AIMLBootcampPage() {
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4 mb-8">
                   {[
-                    "20 weeks of cutting-edge curriculum",
+                    "3 months of cutting-edge curriculum",
                     "10 modules covering all aspects of AI/ML",
                     "3 capstone projects with real complexity",
                     "Lifetime access to all materials and updates",
@@ -1257,7 +1257,7 @@ export default function AIMLBootcampPage() {
                     "Production deployment training",
                     "Resume and portfolio optimization",
                     "Interview preparation (10 sessions)",
-                    "30-day money-back guarantee",
+                    "Job Assistance",
                     "Certificate of completion",
                     "Lifetime career support",
                     "Alumni network access"
@@ -1570,7 +1570,7 @@ export default function AIMLBootcampPage() {
         },
         {
           question: 'Is there a money-back guarantee?',
-          answer: 'Yes! We offer a 30-day money-back guarantee. If you\'re not satisfied with the bootcamp for any reason, we\'ll refund 100% of your fees, no questions asked.'
+          answer: 'We offer 90%+ placement support within 3 months. Our career team provides resume review, interview prep, mock interviews, and job connections with hiring companies.'
         }
       ],
       enrollment: [

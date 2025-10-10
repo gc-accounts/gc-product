@@ -656,7 +656,7 @@ export default function HomePage() {
               </div>
               <div className="text-center">
                 <div className="text-4xl font-bold text-primary-green mb-2">30-Day</div>
-                <div className="text-sm text-medium-gray">Money-Back Guarantee</div>
+                <div className="text-sm text-medium-gray">Job Assistance</div>
               </div>
             </div> */}
             

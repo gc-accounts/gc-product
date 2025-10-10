@@ -217,7 +217,7 @@ export default function DataAnalystBootcampPage() {
         </div>
         
         {/* 4 Stat Cards Row */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12 lg:mb-16">
+        {/* <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12 lg:mb-16">
           {[
             {
               number: "₹6L-8L",
@@ -256,7 +256,7 @@ export default function DataAnalystBootcampPage() {
               </Card>
             </div>
           ))}
-        </div>
+        </div> */}
         
         {/* 3 Insight Cards Row */}
         <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
@@ -869,7 +869,7 @@ export default function DataAnalystBootcampPage() {
   const ProjectsSection = () => {
     const projects = [
       {
-        title: 'Sales Analytics Dashboard',
+        title: 'Amazon Sales Insights with SQL',
         duration: '2 weeks',
         difficulty: 3,
         description: 'Analyze sales data from multiple sources. Create Power BI dashboard for business teams. Extract insights on sales trends, customer behavior, regional performance.',
@@ -883,7 +883,7 @@ export default function DataAnalystBootcampPage() {
         gradient: 'from-primary-green to-accent-blue'
       },
       {
-        title: 'Customer Segmentation Analysis',
+        title: 'OTP Verification System',
         duration: '2 weeks',
         difficulty: 3,
         description: 'Segment customers based on behavior patterns. Use Python for statistical analysis. Create business recommendations for targeted marketing and customer retention.',
@@ -897,7 +897,7 @@ export default function DataAnalystBootcampPage() {
         gradient: 'from-accent-blue to-primary-green'
       },
       {
-        title: 'Marketing Performance Analytics',
+        title: 'COVID-19 Prediction',
         duration: '2 weeks',
         difficulty: 2,
         description: 'Analyze marketing campaign performance. Create dashboards for marketing team. Track ROI, conversion rates, and customer acquisition costs in real-time.',
@@ -1158,7 +1158,7 @@ export default function DataAnalystBootcampPage() {
                     "1:1 mentorship sessions",
                     "Resume and portfolio guidance",
                     "Interview preparation",
-                    "30-day money-back guarantee",
+                    "Job Assistance",
                     "Certificate of completion",
                     "Lifetime career support"
                   ].map((feature, index) => (
@@ -1632,7 +1632,7 @@ export default function DataAnalystBootcampPage() {
         },
         {
           question: 'Is there a money-back guarantee?',
-          answer: 'Yes! We offer a 30-day money-back guarantee. If you\'re not satisfied, we\'ll refund 100% of your fees, no questions asked.'
+          answer: 'We offer 90%+ placement support within 3 months. Our career team provides resume review, interview prep, mock interviews, and job connections with hiring companies.'
         }
       ],
       enrollment: [
