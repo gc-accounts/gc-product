@@ -50,7 +50,7 @@ const CourseCheckout = () => {
   const [utm, setUtm] = useState<Record<string, string>>({});
   const [GaClientId, setGaClientId] = useState<string>('');
 
-  const BASE_PRICE = 1; // test amount ₹1
+  const BASE_PRICE = 5000; // ₹5,000
   const GST_RATE = 0.18;
 
   // ✅ Dynamically detect program name based on URL

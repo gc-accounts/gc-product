@@ -25,6 +25,7 @@ import HeroSection from '@/components/aiml-bootcamp-page/HeroSection';
 import EnrollmentFormSection from '@/components/aiml-bootcamp-page/EnrollmentFormSection';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
 // Form state management
 interface FormData {
   fullName: string;
@@ -1292,9 +1293,11 @@ export default function AIMLBootcampPage() {
                 </div>
                 
                 <div className="space-y-3">
+                  <Link href={'/course-checkout/aiml-bootcamp'}>
                   <Button className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold h-12">
                     Enroll Now
                   </Button>
+                  </Link>
                   {/* <Button variant="outline" className="w-full border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white py-3 text-lg font-semibold h-12">
                     Enquire Now
                   </Button> */}

@@ -19,6 +19,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import DsHeroSection from '@/components/data-science-bootcamp-page/DsHeroSection';
 import DsEnrollmentFormSection from '@/components/data-science-bootcamp-page/DsEnrollmentFormSection';
+import Link from 'next/link';
 
 // Form state management
 interface FormData {
@@ -1416,14 +1417,15 @@ export default function HomePage() {
                 </div>
                 
                 
-                
-                <div className="space-y-3 gap-3 flex">
-                  <Button className="w-[50%] bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold h-12">
+           <div className="space-y-3">
+                  <Link href={'/course-checkout/data-science-bootcamp'}>
+                  <Button className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold h-12">
                     Enroll Now
                   </Button>
-                  <Button variant="outline" className="w-[50%] border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white py-3 text-lg font-semibold h-12">
+                  </Link>
+                  {/* <Button variant="outline" className="w-full border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white py-3 text-lg font-semibold h-12">
                     Enquire Now
-                  </Button>
+                  </Button> */}
                 </div>
               </CardContent>
             </Card>

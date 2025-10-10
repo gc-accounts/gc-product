@@ -4,6 +4,7 @@ import React from 'react'
 import { BookOpen, Briefcase, Target } from 'lucide-react'
 import { Button } from '../ui/button'
 import DsForm from './DsForm'
+import Link from 'next/link'
 const DsHeroSection = () => (
   <section className="min-h-screen bg-gradient-hero flex items-center py-10 sm:py-15 lg:py-20">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -43,15 +44,14 @@ const DsHeroSection = () => (
             </div>
 
             <div className="pt-2">
+              <Link href={'/course-checkout/data-science-bootcamp'}>
               <Button
                 size="lg"
                 className="bg-primary-green hover:bg-secondary-green text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto"
-                onClick={() =>
-                  document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })
-                }
               >
                 Enroll Now
               </Button>
+              </Link>
             </div>
           </div>
         </div>
