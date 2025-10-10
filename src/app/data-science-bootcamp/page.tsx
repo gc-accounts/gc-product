@@ -128,13 +128,13 @@ export default function HomePage() {
 
   // Why Choose Greycampus Section - IMPROVED ALIGNMENT
   const WhyChooseSection = () => (
-    <section id="why-choose" className="py-16 sm:py-20 lg:py-24 bg-off-white">
+    <section id="why-choose" className="bg-off-white py-10 sm:py-15 lg:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+        <div className="text-center mb-8 lg:mb-12">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
             Why Choose Greycampus?
           </h2>
-          <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
+          <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
             Affordable education meets world-class quality
           </p>
         </div>
@@ -193,13 +193,13 @@ export default function HomePage() {
 
   // Why Learn Data Science Section - IMPROVED ALIGNMENT
   const WhyLearnSection = () => (
-    <section className="py-16 sm:py-20 lg:py-24 bg-white">
+    <section className="bg-white py-10 sm:py-15 lg:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+        <div className="text-center mb-8 lg:mb-12">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
             Why Learn Data Science?
           </h2>
-          <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
+          <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
             Market demand, growth potential, and career opportunities
           </p>
         </div>
@@ -296,13 +296,13 @@ export default function HomePage() {
     ];
 
     return (
-      <section id="careers" className="py-16 sm:py-20 lg:py-24 bg-gradient-subtle">
+      <section id="careers" className="bg-gradient-subtle py-10 sm:py-15 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+          <div className="text-center mb-8 lg:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Careers After Bootcamp
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Multiple paths to success with competitive salaries
             </p>
           </div>
@@ -357,13 +357,13 @@ export default function HomePage() {
     ];
 
     return (
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
+      <section className="bg-white py-10 sm:py-15 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-8 lg:mb-12">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Trusted by Leading Companies
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Our graduates work at Fortune 500 companies and innovative startups
             </p>
           </div>
@@ -554,13 +554,13 @@ export default function HomePage() {
     };
 
     return (
-      <section id="curriculum" className="py-16 sm:py-20 lg:py-24 bg-off-white">
+      <section id="curriculum" className="py-10 sm:py-15 lg:py-20 bg-off-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+          <div className="text-center mb-8 lg:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               What You&apos;ll Learn
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               3 months of comprehensive, industry-aligned curriculum
             </p>
           </div>
@@ -575,7 +575,7 @@ export default function HomePage() {
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                     activeModule === module.id
                       ? 'bg-primary-green text-white shadow-md'
-                      : 'bg-light-gray text-dark-gray hover:bg-medium-gray hover:text-white'
+                      : 'bg-gray-200 text-dark-gray hover:bg-medium-gray hover:text-white'
                   }`}
                 >
                   {module.title}
@@ -730,13 +730,13 @@ export default function HomePage() {
     ];
 
     return (
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section className="bg-white py-10 sm:py-15 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+          <div className="text-center mb-8 lg:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               You&apos;ll Be Able To
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Real skills. Real impact. Real career transformation.
             </p>
           </div>
@@ -811,13 +811,13 @@ export default function HomePage() {
     ];
 
     return (
-      <section className="py-16 sm:py-20 lg:py-24 bg-off-white">
+      <section className="bg-off-white py-10 sm:py-15 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+          <div className="text-center mb-8 lg:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Build Real-World Projects
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Apply your skills to projects used by real companies
             </p>
           </div>
@@ -920,13 +920,13 @@ export default function HomePage() {
     ];
 
     return (
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section className="g:py-24 bg-white py-10 sm:py-15 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+          <div className="text-center mb-8 lg:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               How Do I Enroll?
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Simple 5-step process to start your data science journey
             </p>
           </div>
@@ -954,11 +954,12 @@ export default function HomePage() {
                   </div>
                   
                   {/* Connector Line */}
-                  {index < steps.length - 1 && (
+                  {/* {index < steps.length - 1 && (
                     <div className="absolute top-8 left-full w-12 h-0.5 bg-primary-green transform translate-x-6 z-0">
                       <div className="absolute right-0 top-0 w-0 h-0 border-l-4 border-l-primary-green border-t-2 border-t-transparent border-b-2 border-b-transparent transform translate-x-1"></div>
                     </div>
-                  )}
+                  )} */}
+
                 </div>
               ))}
             </div>
@@ -1077,13 +1078,13 @@ export default function HomePage() {
     }, [testimonials.length]);
 
     return (
-      <section className="py-16 sm:py-20 lg:py-24 bg-off-white">
+      <section className="bg-off-white py-10 sm:py-15 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+          <div className="text-center mb-8 lg:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Success Stories
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Real students, real transformations, real careers
             </p>
           </div>
@@ -1274,13 +1275,13 @@ export default function HomePage() {
     };
 
     return (
-      <section id="faq" className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section id="faq" className=" bg-white py-10 sm:py-15 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Everything you need to know about the bootcamp
             </p>
           </div>
@@ -1355,13 +1356,13 @@ export default function HomePage() {
     ];
 
     return (
-      <section id="pricing" className="py-16 sm:py-20 lg:py-24 bg-gradient-subtle">
+      <section id="pricing" className="bg-gradient-subtle py-10 sm:py-15 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+          <div className="text-center mb-8 lg:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Invest in Your Future at Affordable Prices
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray  mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               The most cost-effective bootcamp without compromising quality
             </p>
           </div>
@@ -1416,11 +1417,11 @@ export default function HomePage() {
                 
                 
                 
-                <div className="space-y-3">
-                  <Button className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold h-12">
+                <div className="space-y-3 gap-3 flex">
+                  <Button className="w-[50%] bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold h-12">
                     Enroll Now
                   </Button>
-                  <Button variant="outline" className="w-full border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white py-3 text-lg font-semibold h-12">
+                  <Button variant="outline" className="w-[50%] border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white py-3 text-lg font-semibold h-12">
                     Enquire Now
                   </Button>
                 </div>

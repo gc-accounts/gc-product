@@ -132,7 +132,7 @@ export default function ContactPage() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-dark-gray">
                 Get in Touch
               </h1>
-              <p className="text-lg sm:text-xl text-medium-gray leading-relaxed max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl text-medium-gray leading-relaxed max-w-5xl mx-auto">
                 Have questions about our bootcamps? Need career guidance? We&apos;re here to help you transform your career.
               </p>
               </div>

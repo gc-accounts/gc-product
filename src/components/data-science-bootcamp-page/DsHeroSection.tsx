@@ -5,13 +5,13 @@ import { BookOpen, Briefcase, Target } from 'lucide-react'
 import { Button } from '../ui/button'
 import DsForm from './DsForm'
 const DsHeroSection = () => (
-  <section className="min-h-screen bg-gradient-hero flex items-center py-16 sm:py-20 lg:py-24">
+  <section className="min-h-screen bg-gradient-hero flex items-center py-10 sm:py-15 lg:py-20">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
       <div className="grid lg:grid-cols-5 gap-8 lg:gap-16 items-center">
         {/* Left Content - 60% */}
         <div className="lg:col-span-3 space-y-6 lg:space-y-8">
           <div className="space-y-6">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-dark-gray leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight">
                 Master Data Science at{' '}
                 <span className="text-gradient">Just ₹5,000</span>
               </h1>

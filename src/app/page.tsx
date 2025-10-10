@@ -104,7 +104,7 @@ export default function HomePage() {
 
   // SECTION 1: HERO SECTION
   const HeroSection = () => (
-    <section className="min-h-screen bg-gradient-to-br from-off-white via-white to-green-50 flex items-center py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+    <section className="min-h-screen bg-gradient-to-br from-off-white via-white to-green-50 flex items-center py-10 sm:py-15 lg:py-20 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-green/10 rounded-full blur-3xl"></div>
@@ -116,12 +116,12 @@ export default function HomePage() {
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-6">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-dark-gray leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight">
                 Transform Your Career with{' '}
                 <span className="text-gradient">Affordable Tech Bootcamps</span>
               </h1>
               
-              <p className="text-lg sm:text-xl text-medium-gray leading-relaxed max-w-2xl">
+              <p className="text-lg sm:text-xl text-medium-gray leading-relaxed max-w-8xl">
                 Master Data Science, Analytics, and AI/ML at 1/3 the market price. Real skills. Real careers. Real transformation.
               </p>
               
@@ -193,7 +193,7 @@ export default function HomePage() {
                     placeholder="Your full name"
                     value={heroFormData.fullName}
                     onChange={(e) => setHeroFormData({ ...heroFormData, fullName: e.target.value })}
-                    className={`h-11 ${formErrors.fullName ? 'border-red-500' : ''}`}
+                    className={`border border-gray-300 h-11 mt-1 ${formErrors.fullName ? 'border-red-500' : ''}`}
                   />
                   {formErrors.fullName && (
                     <p className="text-xs text-red-500 mt-1">{formErrors.fullName}</p>
@@ -208,7 +208,7 @@ export default function HomePage() {
                     placeholder="you@example.com"
                     value={heroFormData.email}
                     onChange={(e) => setHeroFormData({ ...heroFormData, email: e.target.value })}
-                    className={`h-11 ${formErrors.email ? 'border-red-500' : ''}`}
+                    className={`border border-gray-300 h-11 mt-1 ${formErrors.email ? 'border-red-500' : ''}`}
                   />
                   {formErrors.email && (
                     <p className="text-xs text-red-500 mt-1">{formErrors.email}</p>
@@ -223,7 +223,7 @@ export default function HomePage() {
                     placeholder="+91 XXXXXXXXXX"
                     value={heroFormData.phone}
                     onChange={(e) => setHeroFormData({ ...heroFormData, phone: e.target.value })}
-                    className={`h-11 ${formErrors.phone ? 'border-red-500' : ''}`}
+                    className={`border border-gray-300 h-11 mt-1 ${formErrors.phone ? 'border-red-500' : ''}`}
                   />
                   {formErrors.phone && (
                     <p className="text-xs text-red-500 mt-1">{formErrors.phone}</p>
@@ -236,10 +236,10 @@ export default function HomePage() {
                     value={heroFormData.experienceLevel}
                     onValueChange={(value) => setHeroFormData({ ...heroFormData, experienceLevel: value })}
                   >
-                    <SelectTrigger className={`h-11 ${formErrors.experienceLevel ? 'border-red-500' : ''}`}>
+                    <SelectTrigger className={`border border-gray-300 h-11 mt-1 ${formErrors.experienceLevel ? 'border-red-500' : ''}`}>
                       <SelectValue placeholder="Select your level" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className='bg-white'>
                       <SelectItem value="beginner">Beginner</SelectItem>
                       <SelectItem value="intermediate">Intermediate</SelectItem>
                       <SelectItem value="advanced">Advanced</SelectItem>
@@ -287,13 +287,13 @@ export default function HomePage() {
     ];
 
     return (
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section className="bg-white py-10 sm:py-15 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+          <div className="text-center mb-8 lg:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Trusted by Leading Companies
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-3xl">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Our graduates work at Fortune 500 companies and innovative startups worldwide
             </p>
           </div>
@@ -369,13 +369,13 @@ export default function HomePage() {
     ];
 
     return (
-      <section id="programs" className="py-16 sm:py-20 lg:py-24 bg-off-white">
+      <section id="programs" className="bg-off-white py-10 sm:py-15 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+          <div className="text-center mb-8 lg:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Choose Your Path to Success
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-3xl">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Three comprehensive bootcamps designed for career transformation
             </p>
           </div>
@@ -445,13 +445,13 @@ export default function HomePage() {
 
   // SECTION 4: WHO ARE WE?
   const WhoAreWeSection = () => (
-    <section className="py-16 sm:py-20 lg:py-24 bg-white">
+    <section className="bg-white py-10 sm:py-15 lg:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-6">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray">
+               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Empowering Careers Through Affordable Education
               </h2>
               <p className="text-lg text-medium-gray leading-relaxed">
@@ -550,13 +550,13 @@ export default function HomePage() {
     ];
 
     return (
-      <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-off-white to-green-50">
+      <section className="bg-gradient-to-br from-off-white to-green-50 py-10 sm:py-15 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+          <div className="text-center mb-8 lg:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Why Choose Greycampus?
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-3xl">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Uncompromising quality at unbeatable prices
             </p>
           </div>
@@ -669,13 +669,13 @@ export default function HomePage() {
     }, [testimonials.length]);
 
     return (
-      <section id="testimonials" className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section id="testimonials" className="bg-white py-10 sm:py-15 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+          <div className="text-center mb-8 lg:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Success Stories
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-3xl">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Real students. Real transformations. Real careers.
             </p>
           </div>
@@ -763,7 +763,7 @@ export default function HomePage() {
 
   // SECTION 7: READY TO GET STARTED?
   const ReadyToStartSection = () => (
-    <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-off-white via-white to-blue-50 relative overflow-hidden">
+    <section className="bg-gradient-to-br from-off-white via-white to-blue-50 relative overflow-hidden py-10 sm:py-15 lg:py-20">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 right-20 w-64 h-64 bg-primary-green/10 rounded-full blur-3xl"></div>
@@ -772,11 +772,11 @@ export default function HomePage() {
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
         <div className="text-center space-y-8">
-          <div className="space-y-6">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray">
+          <div className="text-center mb-8 lg:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Start Your Transformation Today
             </h2>
-            <p className="text-xl text-dark-gray max-w-3xl mx-auto">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Join 5,000+ students who&apos;ve transformed their careers with Greycampus
             </p>
           </div>

@@ -235,7 +235,7 @@ export default function AboutPage() {
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
                 Our Values
               </h2>
-              <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-3xl">
+              <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-8xl">
                 The principles that guide everything we do
               </p>
             </div>
@@ -323,7 +323,7 @@ export default function AboutPage() {
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
                 Our Impact
               </h2>
-              <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-3xl">
+              <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-8xl">
                 Numbers that tell the story of transformation
               </p>
             </div>
@@ -387,7 +387,7 @@ export default function AboutPage() {
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
                 Meet Our Team
               </h2>
-              <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-3xl">
+              <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-8xl">
                 Industry veterans and education experts working together
               </p>
             </div>
@@ -431,7 +431,7 @@ export default function AboutPage() {
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
                 Our Bootcamps
               </h2>
-              <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-3xl">
+              <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-8xl">
                 Comprehensive programs designed for career transformation
               </p>
             </div>
@@ -490,7 +490,7 @@ export default function AboutPage() {
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
                 Trusted by Leading Companies
               </h2>
-                <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-3xl">
+                <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-8xl">
                   Our graduates work at the world&apos;s most innovative organizations
                 </p>
             </div>
@@ -514,7 +514,7 @@ export default function AboutPage() {
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
                 Our Roadmap
               </h2>
-              <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-3xl">
+              <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-8xl">
                 Exciting plans for the future of education
               </p>
             </div>
