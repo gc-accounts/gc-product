@@ -11,7 +11,12 @@ import { fetchUserLocation } from '../utils/fetchUserLocation';
 import { getOriginalTrafficSource } from '../utils/getOriginalTrafficSource';
 import { CountryCodeData } from '../data/CountryCodeData';
 
-const DaForm = () => {
+interface DaFormProps {
+  isModal?: boolean;
+  onClose?: () => void;
+}
+
+const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
   const { toast } = useToast();
   const [utm, setUtm] = useState<Record<string, string>>({});
   const [gaClientId, setGaClientId] = useState('');
@@ -75,13 +80,14 @@ const DaForm = () => {
       const token = await getAccessToken();
 
       formData.append('accessToken', token);
-      formData.append('Program', 'Data Analyst Bootcamp');
+      formData.append('Program', 'GC Data Analyst Bootcamp');
       formData.append('Ga_client_id', gaClientId);
       formData.append('Business Unit', 'Greycampus');
-      formData.append('Source_Domain', 'GC Course Form');
+      formData.append('Source_Domain', isModal ? 'GC Brochure Form' : 'GC Course Form');
       formData.append('Other_City', city);
       formData.append('Other_State', state);
 
+      // Tracking
       formData.append('First Page Seen', utm['First Page Seen'] ?? '');
       formData.append('Original Traffic Source', getOriginalTrafficSource(utm));
       formData.append('Original Traffic Source Drill-Down 1', utm['Original Traffic Source Drill-Down 1'] ?? '');
@@ -105,6 +111,13 @@ const DaForm = () => {
         description: 'Your details have been submitted successfully!',
       });
 
+      // ✅ If used in modal, open PDF and close it
+      if (isModal) {
+        const brochurePath = '/Data Analyst Bootcamp.pdf';
+        window.open(brochurePath, '_blank');
+        if (onClose) onClose();
+      }
+
       form.reset();
       setCountrySearch(selectedCountry.country);
     } catch (err: any) {
@@ -120,7 +133,7 @@ const DaForm = () => {
   };
 
   return (
-    <Card className="bg-white shadow-lg rounded-2xl p-6 sm:p-8">
+    <Card className={`${isModal ? '' : 'bg-white shadow-lg rounded-2xl p-6 sm:p-8'}`}>
       <CardContent className="p-0">
         <form className="space-y-5" onSubmit={handleSubmit}>
           {/* Name Fields */}
@@ -163,11 +176,8 @@ const DaForm = () => {
                 </ul>
               )}
             </div>
-            <Input
-              name="Phone"
-              placeholder={`+${selectedCountry.code} 99999 99999`}
-              required
-            />
+
+            <Input name="Phone" placeholder={`+${selectedCountry.code} 99999 99999`} required />
           </div>
 
           {/* Year of Graduation */}
@@ -202,6 +212,7 @@ const DaForm = () => {
             <option value="5+ Years">5+ Years</option>
           </select>
 
+          {/* Submit */}
           <Button
             type="submit"
             disabled={loading}

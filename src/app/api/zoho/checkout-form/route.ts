@@ -25,7 +25,7 @@ const contactData = {
     Year_Of_Graduation: formData.get('Year of Graduation'),
     ga_client_id: formData.get('Ga_client_id'),
     Business_Unit: formData.get('Business Unit'),
-    Source_Domain: 'GC Checkout form',
+    Source_Domain: 'GC Checkout Form',
     Device_Type1: formData.get('Device_Type1'),
     duplicate_check_fields: ['Email'],
     Coupon_Code: formData.get('Coupon Code'),
