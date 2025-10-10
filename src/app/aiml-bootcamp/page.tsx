@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import HeroSection from '@/components/aiml-bootcamp-page/HeroSection';
 import EnrollmentFormSection from '@/components/aiml-bootcamp-page/EnrollmentFormSection';
+import Certification from '@/components/Certification';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
@@ -1268,18 +1269,18 @@ export default function AIMLBootcampPage() {
           </div>
 
           {/* Cohort Dates */}
-          <div className="text-center mb-8 lg:mb-12">
-            <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-2 lg:mb-4">
+          <div className="text-center mb-8 lg:mb-4">
+            <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-2 lg:mb-2">
               Upcoming Cohorts
             </h3>
-            <p className="text-medium-gray leading-relaxed">
+            {/* <p className="text-medium-gray leading-relaxed">
               Choose a cohort that fits your timeline
-            </p>
+            </p> */}
           </div>
 
           <div className="flex justify-center max-w-5xl mx-auto">
             {cohorts.map((cohort, index) => (
-              <Card key={index} className={`${cohort.color} text-white border-0 hover:shadow-lg transition-all duration-300 h-full`}>
+              <Card key={index} className={`${cohort.color} text-white border-0 hover:shadow-lg transition-all duration-300 h-full  w-fit mx-auto`}>
                 <CardContent className="p-6 text-center h-full flex flex-col justify-center">
                   <div className="bg-white text-primary-green px-3 py-1 rounded-full text-xs font-semibold mb-4 inline-block">
                     {cohort.status}
@@ -1764,6 +1765,9 @@ export default function AIMLBootcampPage() {
         <ProjectsSection />
         <HowDoIEnrollSection />
         <PricingEnrollmentSection />
+          <Certification
+                                  sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]"
+                                  data={AIMLCertificateData} />
         <EnrollmentFormSection />
         <TestimonialsSection />
         {/* <FAQSection /> */}

@@ -18,6 +18,7 @@ import {
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import DsHeroSection from '@/components/data-science-bootcamp-page/DsHeroSection';
+import Certification from '@/components/Certification';
 import DsEnrollmentFormSection from '@/components/data-science-bootcamp-page/DsEnrollmentFormSection';
 import Link from 'next/link';
 import HiringOrganizationSection from '@/components/HiringOrganizationSection';
@@ -1399,18 +1400,18 @@ export default function HomePage() {
           </div>
 
           {/* Cohort Dates */}
-          <div className="text-center mb-8 lg:mb-12">
-            <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-2 lg:mb-4">
+          <div className="text-center mb-8 lg:mb-6">
+            <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-2 lg:mb-2">
               Upcoming Cohorts
             </h3>
-            <p className="text-medium-gray leading-relaxed">
+            {/* <p className="text-medium-gray leading-relaxed">
               Choose a cohort date that works best for you
-            </p>
+            </p> */}
           </div>
 
           <div className="flex justify-center max-w-5xl mx-auto">
             {cohorts.map((cohort, index) => (
-              <Card key={index} className={`${cohort.color} text-white border-0 hover:shadow-lg transition-all duration-300 h-full`}>
+              <Card key={index} className={`${cohort.color} text-white border-0 hover:shadow-lg transition-all duration-300 h-full w-fit mx-auto`}>
                 <CardContent className="p-6 text-center h-full flex flex-col justify-center">
                   <div className="bg-white text-primary-green px-3 py-1 rounded-full text-xs font-semibold mb-4 inline-block">
                     {cohort.status}
