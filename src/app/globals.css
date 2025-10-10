@@ -81,7 +81,7 @@ body {
 
 /* Ensure proper paragraph spacing */
 p {
-  margin-bottom: 1rem !important;
+  /* margin-bottom: 1rem !important; */
   line-height: 1.6 !important;
   word-break: normal !important;
   overflow-wrap: break-word !important;

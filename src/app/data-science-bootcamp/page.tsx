@@ -18,8 +18,11 @@ import {
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import DsHeroSection from '@/components/data-science-bootcamp-page/DsHeroSection';
+import Certification from '@/components/Certification';
 import DsEnrollmentFormSection from '@/components/data-science-bootcamp-page/DsEnrollmentFormSection';
 import Link from 'next/link';
+
+import { DSCertificateData } from '@/components/data/DSCertificateData';
 
 // Form state management
 interface FormData {
@@ -1102,11 +1105,11 @@ export default function HomePage() {
                 
                 <div className="p-6 lg:p-8">
                   {/* Avatar */}
-                  <div className="flex justify-center -mt-8 mb-6">
+                  {/* <div className="flex justify-center -mt-8 mb-6">
                     <div className="w-16 h-16 bg-white rounded-full border-4 border-primary-green flex items-center justify-center text-2xl">
                       {testimonials[currentTestimonial].avatar}
                     </div>
-                  </div>
+                  </div> */}
                   
                   {/* Quote */}
                   <blockquote className="text-center mb-6">
@@ -1123,9 +1126,9 @@ export default function HomePage() {
                     <p className="text-primary-green font-medium">
                       {testimonials[currentTestimonial].role}
                     </p>
-                    <p className="text-sm font-bold text-primary-green mt-1">
+                    {/* <p className="text-sm font-bold text-primary-green mt-1">
                       {testimonials[currentTestimonial].achievement}
-                    </p>
+                    </p> */}
                   </div>
                   
                   {/* Rating */}
@@ -1353,7 +1356,7 @@ export default function HomePage() {
   const PricingSection = () => {
     const cohorts = [
       { startDate: "31 October 2025", status: "Open", color: "bg-primary-green", spots: "Available: 25/30" },
-      { startDate: "28 November, 2025", status: "Limited", color: "bg-accent-gold", spots: "Available: 5/30" },
+      // { startDate: "28 November, 2025", status: "Limited", color: "bg-accent-gold", spots: "Available: 5/30" },
     ];
 
     return (
@@ -1432,18 +1435,18 @@ export default function HomePage() {
           </div>
           
           {/* Cohort Dates */}
-          <div className="text-center mb-8 lg:mb-12">
-            <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-2 lg:mb-4">
+          <div className="text-center mb-8 lg:mb-6">
+            <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-2 lg:mb-2">
               Upcoming Cohorts
             </h3>
-            <p className="text-medium-gray leading-relaxed">
+            {/* <p className="text-medium-gray leading-relaxed">
               Choose a cohort date that works best for you
-            </p>
+            </p> */}
           </div>
           
-          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+          <div className="grid sm:grid-cols-1 lg:grid-cols-1 gap-6 lg:gap-8 max-w-5xl mx-auto">
             {cohorts.map((cohort, index) => (
-              <Card key={index} className={`${cohort.color} text-white border-0 hover:shadow-lg transition-all duration-300 h-full`}>
+              <Card key={index} className={`${cohort.color} text-white border-0 hover:shadow-lg transition-all duration-300 h-full w-fit mx-auto`}>
                 <CardContent className="p-6 text-center h-full flex flex-col justify-center">
                   <div className="bg-white text-primary-green px-3 py-1 rounded-full text-xs font-semibold mb-4 inline-block">
                     {cohort.status}
@@ -1480,6 +1483,10 @@ export default function HomePage() {
         <EnrollmentStepsSection />
          <PricingSection />
         {/* <EnrollmentFormSection /> */}
+           <Certification
+                  sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]"
+                  data={DSCertificateData}
+                />
         <DsEnrollmentFormSection/>
         <TestimonialsSection />
         <FAQSection />
