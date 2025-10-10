@@ -6,10 +6,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { 
-  Target, 
-  BookOpen, 
-  Briefcase, 
+import {
+  Target,
+  BookOpen,
+  Briefcase,
   CheckCircle,
   Star,
   ChevronLeft,
@@ -26,6 +26,9 @@ import EnrollmentFormSection from '@/components/aiml-bootcamp-page/EnrollmentFor
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import HiringOrganizationSection from '@/components/HiringOrganizationSection';
+import AImlCurriculumSection from '@/components/aiml-bootcamp-page/AImlCurriculumSection';
+import AimlFaqs from '@/components/aiml-bootcamp-page/AimlFaqs';
 // Form state management
 interface FormData {
   fullName: string;
@@ -77,29 +80,29 @@ export default function AIMLBootcampPage() {
   // Form validation
   const validateForm = (data: FormData): FormErrors => {
     const errors: FormErrors = {};
-    
+
     if (!data.fullName.trim()) {
       errors.fullName = 'Full name is required';
     } else if (data.fullName.trim().length < 2) {
       errors.fullName = 'Name must be at least 2 characters';
     }
-    
+
     if (!data.email.trim()) {
       errors.email = 'Email is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
       errors.email = 'Please enter a valid email address';
     }
-    
+
     if (!data.phone.trim()) {
       errors.phone = 'Phone number is required';
     } else if (!/^\+?[\d\s-()]{10,}$/.test(data.phone)) {
       errors.phone = 'Please enter a valid phone number';
     }
-    
+
     if (!data.experienceLevel) {
       errors.experienceLevel = 'Please select your experience level';
     }
-    
+
     return errors;
   };
 
@@ -107,19 +110,19 @@ export default function AIMLBootcampPage() {
   const handleFormSubmit = async (formData: FormData, formType: 'hero' | 'enrollment') => {
     const errors = validateForm(formData);
     setFormErrors(errors);
-    
+
     if (Object.keys(errors).length > 0) {
       return;
     }
-    
+
     setIsSubmitting(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       console.log(`${formType} form submitted:`, formData);
       setSubmitSuccess(true);
       setIsSubmitting(false);
-      
+
       // Clear form after 2 seconds
       setTimeout(() => {
         setSubmitSuccess(false);
@@ -143,7 +146,7 @@ export default function AIMLBootcampPage() {
             </div>
             <span className="text-xl font-bold text-dark-gray">Greycampus</span>
           </div>
-          
+
           <nav className="hidden md:flex items-center space-x-8">
             <a href="/" className="text-medium-gray hover:text-primary-green transition-colors">Data Science Bootcamp</a>
             <a href="/data-analyst-bootcamp" className="text-medium-gray hover:text-primary-green transition-colors">Data Analyst Bootcamp</a>
@@ -155,15 +158,15 @@ export default function AIMLBootcampPage() {
               Enroll Now
             </Button>
           </nav>
-          
-          <button 
+
+          <button
             className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-        
+
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border-gray">
@@ -198,13 +201,13 @@ export default function AIMLBootcampPage() {
             Affordable education meets world-class quality
           </p>
         </div>
-        
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {[
             {
               icon: '💰',
               title: 'Most Affordable',
-              description: 'High-quality education at 1/3 the market price'
+              description: 'High-quality education at ₹5,000'
             },
             {
               icon: '👨‍🏫',
@@ -222,9 +225,9 @@ export default function AIMLBootcampPage() {
               description: 'Self-paced with live sessions. Learn at your speed'
             },
             {
-              icon: '♾️',
-              title: 'Lifetime Access',
-              description: 'Access all course materials forever. Never expires'
+              icon: "🧠",
+              title: "Project-Based Learning",
+              description: "Gain hands-on experience through real-world projects that help you build a strong, job-ready portfolio."
             },
             {
               icon: '✅',
@@ -263,7 +266,7 @@ export default function AIMLBootcampPage() {
             Fastest growing field with highest earning potential
           </p>
         </div>
-        
+
         {/* 4 Stat Cards Row */}
         {/* <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12 lg:mb-16">
           {[
@@ -305,7 +308,7 @@ export default function AIMLBootcampPage() {
             </div>
           ))}
         </div> */}
-        
+
         {/* 3 Insight Cards Row */}
         <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
           {[
@@ -316,12 +319,11 @@ export default function AIMLBootcampPage() {
               bg: "bg-green-50",
               borderColor: "border-t-green-500"
             },
-            {
-              icon: "🏠",
-              title: "Remote & Flexible",
-              description: "85% of AI roles are remote or hybrid. Work from anywhere.",
-              bg: "bg-blue-50",
-              borderColor: "border-t-blue-500"
+           {
+              icon: "💼",
+              title: "Ample Job Opportunities",
+              description: "The demand for AIML professionals is booming — over 22 million openings expected globally by 2026.",
+              bg: "bg-amber-50" 
             },
             {
               icon: "🚀",
@@ -476,25 +478,25 @@ export default function AIMLBootcampPage() {
               Multiple high-paying roles with rapid growth
             </p>
           </div>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {careers.map((career, index) => (
               <div key={index}>
                 <Card className="h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2 border-border-gray hover:border-primary-green">
                   <CardContent className="p-6 h-full flex flex-col">
                     {/* Salary Badge */}
-                    <div className="bg-gradient-to-r from-primary-green to-accent-gold text-white px-3 py-1 rounded-full text-sm font-bold mb-4 inline-block w-fit">
+                    {/* <div className="bg-gradient-to-r from-primary-green to-accent-gold text-white px-3 py-1 rounded-full text-sm font-bold mb-4 inline-block w-fit">
                       {career.salary}
-                    </div>
-                    
+                    </div> */}
+
                     <h3 className="text-lg lg:text-xl font-bold text-dark-gray mb-2">
                       {career.title}
                     </h3>
-                    
+
                     <p className="text-xs text-medium-gray italic mb-4">
                       {career.companies}
                     </p>
-                    
+
                     <div className="space-y-2 mb-4 flex-grow">
                       {career.responsibilities.map((resp, idx) => (
                         <div key={idx} className="flex items-start space-x-2">
@@ -503,7 +505,7 @@ export default function AIMLBootcampPage() {
                         </div>
                       ))}
                     </div>
-                    
+
                     <div className="flex flex-wrap gap-2">
                       {career.skills.map((skill, idx) => (
                         <span key={idx} className="bg-primary-green text-white text-xs px-2 py-1 rounded">
@@ -521,338 +523,302 @@ export default function AIMLBootcampPage() {
     );
   };
 
-  // Hiring Organizations Section
-  const HiringOrganizationsSection = () => {
-    const companies = [
-      "Google", "Amazon", "Microsoft", "Meta", "Apple", "Tesla", "IBM", "OpenAI", 
-      "DeepMind", "Salesforce", "LinkedIn", "Uber", "Airbnb", "Netflix", "Adobe", 
-      "Intel", "Nvidia", "Stripe", "Databricks", "Hugging Face", "Anthropic", 
-      "Palantir", "Figma", "Canva", "GitHub", "GitLab", "Vercel", "AssemblyAI", 
-      "Cohere", "Waymo", "Cruise", "Tesla AI", "Meta AI", "Google AI"
-    ];
 
-    return (
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-8 lg:mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-              Trusted by Leading AI Companies
-            </h2>
-            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
-              Our graduates work at top AI and tech companies worldwide
-            </p>
-          </div>
-          
-          <div className="overflow-hidden">
-            <div className="flex space-x-6 lg:space-x-8 animate-scroll">
-              {[...companies, ...companies].map((company, index) => (
-                <div key={index} className="flex-shrink-0 w-32 h-16 lg:w-40 lg:h-20 bg-off-white rounded-lg flex items-center justify-center border border-border-gray">
-                  <span className="text-sm lg:text-base font-semibold text-dark-gray">{company}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  };
 
   // Curriculum Section
-  const CurriculumSection = () => {
-    const modules = [
-      {
-        id: 'python1',
-        title: 'Python for AI Applications – Part I',
-        duration: '2 weeks',
-        difficulty: 1,
-        topics: [
-          'Advanced Python concepts',
-          'Functional programming',
-          'Performance optimization',
-          'Real-world Python best practices'
-        ],
-        outcomes: [
-          'Master advanced Python',
-          'Write optimized code',
-          'Real-world problem solving'
-        ],
-        tools: ['Python 3.9+', 'libraries']
-      },
-      {
-        id: 'python2',
-        title: 'Python for AI Applications – Part II',
-        duration: '2 weeks',
-        difficulty: 2,
-        topics: [
-          'NumPy mastery',
-          'Pandas data processing',
-          'Data manipulation techniques',
-          'Performance optimization'
-        ],
-        outcomes: [
-          'Data processing expertise',
-          'NumPy/Pandas mastery',
-          'Efficient data handling'
-        ],
-        tools: ['NumPy', 'Pandas', 'Scikit-learn']
-      },
-      {
-        id: 'eda1',
-        title: 'Exploratory Data Analysis (EDA) – Part I',
-        duration: '2 weeks',
-        difficulty: 2,
-        topics: [
-          'Data visualization techniques',
-          'Statistical analysis methods',
-          'Pattern recognition',
-          'Data quality assessment'
-        ],
-        outcomes: [
-          'Comprehensive EDA skills',
-          'Statistical analysis',
-          'Data visualization mastery'
-        ],
-        tools: ['Matplotlib', 'Seaborn', 'Plotly']
-      },
-      {
-        id: 'eda2',
-        title: 'Exploratory Data Analysis (EDA) – Part II',
-        duration: '2 weeks',
-        difficulty: 3,
-        topics: [
-          'Advanced visualization',
-          'Feature engineering',
-          'Data preprocessing',
-          'Statistical modeling'
-        ],
-        outcomes: [
-          'Advanced EDA techniques',
-          'Feature engineering skills',
-          'Statistical modeling'
-        ],
-        tools: ['Python', 'advanced visualization']
-      },
-      {
-        id: 'ml1',
-        title: 'Machine Learning – Part I (Supervised)',
-        duration: '3 weeks',
-        difficulty: 3,
-        topics: [
-          'Regression algorithms',
-          'Classification methods',
-          'Model optimization',
-          'Cross-validation techniques'
-        ],
-        outcomes: [
-          'Supervised learning mastery',
-          'Model optimization skills',
-          'Performance evaluation'
-        ],
-        tools: ['Scikit-learn', 'XGBoost', 'LightGBM']
-      },
-      {
-        id: 'ml2',
-        title: 'Machine Learning – Part II (Unsupervised & Deep Learning)',
-        duration: '3 weeks',
-        difficulty: 4,
-        topics: [
-          'Clustering algorithms',
-          'Neural networks fundamentals',
-          'CNNs and RNNs',
-          'Deep learning architectures'
-        ],
-        outcomes: [
-          'Unsupervised learning skills',
-          'Deep learning fundamentals',
-          'Neural network design'
-        ],
-        tools: ['TensorFlow', 'Keras', 'PyTorch']
-      },
-      {
-        id: 'llm',
-        title: 'Foundational Language Models & Fine-tuning',
-        duration: '2 weeks',
-        difficulty: 4,
-        topics: [
-          'Transformer architecture',
-          'BERT and GPT models',
-          'Fine-tuning techniques',
-          'Transfer learning'
-        ],
-        outcomes: [
-          'LLM understanding',
-          'Fine-tuning expertise',
-          'Transfer learning skills'
-        ],
-        tools: ['Hugging Face', 'PyTorch', 'TensorFlow']
-      },
-      {
-        id: 'rag',
-        title: 'Retrieval Augmented Generation (RAGs)',
-        duration: '1 week',
-        difficulty: 4,
-        topics: [
-          'Vector databases',
-          'Semantic search',
-          'RAG system architecture',
-          'Embedding techniques'
-        ],
-        outcomes: [
-          'RAG system design',
-          'Vector database skills',
-          'Semantic search implementation'
-        ],
-        tools: ['LangChain', 'OpenAI APIs', 'Pinecone']
-      },
-      {
-        id: 'agents',
-        title: 'AI Agents, Deployment & Projects',
-        duration: '2 weeks',
-        difficulty: 5,
-        topics: [
-          'Autonomous agents design',
-          'Docker containerization',
-          'Cloud deployment',
-          'Production monitoring'
-        ],
-        outcomes: [
-          'AI agent development',
-          'Production deployment',
-          'System monitoring'
-        ],
-        tools: ['Docker', 'Kubernetes', 'AWS', 'GCP', 'Azure']
-      },
-      {
-        id: 'capstone',
-        title: 'Capstone Project – Production AI System',
-        duration: '1 week',
-        difficulty: 5,
-        topics: [
-          'End-to-end project development',
-          'Production deployment',
-          'System monitoring',
-          'Performance optimization'
-        ],
-        outcomes: [
-          'Complete AI system',
-          'Production deployment',
-          'Real-world application'
-        ],
-        tools: ['All learned tools']
-      }
-    ];
+  // const CurriculumSection = () => {
+  //   const modules = [
+  //     {
+  //       id: 'python1',
+  //       title: 'Python for AI Applications – Part I',
+  //       duration: '2 weeks',
+  //       difficulty: 1,
+  //       topics: [
+  //         'Advanced Python concepts',
+  //         'Functional programming',
+  //         'Performance optimization',
+  //         'Real-world Python best practices'
+  //       ],
+  //       outcomes: [
+  //         'Master advanced Python',
+  //         'Write optimized code',
+  //         'Real-world problem solving'
+  //       ],
+  //       tools: ['Python 3.9+', 'libraries']
+  //     },
+  //     {
+  //       id: 'python2',
+  //       title: 'Python for AI Applications – Part II',
+  //       duration: '2 weeks',
+  //       difficulty: 2,
+  //       topics: [
+  //         'NumPy mastery',
+  //         'Pandas data processing',
+  //         'Data manipulation techniques',
+  //         'Performance optimization'
+  //       ],
+  //       outcomes: [
+  //         'Data processing expertise',
+  //         'NumPy/Pandas mastery',
+  //         'Efficient data handling'
+  //       ],
+  //       tools: ['NumPy', 'Pandas', 'Scikit-learn']
+  //     },
+  //     {
+  //       id: 'eda1',
+  //       title: 'Exploratory Data Analysis (EDA) – Part I',
+  //       duration: '2 weeks',
+  //       difficulty: 2,
+  //       topics: [
+  //         'Data visualization techniques',
+  //         'Statistical analysis methods',
+  //         'Pattern recognition',
+  //         'Data quality assessment'
+  //       ],
+  //       outcomes: [
+  //         'Comprehensive EDA skills',
+  //         'Statistical analysis',
+  //         'Data visualization mastery'
+  //       ],
+  //       tools: ['Matplotlib', 'Seaborn', 'Plotly']
+  //     },
+  //     {
+  //       id: 'eda2',
+  //       title: 'Exploratory Data Analysis (EDA) – Part II',
+  //       duration: '2 weeks',
+  //       difficulty: 3,
+  //       topics: [
+  //         'Advanced visualization',
+  //         'Feature engineering',
+  //         'Data preprocessing',
+  //         'Statistical modeling'
+  //       ],
+  //       outcomes: [
+  //         'Advanced EDA techniques',
+  //         'Feature engineering skills',
+  //         'Statistical modeling'
+  //       ],
+  //       tools: ['Python', 'advanced visualization']
+  //     },
+  //     {
+  //       id: 'ml1',
+  //       title: 'Machine Learning – Part I (Supervised)',
+  //       duration: '3 weeks',
+  //       difficulty: 3,
+  //       topics: [
+  //         'Regression algorithms',
+  //         'Classification methods',
+  //         'Model optimization',
+  //         'Cross-validation techniques'
+  //       ],
+  //       outcomes: [
+  //         'Supervised learning mastery',
+  //         'Model optimization skills',
+  //         'Performance evaluation'
+  //       ],
+  //       tools: ['Scikit-learn', 'LightGBM']
+  //     },
+  //     {
+  //       id: 'ml2',
+  //       title: 'Machine Learning – Part II (Unsupervised & Deep Learning)',
+  //       duration: '3 weeks',
+  //       difficulty: 4,
+  //       topics: [
+  //         'Clustering algorithms',
+  //         'Neural networks fundamentals',
+  //         'CNNs and RNNs',
+  //         'Deep learning architectures'
+  //       ],
+  //       outcomes: [
+  //         'Unsupervised learning skills',
+  //         'Deep learning fundamentals',
+  //         'Neural network design'
+  //       ],
+  //       tools: ['TensorFlow', 'Keras', 'PyTorch']
+  //     },
+  //     {
+  //       id: 'llm',
+  //       title: 'Foundational Language Models & Fine-tuning',
+  //       duration: '2 weeks',
+  //       difficulty: 4,
+  //       topics: [
+  //         'Transformer architecture',
+  //         'BERT and GPT models',
+  //         'Fine-tuning techniques',
+  //         'Transfer learning'
+  //       ],
+  //       outcomes: [
+  //         'LLM understanding',
+  //         'Fine-tuning expertise',
+  //         'Transfer learning skills'
+  //       ],
+  //       tools: ['Hugging Face', 'PyTorch', 'TensorFlow']
+  //     },
+  //     {
+  //       id: 'rag',
+  //       title: 'Retrieval Augmented Generation (RAGs)',
+  //       duration: '1 week',
+  //       difficulty: 4,
+  //       topics: [
+  //         'Vector databases',
+  //         'Semantic search',
+  //         'RAG system architecture',
+  //         'Embedding techniques'
+  //       ],
+  //       outcomes: [
+  //         'RAG system design',
+  //         'Vector database skills',
+  //         'Semantic search implementation'
+  //       ],
+  //       tools: ['LangChain', 'OpenAI APIs', 'Pinecone']
+  //     },
+  //     {
+  //       id: 'agents',
+  //       title: 'AI Agents, Deployment & Projects',
+  //       duration: '2 weeks',
+  //       difficulty: 5,
+  //       topics: [
+  //         'Autonomous agents design',
+  //         'Docker containerization',
+  //         'Cloud deployment',
+  //         'Production monitoring'
+  //       ],
+  //       outcomes: [
+  //         'AI agent development',
+  //         'Production deployment',
+  //         'System monitoring'
+  //       ],
+  //       tools: ['Docker', 'Kubernetes', 'AWS', 'GCP', 'Azure']
+  //     },
+  //     {
+  //       id: 'capstone',
+  //       title: 'Capstone Project – Production AI System',
+  //       duration: '1 week',
+  //       difficulty: 5,
+  //       topics: [
+  //         'End-to-end project development',
+  //         'Production deployment',
+  //         'System monitoring',
+  //         'Performance optimization'
+  //       ],
+  //       outcomes: [
+  //         'Complete AI system',
+  //         'Production deployment',
+  //         'Real-world application'
+  //       ],
+  //       tools: ['All learned tools']
+  //     }
+  //   ];
 
-    const [activeModule, setActiveModule] = useState('python1');
+  //   const [activeModule, setActiveModule] = useState('python1');
 
-    const getDifficultyStars = (difficulty: number) => {
-      return '⭐'.repeat(difficulty) + '☆'.repeat(5 - difficulty);
-    };
+  //   const getDifficultyStars = (difficulty: number) => {
+  //     return '⭐'.repeat(difficulty) + '☆'.repeat(5 - difficulty);
+  //   };
 
-    return (
-      <section id="curriculum" className="py-10 sm:py-15 lg:py-20 bg-off-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-              What You'll Learn
-            </h2>
-            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
-              20 weeks of cutting-edge AI/ML curriculum
-            </p>
-          </div>
-          
-          <div className="max-w-6xl mx-auto">
-            {/* Module Tabs */}
-            <div className="flex flex-wrap justify-center gap-2 mb-8 lg:mb-12">
-              {modules.map((module) => (
-                <button
-                  key={module.id}
-                  onClick={() => setActiveModule(module.id)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    activeModule === module.id
-                      ? 'bg-primary-green text-white shadow-md'
-                      : 'bg-light-gray text-dark-gray hover:bg-medium-gray hover:text-white'
-                  }`}
-                >
-                  {module.title}
-                </button>
-              ))}
-            </div>
-            
-            {/* Module Content */}
-            <div className="bg-white rounded-2xl shadow-lg border border-border-gray overflow-hidden">
-              {modules.map((module) => (
-                <div
-                  key={module.id}
-                  className={`transition-all duration-500 ${
-                    activeModule === module.id ? 'block' : 'hidden'
-                  }`}
-                >
-                  <div className="p-6 lg:p-8">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
-                      <div>
-                        <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-2">
-                          {module.title}
-                        </h3>
-                        <div className="flex items-center space-x-4">
-                          <span className="bg-primary-green text-white px-3 py-1 rounded-full text-sm font-semibold">
-                            {module.duration}
-                          </span>
-                          <span className="text-sm text-medium-gray">
-                            Difficulty: {getDifficultyStars(module.difficulty)} ({module.difficulty}/5)
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="grid lg:grid-cols-2 gap-8">
-                      <div>
-                        <h4 className="text-lg font-semibold text-dark-gray mb-3">Topics Covered</h4>
-                        <ul className="space-y-2">
-                          {module.topics.map((topic, index) => (
-                            <li key={index} className="flex items-start space-x-2">
-                              <div className="w-1.5 h-1.5 bg-primary-green rounded-full mt-2 flex-shrink-0"></div>
-                              <span className="text-dark-gray text-sm leading-relaxed">{topic}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <div>
-                        <h4 className="text-lg font-semibold text-dark-gray mb-3">Key Outcomes</h4>
-                        <ul className="space-y-2">
-                          {module.outcomes.map((outcome, index) => (
-                            <li key={index} className="flex items-start space-x-2">
-                              <CheckCircle className="w-4 h-4 text-primary-green flex-shrink-0 mt-0.5" />
-                              <span className="text-dark-gray text-sm leading-relaxed">{outcome}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-6 pt-6 border-t border-border-gray">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                        <div>
-                          <h4 className="text-lg font-semibold text-dark-gray mb-2">Tools & Technologies</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {module.tools.map((tool, index) => (
-                              <span key={index} className="bg-accent-blue text-white px-3 py-1 rounded-full text-sm font-medium">
-                                {tool}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  };
+  //   return (
+  //     <section id="curriculum" className="py-10 sm:py-15 lg:py-20 bg-off-white">
+  //       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+  //         <div className="text-center mb-12 lg:mb-16">
+  //           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
+  //             What You'll Learn
+  //           </h2>
+  //           <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
+  //             20 weeks of cutting-edge AI/ML curriculum
+  //           </p>
+  //         </div>
+
+  //         <div className="max-w-6xl mx-auto">
+  //           {/* Module Tabs */}
+  //           <div className="flex flex-wrap justify-center gap-2 mb-8 lg:mb-12">
+  //             {modules.map((module) => (
+  //               <button
+  //                 key={module.id}
+  //                 onClick={() => setActiveModule(module.id)}
+  //                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeModule === module.id
+  //                     ? 'bg-primary-green text-white shadow-md'
+  //                     : 'bg-light-gray text-dark-gray hover:bg-medium-gray hover:text-white'
+  //                   }`}
+  //               >
+  //                 {module.title}
+  //               </button>
+  //             ))}
+  //           </div>
+
+  //           {/* Module Content */}
+  //           <div className="bg-white rounded-2xl shadow-lg border border-border-gray overflow-hidden">
+  //             {modules.map((module) => (
+  //               <div
+  //                 key={module.id}
+  //                 className={`transition-all duration-500 ${activeModule === module.id ? 'block' : 'hidden'
+  //                   }`}
+  //               >
+  //                 <div className="p-6 lg:p-8">
+  //                   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+  //                     <div>
+  //                       <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-2">
+  //                         {module.title}
+  //                       </h3>
+  //                       <div className="flex items-center space-x-4">
+  //                         <span className="bg-primary-green text-white px-3 py-1 rounded-full text-sm font-semibold">
+  //                           {module.duration}
+  //                         </span>
+  //                         <span className="text-sm text-medium-gray">
+  //                           Difficulty: {getDifficultyStars(module.difficulty)} ({module.difficulty}/5)
+  //                         </span>
+  //                       </div>
+  //                     </div>
+  //                   </div>
+
+  //                   <div className="grid lg:grid-cols-2 gap-8">
+  //                     <div>
+  //                       <h4 className="text-lg font-semibold text-dark-gray mb-3">Topics Covered</h4>
+  //                       <ul className="space-y-2">
+  //                         {module.topics.map((topic, index) => (
+  //                           <li key={index} className="flex items-start space-x-2">
+  //                             <div className="w-1.5 h-1.5 bg-primary-green rounded-full mt-2 flex-shrink-0"></div>
+  //                             <span className="text-dark-gray text-sm leading-relaxed">{topic}</span>
+  //                           </li>
+  //                         ))}
+  //                       </ul>
+  //                     </div>
+
+  //                     <div>
+  //                       <h4 className="text-lg font-semibold text-dark-gray mb-3">Key Outcomes</h4>
+  //                       <ul className="space-y-2">
+  //                         {module.outcomes.map((outcome, index) => (
+  //                           <li key={index} className="flex items-start space-x-2">
+  //                             <CheckCircle className="w-4 h-4 text-primary-green flex-shrink-0 mt-0.5" />
+  //                             <span className="text-dark-gray text-sm leading-relaxed">{outcome}</span>
+  //                           </li>
+  //                         ))}
+  //                       </ul>
+  //                     </div>
+  //                   </div>
+
+  //                   <div className="mt-6 pt-6 border-t border-border-gray">
+  //                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+  //                       <div>
+  //                         <h4 className="text-lg font-semibold text-dark-gray mb-2">Tools & Technologies</h4>
+  //                         <div className="flex flex-wrap gap-2">
+  //                           {module.tools.map((tool, index) => (
+  //                             <span key={index} className="bg-accent-blue text-white px-3 py-1 rounded-full text-sm font-medium">
+  //                               {tool}
+  //                             </span>
+  //                           ))}
+  //                         </div>
+  //                       </div>
+  //                     </div>
+  //                   </div>
+  //                 </div>
+  //               </div>
+  //             ))}
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </section>
+  //   );
+  // };
 
   // After Course - You Will Be Able To Section
   const AfterCourseSection = () => {
@@ -936,13 +902,13 @@ export default function AIMLBootcampPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-              You'll Be Able To
+              Program Outcomes
             </h2>
             <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Production-ready AI skills. Real impact. Career transformation.
             </p>
           </div>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {outcomes.map((outcome, index) => (
               <div key={index}>
@@ -1023,7 +989,7 @@ export default function AIMLBootcampPage() {
               Apply your skills to projects used by real companies
             </p>
           </div>
-          
+
           <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
             {projects.map((project, index) => (
               <div key={index}>
@@ -1042,12 +1008,12 @@ export default function AIMLBootcampPage() {
                       </span>
                     </div>
                   </div>
-                  
+
                   <CardContent className="p-6 h-fit flex flex-col">
                     <p className="text-dark-gray text-sm leading-relaxed mb-6 flex-grow">
                       {project.description}
                     </p>
-                    
+
                     <div className="space-y-4">
                       <div>
                         <h4 className="text-sm font-semibold text-dark-gray mb-2">Tech Stack</h4>
@@ -1059,7 +1025,7 @@ export default function AIMLBootcampPage() {
                           ))}
                         </div>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-sm font-semibold text-dark-gray mb-2">Key Learnings</h4>
                         <ul className="space-y-1">
@@ -1071,7 +1037,7 @@ export default function AIMLBootcampPage() {
                           ))}
                         </ul>
                       </div>
-                      
+
                       <div className="pt-4 border-t border-border-gray">
                         <h4 className="text-sm font-bold text-primary-green mb-1">Outcome</h4>
                         <p className="text-xs text-dark-gray leading-relaxed">
@@ -1135,7 +1101,7 @@ export default function AIMLBootcampPage() {
               Simple 5-step process to launch your AI career
             </p>
           </div>
-          
+
           <div className="max-w-6xl mx-auto">
             {/* Desktop Layout */}
             <div className="hidden lg:flex items-center justify-between relative">
@@ -1155,7 +1121,7 @@ export default function AIMLBootcampPage() {
                       </p>
                     </CardContent>
                   </Card>
-                  
+
                   {/* Connector Line */}
                   {/* {index < steps.length - 1 && (
                     <div className="absolute top-8 left-full w-12 h-0.5 bg-primary-green transform translate-x-6 z-0">
@@ -1165,7 +1131,7 @@ export default function AIMLBootcampPage() {
                 </div>
               ))}
             </div>
-            
+
             {/* Mobile Layout */}
             <div className="lg:hidden space-y-6">
               {steps.map((step, index) => (
@@ -1175,7 +1141,7 @@ export default function AIMLBootcampPage() {
                       {step.number}
                     </div>
                   </div>
-                  
+
                   <Card className="flex-1 hover:shadow-lg transition-all duration-300 border border-border-gray">
                     <CardContent className="p-4">
                       <div className="flex items-center space-x-3">
@@ -1191,7 +1157,7 @@ export default function AIMLBootcampPage() {
                       </div>
                     </CardContent>
                   </Card>
-                  
+
                   {/* Vertical Connector */}
                   {index < steps.length - 1 && (
                     <div className="absolute left-6 top-12 w-0.5 h-6 bg-primary-green transform translate-y-4"></div>
@@ -1208,24 +1174,24 @@ export default function AIMLBootcampPage() {
   // Pricing & Enrollment Section
   const PricingEnrollmentSection = () => {
     const cohorts = [
-      { 
-        startDate: "Feb 1, 2025", 
-        status: "Open", 
-        color: "bg-primary-green", 
-        spots: "Available: 15/20" 
+      {
+        startDate: "31 October 2025",
+        status: "Open",
+        color: "bg-primary-green",
+        spots: "Available: 15/20"
       },
-      { 
-        startDate: "Mar 1, 2025", 
-        status: "Limited", 
-        color: "bg-accent-gold", 
-        spots: "Available: 3/20" 
-      },
-      { 
-        startDate: "Apr 1, 2025", 
-        status: "Closed", 
-        color: "bg-gray-500", 
-        spots: "Fully Booked" 
-      }
+      // { 
+      //   startDate: "Mar 1, 2025", 
+      //   status: "Limited", 
+      //   color: "bg-accent-gold", 
+      //   spots: "Available: 3/20" 
+      // },
+      // { 
+      //   startDate: "Apr 1, 2025", 
+      //   status: "Closed", 
+      //   color: "bg-gray-500", 
+      //   spots: "Fully Booked" 
+      // }
     ];
 
     return (
@@ -1239,7 +1205,7 @@ export default function AIMLBootcampPage() {
               Most cost-effective AI bootcamp without compromising quality
             </p>
           </div>
-          
+
           {/* Main Pricing Card */}
           <div className="mx-auto mb-12 lg:mb-16">
             <Card className="bg-white shadow-lg border-0 relative overflow-hidden">
@@ -1247,21 +1213,18 @@ export default function AIMLBootcampPage() {
                 <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-6 lg:mb-8 text-center">
                   AI/ML Bootcamp
                 </h3>
-                
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4 mb-8">
                   {[
                     "3 months of cutting-edge curriculum",
                     "10 modules covering all aspects of AI/ML",
                     "3 capstone projects with real complexity",
-                    "Lifetime access to all materials and updates",
-                    "1:1 mentorship from industry experts",
+                    "Mentorship from industry experts",
                     "Production deployment training",
                     "Resume and portfolio optimization",
                     "Interview preparation (10 sessions)",
                     "Job Assistance",
                     "Certificate of completion",
-                    "Lifetime career support",
-                    "Alumni network access"
                   ].map((feature, index) => (
                     <div key={index} className="flex items-start space-x-3">
                       <CheckCircle className="w-5 h-5 text-primary-green flex-shrink-0 mt-0.5" />
@@ -1287,16 +1250,14 @@ export default function AIMLBootcampPage() {
                       + GST
                     </span>
                   </div>
-                  <p className="text-sm text-medium-gray italic">
-                    Valid till March 31, 2025
-                  </p>
+              
                 </div>
-                
+
                 <div className="space-y-3">
                   <Link href={'/course-checkout/aiml-bootcamp'}>
-                  <Button className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold h-12">
-                    Enroll Now
-                  </Button>
+                    <Button className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold h-12">
+                      Enroll Now
+                    </Button>
                   </Link>
                   {/* <Button variant="outline" className="w-full border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white py-3 text-lg font-semibold h-12">
                     Enquire Now
@@ -1305,7 +1266,7 @@ export default function AIMLBootcampPage() {
               </CardContent>
             </Card>
           </div>
-          
+
           {/* Cohort Dates */}
           <div className="text-center mb-8 lg:mb-12">
             <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-2 lg:mb-4">
@@ -1315,8 +1276,8 @@ export default function AIMLBootcampPage() {
               Choose a cohort that fits your timeline
             </p>
           </div>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+
+          <div className="flex justify-center max-w-5xl mx-auto">
             {cohorts.map((cohort, index) => (
               <Card key={index} className={`${cohort.color} text-white border-0 hover:shadow-lg transition-all duration-300 h-full`}>
                 <CardContent className="p-6 text-center h-full flex flex-col justify-center">
@@ -1421,29 +1382,29 @@ export default function AIMLBootcampPage() {
               Real engineers, real AI projects, real careers
             </p>
           </div>
-          
+
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               {/* Testimonial Card */}
               <div className="bg-white rounded-2xl shadow-lg border border-border-gray overflow-hidden">
                 {/* Green Header Bar */}
                 <div className="h-10 bg-primary-green"></div>
-                
+
                 <div className="p-6 lg:p-8">
                   {/* Avatar */}
-                  <div className="flex justify-center -mt-8 mb-6">
+                  {/* <div className="flex justify-center -mt-8 mb-6">
                     <div className="w-16 h-16 bg-white rounded-full border-4 border-primary-green flex items-center justify-center text-2xl">
                       {testimonials[currentTestimonial].avatar}
                     </div>
-                  </div>
-                  
+                  </div> */}
+
                   {/* Quote */}
                   <blockquote className="text-center mb-6">
                     <p className="text-lg text-medium-gray italic leading-relaxed">
                       &ldquo;{testimonials[currentTestimonial].quote}&rdquo;
                     </p>
                   </blockquote>
-                  
+
                   {/* Name and Role */}
                   <div className="text-center mb-4">
                     <h3 className="text-xl font-bold text-dark-gray mb-1">
@@ -1452,11 +1413,11 @@ export default function AIMLBootcampPage() {
                     <p className="text-primary-green font-medium">
                       {testimonials[currentTestimonial].role}
                     </p>
-                    <p className="text-sm font-bold text-primary-green mt-1">
+                    {/* <p className="text-sm font-bold text-primary-green mt-1">
                       {testimonials[currentTestimonial].achievement}
-                    </p>
+                    </p> */}
                   </div>
-                  
+
                   {/* Rating */}
                   <div className="flex justify-center">
                     {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
@@ -1465,7 +1426,7 @@ export default function AIMLBootcampPage() {
                   </div>
                 </div>
               </div>
-              
+
               {/* Navigation Arrows */}
               <button
                 onClick={prevTestimonial}
@@ -1473,7 +1434,7 @@ export default function AIMLBootcampPage() {
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
-              
+
               <button
                 onClick={nextTestimonial}
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-primary-green hover:text-white transition-all duration-300"
@@ -1481,16 +1442,15 @@ export default function AIMLBootcampPage() {
                 <ChevronRight className="w-5 h-5" />
               </button>
             </div>
-            
+
             {/* Dots Indicator */}
             <div className="flex justify-center mt-8 space-x-2">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentTestimonial ? 'bg-primary-green' : 'bg-light-gray'
-                  }`}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentTestimonial ? 'bg-primary-green' : 'bg-light-gray'
+                    }`}
                 />
               ))}
             </div>
@@ -1615,7 +1575,7 @@ export default function AIMLBootcampPage() {
               Everything you need to know about the AI/ML bootcamp
             </p>
           </div>
-          
+
           <div className="max-w-4xl mx-auto">
             {/* Category Tabs */}
             <div className="flex flex-wrap justify-center gap-2 mb-8 lg:mb-12">
@@ -1623,23 +1583,22 @@ export default function AIMLBootcampPage() {
                 <button
                   key={category.id}
                   onClick={() => setActiveFAQCategory(category.id)}
-                  className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                    activeFAQCategory === category.id
+                  className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${activeFAQCategory === category.id
                       ? 'bg-primary-green text-white shadow-md'
                       : 'bg-light-gray text-dark-gray hover:bg-medium-gray hover:text-white'
-                  }`}
+                    }`}
                 >
                   {category.name}
                 </button>
               ))}
             </div>
-            
+
             {/* FAQ Items */}
             <div className="space-y-4">
               {faqs[activeFAQCategory as keyof typeof faqs]?.map((faq, index) => {
                 const key = `${activeFAQCategory}-${index}`;
                 const isExpanded = expandedFAQs[key];
-                
+
                 return (
                   <div key={index}>
                     <div className="border border-border-gray rounded-lg overflow-hidden">
@@ -1656,7 +1615,7 @@ export default function AIMLBootcampPage() {
                           </svg>
                         </div>
                       </button>
-                      
+
                       <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96' : 'max-h-0'}`}>
                         <div className="px-6 py-4 bg-off-white">
                           <p className="text-sm text-medium-gray leading-relaxed">
@@ -1717,7 +1676,7 @@ export default function AIMLBootcampPage() {
                   </a>
                 </div>
               </div>
-              
+
               {/* Column 2: Quick Links */}
               <div className="space-y-4">
                 <h3 className="text-sm font-bold text-white">Quick Links</h3>
@@ -1730,7 +1689,7 @@ export default function AIMLBootcampPage() {
                   <li><a href="#pricing" className="text-sm text-light-gray hover:text-primary-green transition-colors">Pricing</a></li>
                 </ul>
               </div>
-              
+
               {/* Column 3: Resources */}
               <div className="space-y-4">
                 <h3 className="text-sm font-bold text-white">Resources</h3>
@@ -1742,7 +1701,7 @@ export default function AIMLBootcampPage() {
                   <li><a href="#" className="text-sm text-light-gray hover:text-primary-green transition-colors">Community</a></li>
                 </ul>
               </div>
-              
+
               {/* Column 4: Newsletter */}
               <div className="space-y-4">
                 <h3 className="text-sm font-bold text-white">Stay Updated</h3>
@@ -1767,7 +1726,7 @@ export default function AIMLBootcampPage() {
               </div>
             </div>
           </div>
-          
+
           {/* Footer Bottom */}
           <div className="border-t border-white/10 py-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
@@ -1791,23 +1750,26 @@ export default function AIMLBootcampPage() {
 
   return (
     <div className="min-h-screen">
-      <Navigation/>
+      <Navigation />
       <main className="pt-16">
         <HeroSection />
         <WhyChooseSection />
         <WhyBecomeAIMLEngineerSection />
         <CareersAfterBootcampSection />
-        <HiringOrganizationsSection />
-        <CurriculumSection />
+        {/* <HiringOrganizationsSection /> */}
+        <HiringOrganizationSection />
+        {/* <CurriculumSection /> */}
+        <AImlCurriculumSection/>
         <AfterCourseSection />
         <ProjectsSection />
         <HowDoIEnrollSection />
         <PricingEnrollmentSection />
         <EnrollmentFormSection />
         <TestimonialsSection />
-        <FAQSection />
+        {/* <FAQSection /> */}
+        <AimlFaqs/>
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

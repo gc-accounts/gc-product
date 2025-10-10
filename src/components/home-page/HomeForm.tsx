@@ -58,7 +58,7 @@ const HomeForm = () => {
       formData.append('accessToken', token);
       formData.append('Ga_client_id', gaClientId);
       formData.append('Business Unit', 'Greycampus');
-      formData.append('Source_Domain', 'GC Homepage Form');
+      formData.append('Source_Domain', 'GC Course Form');
       formData.append('Other_City', city);
       formData.append('Other_State', state);
 

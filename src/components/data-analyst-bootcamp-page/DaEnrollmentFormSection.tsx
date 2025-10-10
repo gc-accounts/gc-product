@@ -16,11 +16,11 @@ import DaForm from './DaForm';
       },
       {
         icon: '💰',
-        text: '95% placement at ₹6L-9L range'
+        text: '100% placement assistance.'
       },
       {
         icon: '♾️',
-        text: 'Lifetime support and career guidance'
+        text: 'Career support and career guidance.'
       }
     ];
 

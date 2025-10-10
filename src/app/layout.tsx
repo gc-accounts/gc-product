@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Data Science Bootcamp - Learn at 1/3 the Cost | Greycampus",
+  title: "Data Science Bootcamp - Learn at ₹5,000 | Greycampus",
   description: "Master data science in 20 weeks. ₹5,000 bootcamp with 95% placement. Expert instructors, real-world projects, lifetime access.",
   keywords: "data science bootcamp, affordable courses, career transformation, machine learning, python, SQL, data analysis",
   authors: [{ name: "Greycampus" }],
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     canonical: "/data-science-bootcamp",
   },
   openGraph: {
-    title: "Data Science Bootcamp - Learn at 1/3 the Cost | Greycampus",
+    title: "Data Science Bootcamp - Learn at ₹5,000 | Greycampus",
     description: "Master data science in 20 weeks. ₹5,000 bootcamp with 95% placement. Expert instructors, real-world projects, lifetime access.",
     url: "https://greycampus.com/data-science-bootcamp",
     siteName: "Greycampus",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Data Science Bootcamp - Learn at 1/3 the Cost | Greycampus",
+    title: "Data Science Bootcamp - Learn at ₹5,000 | Greycampus",
     description: "Master data science in 20 weeks. ₹5,000 bootcamp with 95% placement. Expert instructors, real-world projects, lifetime access.",
     images: ["/og-image.jpg"],
   },

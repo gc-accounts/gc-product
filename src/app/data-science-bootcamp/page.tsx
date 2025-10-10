@@ -6,10 +6,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { 
-  Target, 
-  BookOpen, 
-  Briefcase, 
+import {
+  Target,
+  BookOpen,
+  Briefcase,
   CheckCircle,
   Star,
   ChevronLeft,
@@ -20,7 +20,9 @@ import Footer from '@/components/Footer';
 import DsHeroSection from '@/components/data-science-bootcamp-page/DsHeroSection';
 import DsEnrollmentFormSection from '@/components/data-science-bootcamp-page/DsEnrollmentFormSection';
 import Link from 'next/link';
-
+import HiringOrganizationSection from '@/components/HiringOrganizationSection';
+import DsCurriculum from '@/components/data-science-bootcamp-page/DsCurriculum';
+import DsFaq from '@/components/data-science-bootcamp-page/DsFaq';
 // Form state management
 interface FormData {
   fullName: string;
@@ -70,29 +72,29 @@ export default function HomePage() {
   // Form validation
   const validateForm = (data: FormData): FormErrors => {
     const errors: FormErrors = {};
-    
+
     if (!data.fullName.trim()) {
       errors.fullName = 'Full name is required';
     } else if (data.fullName.trim().length < 2) {
       errors.fullName = 'Name must be at least 2 characters';
     }
-    
+
     if (!data.email.trim()) {
       errors.email = 'Email is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
       errors.email = 'Please enter a valid email address';
     }
-    
+
     if (!data.phone.trim()) {
       errors.phone = 'Phone number is required';
     } else if (!/^\+?[\d\s-()]{10,}$/.test(data.phone)) {
       errors.phone = 'Please enter a valid phone number';
     }
-    
+
     if (!data.experienceLevel) {
       errors.experienceLevel = 'Please select your experience level';
     }
-    
+
     return errors;
   };
 
@@ -100,18 +102,18 @@ export default function HomePage() {
   const handleFormSubmit = async (formData: FormData, formType: 'hero' | 'enrollment') => {
     const errors = validateForm(formData);
     setFormErrors(errors);
-    
+
     if (Object.keys(errors).length > 0) {
       return;
     }
-    
+
     setIsSubmitting(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       setSubmitSuccess(true);
       setIsSubmitting(false);
-      
+
       // Clear form after 2 seconds
       setTimeout(() => {
         setSubmitSuccess(false);
@@ -139,13 +141,13 @@ export default function HomePage() {
             Affordable education meets world-class quality
           </p>
         </div>
-        
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {[
             {
               icon: '💰',
               title: 'Most Affordable',
-              description: 'High-quality education at 1/3 the market price'
+              description: 'High-quality education at ₹5,000'
             },
             {
               icon: '👨‍🏫',
@@ -162,10 +164,10 @@ export default function HomePage() {
               title: 'Flexible Learning',
               description: 'Self-paced with live sessions. Learn at your speed'
             },
-            {
-              icon: '♾️',
-              title: 'Lifetime Access',
-              description: 'Access all course materials forever. Never expires'
+             {
+              icon: "🧠",
+              title: "Project-Based Learning",
+              description: "Gain hands-on experience through real-world projects that help you build a strong, job-ready portfolio."
             },
             {
               icon: '✅',
@@ -204,8 +206,8 @@ export default function HomePage() {
             Market demand, growth potential, and career opportunities
           </p>
         </div>
-  
-        
+
+
         {/* Insights Row */}
         <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
           {[
@@ -222,10 +224,10 @@ export default function HomePage() {
               bg: "bg-blue-50"
             },
             {
-              icon: "🏠",
-              title: "Remote Work Opportunities",
-              description: "70% of data science jobs offer remote or flexible work arrangements.",
-              bg: "bg-amber-50"
+              icon: "💼",
+              title: "Ample Job Opportunities",
+              description: "The demand for data professionals is booming — over 11 million openings expected globally by 2026.",
+              bg: "bg-amber-50" 
             }
           ].map((insight, index) => (
             <div key={index}>
@@ -307,7 +309,7 @@ export default function HomePage() {
               Multiple paths to success with competitive salaries
             </p>
           </div>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {careers.map((career, index) => (
               <div key={index}>
@@ -316,11 +318,11 @@ export default function HomePage() {
                     <h3 className="text-lg lg:text-xl font-bold text-dark-gray mb-2">
                       {career.title}
                     </h3>
-                    
+
                     <p className="text-xs text-medium-gray italic mb-4">
                       {career.companies}
                     </p>
-                    
+
                     <div className="space-y-2 mb-4 flex-grow">
                       {career.responsibilities.map((resp, idx) => (
                         <div key={idx} className="flex items-start space-x-2">
@@ -329,7 +331,7 @@ export default function HomePage() {
                         </div>
                       ))}
                     </div>
-                    
+
                     <div className="flex flex-wrap gap-2">
                       {career.skills.map((skill, idx) => (
                         <span key={idx} className="bg-primary-green text-white text-xs px-2 py-1 rounded">
@@ -347,323 +349,287 @@ export default function HomePage() {
     );
   };
 
-  // Hiring Organizations Section - IMPROVED ALIGNMENT
-  const HiringOrganizationsSection = () => {
-    const companies = [
-      "Google", "Amazon", "Microsoft", "Meta", "Apple", "IBM",
-      "Salesforce", "LinkedIn", "Uber", "Airbnb", "Netflix", "Adobe",
-      "Intel", "Accenture", "Deloitte", "McKinsey", "Goldman Sachs",
-      "JPMorgan", "PayPal", "Shopify", "Stripe", "Slack", "Palantir",
-      "Databricks"
-    ];
 
-    return (
-      <section className="bg-white py-10 sm:py-15 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-8 lg:mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-              Trusted by Leading Companies
-            </h2>
-            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
-              Our graduates work at Fortune 500 companies and innovative startups
-            </p>
-          </div>
-          
-          <div className="overflow-hidden">
-            <div className="flex space-x-6 lg:space-x-8 animate-scroll">
-              {[...companies, ...companies].map((company, index) => (
-                <div key={index} className="flex-shrink-0 w-32 h-16 lg:w-40 lg:h-20 bg-off-white rounded-lg flex items-center justify-center border border-border-gray">
-                  <span className="text-sm lg:text-base font-semibold text-dark-gray">{company}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  };
 
   // Curriculum Section
-  const CurriculumSection = () => {
-    const modules = [
-      {
-        id: 'statistics',
-        title: 'Statistics Fundamentals',
-        duration: '2 weeks',
-        difficulty: 1,
-        topics: [
-          'Descriptive statistics',
-          'Probability theory',
-          'Distributions and hypothesis testing',
-          'Statistical inference',
-          'Application to real-world problems'
-        ],
-        outcomes: [
-          'Understand statistical fundamentals',
-          'Perform statistical analysis',
-          'Interpret results for business insights'
-        ],
-        tools: ['Python', 'SciPy', 'Statsmodels'],
-        projects: 'None yet (foundation module)'
-      },
-      {
-        id: 'python',
-        title: 'Python for Data Wizards',
-        duration: '2 weeks',
-        difficulty: 1,
-        topics: [
-          'Python basics and data structures',
-          'NumPy and Pandas mastery',
-          'Data manipulation and cleaning',
-          'File I/O and data formats',
-          'Basic visualization with Matplotlib'
-        ],
-        outcomes: [
-          'Master Python for data science',
-          'Handle large datasets efficiently',
-          'Clean and preprocess data'
-        ],
-        tools: ['Python', 'NumPy', 'Pandas', 'Matplotlib'],
-        projects: 'Data cleaning challenge'
-      },
-      {
-        id: 'sql',
-        title: 'SQL Mastery',
-        duration: '2 weeks',
-        difficulty: 2,
-        topics: [
-          'Database fundamentals',
-          'Complex queries and joins',
-          'Window functions and CTEs',
-          'Query optimization',
-          'Database design principles'
-        ],
-        outcomes: [
-          'Write complex SQL queries',
-          'Optimize database performance',
-          'Design efficient database schemas'
-        ],
-        tools: ['PostgreSQL', 'MySQL', 'SQLite'],
-        projects: 'E-commerce database analysis'
-      },
-      {
-        id: 'eda',
-        title: 'EDA in Python',
-        duration: '2 weeks',
-        difficulty: 2,
-        topics: [
-          'Exploratory data analysis techniques',
-          'Statistical visualization',
-          'Correlation and causation',
-          'Outlier detection and treatment',
-          'Data quality assessment'
-        ],
-        outcomes: [
-          'Perform comprehensive EDA',
-          'Create compelling visualizations',
-          'Identify data quality issues'
-        ],
-        tools: ['Seaborn', 'Plotly', 'Pandas', 'Matplotlib'],
-        projects: 'Customer behavior analysis'
-      },
-      {
-        id: 'powerbi',
-        title: 'Power BI',
-        duration: '2 weeks',
-        difficulty: 2,
-        topics: [
-          'Power BI interface and basics',
-          'Data modeling and relationships',
-          'DAX formulas and measures',
-          'Interactive dashboards',
-          'Report publishing and sharing'
-        ],
-        outcomes: [
-          'Build interactive dashboards',
-          'Create business intelligence reports',
-          'Share insights with stakeholders'
-        ],
-        tools: ['Power BI', 'DAX', 'Power Query'],
-        projects: 'Sales performance dashboard'
-      },
-      {
-        id: 'ml',
-        title: 'Machine Learning',
-        duration: '4 weeks',
-        difficulty: 4,
-        topics: [
-          'Supervised and unsupervised learning',
-          'Regression and classification algorithms',
-          'Model evaluation and validation',
-          'Feature engineering and selection',
-          'Hyperparameter tuning'
-        ],
-        outcomes: [
-          'Build and deploy ML models',
-          'Evaluate model performance',
-          'Apply ML to real business problems'
-        ],
-        tools: ['Scikit-learn', 'XGBoost', 'TensorFlow'],
-        projects: 'Predictive modeling challenge'
-      },
-      {
-        id: 'genai',
-        title: 'Generative AI Frontier',
-        duration: '2 weeks',
-        difficulty: 3,
-        topics: [
-          'Large Language Models (LLMs)',
-          'Prompt engineering techniques',
-          'AI integration in data workflows',
-          'Ethical AI considerations',
-          'Future of AI in data science'
-        ],
-        outcomes: [
-          'Leverage AI tools effectively',
-          'Integrate LLMs in data projects',
-          'Stay ahead of AI trends'
-        ],
-        tools: ['OpenAI API', 'Hugging Face', 'LangChain'],
-        projects: 'AI-powered data analysis tool'
-      },
-      {
-        id: 'capstone',
-        title: 'Capstone Challenge',
-        duration: '4 weeks',
-        difficulty: 5,
-        topics: [
-          'End-to-end project planning',
-          'Data pipeline development',
-          'Model deployment and monitoring',
-          'Business presentation skills',
-          'Portfolio development'
-        ],
-        outcomes: [
-          'Complete a full data science project',
-          'Present findings to stakeholders',
-          'Build a professional portfolio'
-        ],
-        tools: ['All previous tools', 'Docker', 'AWS', 'Git'],
-        projects: 'Industry capstone project'
-      }
-    ];
+  // const CurriculumSection = () => {
+  //   const modules = [
+  //     {
+  //       id: 'statistics',
+  //       title: 'Statistics Fundamentals',
+  //       duration: '2 weeks',
+  //       difficulty: 1,
+  //       topics: [
+  //         'Descriptive statistics',
+  //         'Probability theory',
+  //         'Distributions and hypothesis testing',
+  //         'Statistical inference',
+  //         'Application to real-world problems'
+  //       ],
+  //       outcomes: [
+  //         'Understand statistical fundamentals',
+  //         'Perform statistical analysis',
+  //         'Interpret results for business insights'
+  //       ],
+  //       tools: ['Python', 'SciPy', 'Statsmodels'],
+  //       projects: 'None yet (foundation module)'
+  //     },
+  //     {
+  //       id: 'python',
+  //       title: 'Python for Data Wizards',
+  //       duration: '2 weeks',
+  //       difficulty: 1,
+  //       topics: [
+  //         'Python basics and data structures',
+  //         'NumPy and Pandas mastery',
+  //         'Data manipulation and cleaning',
+  //         'File I/O and data formats',
+  //         'Basic visualization with Matplotlib'
+  //       ],
+  //       outcomes: [
+  //         'Master Python for data science',
+  //         'Handle large datasets efficiently',
+  //         'Clean and preprocess data'
+  //       ],
+  //       tools: ['Python', 'NumPy', 'Pandas', 'Matplotlib'],
+  //       projects: 'Data cleaning challenge'
+  //     },
+  //     {
+  //       id: 'sql',
+  //       title: 'SQL Mastery',
+  //       duration: '2 weeks',
+  //       difficulty: 2,
+  //       topics: [
+  //         'Database fundamentals',
+  //         'Complex queries and joins',
+  //         'Window functions and CTEs',
+  //         'Query optimization',
+  //         'Database design principles'
+  //       ],
+  //       outcomes: [
+  //         'Write complex SQL queries',
+  //         'Optimize database performance',
+  //         'Design efficient database schemas'
+  //       ],
+  //       tools: ['MySQL', 'SQLite'],
+  //       projects: 'E-commerce database analysis'
+  //     },
+  //     {
+  //       id: 'eda',
+  //       title: 'EDA in Python',
+  //       duration: '2 weeks',
+  //       difficulty: 2,
+  //       topics: [
+  //         'Exploratory data analysis techniques',
+  //         'Statistical visualization',
+  //         'Correlation and causation',
+  //         'Outlier detection and treatment',
+  //         'Data quality assessment'
+  //       ],
+  //       outcomes: [
+  //         'Perform comprehensive EDA',
+  //         'Create compelling visualizations',
+  //         'Identify data quality issues'
+  //       ],
+  //       tools: ['Seaborn', 'Plotly', 'Pandas', 'Matplotlib'],
+  //       projects: 'Customer behavior analysis'
+  //     },
+  //     {
+  //       id: 'powerbi',
+  //       title: 'Power BI',
+  //       duration: '2 weeks',
+  //       difficulty: 2,
+  //       topics: [
+  //         'Power BI interface and basics',
+  //         'Data modeling and relationships',
+  //         'DAX formulas and measures',
+  //         'Interactive dashboards',
+  //         'Report publishing and sharing'
+  //       ],
+  //       outcomes: [
+  //         'Build interactive dashboards',
+  //         'Create business intelligence reports',
+  //         'Share insights with stakeholders'
+  //       ],
+  //       tools: ['Power BI', 'DAX', 'Power Query'],
+  //       projects: 'Sales performance dashboard'
+  //     },
+  //     {
+  //       id: 'ml',
+  //       title: 'Machine Learning',
+  //       duration: '4 weeks',
+  //       difficulty: 4,
+  //       topics: [
+  //         'Supervised and unsupervised learning',
+  //         'Regression and classification algorithms',
+  //         'Model evaluation and validation',
+  //         'Feature engineering and selection',
+  //         'Hyperparameter tuning'
+  //       ],
+  //       outcomes: [
+  //         'Build and deploy ML models',
+  //         'Evaluate model performance',
+  //         'Apply ML to real business problems'
+  //       ],
+  //       tools: ['Scikit-learn', 'TensorFlow'],
+  //       projects: 'Predictive modeling challenge'
+  //     },
+  //     {
+  //       id: 'genai',
+  //       title: 'Generative AI Frontier',
+  //       duration: '2 weeks',
+  //       difficulty: 3,
+  //       topics: [
+  //         'Large Language Models (LLMs)',
+  //         'Prompt engineering techniques',
+  //         'AI integration in data workflows',
+  //         'Ethical AI considerations',
+  //         'Future of AI in data science'
+  //       ],
+  //       outcomes: [
+  //         'Leverage AI tools effectively',
+  //         'Integrate LLMs in data projects',
+  //         'Stay ahead of AI trends'
+  //       ],
+  //       tools: ['OpenAI API', 'Hugging Face', 'LangChain'],
+  //       projects: 'AI-powered data analysis tool'
+  //     },
+  //     {
+  //       id: 'capstone',
+  //       title: 'Capstone Challenge',
+  //       duration: '4 weeks',
+  //       difficulty: 5,
+  //       topics: [
+  //         'End-to-end project planning',
+  //         'Data pipeline development',
+  //         'Model deployment and monitoring',
+  //         'Business presentation skills',
+  //         'Portfolio development'
+  //       ],
+  //       outcomes: [
+  //         'Complete a full data science project',
+  //         'Present findings to stakeholders',
+  //         'Build a professional portfolio'
+  //       ],
+  //       tools: ['All previous tools', 'Docker', 'AWS', 'Git'],
+  //       projects: 'Industry capstone project'
+  //     }
+  //   ];
 
-    const [activeModule, setActiveModule] = useState('statistics');
+  //   const [activeModule, setActiveModule] = useState('statistics');
 
-    const getDifficultyStars = (difficulty: number) => {
-      return '⭐'.repeat(difficulty) + '☆'.repeat(5 - difficulty);
-    };
+  //   const getDifficultyStars = (difficulty: number) => {
+  //     return '⭐'.repeat(difficulty) + '☆'.repeat(5 - difficulty);
+  //   };
 
-    return (
-      <section id="curriculum" className="py-10 sm:py-15 lg:py-20 bg-off-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-8 lg:mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-              What You&apos;ll Learn
-            </h2>
-            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
-              3 months of comprehensive, industry-aligned curriculum
-            </p>
-          </div>
-          
-          <div className="max-w-6xl mx-auto">
-            {/* Module Tabs */}
-            <div className="flex flex-wrap justify-center gap-2 mb-8 lg:mb-12">
-              {modules.map((module) => (
-                <button
-                  key={module.id}
-                  onClick={() => setActiveModule(module.id)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    activeModule === module.id
-                      ? 'bg-primary-green text-white shadow-md'
-                      : 'bg-gray-200 text-dark-gray hover:bg-medium-gray hover:text-white'
-                  }`}
-                >
-                  {module.title}
-                </button>
-              ))}
-            </div>
-            
-            {/* Module Content */}
-            <div className="bg-white rounded-2xl shadow-lg border border-border-gray overflow-hidden">
-              {modules.map((module) => (
-                <div
-                  key={module.id}
-                  className={`transition-all duration-500 ${
-                    activeModule === module.id ? 'block' : 'hidden'
-                  }`}
-                >
-                  <div className="p-6 lg:p-8">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
-                      <div>
-                        <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-2">
-                          {module.title}
-                        </h3>
-                        <div className="flex items-center space-x-4">
-                          <span className="bg-primary-green text-white px-3 py-1 rounded-full text-sm font-semibold">
-                            {module.duration}
-                          </span>
-                          <span className="text-sm text-medium-gray">
-                            Difficulty: {getDifficultyStars(module.difficulty)} ({module.difficulty}/5)
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="grid lg:grid-cols-2 gap-8">
-                      <div>
-                        <h4 className="text-lg font-semibold text-dark-gray mb-3">Topics Covered</h4>
-                        <ul className="space-y-2">
-                          {module.topics.map((topic, index) => (
-                            <li key={index} className="flex items-start space-x-2">
-                              <div className="w-1.5 h-1.5 bg-primary-green rounded-full mt-2 flex-shrink-0"></div>
-                              <span className="text-dark-gray text-sm leading-relaxed">{topic}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <div>
-                        <h4 className="text-lg font-semibold text-dark-gray mb-3">Key Outcomes</h4>
-                        <ul className="space-y-2">
-                          {module.outcomes.map((outcome, index) => (
-                            <li key={index} className="flex items-start space-x-2">
-                              <CheckCircle className="w-4 h-4 text-primary-green flex-shrink-0 mt-0.5" />
-                              <span className="text-dark-gray text-sm leading-relaxed">{outcome}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-6 pt-6 border-t border-border-gray">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                        <div>
-                          <h4 className="text-lg font-semibold text-dark-gray mb-2">Tools & Technologies</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {module.tools.map((tool, index) => (
-                              <span key={index} className="bg-accent-blue text-white px-3 py-1 rounded-full text-sm font-medium">
-                                {tool}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                        
-                        <div className="text-right">
-                          <h4 className="text-lg font-semibold text-dark-gray mb-2">Projects</h4>
-                          <p className="text-medium-gray text-sm">{module.projects}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  };
+  //   return (
+  //     <section id="curriculum" className="py-10 sm:py-15 lg:py-20 bg-off-white">
+  //       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+  //         <div className="text-center mb-8 lg:mb-12">
+  //           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
+  //             What You&apos;ll Learn
+  //           </h2>
+  //           <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
+  //             3 months of comprehensive, industry-aligned curriculum
+  //           </p>
+  //         </div>
+
+  //         <div className="max-w-6xl mx-auto">
+  //           {/* Module Tabs */}
+  //           <div className="flex flex-wrap justify-center gap-2 mb-8 lg:mb-12">
+  //             {modules.map((module) => (
+  //               <button
+  //                 key={module.id}
+  //                 onClick={() => setActiveModule(module.id)}
+  //                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeModule === module.id
+  //                     ? 'bg-primary-green text-white shadow-md'
+  //                     : 'bg-gray-200 text-dark-gray hover:bg-medium-gray hover:text-white'
+  //                   }`}
+  //               >
+  //                 {module.title}
+  //               </button>
+  //             ))}
+  //           </div>
+
+  //           {/* Module Content */}
+  //           <div className="bg-white rounded-2xl shadow-lg border border-border-gray overflow-hidden">
+  //             {modules.map((module) => (
+  //               <div
+  //                 key={module.id}
+  //                 className={`transition-all duration-500 ${activeModule === module.id ? 'block' : 'hidden'
+  //                   }`}
+  //               >
+  //                 <div className="p-6 lg:p-8">
+  //                   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+  //                     <div>
+  //                       <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-2">
+  //                         {module.title}
+  //                       </h3>
+  //                       <div className="flex items-center space-x-4">
+  //                         <span className="bg-primary-green text-white px-3 py-1 rounded-full text-sm font-semibold">
+  //                           {module.duration}
+  //                         </span>
+  //                         <span className="text-sm text-medium-gray">
+  //                           Difficulty: {getDifficultyStars(module.difficulty)} ({module.difficulty}/5)
+  //                         </span>
+  //                       </div>
+  //                     </div>
+  //                   </div>
+
+  //                   <div className="grid lg:grid-cols-2 gap-8">
+  //                     <div>
+  //                       <h4 className="text-lg font-semibold text-dark-gray mb-3">Topics Covered</h4>
+  //                       <ul className="space-y-2">
+  //                         {module.topics.map((topic, index) => (
+  //                           <li key={index} className="flex items-start space-x-2">
+  //                             <div className="w-1.5 h-1.5 bg-primary-green rounded-full mt-2 flex-shrink-0"></div>
+  //                             <span className="text-dark-gray text-sm leading-relaxed">{topic}</span>
+  //                           </li>
+  //                         ))}
+  //                       </ul>
+  //                     </div>
+
+  //                     <div>
+  //                       <h4 className="text-lg font-semibold text-dark-gray mb-3">Key Outcomes</h4>
+  //                       <ul className="space-y-2">
+  //                         {module.outcomes.map((outcome, index) => (
+  //                           <li key={index} className="flex items-start space-x-2">
+  //                             <CheckCircle className="w-4 h-4 text-primary-green flex-shrink-0 mt-0.5" />
+  //                             <span className="text-dark-gray text-sm leading-relaxed">{outcome}</span>
+  //                           </li>
+  //                         ))}
+  //                       </ul>
+  //                     </div>
+  //                   </div>
+
+  //                   <div className="mt-6 pt-6 border-t border-border-gray">
+  //                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+  //                       <div>
+  //                         <h4 className="text-lg font-semibold text-dark-gray mb-2">Tools & Technologies</h4>
+  //                         <div className="flex flex-wrap gap-2">
+  //                           {module.tools.map((tool, index) => (
+  //                             <span key={index} className="bg-accent-blue text-white px-3 py-1 rounded-full text-sm font-medium">
+  //                               {tool}
+  //                             </span>
+  //                           ))}
+  //                         </div>
+  //                       </div>
+
+  //                       <div className="text-right">
+  //                         <h4 className="text-lg font-semibold text-dark-gray mb-2">Projects</h4>
+  //                         <p className="text-medium-gray text-sm">{module.projects}</p>
+  //                       </div>
+  //                     </div>
+  //                   </div>
+  //                 </div>
+  //               </div>
+  //             ))}
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </section>
+  //   );
+  // };
 
   // Outcomes Section
   const OutcomesSection = () => {
@@ -735,13 +701,13 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-8 lg:mb-12">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-              You&apos;ll Be Able To
+             Program Outcomes
             </h2>
             <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Real skills. Real impact. Real career transformation.
             </p>
           </div>
-          
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8">
             {outcomes.map((outcome, index) => (
               <div key={index}>
@@ -786,7 +752,7 @@ export default function HomePage() {
         duration: '3 weeks',
         difficulty: 4,
         description: 'Build a machine learning model to predict customer churn for a telecom company. Use advanced feature engineering and ensemble methods to achieve 85%+ accuracy.',
-        techStack: ['Python', 'Scikit-learn', 'XGBoost', 'Pandas'],
+        techStack: ['Python', 'Scikit-learn', 'Pandas'],
         learnings: [
           'Feature engineering techniques',
           'Model ensemble methods',
@@ -800,7 +766,7 @@ export default function HomePage() {
         duration: '2 weeks',
         difficulty: 3,
         description: 'Develop a comprehensive model to predict property prices using location, amenities, and market data. Create a web application for real estate agents.',
-        techStack: ['Python', 'Flask', 'PostgreSQL', 'Plotly'],
+        techStack: ['Python', 'Flask', 'Plotly'],
         learnings: [
           'Web application development',
           'Geospatial data analysis',
@@ -822,7 +788,7 @@ export default function HomePage() {
               Apply your skills to projects used by real companies
             </p>
           </div>
-          
+
           <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
             {projects.map((project, index) => (
               <div key={index}>
@@ -838,12 +804,12 @@ export default function HomePage() {
                       </span>
                     </div>
                   </div>
-                  
+
                   <CardContent className="p-6 h-fit flex flex-col">
                     <p className="text-dark-gray text-sm leading-relaxed mb-6 flex-grow">
                       {project.description}
                     </p>
-                    
+
                     <div className="space-y-4">
                       <div>
                         <h4 className="text-sm font-semibold text-dark-gray mb-2">Tech Stack</h4>
@@ -855,7 +821,7 @@ export default function HomePage() {
                           ))}
                         </div>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-sm font-semibold text-dark-gray mb-2">Key Learnings</h4>
                         <ul className="space-y-1">
@@ -867,7 +833,7 @@ export default function HomePage() {
                           ))}
                         </ul>
                       </div>
-                      
+
                       <div className="pt-4 border-t border-border-gray">
                         <h4 className="text-sm font-bold text-primary-green mb-1">Outcome</h4>
                         <p className="text-xs text-dark-gray leading-relaxed">
@@ -931,7 +897,7 @@ export default function HomePage() {
               Simple 5-step process to start your data science journey
             </p>
           </div>
-          
+
           <div className="max-w-6xl mx-auto">
             {/* Desktop Layout */}
             <div className="hidden lg:flex items-center justify-between relative">
@@ -953,7 +919,7 @@ export default function HomePage() {
                       </CardContent>
                     </Card>
                   </div>
-                  
+
                   {/* Connector Line */}
                   {/* {index < steps.length - 1 && (
                     <div className="absolute top-8 left-full w-12 h-0.5 bg-primary-green transform translate-x-6 z-0">
@@ -964,7 +930,7 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            
+
             {/* Mobile Layout */}
             <div className="lg:hidden space-y-6">
               {steps.map((step, index) => (
@@ -977,7 +943,7 @@ export default function HomePage() {
                       {step.number}
                     </div>
                   </div>
-                  
+
                   <Card className="flex-1 hover:shadow-lg transition-all duration-300 border border-border-gray">
                     <CardContent className="p-4">
                       <div className="flex items-center space-x-3">
@@ -993,7 +959,7 @@ export default function HomePage() {
                       </div>
                     </CardContent>
                   </Card>
-                  
+
                   {/* Vertical Connector */}
                   {index < steps.length - 1 && (
                     <div className="absolute left-6 top-12 w-0.5 h-6 bg-primary-green transform translate-y-4"></div>
@@ -1089,7 +1055,7 @@ export default function HomePage() {
               Real students, real transformations, real careers
             </p>
           </div>
-          
+
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               {/* Testimonial Card */}
@@ -1099,22 +1065,22 @@ export default function HomePage() {
               >
                 {/* Green Header Bar */}
                 <div className="h-10 bg-primary-green"></div>
-                
+
                 <div className="p-6 lg:p-8">
                   {/* Avatar */}
-                  <div className="flex justify-center -mt-8 mb-6">
+                  {/* <div className="flex justify-center -mt-8 mb-6">
                     <div className="w-16 h-16 bg-white rounded-full border-4 border-primary-green flex items-center justify-center text-2xl">
                       {testimonials[currentTestimonial].avatar}
                     </div>
-                  </div>
-                  
+                  </div> */}
+
                   {/* Quote */}
                   <blockquote className="text-center mb-6">
                     <p className="text-lg text-medium-gray italic leading-relaxed">
                       &ldquo;{testimonials[currentTestimonial].quote}&rdquo;
                     </p>
                   </blockquote>
-                  
+
                   {/* Name and Role */}
                   <div className="text-center mb-4">
                     <h3 className="text-xl font-bold text-dark-gray mb-1">
@@ -1123,11 +1089,11 @@ export default function HomePage() {
                     <p className="text-primary-green font-medium">
                       {testimonials[currentTestimonial].role}
                     </p>
-                    <p className="text-sm font-bold text-primary-green mt-1">
+                    {/* <p className="text-sm font-bold text-primary-green mt-1">
                       {testimonials[currentTestimonial].achievement}
-                    </p>
+                    </p> */}
                   </div>
-                  
+
                   {/* Rating */}
                   <div className="flex justify-center">
                     {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
@@ -1136,7 +1102,7 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              
+
               {/* Navigation Arrows */}
               <button
                 onClick={prevTestimonial}
@@ -1144,7 +1110,7 @@ export default function HomePage() {
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
-              
+
               <button
                 onClick={nextTestimonial}
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-primary-green hover:text-white transition-all duration-300"
@@ -1152,16 +1118,15 @@ export default function HomePage() {
                 <ChevronRight className="w-5 h-5" />
               </button>
             </div>
-            
+
             {/* Dots Indicator */}
             <div className="flex justify-center mt-8 space-x-2">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentTestimonial ? 'bg-primary-green' : 'bg-light-gray'
-                  }`}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentTestimonial ? 'bg-primary-green' : 'bg-light-gray'
+                    }`}
                 />
               ))}
             </div>
@@ -1196,7 +1161,7 @@ export default function HomePage() {
       curriculum: [
         {
           question: 'What programming languages will I learn?',
-          answer: 'You will learn Python (primary), SQL, and R. Python is the main language used throughout the bootcamp as it\'s the industry standard for data science.'
+          answer: 'You will learn Python (primary), SQL. Python is the main language used throughout the bootcamp as it\'s the industry standard for data science.'
         },
         {
           question: 'Do I need prior programming experience?',
@@ -1204,7 +1169,7 @@ export default function HomePage() {
         },
         {
           question: 'What tools and technologies are covered?',
-          answer: 'We cover Python, SQL, Power BI, Tableau, Jupyter Notebooks, Git, AWS basics, and various machine learning libraries like scikit-learn, pandas, and numpy.'
+          answer: 'We cover Python, SQL, Power BI, Tableau, Jupyter Notebooks, Git, and various machine learning libraries like scikit-learn, pandas, and numpy.'
         },
         {
           question: 'How is the curriculum updated?',
@@ -1250,7 +1215,7 @@ export default function HomePage() {
       enrollment: [
         {
           question: 'What is the total cost of the bootcamp?',
-          answer: 'The bootcamp costs ₹5,000 + GST (originally ₹7,500). This includes all course materials, projects, career support, and lifetime access to resources.'
+          answer: 'The bootcamp costs ₹5,000 + GST (originally ₹15,000). This includes all course materials, projects, career support, and lifetime access to resources.'
         },
         {
           question: 'Are there any hidden fees?',
@@ -1286,7 +1251,7 @@ export default function HomePage() {
               Everything you need to know about the bootcamp
             </p>
           </div>
-          
+
           <div className="max-w-4xl mx-auto">
             {/* Category Tabs */}
             <div className="flex flex-wrap justify-center gap-2 mb-8 lg:mb-12">
@@ -1294,23 +1259,22 @@ export default function HomePage() {
                 <button
                   key={category.id}
                   onClick={() => setActiveFAQCategory(category.id)}
-                  className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                    activeFAQCategory === category.id
+                  className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${activeFAQCategory === category.id
                       ? 'bg-primary-green text-white shadow-md'
                       : 'bg-light-gray text-dark-gray hover:bg-medium-gray hover:text-white'
-                  }`}
+                    }`}
                 >
                   {category.name}
                 </button>
               ))}
             </div>
-            
+
             {/* FAQ Items */}
             <div className="space-y-4">
               {faqs[activeFAQCategory as keyof typeof faqs]?.map((faq, index) => {
                 const key = `${activeFAQCategory}-${index}`;
                 const isExpanded = expandedFAQs[key];
-                
+
                 return (
                   <div key={index}>
                     <div className="border border-border-gray rounded-lg overflow-hidden">
@@ -1327,7 +1291,7 @@ export default function HomePage() {
                           </svg>
                         </div>
                       </button>
-                      
+
                       <div
                         className="overflow-hidden"
                       >
@@ -1352,8 +1316,13 @@ export default function HomePage() {
   // Pricing Section - IMPROVED ALIGNMENT
   const PricingSection = () => {
     const cohorts = [
-      { startDate: "31 October 2025", status: "Open", color: "bg-primary-green", spots: "Available: 25/30" },
-      { startDate: "28 November, 2025", status: "Limited", color: "bg-accent-gold", spots: "Available: 5/30" },
+      {
+        startDate: "31 October 2025",
+        status: "Open",
+        color: "bg-primary-green",
+        spots: "Available: 15/20"
+      },
+      // { startDate: "28 November, 2025", status: "Limited", color: "bg-accent-gold", spots: "Available: 5/30" },
     ];
 
     return (
@@ -1367,7 +1336,7 @@ export default function HomePage() {
               The most cost-effective bootcamp without compromising quality
             </p>
           </div>
-          
+
           {/* Main Pricing Card */}
           <div className="mx-auto mb-12 lg:mb-16">
             <Card className="bg-white shadow-lg border-0 relative overflow-hidden">
@@ -1375,29 +1344,29 @@ export default function HomePage() {
                 <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-6 lg:mb-8 text-center">
                   Data Science Bootcamp
                 </h3>
-                
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4 mb-8">
-  {[
-   
-    "8 modules covering all aspects",
-    "3+ capstone projects",
-    "1:1 mentorship sessions",
-    "Resume and portfolio guidance",
-    "Interview preparation",
-    "Certificate of completion",
-  ].map((feature, index) => (
-    <div key={index} className="flex items-start space-x-3">
-      <CheckCircle className="w-5 h-5 text-primary-green flex-shrink-0 mt-0.5" />
-      <span className="text-dark-gray text-sm leading-relaxed">{feature}</span>
-    </div>
-  ))}
-</div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4 mb-8">
+                  {[
+
+                    "8 modules covering all aspects",
+                    "3+ capstone projects",
+                    "Mentorship sessions",
+                    "Resume and portfolio guidance",
+                    "Interview preparation",
+                    "Certificate of completion",
+                  ].map((feature, index) => (
+                    <div key={index} className="flex items-start space-x-3">
+                      <CheckCircle className="w-5 h-5 text-primary-green flex-shrink-0 mt-0.5" />
+                      <span className="text-dark-gray text-sm leading-relaxed">{feature}</span>
+                    </div>
+                  ))}
+                </div>
 
 
                 <div className="text-center mb-8">
                   <div className="flex items-center justify-center space-x-2 mb-3">
                     <span className="text-red-500 line-through text-lg">
-                      ₹7,500
+                      ₹15,000
                     </span>
                     <span className="text-red-500 line-through text-lg">
                       + GST
@@ -1411,17 +1380,15 @@ export default function HomePage() {
                       + GST
                     </span>
                   </div>
-                  <p className="text-sm text-medium-gray italic">
-                    Valid till March 31, 2025
-                  </p>
+              
                 </div>
-                
-                
-           <div className="space-y-3">
+
+
+                <div className="space-y-3">
                   <Link href={'/course-checkout/data-science-bootcamp'}>
-                  <Button className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold h-12">
-                    Enroll Now
-                  </Button>
+                    <Button className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold h-12">
+                      Enroll Now
+                    </Button>
                   </Link>
                   {/* <Button variant="outline" className="w-full border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white py-3 text-lg font-semibold h-12">
                     Enquire Now
@@ -1430,7 +1397,7 @@ export default function HomePage() {
               </CardContent>
             </Card>
           </div>
-          
+
           {/* Cohort Dates */}
           <div className="text-center mb-8 lg:mb-12">
             <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-2 lg:mb-4">
@@ -1440,8 +1407,8 @@ export default function HomePage() {
               Choose a cohort date that works best for you
             </p>
           </div>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+
+          <div className="flex justify-center max-w-5xl mx-auto">
             {cohorts.map((cohort, index) => (
               <Card key={index} className={`${cohort.color} text-white border-0 hover:shadow-lg transition-all duration-300 h-full`}>
                 <CardContent className="p-6 text-center h-full flex flex-col justify-center">
@@ -1451,7 +1418,7 @@ export default function HomePage() {
                   <div className="text-lg font-bold mb-2">
                     Start: {cohort.startDate}
                   </div>
-                 
+
                   <div className="text-xs opacity-90 leading-relaxed">
                     {cohort.spots}
                   </div>
@@ -1469,20 +1436,22 @@ export default function HomePage() {
       <Navigation currentPage="data-science-bootcamp" />
       <main className="pt-16">
         {/* <HeroSection /> */}
-        <DsHeroSection/>
+        <DsHeroSection />
         <WhyChooseSection />
         <WhyLearnSection />
         <CareersSection />
-        <HiringOrganizationsSection />
-        <CurriculumSection />
+        <HiringOrganizationSection />
+        {/* <CurriculumSection /> */}
+        <DsCurriculum/>
         <OutcomesSection />
         <ProjectsSection />
         <EnrollmentStepsSection />
-         <PricingSection />
+        <PricingSection />
         {/* <EnrollmentFormSection /> */}
-        <DsEnrollmentFormSection/>
+        <DsEnrollmentFormSection />
         <TestimonialsSection />
-        <FAQSection />
+        {/* <FAQSection /> */}
+        <DsFaq/>
       </main>
       <Footer />
     </div>
