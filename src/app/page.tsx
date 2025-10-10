@@ -175,7 +175,7 @@ export default function HomePage() {
         id: 'data-science',
         title: 'Data Science Bootcamp',
         price: '₹5,000 + GST',
-        duration: '20 weeks • Self-paced + Live sessions',
+        duration: '3 months • Self-paced + Live sessions',
         description: 'Master Python, SQL, ML, and Power BI. Build data pipelines and predictive models for business impact.',
         highlights: [
           'Python & SQL mastery',
@@ -192,7 +192,7 @@ export default function HomePage() {
         id: 'data-analyst',
         title: 'Data Analyst Bootcamp',
         price: '₹5,000 + GST',
-        duration: '16 weeks • Self-paced + Live sessions',
+        duration: '3 months • Self-paced + Live sessions',
         description: 'Transform data into insights. Learn SQL, Excel, Power BI, and Tableau for data-driven decision making.',
         highlights: [
           'SQL & Excel expertise',
@@ -209,7 +209,7 @@ export default function HomePage() {
         id: 'aiml',
         title: 'AI/ML Bootcamp',
         price: '₹5,000 + GST',
-        duration: '20 weeks • Self-paced + Live sessions',
+        duration: '3 months • Self-paced + Live sessions',
         description: 'Build production AI systems. Deep learning, LLMs, RAG systems, and autonomous agents.',
         highlights: [
           'Deep Learning & Neural Networks',
@@ -400,8 +400,8 @@ export default function HomePage() {
       },
       {
         icon: '✅',
-        title: 'Career Guarantee',
-        description: '95% placement within 3 months or 100% money-back guarantee.'
+        title: 'Career Assistance',
+        description: '95% placement within 3 months.'
       }
     ];
 
@@ -639,7 +639,7 @@ export default function HomePage() {
           
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-medium-gray leading-relaxed mb-8">
-              Choose your bootcamp, invest ₹5,000, and unlock a career that pays 3-5x more. With our 30-day money-back guarantee, there&apos;s zero risk.
+              Choose your bootcamp, invest ₹5,000, and unlock a career that pays 3-5x more.
             </p>
             
             {/* Stats Row */}
@@ -654,7 +654,7 @@ export default function HomePage() {
               </div>
               <div className="text-center">
                 <div className="text-4xl font-bold text-primary-green mb-2">30-Day</div>
-                <div className="text-sm text-medium-gray">Money-Back Guarantee</div>
+                <div className="text-sm text-medium-gray">Job Assistance</div>
               </div>
             </div>
             
