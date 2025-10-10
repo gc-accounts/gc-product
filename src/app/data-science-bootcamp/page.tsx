@@ -1213,7 +1213,7 @@ export default function HomePage() {
       job: [
         {
           question: 'What is the job placement rate?',
-          answer: 'We have a 95% placement rate within 3 months of graduation. Our career support team works closely with students to ensure successful job placement.'
+          answer: 'We have a 100% placement assistance within 3 months of graduation. Our career support team works closely with students to ensure successful job placement.'
         },
         {
           question: 'What types of companies hire your graduates?',

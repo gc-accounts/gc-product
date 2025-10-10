@@ -49,7 +49,7 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
                 onClick={toggleProducts}
                 className="flex items-center space-x-1 text-medium-gray hover:text-primary-green transition-colors"
               >
-                <span>Products</span>
+                <span>Bootcamps</span>
                 <ChevronDown className={`w-4 h-4 transition-transform ${isProductsOpen ? 'rotate-180' : ''}`} />
               </button>
               
@@ -134,7 +134,7 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
                   onClick={toggleProducts}
                   className="flex items-center space-x-1 text-medium-gray hover:text-primary-green transition-colors w-full text-left"
                 >
-                  <span>Products</span>
+                  <span>Bootcamps</span>
                   <ChevronDown className={`w-4 h-4 transition-transform ${isProductsOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
