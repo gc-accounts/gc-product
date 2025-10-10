@@ -356,6 +356,7 @@ export default function ContactPage() {
                   </Card>
 
                   {/* Email */}
+                  {/* Email */}
                   <Card className="bg-white border border-border-gray hover:border-primary-green hover:shadow-lg transition-all duration-300">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
