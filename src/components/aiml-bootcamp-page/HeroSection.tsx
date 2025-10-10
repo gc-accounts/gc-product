@@ -38,7 +38,7 @@ const HeroSection = () => (
               <div className="flex items-start space-x-3">
                 <Briefcase className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green flex-shrink-0 mt-0.5" />
                 <span className="text-sm sm:text-base text-dark-gray leading-relaxed">
-                  90%+ placement at ₹12L-18L range
+                  100% placement assistance
                 </span>
               </div>
             </div>

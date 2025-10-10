@@ -24,6 +24,7 @@ import Link from 'next/link';
 import HiringOrganizationSection from '@/components/HiringOrganizationSection';
 import DsCurriculum from '@/components/data-science-bootcamp-page/DsCurriculum';
 import DsFaq from '@/components/data-science-bootcamp-page/DsFaq';
+import { DSCertificateData } from '@/components/data/DSCertificateData';
 // Form state management
 interface FormData {
   fullName: string;
@@ -1448,6 +1449,9 @@ export default function HomePage() {
         <ProjectsSection />
         <EnrollmentStepsSection />
         <PricingSection />
+        <Certification
+                                  sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]"
+                                  data={DSCertificateData} />
         {/* <EnrollmentFormSection /> */}
         <DsEnrollmentFormSection />
         <TestimonialsSection />
