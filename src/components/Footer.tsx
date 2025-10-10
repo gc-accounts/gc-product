@@ -32,7 +32,7 @@ export default function Footer() {
               <p className="text-sm text-light-gray leading-relaxed">
                 Affordable, high-quality bootcamps for career transformation
               </p>
-              <div className="flex space-x-4">
+              {/* <div className="flex space-x-4">
                 <a href="#" className="text-light-gray hover:text-primary-green transition-colors">
                   <Linkedin className="w-5 h-5" />
                 </a>
@@ -45,7 +45,7 @@ export default function Footer() {
                 <a href="#" className="text-light-gray hover:text-primary-green transition-colors">
                   <Instagram className="w-5 h-5" />
                 </a>
-              </div>
+              </div> */}
             </div>
             
             {/* Column 2: Quick Links */}
@@ -65,53 +65,44 @@ export default function Footer() {
             <div className="space-y-4">
               <h3 className="text-sm font-bold text-white">Resources</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="text-sm text-light-gray hover:text-primary-green transition-colors">Blog</a></li>
-                <li><a href="#" className="text-sm text-light-gray hover:text-primary-green transition-colors">Career Guide</a></li>
-                <li><a href="#" className="text-sm text-light-gray hover:text-primary-green transition-colors">Success Stories</a></li>
-                <li><a href="#" className="text-sm text-light-gray hover:text-primary-green transition-colors">Community</a></li>
-                <li><a href="#" className="text-sm text-light-gray hover:text-primary-green transition-colors">FAQ</a></li>
+                <li><a href="https://www.corporate.greycampus.com/blog" className="text-sm text-light-gray hover:text-primary-green transition-colors">Blog</a></li>
+                <li><a href="https://www.corporate.greycampus.com/opencampus" className="text-sm text-light-gray hover:text-primary-green transition-colors">Opencampus</a></li>
+                {/* <li><a href="https://www.corporate.greycampus.com/" className="text-sm text-light-gray hover:text-primary-green transition-colors">Success Stories</a></li>
+                <li><a href="https://www.corporate.greycampus.com/" className="text-sm text-light-gray hover:text-primary-green transition-colors">Community</a></li>
+                <li><a href="https://www.corporate.greycampus.com/" className="text-sm text-light-gray hover:text-primary-green transition-colors">FAQ</a></li> */}
               </ul>
             </div>
             
-            {/* Column 4: Newsletter */}
-            <div className="space-y-4">
-              <h3 className="text-sm font-bold text-white">Newsletter</h3>
-              <p className="text-xs text-light-gray leading-relaxed">
-                Subscribe for course updates and career tips
-              </p>
-              <form onSubmit={handleNewsletterSubmit} className="space-y-3">
-                <Input
-                  type="email"
-                  placeholder="your@email.com"
-                  value={newsletterEmail}
-                  onChange={(e) => setNewsletterEmail(e.target.value)}
-                  className="h-10 bg-white/10 border-white/20 text-white placeholder:text-light-gray focus:border-primary-green"
-                />
-                <Button
-                  type="submit"
-                  className="w-full bg-primary-green hover:bg-secondary-green text-white h-10 text-sm"
-                >
-                  Subscribe
-                </Button>
-              </form>
+
+               <div className="space-y-4">
+              <h3 className="text-sm font-bold text-white">Resources</h3>
+              <ul className="space-y-2">
+                <li><a href="https://www.corporate.greycampus.com/termsOfUse" className="text-sm text-light-gray hover:text-primary-green transition-colors">Terms Of Use</a></li>
+                <li><a href="https://www.corporate.greycampus.com/privacyPolicy" className="text-sm text-light-gray hover:text-primary-green transition-colors">Privacy Policy</a></li>
+              </ul>
             </div>
+            
+       
+
           </div>
         </div>
         
         {/* Footer Bottom */}
         <div className="border-t border-white/10 py-6">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center space-y-4 sm:space-y-0">
             <p className="text-xs text-light-gray">
               © 2025 Greycampus. All rights reserved.
             </p>
-            <div className="flex space-x-6">
+
+            {/* <div className="flex space-x-6">
               <a href="#" className="text-xs text-light-gray hover:text-primary-green transition-colors">
                 Privacy Policy
               </a>
               <a href="#" className="text-xs text-light-gray hover:text-primary-green transition-colors">
                 Terms of Service
               </a>
-            </div>
+            </div> */}
+
           </div>
         </div>
       </div>

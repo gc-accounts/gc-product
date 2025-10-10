@@ -366,7 +366,7 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <h3 className="text-lg font-semibold text-dark-gray mb-2">Email Address</h3>
-                          <p className="text-sm text-medium-gray">enterprise@greycampus.com</p>
+                          <p className="text-sm text-medium-gray">contact@greycampus.com</p>
                         </div>
                       </div>
                     </CardContent>
