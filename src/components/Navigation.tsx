@@ -32,17 +32,6 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {/* <Link 
-              href="/" 
-              className={`transition-colors ${
-                currentPage === 'home' 
-                  ? 'text-primary-green font-semibold' 
-                  : 'text-medium-gray hover:text-primary-green'
-              }`}
-            >
-              Home
-            </Link> */}
-            
             {/* Products Dropdown */}
             <div className="relative">
               <button
@@ -55,24 +44,24 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
               
               {isProductsOpen && (
                 <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-border-gray py-2 z-50">
-                  <a 
+                  <Link 
                     href="/data-science-bootcamp" 
                     className="block px-4 py-2 text-medium-gray hover:text-primary-green hover:bg-off-white transition-colors"
                   >
                     Data Science Bootcamp
-                  </a>
-                  <a 
+                  </Link>
+                  <Link 
                     href="/data-analyst-bootcamp" 
                     className="block px-4 py-2 text-medium-gray hover:text-primary-green hover:bg-off-white transition-colors"
                   >
                     Data Analyst Bootcamp
-                  </a>
-                  <a 
+                  </Link>
+                  <Link 
                     href="/aiml-bootcamp" 
                     className="block px-4 py-2 text-medium-gray hover:text-primary-green hover:bg-off-white transition-colors"
                   >
                     AI/ML Bootcamp
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>
@@ -97,9 +86,6 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
             >
               Contact
             </a>
-            {/* <Button className="bg-primary-green hover:bg-secondary-green text-white">
-              Enroll Now
-            </Button> */}
           </nav>
           
           {/* Mobile Menu Button */}
@@ -116,18 +102,6 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border-gray">
             <nav className="flex flex-col space-y-4">
-              {/* <Link 
-                href="/" 
-                className={`transition-colors ${
-                  currentPage === 'home' 
-                    ? 'text-primary-green font-semibold' 
-                    : 'text-medium-gray hover:text-primary-green'
-                }`}
-                onClick={toggleMenu}
-              >
-                Home
-              </Link> */}
-              
               {/* Mobile Products Section */}
               <div>
                 <button
@@ -140,27 +114,27 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
                 
                 {isProductsOpen && (
                   <div className="ml-4 mt-2 space-y-2">
-                    <a 
+                    <Link 
                       href="/data-science-bootcamp" 
                       className="block text-medium-gray hover:text-primary-green transition-colors"
                       onClick={toggleMenu}
                     >
                       Data Science Bootcamp
-                    </a>
-                    <a 
+                    </Link>
+                    <Link 
                       href="/data-analyst-bootcamp" 
                       className="block text-medium-gray hover:text-primary-green transition-colors"
                       onClick={toggleMenu}
                     >
                       Data Analyst Bootcamp
-                    </a>
-                    <a 
+                    </Link>
+                    <Link 
                       href="/aiml-bootcamp" 
                       className="block text-medium-gray hover:text-primary-green transition-colors"
                       onClick={toggleMenu}
                     >
                       AI/ML Bootcamp
-                    </a>
+                    </Link>
                   </div>
                 )}
               </div>
