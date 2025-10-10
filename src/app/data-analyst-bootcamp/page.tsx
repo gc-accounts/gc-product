@@ -27,6 +27,7 @@ import DaHeroSection from '@/components/data-analyst-bootcamp-page/DaHeroSection
 import DaEnrollmentFormSection from '@/components/data-analyst-bootcamp-page/DaEnrollmentFormSection';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
 // Form state management
 
 
@@ -1192,9 +1193,11 @@ export default function DataAnalystBootcampPage() {
                 </div>
                 
                 <div className="space-y-3">
+                  <Link href={'/course-checkout/data-analyst-bootcamp-page'}>
                   <Button className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold h-12">
                     Enroll Now
                   </Button>
+                  </Link>
                   {/* <Button variant="outline" className="w-full border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white py-3 text-lg font-semibold h-12">
                     Enquire Now
                   </Button> */}

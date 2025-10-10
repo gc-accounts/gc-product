@@ -97,9 +97,9 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
             >
               Contact
             </a>
-            <Button className="bg-primary-green hover:bg-secondary-green text-white">
+            {/* <Button className="bg-primary-green hover:bg-secondary-green text-white">
               Enroll Now
-            </Button>
+            </Button> */}
           </nav>
           
           {/* Mobile Menu Button */}
@@ -187,9 +187,6 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
               >
                 Contact
               </a>
-              <Button className="bg-primary-green hover:bg-secondary-green text-white w-full">
-                Enroll Now
-              </Button>
             </nav>
           </div>
         )}
