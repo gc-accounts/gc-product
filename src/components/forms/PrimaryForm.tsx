@@ -181,7 +181,7 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({
         }
       }
     } catch (error: any) {
-      toast({ title: 'Error', description: error.message || 'Submission failed', variant: 'destructive' });
+      toast({ title: 'Error', description: error.message || 'Submission failed', type: 'error',  });
     }
   };
 
