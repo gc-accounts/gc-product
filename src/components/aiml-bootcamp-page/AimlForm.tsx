@@ -60,10 +60,10 @@ const AIMLForm = () => {
 
       // Append additional tracking & metadata
       formData.append('accessToken', token);
-      formData.append('Program', 'AIML Bootcamp');
+      formData.append('Program', 'AI/ML Bootcamp');
       formData.append('Ga_client_id', gaClientId);
       formData.append('Business Unit', 'Greycampus');
-      formData.append('Source_Domain', 'Greycampus Form');
+      formData.append('Source_Domain', 'GC Course Form');
       formData.append('Other_City', city);
       formData.append('Other_State', state);
 
@@ -108,7 +108,7 @@ const AIMLForm = () => {
       toast({
         title: 'Error',
         description: err.message || 'Failed to submit the form',
-        variant: 'destructive',
+        type: 'error',
       });
     } finally {
       setLoading(false);

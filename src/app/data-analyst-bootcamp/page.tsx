@@ -28,6 +28,9 @@ import DaEnrollmentFormSection from '@/components/data-analyst-bootcamp-page/DaE
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 // Form state management
+
+
+
 interface FormData {
   fullName: string;
   email: string;

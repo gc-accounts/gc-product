@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import HomeHeroSection from '@/components/home-page/HomeHeroSection';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -16,12 +17,12 @@ import {
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
-// Form state management
 interface FormData {
   fullName: string;
   email: string;
   phone: string;
   experienceLevel: string;
+  program: string;
   currentBackground: string;
   preferredLearning: string;
 }
@@ -37,6 +38,17 @@ export default function HomePage() {
     email: '',
     phone: '',
     experienceLevel: '',
+    program: '',
+    currentBackground: '',
+    preferredLearning: ''
+  });
+
+  const [enrollmentFormData, setEnrollmentFormData] = useState<FormData>({
+    fullName: '',
+    email: '',
+    phone: '',
+    experienceLevel: '',
+    program: '',
     currentBackground: '',
     preferredLearning: ''
   });
@@ -47,6 +59,13 @@ export default function HomePage() {
 
   // Carousel states
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  // FAQ states
+  const [activeFAQCategory, setActiveFAQCategory] = useState('curriculum');
+  const [expandedFAQs, setExpandedFAQs] = useState<{ [key: string]: boolean }>({});
+
+  // Navigation state
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Form validation
   const validateForm = (data: FormData): FormErrors => {
@@ -73,12 +92,16 @@ export default function HomePage() {
     if (!data.experienceLevel) {
       errors.experienceLevel = 'Please select your experience level';
     }
+
+    if (!data.program) {
+      errors.program = 'Please select your experience level';
+    }
     
     return errors;
   };
 
   // Form submission
-  const handleFormSubmit = async (formData: FormData) => {
+  const handleFormSubmit = async (formData: FormData, formType: 'hero' | 'enrollment') => {
     const errors = validateForm(formData);
     setFormErrors(errors);
     
@@ -90,190 +113,23 @@ export default function HomePage() {
     
     // Simulate API call
     setTimeout(() => {
-      console.log('Hero form submitted:', formData);
+      console.log(`${formType} form submitted:`, formData);
       setSubmitSuccess(true);
       setIsSubmitting(false);
       
       // Clear form after 2 seconds
       setTimeout(() => {
         setSubmitSuccess(false);
-        setHeroFormData({ fullName: '', email: '', phone: '', experienceLevel: '', currentBackground: '', preferredLearning: '' });
+        if (formType === 'hero') {
+          setHeroFormData({ fullName: '', email: '', phone: '', experienceLevel: '', program: '', currentBackground: '', preferredLearning: '' });
+        } else {
+          setEnrollmentFormData({ fullName: '', email: '', phone: '', experienceLevel: '', program: '', currentBackground: '', preferredLearning: '' });
+        }
       }, 2000);
     }, 1000);
   };
 
-  // SECTION 1: HERO SECTION
-  const HeroSection = () => (
-    <section className="min-h-screen bg-gradient-to-br from-off-white via-white to-green-50 flex items-center py-10 sm:py-15 lg:py-20 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-green/10 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent-blue/10 rounded-full blur-3xl"></div>
-      </div>
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Content */}
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight">
-                Transform Your Career with{' '}
-                <span className="text-gradient">Affordable Tech Bootcamps</span>
-              </h1>
-              
-              <p className="text-lg sm:text-xl text-medium-gray leading-relaxed max-w-8xl">
-                Master Data Science, Analytics, and AI/ML at 1/3 the market price. Real skills. Real careers. Real transformation.
-              </p>
-              
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-primary-green rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-white text-sm">💰</span>
-                  </div>
-                  <div>
-                    <span className="text-base font-semibold text-dark-gray">Most Affordable</span>
-                    <p className="text-sm text-medium-gray">₹5,000 vs competitors&apos; ₹15,000+</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-primary-green rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-white text-sm">🎯</span>
-                  </div>
-                  <div>
-                    <span className="text-base font-semibold text-dark-gray">95% Placement Rate</span>
-                    <p className="text-sm text-medium-gray">Average 120% salary increase</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-primary-green rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-white text-sm">🚀</span>
-                  </div>
-                  <div>
-                    <span className="text-base font-semibold text-dark-gray">Industry-Ready</span>
-                    <p className="text-sm text-medium-gray">Production-grade projects and mentorship</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button 
-                  size="lg" 
-                  className="bg-primary-green hover:bg-secondary-green text-white px-8 py-4 text-lg font-semibold"
-                  onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  Explore Bootcamps
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg"
-                  className="border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white px-8 py-4 text-lg font-semibold"
-                  onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  View Success Stories
-                </Button>
-              </div>
-            </div>
-          </div>
-          
-          {/* Right Content - Form */}
-          <div className="mt-8 lg:mt-0">
-            <Card className="bg-white shadow-2xl border-0 w-full">
-              <CardHeader className="pb-4">
-                <CardTitle className="text-xl font-semibold text-dark-gray text-center">
-                  Start Your Transformation Today
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4 px-6 pb-6">
-                <div className="space-y-2">
-                  <Label htmlFor="hero-fullName" className="text-sm font-medium text-dark-gray">Full Name</Label>
-                  <Input
-                    id="hero-fullName"
-                    type="text"
-                    placeholder="Your full name"
-                    value={heroFormData.fullName}
-                    onChange={(e) => setHeroFormData({ ...heroFormData, fullName: e.target.value })}
-                    className={`border border-gray-300 h-11 mt-1 ${formErrors.fullName ? 'border-red-500' : ''}`}
-                  />
-                  {formErrors.fullName && (
-                    <p className="text-xs text-red-500 mt-1">{formErrors.fullName}</p>
-                  )}
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="hero-email" className="text-sm font-medium text-dark-gray">Email Address</Label>
-                  <Input
-                    id="hero-email"
-                    type="email"
-                    placeholder="you@example.com"
-                    value={heroFormData.email}
-                    onChange={(e) => setHeroFormData({ ...heroFormData, email: e.target.value })}
-                    className={`border border-gray-300 h-11 mt-1 ${formErrors.email ? 'border-red-500' : ''}`}
-                  />
-                  {formErrors.email && (
-                    <p className="text-xs text-red-500 mt-1">{formErrors.email}</p>
-                  )}
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="hero-phone" className="text-sm font-medium text-dark-gray">Phone Number</Label>
-                  <Input
-                    id="hero-phone"
-                    type="tel"
-                    placeholder="+91 XXXXXXXXXX"
-                    value={heroFormData.phone}
-                    onChange={(e) => setHeroFormData({ ...heroFormData, phone: e.target.value })}
-                    className={`border border-gray-300 h-11 mt-1 ${formErrors.phone ? 'border-red-500' : ''}`}
-                  />
-                  {formErrors.phone && (
-                    <p className="text-xs text-red-500 mt-1">{formErrors.phone}</p>
-                  )}
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="hero-experience" className="text-sm font-medium text-dark-gray">Experience Level</Label>
-                  <Select
-                    value={heroFormData.experienceLevel}
-                    onValueChange={(value) => setHeroFormData({ ...heroFormData, experienceLevel: value })}
-                  >
-                    <SelectTrigger className={`border border-gray-300 h-11 mt-1 ${formErrors.experienceLevel ? 'border-red-500' : ''}`}>
-                      <SelectValue placeholder="Select your level" />
-                    </SelectTrigger>
-                    <SelectContent className='bg-white'>
-                      <SelectItem value="beginner">Beginner</SelectItem>
-                      <SelectItem value="intermediate">Intermediate</SelectItem>
-                      <SelectItem value="advanced">Advanced</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {formErrors.experienceLevel && (
-                    <p className="text-xs text-red-500 mt-1">{formErrors.experienceLevel}</p>
-                  )}
-                </div>
-                
-                <Button
-                  onClick={() => handleFormSubmit(heroFormData)}
-                  disabled={isSubmitting}
-                  className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 h-12 text-lg font-semibold"
-                >
-                  {isSubmitting ? 'Submitting...' : 'Get Free Career Guide'}
-                </Button>
-                
-                {submitSuccess && (
-                  <div className="text-center text-green-600 font-medium text-sm">
-                    ✓ Check your email for the career guide!
-                  </div>
-                )}
-                
-                <p className="text-xs text-medium-gray text-center leading-relaxed">
-                  I agree to receive course updates and career tips
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+
 
   // SECTION 2: HIRING ORGANIZATIONS
   const HiringOrganizationsSection = () => {
@@ -831,7 +687,7 @@ export default function HomePage() {
     <div className="min-h-screen">
       <Navigation currentPage="home" />
       <main className="pt-16">
-        <HeroSection />
+        <HomeHeroSection />
         <HiringOrganizationsSection />
         <ProgramsSection />
         <WhoAreWeSection />
