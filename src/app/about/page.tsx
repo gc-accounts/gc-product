@@ -86,7 +86,7 @@ const bootcamps = [
     icon: "📈",
     title: "Data Analyst Bootcamp", 
     price: "₹5,000 + GST",
-    duration: "16 weeks",
+    duration: "3 months",
     students: "6,000+",
     topics: "Excel, SQL, Power BI, Python, Analytics",
     placement: "100%+",

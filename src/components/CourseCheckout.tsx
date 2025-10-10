@@ -269,7 +269,7 @@ const CourseCheckout = () => {
       <Navigation />
       <main className='min-h-screen bg-gray-50 py-12'>
         <div className='container mx-auto px-4'>
-          <Button variant='outline' className='mb-6' asChild>
+          <Button variant='outline' className='my-10' asChild>
             <Link href='/' className='flex items-center'>
               <ChevronLeft className='mr-2 h-4 w-4' /> Back to Home
             </Link>

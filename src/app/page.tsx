@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-
+import HiringOrganizationSection from '@/components/HiringOrganizationSection';
 interface FormData {
   fullName: string;
   email: string;
@@ -131,56 +131,7 @@ export default function HomePage() {
 
 
 
-  // SECTION 2: HIRING ORGANIZATIONS
-  const HiringOrganizationsSection = () => {
-    const companies = [
-      "https://strapi.odinschool.com/uploads/Meesho_100x40_individual_81f680e677.webp",
-      "https://strapi.odinschool.com/uploads/prolifics_100_X40_Individual_02765c8bbc.webp",
-      "https://strapi.odinschool.com/uploads/Ensoft100_X40_105ed0f32a.webp",
-      "https://strapi.odinschool.com/uploads/Deloitte_100_X40_1_1_ca02ecb519.webp",
-      "https://strapi.odinschool.com/uploads/Tatvic_100_X40_92af98eb92.webp",
-      "https://strapi.odinschool.com/uploads/genpact_100_X40_280d97151b.webp",
-      "https://strapi.odinschool.com/uploads/Pepsico100_X40_a3d789f2d4.webp",
-      "https://strapi.odinschool.com/uploads/Synchrony_INDIVIDUAL_100_X40_6cc77d6f53.webp",
-      "https://strapi.odinschool.com/uploads/TCS_100_X40_Individual_7ceeb6c515.webp",
-      "https://strapi.odinschool.com/uploads/Cognizant_100_X40_1_20f9d634ed.webp",
-      "https://strapi.odinschool.com/uploads/sutherland100_X40_d68abd31db.webp",
-      "https://strapi.odinschool.com/uploads/swiggy_100x40_indv_2fad998515.webp",
-      "https://strapi.odinschool.com/uploads/Infosys_100_X40_285cf1a2c6.webp",
-      "https://strapi.odinschool.com/uploads/IBM_100_X40_a4922015b6.webp",
-      "https://strapi.odinschool.com/uploads/JKTECH_100_X40_5229c19c27.webp",
-      "https://strapi.odinschool.com/uploads/Saarthi_Individual_100_x40_39ee46a45c.webp",
-      "https://strapi.odinschool.com/uploads/Tech_Mahindra100_X40_769822fb36.webp",
-      "https://strapi.odinschool.com/uploads/Bodhtree_INDIVIDUAL_100_X40_e4c952b088.webp",
 
-    ];
-
-    return (
-      <section className="bg-white py-10 sm:py-15 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-8 lg:mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-              Trusted by Leading Companies
-            </h2>
-            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
-              Our graduates work at Fortune 600+ companies and innovative startups worldwide
-            </p>
-          </div>
-          
-          <div className="overflow-hidden">
-            <div className="flex space-x-8 animate-scroll">
-              {[...companies, ...companies].map((company, index) => (
-                <div key={index} className="flex-shrink-0 w-40 h-20 bg-off-white rounded-lg flex items-center justify-center border border-border-gray hover:border-primary-green transition-colors group">
-                  <img src={company} alt="logo" />
-                  {/* <span className="text-sm font-semibold text-dark-gray group-hover:text-primary-green transition-colors">{company}</span> */}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  };
 
   // SECTION 3: PROGRAMS SECTION
   const ProgramsSection = () => {
@@ -196,7 +147,7 @@ export default function HomePage() {
           'Machine Learning algorithms',
           'Power BI dashboards',
           'Real-world projects',
-          '100% placement rate'
+          '100% placement assistance'
         ],
         badge: 'Most Popular',
         icon: '📊',
@@ -213,7 +164,7 @@ export default function HomePage() {
           'Power BI & Tableau',
           'Statistical analysis',
           'Business intelligence',
-          '100% placement rate'
+          '100% placement assistance'
         ],
         badge: 'Highest ROI',
         icon: '📈',
@@ -230,7 +181,7 @@ export default function HomePage() {
           'LLMs & Transformers',
           'RAG systems',
           'AI agents',
-          '100% placement rate'
+          '100% placement assistance'
         ],
         badge: 'Cutting Edge',
         icon: '🤖',
@@ -632,82 +583,92 @@ export default function HomePage() {
   };
 
   // SECTION 7: READY TO GET STARTED?
-  const ReadyToStartSection = () => (
-    <section className="bg-gradient-to-br from-off-white via-white to-blue-50 relative overflow-hidden py-10 sm:py-15 lg:py-20">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 right-20 w-64 h-64 bg-primary-green/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-64 h-64 bg-accent-blue/10 rounded-full blur-3xl"></div>
-      </div>
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-        <div className="text-center space-y-8">
-          <div className="text-center mb-8 lg:mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-              Start Your Transformation Today
-            </h2>
-            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
-              Join 5,000+ students who&apos;ve transformed their careers with Greycampus
-            </p>
-          </div>
-          
-          <div className="max-w-4xl mx-auto">
-            <p className="text-lg text-medium-gray leading-relaxed mb-8">
-              Choose your bootcamp, invest ₹5,000, and unlock a career that pays 3-5x more.
-            </p>
-            
-            {/* Stats Row */}
-            <div className="grid grid-cols-3 gap-8 mb-12">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary-green mb-2">95%</div>
-                <div className="text-sm text-medium-gray">Placement Rate</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary-green mb-2">120%</div>
-                <div className="text-sm text-medium-gray">Avg Salary Increase</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary-green mb-2">30-Day</div>
-                <div className="text-sm text-medium-gray">Job Assistance</div>
-              </div>
-            </div>
-            
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-primary-green hover:bg-secondary-green text-white px-12 py-4 text-lg font-semibold w-full sm:w-auto"
-                onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Explore Bootcamps
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white px-12 py-4 text-lg font-semibold w-full sm:w-auto"
-                onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Talk to Counselor
-              </Button>
-            </div>
-          </div>
-              </div>
-      </div>
-    </section>
-  );
+  // const ReadyToStartSection = () => (
+  //       {/* CTA Section */}
+  //       <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white to-green-50">
+  //         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+  //               <div className="text-center space-y-8">
+  //             <div className="space-y-6">
+  //               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
+  //                 Ready to Transform Your Career?
+  //               </h2>
+  //               <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
+  //                 Join thousands of professionals who&apos;ve already taken the leap with our affordable, industry-focused bootcamps.
+  //               </p>
+  //             </div>
+              
+  //             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+  //               <Button 
+  //                 size="lg" 
+  //                 className="bg-primary-green hover:bg-secondary-green text-white px-8 py-4 text-lg font-semibold"
+  //                 onClick={() => window.location.href = '/data-science-bootcamp'}
+  //               >
+  //                 Explore Bootcamps
+  //                 <ArrowRight className="ml-2 w-5 h-5" />
+  //               </Button>
+  //               <Button 
+  //                 variant="outline" 
+  //                 size="lg"
+  //                 className="border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white px-8 py-4 text-lg font-semibold"
+  //                 onClick={() => window.location.href = '/about'}
+  //               >
+  //                 Learn About Us
+  //               </Button>
+  //             </div>
+  //             </div>
+  //         </div>
+  //       </section>
+  // );
 
+  const TransFormSection=()=>{
+    return (
+         <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white to-green-50">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+                      <div className="text-center space-y-8">
+                    <div className="space-y-6">
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
+                        Ready to Transform Your Career?
+                      </h2>
+                      <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
+                        Join thousands of professionals who&apos;ve already taken the leap with our affordable, industry-focused bootcamps.
+                      </p>
+                    </div>
+                    
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                      <Button 
+                        size="lg" 
+                        className="bg-primary-green hover:bg-secondary-green text-white px-8 py-4 text-lg font-semibold"
+                        onClick={() => window.location.href = '/data-science-bootcamp'}
+                      >
+                        Explore Bootcamps
+                        <ArrowRight className="ml-2 w-5 h-5" />
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        size="lg"
+                        className="border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white px-8 py-4 text-lg font-semibold"
+                        onClick={() => window.location.href = '/about'}
+                      >
+                        Learn About Us
+                      </Button>
+                    </div>
+                    </div>
+                </div>
+              </section>
+    )
+  }
   return (
     <div className="min-h-screen">
       <Navigation currentPage="home" />
       <main className="pt-16">
         <HomeHeroSection />
-        <HiringOrganizationsSection />
+        {/* <HiringOrganizationsSection /> */}
+        <HiringOrganizationSection/>
         <ProgramsSection />
         <WhoAreWeSection />
         <WhyGreycampusSection />
         <TestimonialsSection />
-        <ReadyToStartSection />
+        <TransFormSection />
       </main>
       <Footer />
     </div>

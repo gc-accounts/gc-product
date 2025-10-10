@@ -112,7 +112,7 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({
       formData.append('Country', data.countryCode);
       formData.append('Ga_client_id', GaClientId);
       formData.append('Business Unit', 'Odinschool');
-      formData.append('Source_Domain', sourceDomain ?? 'Course form');
+      formData.append('Source_Domain', sourceDomain ?? 'GC Course Form');
       // formData.append('Device_Type1', device);
 
       // user location open

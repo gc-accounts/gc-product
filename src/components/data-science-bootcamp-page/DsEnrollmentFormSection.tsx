@@ -21,7 +21,7 @@ const DsEnrollmentFormSection = () => {
       },
       {
         icon: '♾️',
-        text: '18 months career support and career guidance.'
+        text: 'Career support and career guidance.'
       }
     ];
 
