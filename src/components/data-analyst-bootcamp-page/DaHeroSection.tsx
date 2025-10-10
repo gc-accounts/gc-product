@@ -12,7 +12,7 @@ const DaHeroSection = () => (
         {/* Left Content - 60% */}
         <div className="lg:col-span-3 space-y-6 lg:space-y-8">
           <div className="space-y-6">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-dark-gray leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight">
                 Master Data Analytics at{' '}
                 <span className="text-gradient">Just ₹5,000</span>
               </h1>

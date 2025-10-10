@@ -187,13 +187,13 @@ export default function AIMLBootcampPage() {
 
   // Why Choose Greycampus Section
   const WhyChooseSection = () => (
-    <section id="why-choose" className="py-16 sm:py-20 lg:py-24 bg-off-white">
+    <section id="why-choose" className="py-10 sm:py-15 lg:py-20 bg-off-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
             Why Choose Greycampus?
           </h2>
-          <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed">
+          <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
             Affordable education meets world-class quality
           </p>
         </div>
@@ -252,13 +252,13 @@ export default function AIMLBootcampPage() {
 
   // Why Become AI/ML Engineer Section
   const WhyBecomeAIMLEngineerSection = () => (
-    <section className="py-16 sm:py-20 lg:py-24 bg-white">
+    <section className="py-10 sm:py-15 lg:py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
             Why Become an AI/ML Engineer?
           </h2>
-          <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed">
+          <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
             Fastest growing field with highest earning potential
           </p>
         </div>
@@ -465,13 +465,13 @@ export default function AIMLBootcampPage() {
     ];
 
     return (
-      <section id="careers" className="py-16 sm:py-20 lg:py-24 bg-gradient-subtle">
+      <section id="careers" className="py-10 sm:py-15 lg:py-20 bg-gradient-subtle">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Career Paths After Bootcamp
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Multiple high-paying roles with rapid growth
             </p>
           </div>
@@ -534,10 +534,10 @@ export default function AIMLBootcampPage() {
       <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-8 lg:mb-12">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Trusted by Leading AI Companies
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Our graduates work at top AI and tech companies worldwide
             </p>
           </div>
@@ -748,13 +748,13 @@ export default function AIMLBootcampPage() {
     };
 
     return (
-      <section id="curriculum" className="py-16 sm:py-20 lg:py-24 bg-off-white">
+      <section id="curriculum" className="py-10 sm:py-15 lg:py-20 bg-off-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               What You'll Learn
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               20 weeks of cutting-edge AI/ML curriculum
             </p>
           </div>
@@ -931,13 +931,13 @@ export default function AIMLBootcampPage() {
     ];
 
     return (
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section className="py-10 sm:py-15 lg:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               You'll Be Able To
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Production-ready AI skills. Real impact. Career transformation.
             </p>
           </div>
@@ -1012,13 +1012,13 @@ export default function AIMLBootcampPage() {
     ];
 
     return (
-      <section className="py-16 sm:py-20 lg:py-24 bg-off-white">
+      <section className="py-10 sm:py-15 lg:py-20 bg-off-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Build Production AI Systems
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Apply your skills to projects used by real companies
             </p>
           </div>
@@ -1124,13 +1124,13 @@ export default function AIMLBootcampPage() {
     ];
 
     return (
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section className="py-10 sm:py-15 lg:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               How Do I Enroll?
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Simple 5-step process to launch your AI career
             </p>
           </div>
@@ -1156,11 +1156,11 @@ export default function AIMLBootcampPage() {
                   </Card>
                   
                   {/* Connector Line */}
-                  {index < steps.length - 1 && (
+                  {/* {index < steps.length - 1 && (
                     <div className="absolute top-8 left-full w-12 h-0.5 bg-primary-green transform translate-x-6 z-0">
                       <div className="absolute right-0 top-0 w-0 h-0 border-l-4 border-l-primary-green border-t-2 border-t-transparent border-b-2 border-b-transparent transform translate-x-1"></div>
                     </div>
-                  )}
+                  )} */}
                 </div>
               ))}
             </div>
@@ -1228,13 +1228,13 @@ export default function AIMLBootcampPage() {
     ];
 
     return (
-      <section id="pricing" className="py-16 sm:py-20 lg:py-24 bg-gradient-subtle">
+      <section id="pricing" className="py-10 sm:py-15 lg:py-20 bg-gradient-subtle">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Invest in Your AI Future at Affordable Prices
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Most cost-effective AI bootcamp without compromising quality
             </p>
           </div>
@@ -1408,13 +1408,13 @@ export default function AIMLBootcampPage() {
     }, [testimonials.length]);
 
     return (
-      <section className="py-16 sm:py-20 lg:py-24 bg-off-white">
+      <section className="py-10 sm:py-15 lg:py-20 bg-off-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Success Stories
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Real engineers, real AI projects, real careers
             </p>
           </div>
@@ -1602,13 +1602,13 @@ export default function AIMLBootcampPage() {
     };
 
     return (
-      <section id="faq" className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section id="faq" className="py-10 sm:py-15 lg:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed">
+            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
               Everything you need to know about the AI/ML bootcamp
             </p>
           </div>

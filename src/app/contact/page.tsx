@@ -126,13 +126,13 @@ export default function ContactPage() {
       
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-off-white via-white to-green-50">
+        <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white via-white to-green-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-              <div className="text-center space-y-6 mb-16">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-dark-gray">
+              <div className="text-center space-y-6">
+              <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight">
                 Get in Touch
               </h1>
-              <p className="text-lg sm:text-xl text-medium-gray leading-relaxed max-w-5xl mx-auto">
+              <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
                 Have questions about our bootcamps? Need career guidance? We&apos;re here to help you transform your career.
               </p>
               </div>
@@ -406,14 +406,14 @@ export default function ContactPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-off-white to-green-50">
+        <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white to-green-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
                 <div className="text-center space-y-8">
               <div className="space-y-6">
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                   Ready to Transform Your Career?
                 </h2>
-                <p className="text-lg text-medium-gray leading-relaxed max-w-3xl mx-auto">
+                <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
                   Join thousands of professionals who&apos;ve already taken the leap with our affordable, industry-focused bootcamps.
                 </p>
               </div>

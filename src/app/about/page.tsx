@@ -130,13 +130,13 @@ export default function AboutPage() {
 
       <main className="pt-16">
         {/* SECTION 1: HERO SECTION */}
-        <section className="min-h-[80vh] bg-gradient-to-br from-off-white via-white to-green-50 flex items-center">
+        <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white via-white to-green-50 flex items-center">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
             <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
               {/* LEFT CONTENT (60%) */}
               <div className="lg:col-span-3 space-y-8">
                 <div className="space-y-6">
-                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-dark-gray leading-tight">
+                  <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight">
                     Empowering Professionals Through World-Class Education
                   </h1>
                   <p className="text-lg text-medium-gray leading-relaxed">
@@ -151,7 +151,7 @@ export default function AboutPage() {
                   <Button 
                     size="lg" 
                     variant="outline"
-                    className="border-primary-green text-primary-green hover:bg-primary-green hover:text-white h-12 w-48 text-base font-semibold"
+                    className="border-primary-green text-primary-green hover:bg-primary-green hover:text-white h-12 text-base font-semibold"
                   >
                     Explore Our Mission
                     <ArrowRight className="ml-2 w-5 h-5" />
@@ -179,13 +179,13 @@ export default function AboutPage() {
         </section>
 
         {/* SECTION 2: OUR STORY */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-white">
+        <section className="py-10 sm:py-15 lg:py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               {/* LEFT CONTENT */}
               <div className="space-y-8">
                 <div className="space-y-6">
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray">
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                     Our Story
                   </h2>
                   <p className="text-lg text-medium-gray leading-relaxed">
@@ -229,13 +229,13 @@ export default function AboutPage() {
         </section>
 
         {/* SECTION 3: OUR VALUES */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-off-white to-green-50">
+        <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white to-green-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
             <div className="text-center mb-12 lg:mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Our Values
               </h2>
-              <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-8xl">
+              <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
                 The principles that guide everything we do
               </p>
             </div>
@@ -317,13 +317,13 @@ export default function AboutPage() {
         </section>
 
         {/* SECTION 4: IMPACT & STATS */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-white">
+        <section className="py-10 sm:py-15 lg:py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
             <div className="text-center mb-12 lg:mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Our Impact
               </h2>
-              <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-8xl">
+              <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
                 Numbers that tell the story of transformation
               </p>
             </div>
@@ -381,13 +381,13 @@ export default function AboutPage() {
         </section>
 
         {/* SECTION 5: OUR TEAM */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-off-white to-green-50">
+        <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white to-green-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
             <div className="text-center mb-12 lg:mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Meet Our Team
               </h2>
-              <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-8xl">
+              <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
                 Industry veterans and education experts working together
               </p>
             </div>
@@ -425,13 +425,13 @@ export default function AboutPage() {
         </section>
 
         {/* SECTION 6: OUR BOOTCAMPS */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-white">
+        <section className="py-10 sm:py-15 lg:py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
             <div className="text-center mb-12 lg:mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Our Bootcamps
               </h2>
-              <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-8xl">
+              <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
                 Comprehensive programs designed for career transformation
               </p>
             </div>
@@ -484,13 +484,13 @@ export default function AboutPage() {
         </section>
 
         {/* SECTION 7: PARTNERS & CLIENTS */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-off-white to-green-50">
+        <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white to-green-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
             <div className="text-center mb-12 lg:mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Trusted by Leading Companies
               </h2>
-                <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-8xl">
+                <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
                   Our graduates work at the world&apos;s most innovative organizations
                 </p>
             </div>
@@ -508,13 +508,13 @@ export default function AboutPage() {
         </section>
 
         {/* SECTION 8: ROADMAP */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-white">
+        <section className="py-10 sm:py-15 lg:py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
             <div className="text-center mb-12 lg:mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-4 lg:mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Our Roadmap
               </h2>
-              <p className="text-lg lg:text-xl text-medium-gray mx-auto leading-relaxed max-w-8xl">
+              <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
                 Exciting plans for the future of education
               </p>
             </div>
@@ -544,7 +544,7 @@ export default function AboutPage() {
         </section>
 
         {/* SECTION 9: CTA */}
-        <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-off-white via-white to-blue-50 relative overflow-hidden">
+        <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white via-white to-blue-50 relative overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-20 right-20 w-64 h-64 bg-primary-green/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-20 left-20 w-64 h-64 bg-accent-blue/10 rounded-full blur-3xl"></div>
@@ -556,7 +556,7 @@ export default function AboutPage() {
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray">
                   Join Our Mission
                 </h2>
-                <p className="text-xl text-dark-gray max-w-3xl mx-auto">
+                <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
                   Be part of the education revolution
                 </p>
               </div>
