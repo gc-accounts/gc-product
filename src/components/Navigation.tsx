@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 interface NavigationProps {
@@ -117,21 +116,21 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
                     <Link 
                       href="/data-science-bootcamp" 
                       className="block text-medium-gray hover:text-primary-green transition-colors"
-                      onClick={toggleMenu}
+                      onClick={() => { toggleMenu(); setIsProductsOpen(false); }}
                     >
                       Data Science Bootcamp
                     </Link>
                     <Link 
                       href="/data-analyst-bootcamp" 
                       className="block text-medium-gray hover:text-primary-green transition-colors"
-                      onClick={toggleMenu}
+                      onClick={() => { toggleMenu(); setIsProductsOpen(false); }}
                     >
                       Data Analyst Bootcamp
                     </Link>
                     <Link 
                       href="/aiml-bootcamp" 
                       className="block text-medium-gray hover:text-primary-green transition-colors"
-                      onClick={toggleMenu}
+                      onClick={() => { toggleMenu(); setIsProductsOpen(false); }}
                     >
                       AI/ML Bootcamp
                     </Link>
@@ -146,7 +145,7 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
                     ? 'text-primary-green font-semibold' 
                     : 'text-medium-gray hover:text-primary-green'
                 }`}
-                onClick={toggleMenu}
+                onClick={() => { toggleMenu(); setIsProductsOpen(false); }}
               >
                 About
               </a>
@@ -157,7 +156,7 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
                     ? 'text-primary-green font-semibold' 
                     : 'text-medium-gray hover:text-primary-green'
                 }`}
-                onClick={toggleMenu}
+                onClick={() => { toggleMenu(); setIsProductsOpen(false); }}
               >
                 Contact
               </a>
@@ -165,14 +164,6 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
           </div>
         )}
       </div>
-      
-      {/* Click outside to close dropdown */}
-      {isProductsOpen && (
-        <div 
-          className="fixed inset-0 z-40" 
-          onClick={() => setIsProductsOpen(false)}
-        />
-      )}
     </header>
   );
 }
