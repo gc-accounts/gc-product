@@ -60,8 +60,8 @@ const CourseCheckout = () => {
   // ✅ Dynamically detect program name based on URL
   const getProgramName = () => {
     if (pathname.includes('data-science-bootcamp')) return 'GC Data Science Bootcamp';
-    if (pathname.includes('data-analyst-bootcamp-page')) return 'GC Data Analyst Bootcamp';
-    if (pathname.includes('aiml-bootcamp-page')) return 'GC AI/ML Bootcamp';
+    if (pathname.includes('data-analyst-bootcamp')) return 'GC Data Analyst Bootcamp';
+    if (pathname.includes('aiml-bootcamp')) return 'GC AI/ML Bootcamp';
     return 'Static Product Checkout';
   };
 
