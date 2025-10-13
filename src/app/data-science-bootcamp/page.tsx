@@ -164,7 +164,7 @@ export default function HomePage() {
             {
               icon: '🕐',
               title: 'Flexible Learning',
-              description: 'Self-paced with live sessions. Learn at your speed'
+              description: '3-months LIVE online classes. Learn at your speed'
             },
              {
               icon: "🧠",
@@ -1207,7 +1207,7 @@ export default function HomePage() {
         },
         {
           question: 'Are there live sessions or is it self-paced?',
-          answer: 'We offer both live sessions and self-paced learning. You can attend live sessions for real-time interaction or watch recordings at your convenience.'
+          answer: 'We offer 3-months LIVE online classes. You can attend live sessions for real-time interaction or watch recordings at your convenience.'
         },
         {
           question: 'What if I miss a live session?',

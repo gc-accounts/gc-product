@@ -73,7 +73,7 @@ import React, { useState } from 'react'
         },
         {
           question: 'Can I study while working full-time?',
-          answer: 'Yes! Many students work full-time while studying part-time. The flexible schedule, self-paced modules, and optional live sessions make it manageable.'
+          answer: 'Yes! Many students work full-time while studying part-time. The flexible schedule, and optional live sessions make it manageable.'
         },
         {
           question: 'Is there a money-back guarantee?',

@@ -73,7 +73,7 @@ import React, { useState } from 'react'
         },
         {
           question: 'Can I study while working full-time?',
-          answer: 'Yes! Many of our students work full-time. Our flexible schedule and self-paced model make it possible to balance both.'
+          answer: 'Yes! Many of our students work full-time.'
         },
         {
           question: 'Is there a money-back guarantee?',

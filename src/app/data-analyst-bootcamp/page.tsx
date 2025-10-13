@@ -178,7 +178,7 @@ export default function DataAnalystBootcampPage() {
             {
               icon: '🕐',
               title: 'Flexible Learning',
-              description: 'Self-paced with live sessions. Learn at your speed'
+              description: '3-months LIVE online classes. Learn at your speed'
             },
              {
               icon: "🧠",
@@ -927,167 +927,6 @@ export default function DataAnalystBootcampPage() {
     );
   };
 
-  // Enrollment Form Section
-  const EnrollmentFormSection = () => {
-    const taglines = [
-      {
-        icon: '💼',
-        text: 'Industry-ready skills at affordable prices'
-      },
-      {
-        icon: '👨‍💼',
-        text: 'Learn from experienced data professionals'
-      },
-      {
-        icon: '📁',
-        text: 'Build real project portfolio'
-      },
-      {
-        icon: '💰',
-        text: '100% placement assistance.'
-      },
-      {
-        icon: '♾️',
-        text: 'Career support and career guidance.'
-      }
-    ];
-
-    return (
-      <section className="py-10 sm:py-15 lg:py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left Content */}
-            <div className="space-y-6 lg:space-y-8">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-6 lg:mb-8">
-                Your Data Analyst Career Starts Here
-              </h2>
-              
-              <div className="space-y-4 lg:space-y-6">
-                {taglines.map((tagline, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <div className="text-2xl flex-shrink-0">{tagline.icon}</div>
-                    <p className="text-lg text-dark-gray leading-relaxed">
-                      {tagline.text}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Right Content - Form */}
-            <div className="mt-8 lg:mt-0">
-              <Card className="bg-white shadow-lg border-0 w-full">
-                <CardHeader className="pb-4">
-                  <CardTitle className="text-xl font-semibold text-dark-gray text-center">
-                    Start Your Journey
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4 px-6 pb-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="enrollment-fullName" className="text-sm font-medium text-dark-gray">Full Name</Label>
-                    <Input
-                      id="enrollment-fullName"
-                      type="text"
-                      placeholder="Your full name"
-                      value={enrollmentFormData.fullName}
-                      onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, fullName: e.target.value })}
-                      className={`h-11 ${formErrors.fullName ? 'border-red-500' : ''}`}
-                    />
-                    {formErrors.fullName && (
-                      <p className="text-xs text-red-500 mt-1">{formErrors.fullName}</p>
-                    )}
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="enrollment-email" className="text-sm font-medium text-dark-gray">Email Address</Label>
-                    <Input
-                      id="enrollment-email"
-                      type="email"
-                      placeholder="you@example.com"
-                      value={enrollmentFormData.email}
-                      onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, email: e.target.value })}
-                      className={`h-11 ${formErrors.email ? 'border-red-500' : ''}`}
-                    />
-                    {formErrors.email && (
-                      <p className="text-xs text-red-500 mt-1">{formErrors.email}</p>
-                    )}
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="enrollment-phone" className="text-sm font-medium text-dark-gray">Phone Number</Label>
-                    <Input
-                      id="enrollment-phone"
-                      type="tel"
-                      placeholder="+91 XXXXXXXXXX"
-                      value={enrollmentFormData.phone}
-                      onChange={(e) => setEnrollmentFormData({ ...enrollmentFormData, phone: e.target.value })}
-                      className={`h-11 ${formErrors.phone ? 'border-red-500' : ''}`}
-                    />
-                    {formErrors.phone && (
-                      <p className="text-xs text-red-500 mt-1">{formErrors.phone}</p>
-                    )}
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="enrollment-background" className="text-sm font-medium text-dark-gray">Current Background</Label>
-                    <Select
-                      value={enrollmentFormData.currentBackground}
-                      onValueChange={(value) => setEnrollmentFormData({ ...enrollmentFormData, currentBackground: value })}
-                    >
-                      <SelectTrigger className="h-11">
-                        <SelectValue placeholder="Select your background" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="student">Student</SelectItem>
-                        <SelectItem value="working-professional">Working Professional</SelectItem>
-                        <SelectItem value="career-changer">Career Changer</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="enrollment-learning" className="text-sm font-medium text-dark-gray">Preferred Learning Style</Label>
-                    <Select
-                      value={enrollmentFormData.preferredLearning}
-                      onValueChange={(value) => setEnrollmentFormData({ ...enrollmentFormData, preferredLearning: value })}
-                    >
-                      <SelectTrigger className="h-11">
-                        <SelectValue placeholder="Select learning style" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="self-paced">Self-paced</SelectItem>
-                        <SelectItem value="live-sessions">Live Sessions</SelectItem>
-                        <SelectItem value="mix">Mix of Both</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  
-                  <Button
-                    onClick={() => handleFormSubmit(enrollmentFormData, 'enrollment')}
-                    disabled={isSubmitting}
-                    className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 h-12 text-lg font-semibold"
-                  >
-                    {isSubmitting ? 'Submitting...' : "Let's Get Started"}
-                  </Button>
-                  
-                  {submitSuccess && (
-                    <div className="text-center text-green-600 font-medium text-sm">
-                      ✓ Welcome aboard! Check your email.
-                    </div>
-                  )}
-                  
-                  <p className="text-xs text-medium-gray text-center leading-relaxed">
-                    I agree to receive course updates and career tips
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  };
 
   // Testimonials Section
   const TestimonialsSection = () => {
@@ -1317,7 +1156,7 @@ export default function DataAnalystBootcampPage() {
         },
         {
           question: 'Can I study while working full-time?',
-          answer: 'Yes! Many of our students work full-time. Our flexible schedule and self-paced model make it possible to balance both.'
+          answer: 'Yes! Many of our students work full-time.'
         },
         {
           question: 'Is there a money-back guarantee?',
