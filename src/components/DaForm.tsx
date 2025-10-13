@@ -1,33 +1,29 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Card, CardContent } from '../ui/card';
-import { Input } from '../ui/input';
-import { Button } from '../ui/button';
+import { Card, CardContent } from './ui/card';
+import { Input } from './ui/input';
+import { Button } from './ui/button';
 import { useToast } from '@/components/hooks/use-toast';
-import { getUTMTrackingData } from '../utils/getUTMTrackingData';
-import { getGaCookieValue } from '../utils/cookieUtils';
-import { fetchUserLocation } from '../utils/fetchUserLocation';
-import { getOriginalTrafficSource } from '../utils/getOriginalTrafficSource';
-import { CountryCodeData } from '../data/CountryCodeData';
-import { useRouter } from 'next/navigation';
+import { getUTMTrackingData } from './utils/getUTMTrackingData';
+import { getGaCookieValue } from './utils/cookieUtils';
+import { fetchUserLocation } from './utils/fetchUserLocation';
+import { getOriginalTrafficSource } from './utils/getOriginalTrafficSource';
+import { CountryCodeData } from './data/CountryCodeData';
 
-interface DsFormProps {
+interface DaFormProps {
   isModal?: boolean;
-  onClose?: () => void; // optional callback for modal close
+  onClose?: () => void;
 }
 
-const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
+const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
   const { toast } = useToast();
-  const router = useRouter();
-
   const [utm, setUtm] = useState<Record<string, string>>({});
   const [gaClientId, setGaClientId] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Country selector
   const [countrySearch, setCountrySearch] = useState('');
   const [filteredCountries, setFilteredCountries] = useState(CountryCodeData);
   const [selectedCountry, setSelectedCountry] = useState({
@@ -36,7 +32,6 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
   });
   const [showDropdown, setShowDropdown] = useState(false);
 
-  // Fetch UTM, GA, and location data
   useEffect(() => {
     setUtm(getUTMTrackingData());
     setGaClientId(getGaCookieValue());
@@ -46,7 +41,6 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
     });
   }, []);
 
-  // Filter countries on search
   useEffect(() => {
     if (countrySearch.trim() === '') {
       setFilteredCountries(CountryCodeData);
@@ -59,7 +53,6 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
     }
   }, [countrySearch]);
 
-  // Fetch Zoho Access Token
   const getAccessToken = async () => {
     const res = await fetch('/api/auth/course-form-token', {
       method: 'POST',
@@ -70,7 +63,6 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
     return data.access_token;
   };
 
-  // Submit Handler
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
@@ -78,33 +70,28 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
     const form = e.currentTarget;
     const formData = new FormData(form);
     const phone = (formData.get('Phone') as string)?.trim();
-
     const fullPhone = `+${selectedCountry.code}${phone}`;
+
     formData.delete('Phone');
     formData.append('Phone', fullPhone);
+    formData.append('Country', selectedCountry.country);
 
     try {
       const token = await getAccessToken();
 
-      // Append additional tracking fields
       formData.append('accessToken', token);
-      formData.append('Program', 'GC Data Science Bootcamp');
+      formData.append('Program', 'GC Data Analyst Bootcamp');
       formData.append('Ga_client_id', gaClientId);
       formData.append('Business Unit', 'Greycampus');
       formData.append('Source_Domain', isModal ? 'GC Brochure Form' : 'GC Course Form');
       formData.append('Other_City', city);
       formData.append('Other_State', state);
-      formData.append('Country', selectedCountry.country);
+
+      // Tracking
       formData.append('First Page Seen', utm['First Page Seen'] ?? '');
       formData.append('Original Traffic Source', getOriginalTrafficSource(utm));
-      formData.append(
-        'Original Traffic Source Drill-Down 1',
-        utm['Original Traffic Source Drill-Down 1'] ?? ''
-      );
-      formData.append(
-        'Original Traffic Source Drill-Down 2',
-        utm['Original Traffic Source Drill-Down 2'] ?? ''
-      );
+      formData.append('Original Traffic Source Drill-Down 1', utm['Original Traffic Source Drill-Down 1'] ?? '');
+      formData.append('Original Traffic Source Drill-Down 2', utm['Original Traffic Source Drill-Down 2'] ?? '');
       formData.append('UTM Term-First Page Seen', utm['UTM Term-First Page Seen'] ?? '');
       formData.append('UTM Content-First Page Seen', utm['UTM Content-First Page Seen'] ?? '');
       formData.append('ads_gclid', utm['ads_gclid'] ?? '');
@@ -119,22 +106,18 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
         throw new Error(err.error || 'Submission failed');
       }
 
-      // ✅ Success Toast
       toast({
         title: 'Success!',
-        description: 'Your details have been submitted successfully. Our team will get in touch soon!',
+        description: 'Your details have been submitted successfully!',
       });
 
-      // ✅ Modal case: open PDF & close dialog
+      // ✅ If used in modal, open PDF and close it
       if (isModal) {
-        const brochurePath = '/Data Science Bootcamp - GC (3) (1).pdf'; // from /public
+        const brochurePath = '/Data Analyst Bootcamp.pdf';
         window.open(brochurePath, '_blank');
-
-        // Optional close (if passed from Dialog)
         if (onClose) onClose();
       }
 
-      // Reset form
       form.reset();
       setCountrySearch(selectedCountry.country);
     } catch (err: any) {
@@ -194,12 +177,7 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
               )}
             </div>
 
-            {/* Phone input */}
-            <Input
-              name="Phone"
-              placeholder={`+${selectedCountry.code} 99999 99999`}
-              required
-            />
+            <Input name="Phone" placeholder={`+${selectedCountry.code} 99999 99999`} required />
           </div>
 
           {/* Year of Graduation */}
@@ -255,4 +233,4 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
   );
 };
 
-export default DsForm;
+export default DaForm;

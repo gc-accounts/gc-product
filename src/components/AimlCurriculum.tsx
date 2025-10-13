@@ -2,190 +2,217 @@
 import { CheckCircle } from 'lucide-react';
 import React, { useState } from 'react'
 
-  const DaProgramCurriculum = () => {
+
+interface Props {
+  sectionClass?: string;
+  title?: string;
+  subText?: string;
+}
+
+const AimlCurriculum = ({ sectionClass, title, subText }: Props) => {
+
     const modules = [
       {
-        id: 'statistics',
-        title: 'Applied Statistics for Data Science',
+        id: 'python1',
+        title: 'Python for AI Applications – Part I',
         duration: '2 weeks',
         difficulty: 1,
         topics: [
-          'Descriptive and inferential statistics',
-          'Probability distributions',
-          'Hypothesis testing for business decisions',
-          'Statistical inference and confidence intervals'
+          'Advanced Python concepts',
+          'Functional programming',
+          'Performance optimization',
+          'Real-world Python best practices'
         ],
         outcomes: [
-          'Understand statistical fundamentals',
-          'Perform statistical analysis',
-          'Interpret results for business insights'
+          'Master advanced Python',
+          'Write optimized code',
+          'Real-world problem solving'
         ],
-        tools: ['Python', 'SciPy', 'Statsmodels']
+        tools: ['Python 3.9+', 'libraries']
       },
       {
-        id: 'sql',
-        title: 'Advanced SQL for Data Analysis',
+        id: 'python2',
+        title: 'Python for AI Applications – Part II',
         duration: '2 weeks',
         difficulty: 2,
         topics: [
-          'Complex queries and window functions',
-          'Query optimization',
-          'Real databases and performance tuning',
-          'Analytics SQL patterns'
+          'NumPy mastery',
+          'Pandas data processing',
+          'Data manipulation techniques',
+          'Performance optimization'
         ],
         outcomes: [
-          'Write optimized queries',
-          'Performance tuning',
-          'Analytics SQL expertise'
+          'Data processing expertise',
+          'NumPy/Pandas mastery',
+          'Efficient data handling'
         ],
-        tools: ['MySQL']
+        tools: ['NumPy', 'Pandas', 'Scikit-learn']
       },
       {
-        id: 'powerbi1',
-        title: 'Power BI – Data Integration & Power Query',
-        duration: '2 weeks',
-        difficulty: 2,
-        topics: [
-          'Data import and ETL processes',
-          'Power Query transformations',
-          'Data modeling basics',
-          'Data pipeline creation'
-        ],
-        outcomes: [
-          'Transform and model data',
-          'Create data pipelines',
-          'Power Query mastery'
-        ],
-        tools: ['Power BI', 'Excel', 'Power Query']
-      },
-      {
-        id: 'powerbi2',
-        title: 'Power BI – Modeling, DAX & Visual Analytics',
-        duration: '2 weeks',
-        difficulty: 3,
-        topics: [
-          'DAX formulas and measures',
-          'Dashboard design principles',
-          'BI concepts and best practices',
-          'Advanced visualizations'
-        ],
-        outcomes: [
-          'Create advanced dashboards',
-          'DAX expertise',
-          'BI thinking and design'
-        ],
-        tools: ['Power BI', 'DAX']
-      },
-      {
-        id: 'eda',
-        title: 'Exploratory Data Analysis (EDA) Techniques',
+        id: 'eda1',
+        title: 'Exploratory Data Analysis (EDA) – Part I',
         duration: '2 weeks',
         difficulty: 2,
         topics: [
           'Data visualization techniques',
-          'Pattern recognition methods',
-          'Insight extraction strategies',
-          'Professional visualization standards'
+          'Statistical analysis methods',
+          'Pattern recognition',
+          'Data quality assessment'
         ],
         outcomes: [
-          'Find patterns in data',
-          'Create professional visualizations',
-          'Extract actionable insights'
+          'Comprehensive EDA skills',
+          'Statistical analysis',
+          'Data visualization mastery'
         ],
-        tools: ['Python', 'Matplotlib', 'Seaborn', 'Plotly']
+        tools: ['Matplotlib', 'Seaborn', 'Plotly']
       },
       {
-        id: 'python',
-        title: 'Python for Data Analysis',
-        duration: '2 weeks',
-        difficulty: 2,
-        topics: [
-          'Pandas mastery for data manipulation',
-          'NumPy operations and arrays',
-          'Data cleaning and preprocessing',
-          'Python data analysis workflows'
-        ],
-        outcomes: [
-          'Data manipulation expertise',
-          'Preprocessing mastery',
-          'Python analytics proficiency'
-        ],
-        tools: ['Python', 'Pandas', 'NumPy']
-      },
-      {
-        id: 'ml',
-        title: 'Machine Learning & Feature Engineering',
+        id: 'eda2',
+        title: 'Exploratory Data Analysis (EDA) – Part II',
         duration: '2 weeks',
         difficulty: 3,
         topics: [
-          'Predictive analytics fundamentals',
-          'Feature selection techniques',
-          'Model evaluation methods',
-          'Business outcome prediction'
+          'Advanced visualization',
+          'Feature engineering',
+          'Data preprocessing',
+          'Statistical modeling'
         ],
         outcomes: [
-          'Build ML models',
-          'Predict business outcomes',
-          'Feature engineering expertise'
+          'Advanced EDA techniques',
+          'Feature engineering skills',
+          'Statistical modeling'
         ],
-        tools: ['Scikit-learn', 'Python', 'ML libraries']
+        tools: ['Python', 'advanced visualization']
       },
       {
-        id: 'genai',
-        title: 'Generative AI Applications',
-        duration: '1 week',
-        difficulty: 2,
+        id: 'ml1',
+        title: 'Machine Learning – Part I (Supervised)',
+        duration: '3 weeks',
+        difficulty: 3,
         topics: [
-          'LLMs for analytics workflows',
-          'AI-powered insights generation',
-          'Prompt engineering for data analysis',
-          'ChatGPT for analytics tasks'
+          'Regression algorithms',
+          'Classification methods',
+          'Model optimization',
+          'Cross-validation techniques'
         ],
         outcomes: [
-          'Leverage AI for productivity',
-          'ChatGPT for analytics',
-          'AI integration in workflows'
+          'Supervised learning mastery',
+          'Model optimization skills',
+          'Performance evaluation'
         ],
-        tools: ['OpenAI APIs', 'ChatGPT', 'LLMs']
+        tools: ['Scikit-learn', 'LightGBM']
       },
       {
-        id: 'capstone',
-        title: 'Capstone Project – End-to-End Data Solution',
+        id: 'ml2',
+        title: 'Machine Learning – Part II (Unsupervised & Deep Learning)',
+        duration: '3 weeks',
+        difficulty: 4,
+        topics: [
+          'Clustering algorithms',
+          'Neural networks fundamentals',
+          'CNNs and RNNs',
+          'Deep learning architectures'
+        ],
+        outcomes: [
+          'Unsupervised learning skills',
+          'Deep learning fundamentals',
+          'Neural network design'
+        ],
+        tools: ['TensorFlow', 'Keras', 'PyTorch']
+      },
+      {
+        id: 'llm',
+        title: 'Foundational Language Models & Fine-tuning',
+        duration: '2 weeks',
+        difficulty: 4,
+        topics: [
+          'Transformer architecture',
+          'BERT and GPT models',
+          'Fine-tuning techniques',
+          'Transfer learning'
+        ],
+        outcomes: [
+          'LLM understanding',
+          'Fine-tuning expertise',
+          'Transfer learning skills'
+        ],
+        tools: ['Hugging Face', 'PyTorch', 'TensorFlow']
+      },
+      {
+        id: 'rag',
+        title: 'Retrieval Augmented Generation (RAGs)',
         duration: '1 week',
         difficulty: 4,
         topics: [
-          'Real-world analysis projects',
-          'Presentation and communication',
-          'Portfolio building',
-          'Job-ready skills demonstration'
+          'Vector databases',
+          'Semantic search',
+          'RAG system architecture',
+          'Embedding techniques'
         ],
         outcomes: [
-          'Portfolio-ready project',
-          'Job-ready skills',
-          'End-to-end solution delivery'
+          'RAG system design',
+          'Vector database skills',
+          'Semantic search implementation'
         ],
-        tools: ['All learned tools', 'Presentation skills']
+        tools: ['LangChain', 'OpenAI APIs', 'Pinecone']
+      },
+      {
+        id: 'agents',
+        title: 'AI Agents, Deployment & Projects',
+        duration: '2 weeks',
+        difficulty: 5,
+        topics: [
+          'Autonomous agents design',
+          'Docker containerization',
+          'Cloud deployment',
+          'Production monitoring'
+        ],
+        outcomes: [
+          'AI agent development',
+          'Production deployment',
+          'System monitoring'
+        ],
+        tools: ['Docker', 'Kubernetes', 'AWS', 'GCP', 'Azure']
+      },
+      {
+        id: 'capstone',
+        title: 'Capstone Project – Production AI System',
+        duration: '1 week',
+        difficulty: 5,
+        topics: [
+          'End-to-end project development',
+          'Production deployment',
+          'System monitoring',
+          'Performance optimization'
+        ],
+        outcomes: [
+          'Complete AI system',
+          'Production deployment',
+          'Real-world application'
+        ],
+        tools: ['All learned tools']
       }
     ];
 
-    const [activeModule, setActiveModule] = useState('statistics');
+    const [activeModule, setActiveModule] = useState('python1');
 
     const getDifficultyStars = (difficulty: number) => {
       return '⭐'.repeat(difficulty) + '☆'.repeat(5 - difficulty);
     };
 
     return (
-      <section id="curriculum" className="py-10 sm:py-15 lg:py-20 bg-off-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-              What You'll Learn
-            </h2>
-            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
-              3 months of comprehensive, business-focused curriculum
-            </p>
-          </div>
-          
+   <section className={`${sectionClass ? sectionClass : ''}`}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+
+        <div className="text-center mb-8 lg:mb-10 max-w-8xl">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-2 lg:mb-3">
+            {title}
+          </h2>
+          <p className="text-sm md:text-base text-medium-gray mx-auto leading-relaxed">
+            {subText}
+          </p>
+        </div>
+
           <div className="max-w-6xl mx-auto">
             {/* Module Tabs */}
             <div className="flex flex-wrap justify-center gap-2 mb-8 lg:mb-12">
@@ -193,25 +220,23 @@ import React, { useState } from 'react'
                 <button
                   key={module.id}
                   onClick={() => setActiveModule(module.id)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    activeModule === module.id
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeModule === module.id
                       ? 'bg-primary-green text-white shadow-md'
                       : 'bg-light-gray text-dark-gray hover:bg-medium-gray hover:text-white'
-                  }`}
+                    }`}
                 >
                   {module.title}
                 </button>
               ))}
             </div>
-            
+
             {/* Module Content */}
             <div className="bg-white rounded-2xl shadow-lg border border-border-gray overflow-hidden">
               {modules.map((module) => (
                 <div
                   key={module.id}
-                  className={`transition-all duration-500 ${
-                    activeModule === module.id ? 'block' : 'hidden'
-                  }`}
+                  className={`transition-all duration-500 ${activeModule === module.id ? 'block' : 'hidden'
+                    }`}
                 >
                   <div className="p-6 lg:p-8">
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
@@ -229,7 +254,7 @@ import React, { useState } from 'react'
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="grid lg:grid-cols-2 gap-8">
                       <div>
                         <h4 className="text-lg font-semibold text-dark-gray mb-3">Topics Covered</h4>
@@ -242,7 +267,7 @@ import React, { useState } from 'react'
                           ))}
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-lg font-semibold text-dark-gray mb-3">Key Outcomes</h4>
                         <ul className="space-y-2">
@@ -255,7 +280,7 @@ import React, { useState } from 'react'
                         </ul>
                       </div>
                     </div>
-                    
+
                     <div className="mt-6 pt-6 border-t border-border-gray">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
@@ -280,4 +305,4 @@ import React, { useState } from 'react'
     );
   };
 
-export default DaProgramCurriculum
+export default AimlCurriculum

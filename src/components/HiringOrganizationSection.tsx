@@ -1,7 +1,8 @@
+'use client'
 import React from 'react'
 
-  const HiringOrganizationSection = () => {
-    const companies = [
+
+const companies = [
       "https://strapi.odinschool.com/uploads/Meesho_100x40_individual_81f680e677.webp",
       "https://strapi.odinschool.com/uploads/prolifics_100_X40_Individual_02765c8bbc.webp",
       "https://strapi.odinschool.com/uploads/Ensoft100_X40_105ed0f32a.webp",
@@ -23,17 +24,26 @@ import React from 'react'
 
     ];
 
+
+interface Props {
+  sectionClass?: string;
+  title?: string;
+  subText?: string;
+}
+const HiringOrganizationSection = ({ sectionClass, title, subText }: Props) => {
+
     return (
-      <section className="bg-white py-10 sm:py-15 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="text-center mb-8 lg:mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-              Trusted by Leading Companies
-            </h2>
-            <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
-              Our graduates work at Fortune 600+ companies and innovative startups worldwide
-            </p>
-          </div>
+       <section className={`${sectionClass ? sectionClass : ''}`}>
+      <div className="container mx-auto">
+
+        <div className="text-center mb-8 lg:mb-10 max-w-8xl">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-2 lg:mb-3">
+            {title}
+          </h2>
+          <p className="text-sm md:text-base text-medium-gray mx-auto leading-relaxed">
+            {subText}
+          </p>
+        </div>
           
           <div className="overflow-hidden">
             <div className="flex space-x-8 animate-scroll">
