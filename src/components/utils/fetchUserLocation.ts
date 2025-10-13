@@ -1,5 +1,5 @@
 // utils/fetchUserLocation.ts
-export async function fetchUserLocation(token: string = '2ba7c468fe54ad') {
+export async function fetchUserLocation(token: string = '30d6ad207d1162') {
   try {
     const response = await fetch(`https://ipinfo.io/json?token=${token}`);
     if (!response.ok) {
