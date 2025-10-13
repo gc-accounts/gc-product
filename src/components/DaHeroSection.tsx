@@ -1,14 +1,19 @@
 'use client'
 
 import React from 'react'
-import { BookOpen, Briefcase, Target } from 'lucide-react'
-import { Button } from '../ui/button'
+import { BookOpen, Briefcase, Target, ShieldCheck } from 'lucide-react'
+import { Button } from './ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import DaForm from './DaForm'
 import Link from 'next/link'
 
-const DaHeroSection = () => (
-  <section className="min-h-screen bg-gradient-hero flex items-center py-16 sm:py-20 lg:py-24">
+interface Props {
+  sectionClass?: string;
+}
+
+const DaHeroSection = ({ sectionClass}: Props) => {
+return (
+  <section className={`${sectionClass ? sectionClass : ''}`}>
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
       <div className="grid lg:grid-cols-5 gap-8 lg:gap-16 items-center">
         
@@ -41,6 +46,12 @@ const DaHeroSection = () => (
                 <Briefcase className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green flex-shrink-0 mt-0.5" />
                 <span className="text-sm sm:text-base text-dark-gray leading-relaxed">
                   100% Job assistance
+                </span>
+              </div>
+               <div className="flex items-start space-x-3">
+                <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green flex-shrink-0 mt-0.5" />
+                <span className="text-sm sm:text-base text-dark-gray leading-relaxed">
+                  Internship certificate
                 </span>
               </div>
             </div>
@@ -101,6 +112,6 @@ const DaHeroSection = () => (
       </div>
     </div>
   </section>
-)
-
+   );
+};
 export default DaHeroSection

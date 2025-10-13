@@ -1,15 +1,15 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Card, CardContent } from '../ui/card';
-import { Input } from '../ui/input';
-import { Button } from '../ui/button';
+import { Card, CardContent } from './ui/card';
+import { Input } from './ui/input';
+import { Button } from './ui/button';
 import { useToast } from '@/components/hooks/use-toast';
-import { getUTMTrackingData } from '../utils/getUTMTrackingData';
-import { getGaCookieValue } from '../utils/cookieUtils';
-import { fetchUserLocation } from '../utils/fetchUserLocation';
-import { getOriginalTrafficSource } from '../utils/getOriginalTrafficSource';
-import { CountryCodeData } from '../data/CountryCodeData';
+import { getUTMTrackingData } from './utils/getUTMTrackingData';
+import { getGaCookieValue } from './utils/cookieUtils';
+import { fetchUserLocation } from './utils/fetchUserLocation';
+import { getOriginalTrafficSource } from './utils/getOriginalTrafficSource';
+import { CountryCodeData } from './data/CountryCodeData';
 
 interface AIMLFormProps {
   isModal?: boolean;
