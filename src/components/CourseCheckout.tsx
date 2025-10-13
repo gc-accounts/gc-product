@@ -54,13 +54,13 @@ const CourseCheckout = () => {
   const [GaClientId, setGaClientId] = useState<string>('');
   const device = getDeviceType();
 
-  const BASE_PRICE = 1; // ₹5,000
+  const BASE_PRICE = 5000; // ₹5,000
   const GST_RATE = 0.18;
 
   // ✅ Dynamically detect program name based on URL
   const getProgramName = () => {
     if (pathname.includes('data-science-bootcamp')) return 'GC Data Science Bootcamp';
-    if (pathname.includes('data-analyst-bootcamp-page')) return 'GC Data Analyst Bootcamp';
+    if (pathname.includes('data-analyst-bootcamp')) return 'GC Data Analyst Bootcamp';
     if (pathname.includes('aiml-bootcamp')) return 'GC AI/ML Bootcamp';
     return 'Static Product Checkout';
   };

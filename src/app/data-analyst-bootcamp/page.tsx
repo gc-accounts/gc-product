@@ -879,7 +879,7 @@ export default function DataAnalystBootcampPage() {
                 </div>
                 
                 <div className="space-y-3">
-                  <Link href={'/course-checkout/data-analyst-bootcamp-page'}>
+                  <Link href={'/course-checkout/data-analyst-bootcamp'}>
                   <Button className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold h-12">
                     Enroll Now
                   </Button>
