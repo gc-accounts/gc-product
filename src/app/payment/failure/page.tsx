@@ -1,7 +1,8 @@
 'use client';
 
 import { Suspense } from 'react';
-import PaymentFailureContent from './PaymentFailureContent';
+// import PaymentFailureContent from './PaymentFailureContent';
+import PaymentFailureContent from '@/components/pages/PaymentFailureContent';
 
 export default function PaymentFailure() {
   return (
