@@ -18,15 +18,13 @@ export async function POST(request: Request) {
         Program: formData.get('Program'),
         Payment_Status: formData.get('Payment_Status'),
         Payable_Amount: formData.get('Payable_Amount'),
-        Effective_Bootcamp_Fee: formData.get('Effective Bootcamp Fee'),
-        ga_client_id: formData.get('Ga_client_id'),
-        Business_Unit: formData.get('Business Unit'),
+        Effective_Bootcamp_Fee: formData.get('Effective_Bootcamp_Fee'), // Fixed field name
+        Business_Unit: formData.get('Business_Unit'), // Fixed field name
         Source_Domain: formData.get('Source_Domain'),
-        Device_Type1:formData.get('Device_Type1'),
-        duplicate_check_fields: ['Email'],  // ✅ critical fix
-        Coupon_Code: formData.get('coupon_code')
-      }],
-      trigger: ['workflow']
+        Payment_ID: formData.get('Payment_ID'), // Add this field
+        duplicate_check_fields: ['Email'],
+        trigger: ['workflow']
+      }]
     };
 
     const response = await fetch('https://www.zohoapis.in/crm/v2/Contacts/upsert', {
@@ -40,6 +38,7 @@ export async function POST(request: Request) {
 
     if (!response.ok) {
       const errorData = await response.json();
+      console.error('Zoho API error:', errorData);
       throw new Error(errorData.message || 'Failed to create or update contact');
     }
 
