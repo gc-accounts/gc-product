@@ -31,7 +31,7 @@ const OpenCampusSection: React.FC<OpenCampusSectionProps> = ({posts}) => {
 
              <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight mb-3">
                 The {' '}
-                <span className="text-gradient">Open Campus</span>
+                <span className="text-gradient">OpenCampus</span>
               </h1>
 
               <p className="text-base md:text-lg text-medium-gray leading-relaxed max-w-4xl mb-4">
