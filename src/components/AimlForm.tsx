@@ -133,7 +133,7 @@ const AIMLForm: React.FC<AIMLFormProps> = ({ isModal = false, onClose }) => {
   };
 
   return (
-    <Card className={`${isModal ? '' : 'bg-white shadow-lg rounded-2xl p-6 sm:p-8'}`}>
+    <Card className={`${isModal ? 'shadow-none' : 'bg-white shadow-lg rounded-2xl p-6 sm:p-8'}`}>
       <CardContent className="p-0">
         <form className="space-y-5" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

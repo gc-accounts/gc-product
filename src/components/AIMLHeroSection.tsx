@@ -1,7 +1,7 @@
 'use client'
 
-import React from 'react'
-import { BookOpen, Briefcase, Target, ShieldCheck } from 'lucide-react'
+import React, { useState } from 'react'
+import { BookOpen, Briefcase, Target, ShieldCheck, X } from 'lucide-react'
 import { Button } from './ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import AimlForm from './AimlForm'
@@ -12,6 +12,8 @@ interface Props {
 }
 
 const AIMLHeroSection = ({ sectionClass }: Props) => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+
   return(
   <section className={`${sectionClass ? sectionClass : ''}`}>
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -61,19 +63,20 @@ const AIMLHeroSection = ({ sectionClass }: Props) => {
               <Link href={'/course-checkout/aiml-bootcamp'}>
                 <Button
                   size="lg"
-                  className="bg-primary-green hover:bg-secondary-green text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto"
+                  className="bg-primary-green hover:bg-secondary-green text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto cursor-pointer"
                 >
                   Enroll Now
                 </Button>
               </Link>
 
               {/* Download Brochure Modal */}
-              <Dialog>
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-primary-green text-primary-green hover:bg-primary-green hover:text-white"
+                    className="border-primary-green text-primary-green hover:bg-primary-green hover:text-white cursor-pointer"
+                    onClick={() => setIsDialogOpen(true)}
                   >
                     Download Brochure
                   </Button>
@@ -90,14 +93,14 @@ const AIMLHeroSection = ({ sectionClass }: Props) => {
                       type="button"
                       className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 transition"
                       aria-label="Close"
-                      onClick={() => document.body.click()}
+                      onClick={() => setIsDialogOpen(false)}
                     >
-                      ✕
+                      <X className="w-5 h-5" />
                     </button>
                   </div>
 
                   <div className="max-h-[85vh] overflow-y-auto px-6 pb-6 pt-2">
-                    <AimlForm isModal={true} />
+                    <AimlForm isModal={true} onClose={() => setIsDialogOpen(false)} />
                   </div>
                 </DialogContent>
               </Dialog>
