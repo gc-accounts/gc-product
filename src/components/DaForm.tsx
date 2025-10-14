@@ -133,7 +133,7 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
   };
 
   return (
-    <Card className={`${isModal ? '' : 'bg-white shadow-lg rounded-2xl p-6 sm:p-8'}`}>
+    <Card className={`${isModal ? 'shadow-none' : 'bg-white shadow-lg rounded-2xl p-6 sm:p-8'}`}>
       <CardContent className="p-0">
         <form className="space-y-5" onSubmit={handleSubmit}>
           {/* Name Fields */}

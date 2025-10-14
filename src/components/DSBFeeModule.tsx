@@ -85,7 +85,7 @@ const DSBFeeModule = ({ sectionClass, title, subText }: Props) => {
 
                 <div className="space-y-3">
                   <Link href={'/course-checkout/data-science-bootcamp'}>
-                    <Button className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold h-12">
+                    <Button className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold h-12 cursor-pointer">
                       Enroll Now
                     </Button>
                   </Link>
