@@ -30,6 +30,9 @@ export async function POST(req: Request) {
     console.log('🔐 Generated Hash:', hash);
     console.log('📏 Hash Length:', hash.length);
 
+    // ✅ UPDATE: Use callback API route instead of direct page routes
+    const callbackUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/payment/callback`;
+
     // Prepare PayU payment data
     const payuParams = {
       key: MERCHANT_KEY,
@@ -39,8 +42,8 @@ export async function POST(req: Request) {
       firstname: firstName || 'Customer',
       email: email,
       phone: phone || '',
-      surl: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/payment/success`,
-      furl: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/payment/failure`,
+      surl: callbackUrl,  // ✅ Updated to callback API
+      furl: callbackUrl,  // ✅ Updated to callback API
       hash: hash,
       service_provider: 'payu_paisa'
     };

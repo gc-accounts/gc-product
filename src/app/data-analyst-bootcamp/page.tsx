@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Data Analyst Bootcamp - Learn at ₹5,000 | Greycampus",
     description:
-      "Master data science in 3-months. ₹5,000 bootcamp with 100% placement. Expert instructors, real-world projects.",
+      "Master data science in 3-months. ₹5,000 bootcamp with 100% placement assistance. Expert instructors, real-world projects.",
     url: "https://bootcamp.greycampus.com/data-analyst-bootcamp",
     siteName: "Greycampus",
     images: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Data Analyst Bootcamp - Learn at ₹5,000 | Greycampus",
     description:
-      "Master data science in 3-months. ₹5,000 bootcamp with 100% placement. Expert instructors, real-world projects.",
+      "Master data science in 3-months. ₹5,000 bootcamp with 100% placement assistance. Expert instructors, real-world projects.",
     images: ["/og-image.jpg"],
   },
   robots: {
