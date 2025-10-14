@@ -111,6 +111,10 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
         description: 'Your details have been submitted successfully!',
       });
 
+      if (typeof window !== 'undefined' && (window as any).fbq) {
+        (window as any).fbq('track', 'Lead');
+      }
+
       // ✅ If used in modal, open PDF and close it
       if (isModal) {
         const brochurePath = '/Data Analyst Bootcamp.pdf';

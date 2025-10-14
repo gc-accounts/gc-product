@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -9,23 +11,21 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Data Science Bootcamp - Learn at ₹5,000 | Greycampus",
-  description: "Master data science in 20 weeks. ₹5,000 bootcamp with 95% placement. Expert instructors, real-world projects, lifetime access.",
-  keywords: "data science bootcamp, affordable courses, career transformation, machine learning, python, SQL, data analysis",
+  description:
+    "Master data science in 20 weeks. ₹5,000 bootcamp with 95% placement. Expert instructors, real-world projects, lifetime access.",
+  keywords:
+    "data science bootcamp, affordable courses, career transformation, machine learning, python, SQL, data analysis",
   authors: [{ name: "Greycampus" }],
   creator: "Greycampus",
   publisher: "Greycampus",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
   metadataBase: new URL("https://bootcamp.greycampus.com"),
   alternates: {
-    canonical: "/"
+    canonical: "/",
   },
   openGraph: {
     title: "Data Science Bootcamp - Learn at ₹5,000 | Greycampus",
-    description: "Master data science in 20 weeks. ₹5,000 bootcamp with 95% placement. Expert instructors, real-world projects, lifetime access.",
+    description:
+      "Master data science in 20 weeks. ₹5,000 bootcamp with 95% placement. Expert instructors, real-world projects, lifetime access.",
     url: "https://bootcamp.greycampus.com/",
     siteName: "Greycampus",
     images: [
@@ -42,7 +42,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Data Science Bootcamp - Learn at ₹5,000 | Greycampus",
-    description: "Master data science in 20 weeks. ₹5,000 bootcamp with 95% placement. Expert instructors, real-world projects, lifetime access.",
+    description:
+      "Master data science in 20 weeks. ₹5,000 bootcamp with 95% placement. Expert instructors, real-world projects, lifetime access.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -66,33 +67,44 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
+        {/* ✅ Favicon & Preconnect Links */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <style dangerouslySetInnerHTML={{
-          __html: `
-            * {
-              word-break: normal !important;
-              overflow-wrap: break-word !important;
-              white-space: normal !important;
-            }
-            p, span, div {
-              word-break: normal !important;
-              overflow-wrap: break-word !important;
-              white-space: normal !important;
-            }
-            .break-normal {
-              word-break: normal !important;
-              overflow-wrap: normal !important;
-            }
-          `,
-        }} />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+
+        {/* ✅ Meta Pixel Base Code */}
+        <Script id="meta-pixel-base" strategy="afterInteractive">
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window,document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '857891842493451');
+            fbq('track', 'PageView');
+          `}
+        </Script>
+
+        {/* ✅ Noscript fallback */}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=857891842493451&ev=PageView&noscript=1"
+            alt="facebook-pixel"
+          />
+        </noscript>
       </head>
+
       <body className="font-sans antialiased">
         {children}
         <Toaster />

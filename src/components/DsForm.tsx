@@ -125,6 +125,11 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
         description: 'Your details have been submitted successfully. Our team will get in touch soon!',
       });
 
+      // ✅ Meta Pixel Lead Event — fire after successful submission
+      if (typeof window !== 'undefined' && (window as any).fbq) {
+        (window as any).fbq('track', 'Lead');
+      }
+
       // ✅ Modal case: open PDF & close dialog
       if (isModal) {
         const brochurePath = '/Data Science Bootcamp - GC (3) (1).pdf'; // from /public

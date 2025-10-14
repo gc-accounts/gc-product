@@ -111,6 +111,10 @@ const AIMLForm: React.FC<AIMLFormProps> = ({ isModal = false, onClose }) => {
         description: 'Your details have been submitted successfully!',
       });
 
+      if (typeof window !== 'undefined' && (window as any).fbq) {
+        (window as any).fbq('track', 'Lead');
+      }
+
       // ✅ If used in modal
       if (isModal) {
         const brochurePath = '/AI and ML Bootcamp.pdf';
