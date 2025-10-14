@@ -1,6 +1,6 @@
 export const DACertificateData = {
   heading: `GreyCampus's Data Analyst Bootcamp Certification`,
-  subheading: `Showcase your certificate as a symbol of your Data Science expertise.`,
+  subheading: `Showcase your certificate as a symbol of your Data Analytics expertise.`,
   features: [
     {
       id: 1,
