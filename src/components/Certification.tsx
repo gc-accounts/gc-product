@@ -33,19 +33,20 @@ const Certification = ({ sectionClass, data }: CertificateProps) => {
   if (!data) return null;
 
   return (
-    <section className={`${sectionClass ? sectionClass : 'my-32'}`}>
-      <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-          {/* Left Text Block */}
-          <div className="md:col-span-6 col-span-1">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-              {data.heading}
-            </h2>
-            <p className="section-description-1 mb-6">{data.subheading}</p>
+    <section className={sectionClass}>
+      <div className="container mx-auto">
+        <div className="text-center mb-8 lg:mb-10 max-w-8xl">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-2 lg:mb-3">
+            Get Dual Certification
+          </h2>
+          <p className="text-sm md:text-base text-medium-gray mx-auto leading-relaxed">
+            {data.subheading}
+          </p>
+        </div>
 
-            <ul className="space-y-6">
+         <ul className="space-y-6 grid grid-cols-12 mb-4">
               {data.features.map((item) => (
-                <li key={item.id} className="flex items-center gap-4">
+                <li key={item.id} className="flex items-center gap-4 col-span-4">
                   <div className="flex-shrink-0 bg-primary-50 rounded-md p-2">
                     <img
                       src={item.iconLabel}
@@ -62,14 +63,39 @@ const Certification = ({ sectionClass, data }: CertificateProps) => {
                 </li>
               ))}
             </ul>
-          </div>
 
-          {/* Right Certificate Image */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+
           <div className="md:col-span-6 col-span-1 flex justify-center">
             <div>
               <img
                 src={data.certificateImage}
                 alt="GreyCampus Data Science Certificate"
+                width={400}
+                height={300}
+                className="w-full h-auto border border-gray-300 rounded-2xl"
+              />
+
+              {showDiv && (
+                <div className="mt-3">
+                  <p className="font-semibold text-gray-900">Get Dual Certification:</p>
+                  <ul className="list-disc pl-5">
+                    <li>
+                      <p className="text-sm text-gray-600">Course Completion certificate from GreyCampus</p>
+                    </li>
+                    <li>
+                      <p className="text-sm text-gray-600">Diploma from Jain Online University</p>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="md:col-span-6 col-span-1 flex justify-center">
+            <div>
+              <img
+                src='https://strapi.odinschool.com/uploads/Internship_cert_62660ee8c4.webp'
+                alt="GreyCampus Data Science Certificate of Internship"
                 width={400}
                 height={300}
                 className="w-full h-auto border border-gray-300 rounded-2xl"
