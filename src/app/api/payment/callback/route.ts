@@ -89,7 +89,36 @@ export async function POST(req: Request) {
     // Validate required PayU data
     if (!payuData.status || !payuData.txnid) {
       console.error('❌ Missing required PayU data');
-      return NextResponse.redirect(`${baseUrl}/payment-complete?status=failed&error=invalid_payment_data`);
+      
+      // Return HTML directly for invalid data
+      const html = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Payment Error - GreyCampus</title>
+          <script src="https://cdn.tailwindcss.com"></script>
+        </head>
+        <body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+          <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
+            <div class="text-yellow-500 text-6xl mb-4">⚠️</div>
+            <h1 class="text-2xl font-bold text-gray-900 mb-3">Payment Processing Error</h1>
+            <p class="text-gray-600 mb-6">We encountered an issue processing your payment data. Please contact support.</p>
+            <div class="space-y-3">
+              <a href="${baseUrl}" class="block w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-medium">
+                Return to Home
+              </a>
+              <a href="${baseUrl}/contact" class="block w-full border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 font-medium">
+                Contact Support
+              </a>
+            </div>
+          </div>
+        </body>
+        </html>
+      `;
+
+      return new Response(html, {
+        headers: { 'Content-Type': 'text/html' },
+      });
     }
 
     const status = payuData.status as string;
@@ -111,7 +140,7 @@ export async function POST(req: Request) {
 
     // Update Zoho CRM based on status
     if (status === 'success') {
-      console.log('✅ Payment successful');
+      console.log('✅ Payment successful - Updating Zoho CRM');
       
       await updateZohoCRM(
         payuData.email as string || 'unknown', 
@@ -121,11 +150,38 @@ export async function POST(req: Request) {
         payuData.txnid as string
       );
 
-      // ✅ SIMPLE REDIRECT - NO COMPLEX URL OBJECTS
-      return NextResponse.redirect(`${baseUrl}/payment-complete?status=success&txnid=${payuData.txnid}`);
+      // ✅ RETURN HTML DIRECTLY - NO REDIRECT
+      const html = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Payment Successful - GreyCampus</title>
+          <script src="https://cdn.tailwindcss.com"></script>
+        </head>
+        <body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+          <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
+            <div class="mx-auto mb-6 w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-900 mb-3">Payment Successful!</h1>
+            <p class="text-gray-600 mb-6">Thank you for your payment. Your enrollment in the GC Data Science Bootcamp has been confirmed.</p>
+            <p class="text-sm text-gray-500 mb-6 bg-gray-50 p-3 rounded">Transaction ID: <span class="font-mono">${payuData.txnid}</span></p>
+            <a href="${baseUrl}" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 font-medium transition-colors">
+              Return to Home
+            </a>
+          </div>
+        </body>
+        </html>
+      `;
+
+      return new Response(html, {
+        headers: { 'Content-Type': 'text/html' },
+      });
 
     } else {
-      console.log('❌ Payment failed');
+      console.log('❌ Payment failed - Updating Zoho CRM');
       
       await updateZohoCRM(
         payuData.email as string || 'unknown', 
@@ -134,9 +190,42 @@ export async function POST(req: Request) {
         effectiveFee
       );
       
-      // ✅ SIMPLE REDIRECT - NO COMPLEX URL OBJECTS
-      const errorMsg = payuData.error_Message || 'payment_failed';
-      return NextResponse.redirect(`${baseUrl}/payment-complete?status=failed&txnid=${payuData.txnid}&error=${errorMsg}`);
+      // ✅ RETURN HTML DIRECTLY - NO REDIRECT
+      const errorMsg = payuData.error_Message || 'We couldn\'t process your payment. Please check your payment details and try again.';
+      
+      const html = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Payment Failed - GreyCampus</title>
+          <script src="https://cdn.tailwindcss.com"></script>
+        </head>
+        <body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+          <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
+            <div class="mx-auto mb-6 w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
+              <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-900 mb-3">Payment Failed</h1>
+            <p class="text-gray-600 mb-6">${errorMsg}</p>
+            <p class="text-sm text-gray-500 mb-6 bg-gray-50 p-3 rounded">Transaction ID: <span class="font-mono">${payuData.txnid}</span></p>
+            <div class="space-y-3">
+              <a href="${baseUrl}" class="block w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-medium">
+                Try Again
+              </a>
+              <a href="${baseUrl}/contact" class="block w-full border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 font-medium">
+                Contact Support
+              </a>
+            </div>
+          </div>
+        </body>
+        </html>
+      `;
+
+      return new Response(html, {
+        headers: { 'Content-Type': 'text/html' },
+      });
     }
 
   } catch (error) {
@@ -144,11 +233,58 @@ export async function POST(req: Request) {
     
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
     
-    return NextResponse.redirect(`${baseUrl}/payment-complete?status=failed&error=internal_server_error`);
+    // ✅ RETURN HTML DIRECTLY FOR ERRORS - NO REDIRECT
+    const html = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Payment Error - GreyCampus</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+      </head>
+      <body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+        <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
+          <div class="text-yellow-500 text-6xl mb-4">⚠️</div>
+          <h1 class="text-2xl font-bold text-gray-900 mb-3">Payment Processing</h1>
+          <p class="text-gray-600 mb-6">We're processing your payment. Please check your email for confirmation.</p>
+          <a href="${baseUrl}" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 font-medium">
+            Return to Home
+          </a>
+        </div>
+      </body>
+      </html>
+    `;
+
+    return new Response(html, {
+      headers: { 'Content-Type': 'text/html' },
+    });
   }
 }
 
 export async function GET(req: Request) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-  return NextResponse.redirect(`${baseUrl}/payment-complete?status=failed&error=invalid_callback_method`);
+  
+  // ✅ RETURN HTML DIRECTLY FOR GET REQUESTS - NO REDIRECT
+  const html = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Invalid Request - GreyCampus</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+      <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
+        <div class="text-red-500 text-6xl mb-4">❌</div>
+        <h1 class="text-2xl font-bold text-gray-900 mb-3">Invalid Request</h1>
+        <p class="text-gray-600 mb-6">This page cannot be accessed directly. Please complete your payment through the checkout process.</p>
+        <a href="${baseUrl}" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 font-medium">
+          Return to Home
+        </a>
+      </div>
+    </body>
+    </html>
+  `;
+
+  return new Response(html, {
+    headers: { 'Content-Type': 'text/html' },
+  });
 }
