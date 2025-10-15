@@ -33,7 +33,8 @@ async function updateZohoCRM(
   email: string, 
   status: 'Paid' | 'Failed', 
   payableAmount: string, 
-  effectiveFee: string, 
+  effectiveFee: string,
+  programName: string,
   paymentId?: string
 ) {
   try {
@@ -42,7 +43,7 @@ async function updateZohoCRM(
     const zohoPaymentFormData = new FormData();
     zohoPaymentFormData.append('accessToken', accessToken);
     zohoPaymentFormData.append('Email', email);
-    zohoPaymentFormData.append('Program', 'GC Data Science Bootcamp');
+    zohoPaymentFormData.append('Program', programName);
     zohoPaymentFormData.append('Payment_Status', status);
     zohoPaymentFormData.append('Payable_Amount', payableAmount);
     zohoPaymentFormData.append('Effective_Bootcamp_Fee', effectiveFee);
@@ -62,7 +63,7 @@ async function updateZohoCRM(
       throw new Error('Failed to update Zoho CRM');
     }
     
-    console.log('Zoho CRM updated successfully');
+    console.log('Zoho CRM updated successfully for program:', programName);
     return true;
   } catch (error) {
     console.error('Error updating Zoho CRM:', error);
@@ -138,6 +139,10 @@ export async function POST(req: Request) {
       console.log('❌ Failed Payment - Amount set to 0');
     }
 
+    // Extract program name from productinfo (sent by PayU)
+    const programName = payuData.productinfo || 'GC Data Science Bootcamp';
+    console.log('📚 Program Name:', programName);
+
     // Update Zoho CRM based on status
     if (status === 'success') {
       console.log('✅ Payment successful - Updating Zoho CRM');
@@ -147,6 +152,7 @@ export async function POST(req: Request) {
         'Paid', 
         payableAmount,
         effectiveFee,
+        programName,
         payuData.txnid as string
       );
 
@@ -166,7 +172,7 @@ export async function POST(req: Request) {
               </svg>
             </div>
             <h1 class="text-2xl font-bold text-gray-900 mb-3">Payment Successful!</h1>
-            <p class="text-gray-600 mb-6">Thank you for your payment. Your enrollment in the GC Data Science Bootcamp has been confirmed.</p>
+            <p class="text-gray-600 mb-6">Thank you for your payment. Your enrollment in the ${programName} has been confirmed.</p>
             <p class="text-sm text-gray-500 mb-6 bg-gray-50 p-3 rounded">Transaction ID: <span class="font-mono">${payuData.txnid}</span></p>
             <a href="${baseUrl}" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 font-medium transition-colors">
               Return to Home
@@ -187,7 +193,8 @@ export async function POST(req: Request) {
         payuData.email as string || 'unknown', 
         'Failed', 
         payableAmount,
-        effectiveFee
+        effectiveFee,
+        programName
       );
       
       // ✅ RETURN HTML DIRECTLY - NO REDIRECT
