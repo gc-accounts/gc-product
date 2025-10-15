@@ -12,6 +12,7 @@ import checkoutFormFields from './forms/FormFields/checkoutFormFields';
 import { getGaCookieValue } from './utils/cookieUtils';
 import { getOriginalTrafficSource } from './utils/getOriginalTrafficSource';
 import { getDeviceType } from './utils/getDeviceType';
+import { getUserCountry, PRICE_CONFIG } from '@/lib/country-detection';
 
 import Navigation from './Navigation';
 import Footer from './Footer';
@@ -36,9 +37,11 @@ const CourseCheckout = () => {
   const [currentLocation, setCurrentLocation] = useState('');
   const [utm, setUtm] = useState<Record<string, string>>({});
   const [GaClientId, setGaClientId] = useState<string>('');
+  const [userCountry, setUserCountry] = useState<string>('IN');
+  const [currency, setCurrency] = useState<'INR' | 'USD'>('INR');
+  const [basePrice, setBasePrice] = useState<number>(5000);
   const device = getDeviceType();
 
-  const BASE_PRICE = 1; // ₹5,000
   const GST_RATE = 0.18;
 
   // ✅ Dynamically detect program name based on URL
@@ -55,6 +58,7 @@ const CourseCheckout = () => {
     setUtm(data);
     setGaClientId(getGaCookieValue());
     fetchUserLocation();
+    detectUserCountry();
   }, []);
 
   const fetchUserLocation = async () => {
@@ -64,6 +68,29 @@ const CourseCheckout = () => {
       setCurrentLocation(data?.region);
     } catch (error) {
       console.log('Error fetching user location', error);
+    }
+  };
+
+  const detectUserCountry = async () => {
+    try {
+      const countryInfo = await getUserCountry();
+      setUserCountry(countryInfo.country);
+      setCurrency(countryInfo.currency);
+      
+      // Set price based on country
+      if (countryInfo.isIndia) {
+        setBasePrice(PRICE_CONFIG.INR.basePrice);
+      } else {
+        setBasePrice(PRICE_CONFIG.USD.basePrice);
+      }
+      
+      console.log('🌍 Country detected:', countryInfo);
+    } catch (error) {
+      console.error('Country detection failed:', error);
+      // Fallback to INR
+      setUserCountry('IN');
+      setCurrency('INR');
+      setBasePrice(PRICE_CONFIG.INR.basePrice);
     }
   };
 
@@ -172,10 +199,20 @@ const CourseCheckout = () => {
 
   const handlePayment = async (formData: FormData) => {
     try {
-      const gstAmount = BASE_PRICE * GST_RATE;
-      const totalAmount = BASE_PRICE + gstAmount;
+      // Calculate amounts based on currency
+      let gstAmount, totalAmount;
+      
+      if (currency === 'INR') {
+        // For India: Apply GST
+        gstAmount = basePrice * GST_RATE;
+        totalAmount = basePrice + gstAmount;
+      } else {
+        // For international: No GST, use base price directly
+        gstAmount = 0;
+        totalAmount = basePrice;
+      }
 
-      // Create PayU order instead of Razorpay
+      // Create PayU order
       const payuOrderRes = await fetch('/api/payment/create-payu-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -186,6 +223,8 @@ const CourseCheckout = () => {
           productName: getProgramName(),
           firstName: formData.firstName,
           phone: formData.phone,
+          userCountry: userCountry, // Pass country to API
+          currency: currency // Pass currency to API
         }),
       });
 
@@ -224,8 +263,10 @@ const CourseCheckout = () => {
     }
   };
 
-  const gstAmount = BASE_PRICE * GST_RATE;
-  const totalAmount = BASE_PRICE + gstAmount;
+  // Calculate display amounts
+  const gstAmount = currency === 'INR' ? basePrice * GST_RATE : 0;
+  const totalAmount = currency === 'INR' ? basePrice + gstAmount : basePrice;
+  const currencySymbol = currency === 'INR' ? '₹' : '$';
 
   return (
     <>
@@ -262,20 +303,34 @@ const CourseCheckout = () => {
               <Card>
                 <CardHeader className='pb-3'>
                   <CardTitle>Order Summary</CardTitle>
+               
                 </CardHeader>
                 <CardContent className='space-y-4'>
                   <div className='flex justify-between'>
                     <span>Program Fee</span>
-                    <span>₹{BASE_PRICE}</span>
+                    <span>{currencySymbol}{basePrice}</span>
                   </div>
-                  <div className='flex justify-between'>
-                    <span>GST (18%)</span>
-                    <span>₹{gstAmount.toFixed(2)}</span>
-                  </div>
-                  <hr />
+                  
+                  {currency === 'INR' && (
+                    <>
+                      <div className='flex justify-between'>
+                        <span>GST (18%)</span>
+                        <span>{currencySymbol}{gstAmount.toFixed(2)}</span>
+                      </div>
+                      <hr />
+                    </>
+                  )}
+                  
                   <div className='flex justify-between font-bold'>
                     <span>Total Amount</span>
-                    <span>₹{totalAmount.toFixed(2)}</span>
+                    <span>{currencySymbol}{totalAmount.toFixed(2)} {currency}</span>
+                  </div>
+                  
+                  <div className="text-xs text-gray-500 mt-2">
+                    {userCountry === 'IN' 
+                      ? 'Inclusive of all taxes' 
+                      : 'International pricing - no additional taxes'
+                    }
                   </div>
                 </CardContent>
               </Card>

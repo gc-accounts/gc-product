@@ -151,8 +151,8 @@ const HomeForm = () => {
           </Select>
 
           {/* Submit */}
-          <Button type="submit" disabled={loading} className="w-full bg-secondary-green hover:bg-primary-green text-white font-semibold py-3 rounded-lg mt-2">
-            {loading ? 'Submitting...' : 'Request a Callback'}
+          <Button type="submit" disabled={loading} className="w-full bg-secondary-green hover:bg-primary-green text-white font-semibold py-3 rounded-lg mt-2 cursor-pointer">
+            {loading ? 'Submitting...' : 'Request More Information'}
           </Button>
 
           {/* Privacy Note */}

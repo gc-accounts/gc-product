@@ -7,7 +7,7 @@ const PAYU_BASE_URL = 'https://secure.payu.in';
 
 export async function POST(req: Request) {
   try {
-    const { amount, email, txnId, productName, firstName, phone } = await req.json();
+    const { amount, email, txnId, productName, firstName, phone, userCountry, currency } = await req.json();
 
     // Validate required fields
     if (!amount || !email || !txnId || !productName) {
@@ -17,43 +17,46 @@ export async function POST(req: Request) {
       );
     }
 
-    // ✅ SIMPLIFIED: Use template literal with exact pipe count
-    const hashString = `${MERCHANT_KEY}|${txnId}|${amount}|${productName}|${firstName || 'Customer'}|${email}|||||||||||${MERCHANT_SALT}`;
+    // Determine currency and amount based on country
+    let finalCurrency = currency || 'INR'; // Default to INR
+    let finalAmount = amount;
 
-    console.log('🔑 Merchant Key:', MERCHANT_KEY);
-    console.log('🧂 Merchant Salt:', MERCHANT_SALT);
-    console.log('📝 Hash String:', hashString);
+    console.log('💰 Payment Details:', {
+      userCountry,
+      currency: finalCurrency,
+      amount: finalAmount
+    });
+
+    // Generate hash with currency parameter
+    const hashString = `${MERCHANT_KEY}|${txnId}|${finalAmount}|${productName}|${firstName || 'Customer'}|${email}|||||||||||${MERCHANT_SALT}`;
     
-    // ✅ Generate hash
     const hash = crypto.createHash('sha512').update(hashString).digest('hex');
-    
-    console.log('🔐 Generated Hash:', hash);
-    console.log('📏 Hash Length:', hash.length);
 
-    // ✅ UPDATE: Use callback API route instead of direct page routes
     const callbackUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/payment/callback`;
 
-    // Prepare PayU payment data
     const payuParams = {
       key: MERCHANT_KEY,
       txnid: txnId,
-      amount: amount.toString(),
+      amount: finalAmount.toString(),
       productinfo: productName,
       firstname: firstName || 'Customer',
       email: email,
       phone: phone || '',
-      surl: callbackUrl,  // ✅ Updated to callback API
-      furl: callbackUrl,  // ✅ Updated to callback API
+      surl: callbackUrl,
+      furl: callbackUrl,
       hash: hash,
-      service_provider: 'payu_paisa'
+      service_provider: 'payu_paisa',
+      currency: finalCurrency // Add currency parameter for PayU
     };
 
-    console.log('📦 PayU Params (without hash):', { ...payuParams, hash: 'HIDDEN' });
+    console.log('📦 PayU Params:', { ...payuParams, hash: 'HIDDEN' });
 
     return NextResponse.json({
       success: true,
       action: `${PAYU_BASE_URL}/_payment`,
-      params: payuParams
+      params: payuParams,
+      currency: finalCurrency,
+      amount: finalAmount
     });
 
   } catch (error) {

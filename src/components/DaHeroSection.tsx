@@ -9,9 +9,11 @@ import Link from 'next/link'
 
 interface Props {
   sectionClass?: string;
+  currency?:string;
+  basePrice?:number;
 }
 
-const DaHeroSection = ({ sectionClass}: Props) => {
+const DaHeroSection = ({ sectionClass, currency, basePrice}: Props) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   return (
@@ -24,7 +26,9 @@ const DaHeroSection = ({ sectionClass}: Props) => {
             <div className="space-y-6">
               <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight">
                 Master Data Analytics at{' '}
-                <span className="text-gradient">Just ₹5,000</span>
+                {/* <span className="text-gradient">Just ₹5,000</span> */}
+               <span className="text-gradient">Just {currency === 'INR' ? '₹5,000' : `$${basePrice}`}</span>
+
               </h1>
 
               <p className="text-base sm:text-lg md:text-xl text-medium-gray leading-relaxed">
@@ -53,7 +57,7 @@ const DaHeroSection = ({ sectionClass}: Props) => {
                 <div className="flex items-start space-x-3">
                   <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green flex-shrink-0 mt-0.5" />
                   <span className="text-sm sm:text-base text-dark-gray leading-relaxed">
-                    Internship certificate
+                    Get dual certificate
                   </span>
                 </div>
               </div>

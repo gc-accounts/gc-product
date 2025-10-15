@@ -9,9 +9,11 @@ interface Props {
   sectionClass?: string;
   title?: string;
   subText?: string;
+  basePrice?:number;
+  currency?:string
 }
 
-const AIMLFeeModule = ({ sectionClass, title, subText }: Props) => {
+const AIMLFeeModule = ({ sectionClass, title, subText, basePrice, currency }: Props) => {
     const cohorts = [
       {
         startDate: "31 October 2025",
@@ -75,7 +77,8 @@ const AIMLFeeModule = ({ sectionClass, title, subText }: Props) => {
                 <div className="text-center mb-8">
                   <div className="flex items-center justify-center space-x-2 mb-3">
                     <span className="text-red-500 line-through text-lg">
-                      ₹15,000
+                      {/* ₹15,000 */}
+                      {currency === 'INR' ? '₹15,000' : '$250'}
                     </span>
                     <span className="text-red-500 line-through text-lg">
                       + GST
@@ -83,7 +86,7 @@ const AIMLFeeModule = ({ sectionClass, title, subText }: Props) => {
                   </div>
                   <div className="flex items-center justify-center space-x-2 mb-3">
                     <span className="text-4xl lg:text-5xl font-bold text-primary-green">
-                      ₹5,000
+                      {currency === 'INR' ? '₹5,000' : `$${basePrice}`}
                     </span>
                     <span className="text-xl lg:text-2xl font-bold text-primary-green">
                       + GST
@@ -127,7 +130,7 @@ const AIMLFeeModule = ({ sectionClass, title, subText }: Props) => {
                     Start: {cohort.startDate}
                   </div>
                   <div className="text-sm mb-2">
-                    20 weeks
+                    3 Months
                   </div>
                   <div className="text-xs opacity-90 leading-relaxed">
                     {cohort.spots}
