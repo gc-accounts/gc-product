@@ -1,7 +1,6 @@
 import React from 'react'
 import DataScienceBootcamp from '@/components/pages/DataScienceBootcamp'
 import type { Metadata } from 'next'
-
 export const metadata: Metadata = {
   title: "Data Science Bootcamp - Learn at ₹5,000 | Greycampus",
   description:
