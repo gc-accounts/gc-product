@@ -40,33 +40,40 @@ async function updateZohoCRM(
   try {
     const accessToken = await getAccessTokenForPayment();
     
-    const zohoPaymentFormData = new FormData();
-    zohoPaymentFormData.append('accessToken', accessToken);
-    zohoPaymentFormData.append('Email', email);
-    zohoPaymentFormData.append('Program', programName);
-    zohoPaymentFormData.append('Payment_Status', status);
-    zohoPaymentFormData.append('Payable_Amount', payableAmount);
-    zohoPaymentFormData.append('Effective_Bootcamp_Fee', effectiveFee);
-    zohoPaymentFormData.append('Business_Unit', 'GreyCampus');
-    zohoPaymentFormData.append('Source_Domain', 'GC Checkout Form');
-    
-    if (paymentId) {
-      zohoPaymentFormData.append('Payment_ID', paymentId);
-    }
+    // Create JSON object instead of FormData
+    const zohoData = {
+      accessToken: accessToken,
+      Email: email,
+      Program: programName,
+      Payment_Status: status,
+      Payable_Amount: payableAmount,
+      Effective_Bootcamp_Fee: effectiveFee,
+      Business_Unit: 'GreyCampus',
+      Source_Domain: 'GC Checkout Form',
+      Payment_ID: paymentId || ''
+    };
+
+    console.log('📤 Sending payment status to Zoho:', zohoData);
 
     const response = await fetch(getApiUrl('/api/zoho/payment-status'), {
       method: 'POST',
-      body: zohoPaymentFormData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(zohoData),
     });
 
     if (!response.ok) {
+      const errorText = await response.text();
+      console.error('❌ Failed to update Zoho CRM:', errorText);
       throw new Error('Failed to update Zoho CRM');
     }
     
-    console.log('Zoho CRM updated successfully for program:', programName);
+    const result = await response.json();
+    console.log('✅ Zoho CRM updated successfully for program:', programName, result);
     return true;
   } catch (error) {
-    console.error('Error updating Zoho CRM:', error);
+    console.error('💥 Error updating Zoho CRM:', error);
     return false;
   }
 }
