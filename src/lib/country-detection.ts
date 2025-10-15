@@ -34,7 +34,7 @@ export async function getUserCountry(): Promise<{
 // Price configuration
 export const PRICE_CONFIG = {
   INR: {
-    basePrice: 1,
+    basePrice: 5000,
     currency: 'INR',
     symbol: '₹'
   },
