@@ -34,7 +34,7 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
 
   useEffect(() => {
     setUtm(getUTMTrackingData());
-    setGaClientId(getGaCookieValue());
+    setGaClientId(getGaCookieValue() || '');
     fetchUserLocation().then((loc) => {
       setCity(loc.city);
       setState(loc.region);

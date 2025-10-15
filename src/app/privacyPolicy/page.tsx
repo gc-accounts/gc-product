@@ -1,11 +1,11 @@
 import React from 'react'
-import Contact from '@/components/pages/Contact'
+import TermsOfUse from '@/components/pages/PrivacyPolicy'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "Contact Us | Greycampus",
+  title: "Privacy Policy | Greycampus",
   description:
-    "Got a Query!! Worry not. You can drop an e-mail or call us anytime. Our 24*7 support service will get query answered and solved.",
+    "We at GreyCampus respect your right to privacy. Find all the information related to our privacy policy here.",
   keywords:
     "data science bootcamp, affordable courses, career transformation, machine learning, python, SQL, data analysis",
   authors: [{ name: "Greycampus" }],
@@ -17,12 +17,12 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL("https://www.greycampus.com"),
-  alternates: { canonical: "/contact" },
+  alternates: { canonical: "/privacyPolicy" },
   openGraph: {
-    title: "Contact Us | Greycampus",
+    title: "Privacy Policy | Greycampus",
     description:
-      "Got a Query!! Worry not. You can drop an e-mail or call us anytime. Our 24*7 support service will get query answered and solved.",
-    url: "https://www.greycampus.com/contact",
+      "We at GreyCampus respect your right to privacy. Find all the information related to our privacy policy here.",
+    url: "https://www.greycampus.com/privacyPolicy",
     siteName: "Greycampus",
     images: [
       {
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Us | Greycampus",
+    title: "Privacy Policy | Greycampus",
     description:
-      "Got a Query!! Worry not. You can drop an e-mail or call us anytime. Our 24*7 support service will get query answered and solved.",
+      "We at GreyCampus respect your right to privacy. Find all the information related to our privacy policy here.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
 const page = () => {
   return (
     <>
-       <Contact />
+       <TermsOfUse />
     </>
    
   );

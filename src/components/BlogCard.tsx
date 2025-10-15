@@ -55,10 +55,12 @@ const BlogCard: React.FC<BlogCardProps> = ({
       : 'Unknown Date';
 
   return (
-    <Card className="relative flex flex-col border border-gray-200 rounded-xl bg-white h-full overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+    <Card className="relative flex flex-col border border-gray-200 rounded-xl bg-white h-full overflow-hidden hover:border-primary-green shadow-md hover:shadow-lg transition duration-300">
       
       {/* Blog Image */}
       {/* Changed h-50 to h-40 for better grid proportionality, similar to previous suggestion */}
+
+      {featured_image_url && 
       <div className="w-full h-40 bg-gray-200 overflow-hidden"> 
         <img
           // *** USE THE finalImageUrl VARIABLE HERE ***
@@ -67,6 +69,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
           className="w-full h-full object-cover"
         />
       </div>
+}
 
       {/* Content Area */}
       <div className="flex flex-col flex-1 p-4 space-y-3">
@@ -75,10 +78,10 @@ const BlogCard: React.FC<BlogCardProps> = ({
 
         {/* Category/Author/Date Info */}
         <div className="flex flex-col text-sm text-gray-600 space-y-1">
-          {/* <div className="flex items-center">
+          <div className="flex items-center">
             {getIcon('tag')}
-            <span className="capitalize">{displayCategory}</span>
-          </div> */}
+            <span className="text-xs capitalize">{displayCategory}</span>
+          </div>
           <div className="flex items-center justify-between text-xs text-gray-500 border-gray-300 border-t pt-2 mt-2">
              <div className="flex items-center">
                 {getIcon('auther')}

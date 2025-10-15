@@ -78,7 +78,7 @@ const PrimaryForm: React.FC<PrimaryFormProps> = ({
     setUtm(data);
 
     getLocation();
-    const gaValue = getGaCookieValue();
+    const gaValue = getGaCookieValue() ?? '';
     setGaClientId(gaValue);
     setIsRedirectedByAimlPage(sessionStorage.getItem('isRedirectedByGenAiIitg'));
   }, [slug, foldName]);

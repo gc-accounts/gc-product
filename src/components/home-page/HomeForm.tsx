@@ -28,7 +28,7 @@ const HomeForm = () => {
   // Fetch UTM, GA, location
   useEffect(() => {
     setUtm(getUTMTrackingData());
-    setGaClientId(getGaCookieValue());
+    setGaClientId(getGaCookieValue() || '');
     fetchUserLocation().then((loc) => {
       setCity(loc.city);
       setState(loc.region);

@@ -66,7 +66,7 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
             </div>
             
             <a 
-              href="https://www.greycampus.com/about-us" 
+              href="/about-us" 
               className={`transition-colors ${
                 currentPage === 'about' 
                   ? 'text-primary-green font-semibold' 
@@ -76,7 +76,7 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
               About
             </a>
             <a 
-              href="https://www.greycampus.com/contact" 
+              href="/contact" 
               className={`transition-colors ${
                 currentPage === 'contact' 
                   ? 'text-primary-green font-semibold' 

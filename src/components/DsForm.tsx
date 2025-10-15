@@ -39,7 +39,7 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
   // Fetch UTM, GA, and location data
   useEffect(() => {
     setUtm(getUTMTrackingData());
-    setGaClientId(getGaCookieValue());
+    setGaClientId(getGaCookieValue() || '');
     fetchUserLocation().then((loc) => {
       setCity(loc.city);
       setState(loc.region);

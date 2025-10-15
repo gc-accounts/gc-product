@@ -34,7 +34,7 @@ const AIMLForm: React.FC<AIMLFormProps> = ({ isModal = false, onClose }) => {
 
   useEffect(() => {
     setUtm(getUTMTrackingData());
-    setGaClientId(getGaCookieValue());
+    setGaClientId(getGaCookieValue() || '');
     fetchUserLocation().then((loc) => {
       setCity(loc.city);
       setState(loc.region);

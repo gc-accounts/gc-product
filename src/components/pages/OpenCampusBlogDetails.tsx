@@ -120,7 +120,7 @@ const LeftSidebar = () => {
             {/* FIX: Removed legacyBehavior/a, used explicit colors */}
             <Link 
                 href="/" 
-                className={`${linkClasses} border-[${primaryColor}] text-[${primaryColor}] hover:bg-[${primaryColor}] hover:text-white font-medium`}
+                className={`${linkClasses} border-primary-green text-primary-green hover:bg-primary-green hover:text-white font-medium`}
             >
                 Training Courses
             </Link>
@@ -159,7 +159,7 @@ const OpenCampusBlogDetails: React.FC<OpenCampusBlogDetailsProps> = ({ blog }) =
                 </div>
                 
                 {/* 2. Main Content */}
-                <div className="md:col-span-2 lg:col-span-2 p-4 text-gray-800">
+                <div className="md:col-span-2 lg:col-span-2 text-gray-800">
                     <h1 className="text-4xl font-semibold mb-6 leading-tight">{blog?.post_title || "Blog Title"}</h1>
                     
                     {/* Featured Image (Optional) */}

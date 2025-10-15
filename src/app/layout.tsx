@@ -1,3 +1,4 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
@@ -9,6 +10,8 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const GTM_ID = "GTM-W9W9X4QJ";
+
 export const metadata: Metadata = {
   title: "Data Science Bootcamp - Learn at ₹5,000 | Greycampus",
   description:
@@ -18,7 +21,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Greycampus" }],
   creator: "Greycampus",
   publisher: "Greycampus",
-  metadataBase: new URL("https://bootcamp.greycampus.com"),
+  metadataBase: new URL("https://www.greycampus.com"),
   alternates: {
     canonical: "/",
   },
@@ -26,7 +29,7 @@ export const metadata: Metadata = {
     title: "Data Science Bootcamp - Learn at ₹5,000 | Greycampus",
     description:
       "Master data science in 20 weeks. ₹5,000 bootcamp with 95% placement. Expert instructors, real-world projects, lifetime access.",
-    url: "https://bootcamp.greycampus.com/",
+    url: "https://www.greycampus.com/",
     siteName: "Greycampus",
     images: [
       {
@@ -61,13 +64,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        {/* ✅ Favicon & Preconnect Links */}
+        {/* Favicons and Preconnects */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -77,7 +78,18 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
 
-        {/* ✅ Meta Pixel Base Code */}
+        {/* Google Tag Manager Head Script */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','${GTM_ID}');
+          `}
+        </Script>
+
+        {/* Meta Pixel Script */}
         <Script id="meta-pixel-base" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
@@ -92,8 +104,18 @@ export default function RootLayout({
             fbq('track', 'PageView');
           `}
         </Script>
-
-        {/* ✅ Noscript fallback */}
+      </head>
+      <body className="font-sans antialiased">
+        {/* GTM NoScript Fallback */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+        {/* Meta Pixel NoScript fallback */}
         <noscript>
           <img
             height="1"
@@ -103,9 +125,6 @@ export default function RootLayout({
             alt="facebook-pixel"
           />
         </noscript>
-      </head>
-
-      <body className="font-sans antialiased">
         {children}
         <Toaster />
       </body>
