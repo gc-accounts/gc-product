@@ -28,92 +28,34 @@ const DsFaq = () => {
   const faqs = {
     curriculum: [
       {
-        question: 'What programming languages will I learn?',
+        question: 'Do I need any programming experience to join?',
         answer:
-          "You will learn Python (primary), SQL. Python is the main language used throughout the bootcamp as it's the industry standard for data science.",
+          "No! This bootcamp is designed for beginners. We start with fundamentals and gradually progress. Even if you haven't coded before, you'll feel comfortable with our hands-on approach.",
       },
-      {
-        question: 'Do I need prior programming experience?',
-        answer:
-          "No prior programming experience is required. We start from the basics and gradually build up to advanced concepts. Our curriculum is designed for complete beginners.",
-      },
-      {
-        question: 'What tools and technologies are covered?',
-        answer:
-          'We cover Python, SQL, Power BI, Tableau, Jupyter Notebooks, Git, and various machine learning libraries like scikit-learn, pandas, and numpy.',
-      },
-      {
-        question: 'How is the curriculum updated?',
-        answer:
-          'Our curriculum is updated monthly based on industry trends and feedback from our hiring partners. We ensure you learn the most current tools and techniques.',
-      },
-    ],
-    job: [
-      {
-        question: 'What is the job placement rate?',
-        answer:
-          'We have a 100% placement assistance within 3 months of graduation. Our career support team works closely with students to ensure successful job placement.',
-      },
-      {
-        question: 'What types of companies hire your graduates?',
-        answer:
-          'Our graduates work at top companies including Google, Amazon, Microsoft, Meta, Netflix, and many Fortune 500 companies across various industries.',
-      },
-      {
-        question: 'Do you provide career support after graduation?',
-        answer:
-          'Yes, we provide lifetime career support including resume reviews, interview preparation, networking opportunities, and job placement assistance.',
-      },
-      {
-        question: 'What salary can I expect after graduation?',
-        answer:
-          'Our graduates typically see salary increases of 120% on average. Entry-level data science roles start at ₹6-8 LPA, with experienced professionals earning ₹12-20 LPA.',
-      },
-    ],
-    practical: [
       {
         question: 'How long is the bootcamp?',
         answer:
-          'The bootcamp is 3 months long, with 8 comprehensive modules covering all aspects of data science from fundamentals to advanced topics.',
+          "The bootcamp is 3 months long, with 8 comprehensive modules covering all aspects of data science from fundamentals to advanced topics.",
       },
       {
         question: 'What is the time commitment required?',
         answer:
-          'We recommend 15-20 hours per week for optimal learning. The program is designed to be flexible for working professionals and students.',
+          "We recommend 15-20 hours per week for optimal learning. The program is designed to be flexible for working professionals and students.",
       },
       {
-        question: 'Are there live sessions or is it self-paced?',
+        question: 'What kind of placement assistance is available?',
         answer:
-          'We offer 3-months LIVE online classes. You can attend live sessions for real-time interaction or watch recordings at your convenience.',
+          "We provide 100% Placement assistance to all the students who graduate the Bootcamp as per expected performance standards. We start offering placement assistance after the course completion and continue to offer this assistance up until two years following the bootcamp's start date.",
       },
       {
         question: 'What if I miss a live session?',
-        answer:
-          'All live sessions are recorded and available for replay. You can access them anytime during the bootcamp and even after graduation.',
-      },
-    ],
-    enrollment: [
-      {
-        question: 'What is the total cost of the bootcamp?',
-        answer:
-          'The bootcamp costs ₹5,000 + GST (originally ₹15,000). This includes all course materials, projects, career support, and lifetime access to resources.',
+        answer:'We offer 3-months LIVE online classes. All live sessions are recorded and available for replay. You can access them anytime during the bootcamp and even after bootcamp completion upto 2 years.',
       },
       {
-        question: 'Are there any hidden fees?',
-        answer:
-          'No hidden fees. The price includes everything: course materials, software licenses, career support, and lifetime access to the learning platform.',
+        question: 'Is there a refund policy for this Data Science Bootcamp?',
+        answer:'As per our refund policy, fee amounts once paid are non-refundable.',
       },
-      {
-        question: 'Do you offer payment plans?',
-        answer:
-          'Yes, we offer flexible payment plans. You can pay in full or choose from our installment options to make it more affordable.',
-      },
-      {
-        question: 'What is your refund policy?',
-        answer:
-          'We offer 90%+ placement support within 3 months. Our career team provides resume review, interview prep, mock interviews, and job connections with hiring companies.',
-      },
-    ],
+    ]
   };
 
   const toggleFAQ = (category: string, index: number) => {
@@ -138,7 +80,7 @@ const DsFaq = () => {
 
         <div className="max-w-4xl mx-auto">
           {/* Category Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8 lg:mb-12">
+          {/* <div className="flex flex-wrap justify-center gap-2 mb-8 lg:mb-12">
             {faqCategories.map((category) => (
               <button
                 key={category.id}
@@ -152,7 +94,7 @@ const DsFaq = () => {
                 {category.name}
               </button>
             ))}
-          </div>
+          </div> */}
 
           {/* FAQ Items */}
           <div className="space-y-4">
