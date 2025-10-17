@@ -64,6 +64,17 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
                 </div>
               )}
             </div>
+
+            <a 
+              href="/corporate" 
+              className={`transition-colors ${
+                currentPage === 'corporate' 
+                  ? 'text-primary-green font-semibold' 
+                  : 'text-medium-gray hover:text-primary-green'
+              }`}
+            >
+              Corporate
+            </a>
             
             <a 
               href="/about-us" 
@@ -137,9 +148,21 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
                   </div>
                 )}
               </div>
+
+              <a 
+                href="/corporate" 
+                className={`transition-colors ${
+                  currentPage === 'corporate' 
+                    ? 'text-primary-green font-semibold' 
+                    : 'text-medium-gray hover:text-primary-green'
+                }`}
+                onClick={() => { toggleMenu(); setIsProductsOpen(false); }}
+              >
+                Corporate
+              </a>
               
               <a 
-                href="https://www.greycampus.com/about-us" 
+                href="/about-us" 
                 className={`transition-colors ${
                   currentPage === 'about' 
                     ? 'text-primary-green font-semibold' 
@@ -150,7 +173,7 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
                 About
               </a>
               <a 
-                href="https://www.greycampus.com/contact" 
+                href="/contact" 
                 className={`transition-colors ${
                   currentPage === 'contact' 
                     ? 'text-primary-green font-semibold' 
