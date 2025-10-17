@@ -76,11 +76,11 @@ interface Props {
 
                 <div className="p-6 lg:p-8">
                   {/* Avatar (Un-commented and fixed) */}
-                  <div className="flex justify-center -mt-16 mb-6">
+                  {/* <div className="flex justify-center -mt-16 mb-6">
                     <div className="w-16 h-16 bg-white rounded-full border-4 border-primary-green flex items-center justify-center text-3xl shadow-md">
                       {currentItem.avatar}
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* Quote */}
                   <blockquote className="text-center mb-6">

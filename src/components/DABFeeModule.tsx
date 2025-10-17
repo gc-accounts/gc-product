@@ -9,9 +9,11 @@ interface Props {
   sectionClass?: string;
   title?: string;
   subText?: string;
+  currency?:string;
+  basePrice?:number;
 }
 
-const DABFeeModule = ({ sectionClass, title, subText }: Props) => {
+const DABFeeModule = ({ sectionClass, title, subText, currency, basePrice  }: Props) => {
     const cohorts = [
    { 
         startDate: "31 October 2025", 
@@ -74,7 +76,8 @@ const DABFeeModule = ({ sectionClass, title, subText }: Props) => {
                 <div className="text-center mb-8">
                   <div className="flex items-center justify-center space-x-2 mb-3">
                     <span className="text-red-500 line-through text-lg">
-                      ₹15,000
+                      {/* ₹15,000 */}
+                      {currency === 'INR' ? '₹15,000' : '$250'}
                     </span>
                     <span className="text-red-500 line-through text-lg">
                       + GST
@@ -82,7 +85,7 @@ const DABFeeModule = ({ sectionClass, title, subText }: Props) => {
                   </div>
                   <div className="flex items-center justify-center space-x-2 mb-3">
                     <span className="text-4xl lg:text-5xl font-bold text-primary-green">
-                      ₹5,000
+                    {currency === 'INR' ? '₹5,000' : `$${basePrice}`}
                     </span>
                     <span className="text-xl lg:text-2xl font-bold text-primary-green">
                       + GST

@@ -1,11 +1,45 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, CardContent } from './ui/card';
-
+import { getUserCountry, PRICE_CONFIG } from '@/lib/country-detection';
 interface Props {
   sectionClass?: String;
 }
 const WhyChooseSection = ({ sectionClass}: Props) => {
+
+      const [currency, setCurrency] = useState<'INR' | 'USD'>('INR');
+      const [basePrice, setBasePrice] = useState<number>(5000);
+      
+  
+      const detectUserCountry = async () => {
+        try {
+          const countryInfo = await getUserCountry();
+          setCurrency(countryInfo.currency);
+          
+          // Set price based on country
+          if (countryInfo.isIndia) {
+            setBasePrice(PRICE_CONFIG.INR.basePrice);
+          } else {
+            setBasePrice(PRICE_CONFIG.USD.basePrice);
+          }
+          
+          console.log('🌍 Country detected:', countryInfo);
+        } catch (error) {
+          console.error('Country detection failed:', error);
+          // Fallback to INR
+          setCurrency('INR');
+          setBasePrice(PRICE_CONFIG.INR.basePrice);
+        }
+      };
+  
+  
+    useEffect(() => {
+      window.scrollTo(0, 0);
+      detectUserCountry();
+    }, []);
+
+
+
   return (
   <section id="why-choose" className={`${sectionClass ? sectionClass : ''}`}>
       <div className="container mx-auto">
@@ -24,7 +58,8 @@ const WhyChooseSection = ({ sectionClass}: Props) => {
             {
               icon: '💰',
               title: 'Most Affordable',
-              description: 'High-quality education at ₹5,000'
+              description: `High-quality education at ${currency === 'INR' ? '₹5,000' : `$${basePrice}`}`
+
             },
             {
               icon: '👨‍🏫',
