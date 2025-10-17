@@ -304,13 +304,13 @@ export default function HomePage() {
                 </div>
               </div>
               
-              <Button 
+              {/* <Button 
                 variant="outline" 
                 className="border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white"
               >
                 Read Our Story
                 <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
+              </Button> */}
             </div>
           </div>
           
@@ -663,7 +663,7 @@ export default function HomePage() {
       <main className="pt-16">
         <HomeHeroSection />
         {/* <HiringOrganizationsSection /> */}
-        <HiringOrganizationSection/>
+        <HiringOrganizationSection sectionClass='px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
         <ProgramsSection />
         <WhoAreWeSection />
         <WhyGreycampusSection />

@@ -41,7 +41,7 @@ const HomeHeroSection = () => (
               
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-primary-green rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <span className="text-white text-sm">💰</span>
                   </div>
                   <div>
@@ -49,7 +49,7 @@ const HomeHeroSection = () => (
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-primary-green rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <span className="text-white text-sm">🎯</span>
                   </div>
                   <div>
@@ -57,7 +57,7 @@ const HomeHeroSection = () => (
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-primary-green rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <span className="text-white text-sm">🚀</span>
                   </div>
                   <div>

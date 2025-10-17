@@ -36,14 +36,14 @@ const HiringOrganizationSection = ({ sectionClass, title, subText }: Props) => {
        <section className={`${sectionClass ? sectionClass : ''}`}>
       <div className="container mx-auto">
 
-        <div className="text-center mb-8 lg:mb-10 max-w-8xl">
+        {/* <div className="text-center mb-8 lg:mb-10 max-w-8xl">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-2 lg:mb-3">
             {title}
           </h2>
           <p className="text-sm md:text-base text-medium-gray mx-auto leading-relaxed">
             {subText}
           </p>
-        </div>
+        </div> */}
           
           <div className="overflow-hidden">
             <div className="flex space-x-8 animate-scroll">
