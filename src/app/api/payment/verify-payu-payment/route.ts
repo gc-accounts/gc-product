@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     const hashString = 
       `${MERCHANT_SALT}|${paymentData.status}|||||||||||${paymentData.udf5}|${paymentData.udf4}|${paymentData.udf3}|${paymentData.udf2}|${paymentData.udf1}|${paymentData.email}|${paymentData.firstname}|${paymentData.productinfo}|${paymentData.amount}|${paymentData.txnid}|${paymentData.key}`;
     
-    const expectedHash = crypto.createHash('sha512').update(hashString).toString('hex').toLowerCase();
+const expectedHash = crypto.createHash('sha512').update(hashString, 'utf-8').digest('hex').toLowerCase();
     const isValid = expectedHash === paymentData.hash.toLowerCase();
 
     if (!isValid) {

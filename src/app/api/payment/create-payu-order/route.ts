@@ -30,7 +30,7 @@ export async function POST(req: Request) {
     // Generate hash with currency parameter
     const hashString = `${MERCHANT_KEY}|${txnId}|${finalAmount}|${productName}|${firstName || 'Customer'}|${email}|||||||||||${MERCHANT_SALT}`;
     
-    const hash = crypto.createHash('sha512').update(hashString).digest('hex');
+    const hash = crypto.createHash('sha512').update(hashString, 'utf-8').digest('hex').toLowerCase();
 
     const callbackUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/payment/callback`;
 

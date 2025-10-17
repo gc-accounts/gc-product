@@ -48,88 +48,9 @@ const teamMembers = [
   }
 ];
 
-// Company Logos Data
-const companyLogos = [
-   "https://strapi.odinschool.com/uploads/Meesho_100x40_individual_81f680e677.webp",
-      "https://strapi.odinschool.com/uploads/prolifics_100_X40_Individual_02765c8bbc.webp",
-      "https://strapi.odinschool.com/uploads/Ensoft100_X40_105ed0f32a.webp",
-      "https://strapi.odinschool.com/uploads/Deloitte_100_X40_1_1_ca02ecb519.webp",
-      "https://strapi.odinschool.com/uploads/Tatvic_100_X40_92af98eb92.webp",
-      "https://strapi.odinschool.com/uploads/genpact_100_X40_280d97151b.webp",
-      "https://strapi.odinschool.com/uploads/Pepsico100_X40_a3d789f2d4.webp",
-      "https://strapi.odinschool.com/uploads/Synchrony_INDIVIDUAL_100_X40_6cc77d6f53.webp",
-      "https://strapi.odinschool.com/uploads/TCS_100_X40_Individual_7ceeb6c515.webp",
-      "https://strapi.odinschool.com/uploads/Cognizant_100_X40_1_20f9d634ed.webp",
-      "https://strapi.odinschool.com/uploads/sutherland100_X40_d68abd31db.webp",
-      "https://strapi.odinschool.com/uploads/swiggy_100x40_indv_2fad998515.webp",
-      "https://strapi.odinschool.com/uploads/Infosys_100_X40_285cf1a2c6.webp",
-      "https://strapi.odinschool.com/uploads/IBM_100_X40_a4922015b6.webp",
-      "https://strapi.odinschool.com/uploads/JKTECH_100_X40_5229c19c27.webp",
-      "https://strapi.odinschool.com/uploads/Saarthi_Individual_100_x40_39ee46a45c.webp",
-      "https://strapi.odinschool.com/uploads/Tech_Mahindra100_X40_769822fb36.webp",
-      "https://strapi.odinschool.com/uploads/Bodhtree_INDIVIDUAL_100_X40_e4c952b088.webp",
-];
 
-// Bootcamp Data
-const bootcamps = [
-  {
-    icon: "📊",
-    title: "Data Science Bootcamp",
-    price: "₹5,000 + GST",
-    duration: "20 weeks",
-    students: "8,000+",
-    topics: "Python, SQL, ML, Power BI, Generative AI",
-    placement: "100%+",
-    link: "/data-science-bootcamp"
-  },
-  {
-    icon: "📈",
-    title: "Data Analyst Bootcamp", 
-    price: "₹5,000 + GST",
-    duration: "3 months",
-    students: "6,000+",
-    topics: "Excel, SQL, Power BI, Python, Analytics",
-    placement: "100%+",
-    link: "/data-analyst-bootcamp"
-  },
-  {
-    icon: "🤖",
-    title: "AI/ML Bootcamp",
-    price: "₹5,000 + GST", 
-    duration: "20 weeks",
-    students: "4,000+",
-    topics: "LLMs, Deep Learning, RAGs, AI Agents",
-    placement: "100%+",
-    link: "/aiml-bootcamp"
-  }
-];
 
-// Roadmap Data
-const roadmapItems = [
-  {
-    year: "2024",
-    title: "Global Expansion",
-    description: "Launch bootcamps in 10 new countries",
-    status: "In Progress",
-    icon: "🌍"
-  },
-  {
-    year: "2025",
-    title: "AI-Powered Learning",
-    description: "Integrate AI tutors and personalized learning paths",
-    status: "Planned",
-    icon: "🤖"
-  },
-  {
-    year: "2026",
-    title: "Industry Partnerships",
-    description: "Direct placement partnerships with 1000+ companies",
-    status: "Planned",
-    icon: "🤝"
-  }
-];
-
-export default function AboutPage() {
+export default function AboutUs() {
   // Counter hooks
   const studentsCount = useCounter(50000);
   const placementCount = useCounter(95);
@@ -144,99 +65,56 @@ export default function AboutPage() {
 
       <main className="pt-16">
         {/* SECTION 1: HERO SECTION */}
-        <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white via-white to-green-50 flex items-center">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <section className="bg-gradient-hero px-[20px] py-[50px] md:px-[30px] md:py-[70px] flex items-center">
+          <div className="container mx-auto text-center">
             <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
-              {/* LEFT CONTENT (60%) */}
-              <div className="lg:col-span-3 space-y-8">
-                <div className="space-y-6">
-                  <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight">
-                    Empowering Professionals Through World-Class Education
-                  </h1>
+
+              <div className="lg:col-span-12">
+                <div className="mb-4">
+                  <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight mb-2">About <span className="text-gradient">Us</span></h1>
                   <p className="text-lg text-medium-gray leading-relaxed">
-                    Greycampus: Skilling up professionals to enable growth, productivity, and efficiency
+                    Skilling Up Professionals to Enable Growth, Productivity and Efficiency
                   </p>
-                  <p className="text-base text-medium-gray leading-relaxed">
-                    We believe every organization should be able to skill up their workforce effectively in a professional, effective, and affordable manner.
-                  </p>
-                </div>
+                  </div>
+
+                  <img src="https://strapi.greycampus.com/uploads/gc_about_us_a22c7767c7.webp" className='w-full h-auto mx-auto rounded-lg max-w-4xl' alt="about us" />
+
                 
-                <div>
-                  <Button 
-                    size="lg" 
-                    variant="outline"
-                    className="border-primary-green text-primary-green hover:bg-primary-green hover:text-white h-12 text-base font-semibold"
-                  >
-                    Explore Our Mission
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                </div>
               </div>
               
-              {/* RIGHT CONTENT (40%) */}
-              <div className="lg:col-span-2 lg:sticky lg:top-24">
-                <div className="relative">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-primary-green/10 to-accent-blue/10 rounded-2xl overflow-hidden">
-                    <div className="w-full h-full flex items-center justify-center">
-                      <div className="text-center space-y-4">
-                        <div className="w-24 h-24 bg-primary-green/20 rounded-full flex items-center justify-center mx-auto">
-                          <Users className="w-12 h-12 text-primary-green" />
-                        </div>
-                        <p className="text-medium-gray font-medium">Team Collaboration</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
             </div>
           </div>
         </section>
 
         {/* SECTION 2: OUR STORY */}
         <section className="py-10 sm:py-15 lg:py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="container mx-auto">
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
               {/* LEFT CONTENT */}
-              <div className="space-y-8">
-                <div className="space-y-6">
+              <div className="col-span-7">
+                <div className="space-y-4">
                   <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                     Our Story
                   </h2>
-                  <p className="text-lg text-medium-gray leading-relaxed">
-                    From vision to reality: How we&apos;re transforming education
-                  </p>
+
                   
                   <div className="space-y-6">
-                    <p className="text-lg text-medium-gray leading-relaxed">
-                      Greycampus was born from a simple observation: world-class tech education shouldn&apos;t cost a fortune. Founded in 2017 by industry veterans who&apos;ve worked at Google, Amazon, and Microsoft, we set out to democratize professional development.
+                    <p className="md:text-base text-sm text-medium-gray leading-relaxed">
+                      At GreyCampus, we believe that every organisation should be able to skill up their workforce effectively in a professional, effective, and affordable manner. With that in mind, we have set out to create the world’s best-value platform where learners can access high-quality online courses, focused practical sessions from practitioners, and get their questions answered directly by experts.
                     </p>
-                    <p className="text-lg text-medium-gray leading-relaxed">
-                      What started as a small team with a big dream has grown into a global platform that&apos;s trained over 50,000 professionals. Our mission remains unchanged: make high-quality, industry-relevant education accessible to everyone.
+                    <p className="md:text-base text-sm text-medium-gray leading-relaxed">
+                      After 7 years of successful skilling globally, we launched OdinSchool, our India- focussed brand, in 2021 to focus on upskilling graduates and working professionals in high-demand technologies for the Indian industry.
                     </p>
+                    <p className="md:text-base text-sm text-medium-gray leading-relaxed">We believe the best-value learning experience need not necessarily involve attending a traditional classroom lecture. Instead, pairing up learning content created by top instructors with dedicated, 24×7 Q&A support from subject experts can deliver an equivalent (if not superior) learning experience.</p>
                   </div>
                   
-                  <Button 
-                    variant="outline" 
-                    className="border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white"
-                  >
-                    Read Our Full Story
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
                 </div>
               </div>
               
-              {/* RIGHT CONTENT - Visual */}
-              <div className="relative">
-                <div className="relative">
-                  <div className="w-full h-96 bg-gradient-to-br from-primary-green/20 to-accent-blue/20 rounded-2xl flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute top-8 left-8 w-16 h-16 bg-primary-green/30 rounded-full"></div>
-                    <div className="absolute top-16 right-12 w-12 h-12 bg-accent-blue/30 rounded-full"></div>
-                    <div className="absolute bottom-12 left-12 w-20 h-20 bg-accent-gold/30 rounded-full"></div>
-                    <div className="absolute bottom-8 right-8 w-14 h-14 bg-primary-green/30 rounded-full"></div>
-                    
-                    <div className="text-8xl">🚀</div>
-                  </div>
-                </div>
+
+              <div className="col-span-5">
+                <img src="https://strapi.greycampus.com/uploads/about_2_9683681ce5.jpg" className=' h-auto mx-auto rounded-lg max-w-4xl' alt="about us" />
               </div>
             </div>
           </div>
@@ -438,125 +316,8 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* SECTION 6: OUR BOOTCAMPS */}
-        <section className="py-10 sm:py-15 lg:py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-            <div className="text-center mb-12 lg:mb-16">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-                Our Bootcamps
-              </h2>
-              <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
-                Comprehensive programs designed for career transformation
-              </p>
-            </div>
-            
-            <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
-              {bootcamps.map((bootcamp, index) => (
-                <Card key={index} className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-border-gray hover:border-primary-green bg-white relative overflow-hidden">
-                  <CardContent className="p-8 h-full flex flex-col">
-                    <div className="text-6xl mb-6">{bootcamp.icon}</div>
-                    
-                    <h3 className="text-2xl font-bold text-dark-gray mb-4">
-                      {bootcamp.title}
-                    </h3>
-                    
-                    <div className="text-3xl font-bold text-primary-green mb-2">
-                      {bootcamp.price}
-                    </div>
-                    
-                    <p className="text-sm text-medium-gray mb-6">
-                      {bootcamp.duration}
-                    </p>
-                    
-                    <div className="space-y-3 mb-8 flex-grow">
-                      <div className="flex items-center space-x-2">
-                        <CheckCircle className="w-4 h-4 text-primary-green flex-shrink-0" />
-                        <span className="text-sm text-dark-gray">{bootcamp.students} students trained</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <CheckCircle className="w-4 h-4 text-primary-green flex-shrink-0" />
-                        <span className="text-sm text-dark-gray">{bootcamp.placement} placement rate</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <CheckCircle className="w-4 h-4 text-primary-green flex-shrink-0" />
-                        <span className="text-sm text-dark-gray">{bootcamp.topics}</span>
-                      </div>
-                    </div>
-                    
-                    <Button 
-                      className="w-full bg-primary-green hover:bg-secondary-green text-white py-3 text-lg font-semibold"
-                      onClick={() => window.location.href = bootcamp.link}
-                    >
-                      Learn More
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* SECTION 7: PARTNERS & CLIENTS */}
-        <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white to-green-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-            <div className="text-center mb-12 lg:mb-16">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-                Trusted by Leading Companies
-              </h2>
-                <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
-                  Our graduates work at the world&apos;s most innovative organizations
-                </p>
-            </div>
-            
-            <div className="overflow-hidden">
-              <div className="flex space-x-8 animate-scroll">
-                {[...companyLogos, ...companyLogos].map((company, index) => (
-                  <div key={index} className="flex-shrink-0 w-40 h-20 bg-white rounded-lg flex items-center justify-center border border-border-gray hover:border-primary-green transition-colors group">
-                    <img src={company} alt="logo" />
-                    {/* <span className="text-sm font-semibold text-dark-gray group-hover:text-primary-green transition-colors">{company}</span> */}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
 
-        {/* SECTION 8: ROADMAP */}
-        <section className="py-10 sm:py-15 lg:py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-            <div className="text-center mb-12 lg:mb-16">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-                Our Roadmap
-              </h2>
-              <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
-                Exciting plans for the future of education
-              </p>
-            </div>
-            
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-              {roadmapItems.map((item, index) => (
-                <Card key={index} className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-border-gray hover:border-primary-green bg-white">
-                  <CardContent className="p-8 h-full flex flex-col">
-                    <div className="text-5xl mb-6">{item.icon}</div>
-                    <h3 className="text-xl font-semibold text-dark-gray mb-4">
-                      {item.title}
-                    </h3>
-                    <p className="text-medium-gray leading-relaxed flex-grow mb-4">
-                      {item.description}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-semibold text-primary-green">{item.year}</span>
-                      <span className="text-xs bg-primary-green/10 text-primary-green px-2 py-1 rounded-full">
-                        {item.status}
-                      </span>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* SECTION 9: CTA */}
         <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white via-white to-blue-50 relative overflow-hidden">

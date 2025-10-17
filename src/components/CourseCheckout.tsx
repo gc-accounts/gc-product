@@ -56,7 +56,7 @@ const CourseCheckout = () => {
     window.scrollTo(0, 0);
     const data = getUTMTrackingData();
     setUtm(data);
-    setGaClientId(getGaCookieValue());
+    setGaClientId(getGaCookieValue() || '');
     fetchUserLocation();
     detectUserCountry();
   }, []);

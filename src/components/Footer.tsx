@@ -56,8 +56,8 @@ export default function Footer() {
                 <li><Link href="/data-science-bootcamp" className="text-sm text-light-gray hover:text-primary-green transition-colors">Data Science Bootcamp</Link></li>
                 <li><Link href="/data-analyst-bootcamp" className="text-sm text-light-gray hover:text-primary-green transition-colors">Data Analyst Bootcamp</Link></li>
                 <li><Link href="/aiml-bootcamp" className="text-sm text-light-gray hover:text-primary-green transition-colors">AI/ML Bootcamp</Link></li>
-                <li><Link href="https://www.greycampus.com/about-us" className="text-sm text-light-gray hover:text-primary-green transition-colors">About</Link></li>
-                <li><Link href="https://www.greycampus.com/contact" className="text-sm text-light-gray hover:text-primary-green transition-colors">Contact</Link></li>
+                <li><Link href="/about-us" className="text-sm text-light-gray hover:text-primary-green transition-colors">About</Link></li>
+                <li><Link href="/contact" className="text-sm text-light-gray hover:text-primary-green transition-colors">Contact</Link></li>
               </ul>
             </div>
             
@@ -65,8 +65,8 @@ export default function Footer() {
             <div className="space-y-4">
               <h3 className="text-sm font-bold text-white">Resources</h3>
               <ul className="space-y-2">
-                <li><a href="https://www.greycampus.com/blog" className="text-sm text-light-gray hover:text-primary-green transition-colors">Blog</a></li>
-                <li><a href="https://www.greycampus.com/opencampus" className="text-sm text-light-gray hover:text-primary-green transition-colors">Opencampus</a></li>
+                <li><a href="/blog" className="text-sm text-light-gray hover:text-primary-green transition-colors">Blog</a></li>
+                <li><a href="/opencampus" className="text-sm text-light-gray hover:text-primary-green transition-colors">Opencampus</a></li>
                 {/* <li><a href="https://www.corporate.greycampus.com/" className="text-sm text-light-gray hover:text-primary-green transition-colors">Success Stories</a></li>
                 <li><a href="https://www.corporate.greycampus.com/" className="text-sm text-light-gray hover:text-primary-green transition-colors">Community</a></li>
                 <li><a href="https://www.corporate.greycampus.com/" className="text-sm text-light-gray hover:text-primary-green transition-colors">FAQ</a></li> */}
@@ -77,8 +77,8 @@ export default function Footer() {
                <div className="space-y-4">
               <h3 className="text-sm font-bold text-white">Resources</h3>
               <ul className="space-y-2">
-                <li><a href="https://www.greycampus.com/termsOfUse" className="text-sm text-light-gray hover:text-primary-green transition-colors">Terms Of Use</a></li>
-                <li><a href="https://www.greycampus.com/privacyPolicy" className="text-sm text-light-gray hover:text-primary-green transition-colors">Privacy Policy</a></li>
+                <li><a href="/termsOfUse" className="text-sm text-light-gray hover:text-primary-green transition-colors">Terms Of Use</a></li>
+                <li><a href="/privacyPolicy" className="text-sm text-light-gray hover:text-primary-green transition-colors">Privacy Policy</a></li>
               </ul>
             </div>
             
