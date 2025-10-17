@@ -67,18 +67,33 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
     e.preventDefault();
     setLoading(true);
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const phone = (formData.get('Phone') as string)?.trim();
-    const fullPhone = `+${selectedCountry.code}${phone}`;
-
-    formData.delete('Phone');
-    formData.append('Phone', fullPhone);
-    formData.append('Country', selectedCountry.country);
-
     try {
+      // ✅ Increment total form submits
+      let totalFormSubmits = Number(localStorage.getItem('total_form_submits') || '0');
+      totalFormSubmits += 1;
+      localStorage.setItem('total_form_submits', totalFormSubmits.toString());
+
+      // ✅ Extract form data
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+
+      // ✅ Store email in both localStorage & sessionStorage (like PrimaryForm)
+      const email = formData.get('Email') as string;
+      if (email) {
+        localStorage.setItem('submittedEmail', email);
+        sessionStorage.setItem('submittedEmail', email);
+      }
+
+      const phone = (formData.get('Phone') as string)?.trim();
+      const fullPhone = `+${selectedCountry.code}${phone}`;
+
+      formData.delete('Phone');
+      formData.append('Phone', fullPhone);
+      formData.append('Country', selectedCountry.country);
+
       const token = await getAccessToken();
 
+      // ✅ Append all other fields
       formData.append('accessToken', token);
       formData.append('Program', 'GC Data Analyst Bootcamp');
       formData.append('Ga_client_id', gaClientId);
@@ -87,7 +102,7 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
       formData.append('Other_City', city);
       formData.append('Other_State', state);
 
-      // Tracking
+      // ✅ UTM tracking
       formData.append('First Page Seen', utm['First Page Seen'] ?? '');
       formData.append('Original Traffic Source', getOriginalTrafficSource(utm));
       formData.append('Original Traffic Source Drill-Down 1', utm['Original Traffic Source Drill-Down 1'] ?? '');
@@ -96,6 +111,10 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
       formData.append('UTM Content-First Page Seen', utm['UTM Content-First Page Seen'] ?? '');
       formData.append('ads_gclid', utm['ads_gclid'] ?? '');
 
+      // ✅ Add total form submits field
+      formData.append('Total Form Submits', totalFormSubmits.toString());
+
+      // ✅ Submit to Zoho API
       const res = await fetch('/api/zoho/course-form', {
         method: 'POST',
         body: formData,
@@ -111,11 +130,12 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
         description: 'Your details have been submitted successfully!',
       });
 
+      // ✅ Facebook Pixel Lead Event
       if (typeof window !== 'undefined' && (window as any).fbq) {
         (window as any).fbq('track', 'Lead');
       }
 
-      // ✅ If used in modal, open PDF and close it
+      // ✅ If modal form, open brochure and close
       if (isModal) {
         const brochurePath = '/Data Analyst Bootcamp.pdf';
         window.open(brochurePath, '_blank');
@@ -129,7 +149,7 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
       toast({
         title: 'Error',
         description: err.message || 'Failed to submit the form',
-        type: 'error',
+         type: 'error',
       });
     } finally {
       setLoading(false);
