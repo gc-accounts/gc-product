@@ -78,6 +78,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
 
+        <meta name="google-site-verification" content="uXPsXGM-lgJMN0vj3El7rckTdJlpbBYyFhy1gIr9Hjg" />
+
         {/* Google Tag Manager Head Script */}
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
