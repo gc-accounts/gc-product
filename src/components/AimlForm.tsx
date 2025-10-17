@@ -67,16 +67,28 @@ const AIMLForm: React.FC<AIMLFormProps> = ({ isModal = false, onClose }) => {
     e.preventDefault();
     setLoading(true);
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const phone = (formData.get('Phone') as string)?.trim();
-    const fullPhone = `+${selectedCountry.code}${phone}`;
-
-    formData.delete('Phone');
-    formData.append('Phone', fullPhone);
-    formData.append('Country', selectedCountry.country);
-
     try {
+      // ✅ Total Form Submits Tracking
+      let totalFormSubmits = Number(localStorage.getItem('total_form_submits') || '0');
+      totalFormSubmits += 1;
+      localStorage.setItem('total_form_submits', totalFormSubmits.toString());
+
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+
+      // ✅ Store email
+      const email = formData.get('Email') as string;
+      if (email) {
+        localStorage.setItem('submittedEmail', email);
+        sessionStorage.setItem('submittedEmail', email);
+      }
+
+      const phone = (formData.get('Phone') as string)?.trim();
+      const fullPhone = `+${selectedCountry.code}${phone}`;
+      formData.delete('Phone');
+      formData.append('Phone', fullPhone);
+      formData.append('Country', selectedCountry.country);
+
       const token = await getAccessToken();
 
       formData.append('accessToken', token);
@@ -87,7 +99,7 @@ const AIMLForm: React.FC<AIMLFormProps> = ({ isModal = false, onClose }) => {
       formData.append('Other_City', city);
       formData.append('Other_State', state);
 
-      // Tracking
+      // ✅ UTM tracking fields
       formData.append('First Page Seen', utm['First Page Seen'] ?? '');
       formData.append('Original Traffic Source', getOriginalTrafficSource(utm));
       formData.append('Original Traffic Source Drill-Down 1', utm['Original Traffic Source Drill-Down 1'] ?? '');
@@ -95,6 +107,9 @@ const AIMLForm: React.FC<AIMLFormProps> = ({ isModal = false, onClose }) => {
       formData.append('UTM Term-First Page Seen', utm['UTM Term-First Page Seen'] ?? '');
       formData.append('UTM Content-First Page Seen', utm['UTM Content-First Page Seen'] ?? '');
       formData.append('ads_gclid', utm['ads_gclid'] ?? '');
+
+      // ✅ Add total form submits
+      formData.append('Total Form Submits', totalFormSubmits.toString());
 
       const res = await fetch('/api/zoho/course-form', {
         method: 'POST',
@@ -115,7 +130,6 @@ const AIMLForm: React.FC<AIMLFormProps> = ({ isModal = false, onClose }) => {
         (window as any).fbq('track', 'Lead');
       }
 
-      // ✅ If used in modal
       if (isModal) {
         const brochurePath = '/AI and ML Bootcamp.pdf';
         window.open(brochurePath, '_blank');
@@ -139,6 +153,7 @@ const AIMLForm: React.FC<AIMLFormProps> = ({ isModal = false, onClose }) => {
   return (
     <Card className={`${isModal ? 'shadow-none' : 'bg-white shadow-lg rounded-2xl p-6 sm:p-8'}`}>
       <CardContent className="p-0">
+        {/* unchanged UI */}
         <form className="space-y-5" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input name="First Name" placeholder="First Name" required />

@@ -14,7 +14,7 @@ import { useRouter } from 'next/navigation';
 
 interface DsFormProps {
   isModal?: boolean;
-  onClose?: () => void; // optional callback for modal close
+  onClose?: () => void;
 }
 
 const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
@@ -27,7 +27,6 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
   const [state, setState] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Country selector
   const [countrySearch, setCountrySearch] = useState('');
   const [filteredCountries, setFilteredCountries] = useState(CountryCodeData);
   const [selectedCountry, setSelectedCountry] = useState({
@@ -36,7 +35,6 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
   });
   const [showDropdown, setShowDropdown] = useState(false);
 
-  // Fetch UTM, GA, and location data
   useEffect(() => {
     setUtm(getUTMTrackingData());
     setGaClientId(getGaCookieValue() || '');
@@ -46,7 +44,6 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
     });
   }, []);
 
-  // Filter countries on search
   useEffect(() => {
     if (countrySearch.trim() === '') {
       setFilteredCountries(CountryCodeData);
@@ -59,7 +56,6 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
     }
   }, [countrySearch]);
 
-  // Fetch Zoho Access Token
   const getAccessToken = async () => {
     const res = await fetch('/api/auth/course-form-token', {
       method: 'POST',
@@ -70,23 +66,32 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
     return data.access_token;
   };
 
-  // Submit Handler
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const phone = (formData.get('Phone') as string)?.trim();
-
-    const fullPhone = `+${selectedCountry.code}${phone}`;
-    formData.delete('Phone');
-    formData.append('Phone', fullPhone);
-
     try {
+      // ✅ Total Form Submits Tracking
+      let totalFormSubmits = Number(localStorage.getItem('total_form_submits') || '0');
+      totalFormSubmits += 1;
+      localStorage.setItem('total_form_submits', totalFormSubmits.toString());
+
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+      const email = formData.get('Email') as string;
+      if (email) {
+        localStorage.setItem('submittedEmail', email);
+        sessionStorage.setItem('submittedEmail', email);
+      }
+
+      const phone = (formData.get('Phone') as string)?.trim();
+      const fullPhone = `+${selectedCountry.code}${phone}`;
+      formData.delete('Phone');
+      formData.append('Phone', fullPhone);
+      formData.append('Country', selectedCountry.country);
+
       const token = await getAccessToken();
 
-      // Append additional tracking fields
       formData.append('accessToken', token);
       formData.append('Program', 'GC Data Science Bootcamp');
       formData.append('Ga_client_id', gaClientId);
@@ -94,20 +99,16 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
       formData.append('Source_Domain', isModal ? 'GC Brochure Form' : 'GC Course Form');
       formData.append('Other_City', city);
       formData.append('Other_State', state);
-      formData.append('Country', selectedCountry.country);
       formData.append('First Page Seen', utm['First Page Seen'] ?? '');
       formData.append('Original Traffic Source', getOriginalTrafficSource(utm));
-      formData.append(
-        'Original Traffic Source Drill-Down 1',
-        utm['Original Traffic Source Drill-Down 1'] ?? ''
-      );
-      formData.append(
-        'Original Traffic Source Drill-Down 2',
-        utm['Original Traffic Source Drill-Down 2'] ?? ''
-      );
+      formData.append('Original Traffic Source Drill-Down 1', utm['Original Traffic Source Drill-Down 1'] ?? '');
+      formData.append('Original Traffic Source Drill-Down 2', utm['Original Traffic Source Drill-Down 2'] ?? '');
       formData.append('UTM Term-First Page Seen', utm['UTM Term-First Page Seen'] ?? '');
       formData.append('UTM Content-First Page Seen', utm['UTM Content-First Page Seen'] ?? '');
       formData.append('ads_gclid', utm['ads_gclid'] ?? '');
+
+      // ✅ Append total form submits
+      formData.append('Total Form Submits', totalFormSubmits.toString());
 
       const res = await fetch('/api/zoho/course-form', {
         method: 'POST',
@@ -119,27 +120,21 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
         throw new Error(err.error || 'Submission failed');
       }
 
-      // ✅ Success Toast
       toast({
         title: 'Success!',
         description: 'Your details have been submitted successfully. Our team will get in touch soon!',
       });
 
-      // ✅ Meta Pixel Lead Event — fire after successful submission
       if (typeof window !== 'undefined' && (window as any).fbq) {
         (window as any).fbq('track', 'Lead');
       }
 
-      // ✅ Modal case: open PDF & close dialog
       if (isModal) {
-        const brochurePath = '/Data Science Bootcamp - GC (3) (1).pdf'; // from /public
+        const brochurePath = '/Data Science Bootcamp - GC (3) (1).pdf';
         window.open(brochurePath, '_blank');
-
-        // Optional close (if passed from Dialog)
         if (onClose) onClose();
       }
 
-      // Reset form
       form.reset();
       setCountrySearch(selectedCountry.country);
     } catch (err: any) {
@@ -157,17 +152,15 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
   return (
     <Card className={`${isModal ? 'shadow-none' : 'bg-white shadow-lg rounded-2xl p-6 sm:p-8'}`}>
       <CardContent className="p-0">
+        {/* form unchanged */}
         <form className="space-y-5" onSubmit={handleSubmit}>
-          {/* Name Fields */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input name="First Name" placeholder="First Name" required />
             <Input name="Last Name" placeholder="Last Name" required />
           </div>
 
-          {/* Email */}
           <Input name="Email" placeholder="you@example.com" type="email" required />
 
-          {/* Country + Phone */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative">
             <div className="relative">
               <Input
@@ -198,16 +191,9 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
                 </ul>
               )}
             </div>
-
-            {/* Phone input */}
-            <Input
-              name="Phone"
-              placeholder={`+${selectedCountry.code} 99999 99999`}
-              required
-            />
+            <Input name="Phone" placeholder={`+${selectedCountry.code} 99999 99999`} required />
           </div>
 
-          {/* Year of Graduation */}
           <select
             name="Year of Graduation"
             className="w-full border border-gray-300 rounded-md p-2"
@@ -226,7 +212,6 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
             <option value="After 2025">After 2025</option>
           </select>
 
-          {/* Work Experience */}
           <select
             name="Work Experience Level"
             className="w-full border border-gray-300 rounded-md p-2"
@@ -239,7 +224,6 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
             <option value="5+ Years">5+ Years</option>
           </select>
 
-          {/* Submit */}
           <Button
             type="submit"
             disabled={loading}

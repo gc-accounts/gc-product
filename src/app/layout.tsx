@@ -5,6 +5,10 @@ import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 // import HydrationFix from "@/components/HydrationFix";
+
+import { ProgramProvider } from "@/context/ProgramContext";
+import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -65,6 +69,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+
   return (
     <html lang="en" className={inter.variable}>
       <head>
@@ -128,8 +133,9 @@ export default function RootLayout({
           />
         </noscript>
        
-        {children}
-        
+        <ProgramProvider>
+          <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+        </ProgramProvider>
         <Toaster />
       </body>
     </html>
