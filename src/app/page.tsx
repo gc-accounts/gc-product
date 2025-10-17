@@ -635,22 +635,22 @@ export default function HomePage() {
                     </div>
                     
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                      <Button 
-                        size="lg" 
-                        className="bg-primary-green hover:bg-secondary-green text-white px-8 py-4 text-lg font-semibold"
-                        onClick={() => window.location.href = '/data-science-bootcamp'}
-                      >
-                        Explore Bootcamps
-                        <ArrowRight className="ml-2 w-5 h-5" />
-                      </Button>
-                      <Button 
+                       <Button 
+                                        size="lg" 
+                                        className="bg-primary-green hover:bg-secondary-green text-white px-8 py-4 text-lg font-semibold"
+                                        onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })}
+                                      >
+                                        Explore Bootcamps
+                                        <ArrowRight className="ml-2 w-5 h-5" />
+                                      </Button>
+                      {/* <Button 
                         variant="outline" 
                         size="lg"
                         className="border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white px-8 py-4 text-lg font-semibold"
                         onClick={() => window.location.href = '/about'}
                       >
                         Learn About Us
-                      </Button>
+                      </Button> */}
                     </div>
                     </div>
                 </div>
