@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
-import HydrationFix from "@/components/HydrationFix";
+// import HydrationFix from "@/components/HydrationFix";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -125,11 +125,7 @@ export default function RootLayout({
             alt="facebook-pixel"
           />
         </noscript>
-
-      </head>
-
-      <body className="font-sans antialiased">
-        <HydrationFix/>
+       
         {children}
         
         <Toaster />
