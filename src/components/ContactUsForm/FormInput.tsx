@@ -1,58 +1,58 @@
 import React from "react";
-// Replaced MUI TextField with shadcn/ui components
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea"; 
-import { Label } from "@/components/ui/label";
 
 interface FormInputProps {
-  label: string;
   name: string;
-  type?: string;
   value: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   error?: string;
   disabled?: boolean;
+  type?: string;
   required?: boolean;
+  placeholder?: string;
   multiline?: boolean;
   rows?: number;
 }
 
 const FormInput: React.FC<FormInputProps> = ({
-  label,
   name,
-  type = "text",
   value,
   onChange,
   error,
-  disabled,
-  required,
+  disabled = false,
+  type = "text",
+  required = false,
+  placeholder = "",
   multiline = false,
-  rows = 4,
+  rows = 3,
 }) => {
-  // Select the appropriate component based on the multiline prop
-  const InputComponent = multiline ? Textarea : Input;
-
   return (
-    <div className="flex flex-col space-y-2">
-      <Label htmlFor={name} className={error ? "text-red-500" : ""}>
-        {label} {required && <span className="text-red-500">*</span>}
-      </Label>
-      <InputComponent
-        id={name}
-        name={name}
-        type={type}
-        value={value}
-        onChange={onChange}
-        disabled={disabled}
-        required={required}
-        // Tailwind/shadcn input validation appearance
-        className={error ? "border-red-500 focus-visible:ring-red-500" : ""}
-        {...(multiline && { rows })} // Only apply rows if multiline
-      />
-      {/* Helper Text/Error Message */}
-      {error && (
-        <p className="text-sm text-red-500 mt-1">{error}</p>
+    <div className="flex flex-col space-y-1">
+      {multiline ? (
+        <textarea
+          id={name}
+          name={name}
+          value={value}
+          onChange={onChange}
+          disabled={disabled}
+          placeholder={placeholder}
+          required={required}
+          rows={rows}
+          className="border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none placeholder:text-gray-500"
+        />
+      ) : (
+        <input
+          id={name}
+          name={name}
+          type={type}
+          value={value}
+          onChange={onChange}
+          disabled={disabled}
+          placeholder={placeholder}
+          required={required}
+          className="border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-primary-green focus:outline-none placeholder:text-gray-500"
+        />
       )}
+      {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
     </div>
   );
 };

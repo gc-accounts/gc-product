@@ -1,62 +1,71 @@
-import React, { useEffect } from "react";
-// Replaced MUI Snackbar and Alert with shadcn/ui Alert
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { X, CheckCircle, AlertTriangle } from "lucide-react"; // Icons for success/error
-import { AlertState } from "./types";
+import React, { useEffect, useState } from "react"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { CheckCircle, AlertTriangle, X } from "lucide-react"
+import { AlertState } from "./types"
 
 interface SnackbarAlertProps {
-  alert: AlertState;
-  onClose: () => void;
+  alert: AlertState
+  onClose: () => void
 }
 
 const SnackbarAlert: React.FC<SnackbarAlertProps> = ({ alert, onClose }) => {
-  const { open, message, severity } = alert;
-  
-  // Handle auto-hide duration (4000ms as per original logic)
+  const { open, message, severity } = alert
+  const [visible, setVisible] = useState(false)
+
   useEffect(() => {
     if (open) {
+      setVisible(true)
       const timer = setTimeout(() => {
-        onClose();
-      }, 4000);
-      return () => clearTimeout(timer);
+        setVisible(false)
+        setTimeout(onClose, 300)
+      }, 4000)
+      return () => clearTimeout(timer)
     }
-  }, [open, onClose]);
+  }, [open, onClose])
 
-  if (!open) return null;
+  if (!open && !visible) return null
 
-  // Determine appearance based on severity
-  const isSuccess = severity === "success";
-  const Icon = isSuccess ? CheckCircle : AlertTriangle;
-  const title = isSuccess ? "Success" : "Error";
-  const alertClasses = isSuccess 
-    ? "border-green-500 bg-green-50 text-green-800"
-    : "border-red-500 bg-red-50 text-red-800";
-  const iconClasses = isSuccess ? "text-green-600" : "text-red-600";
-
+  const isSuccess = severity === "success"
+  const Icon = isSuccess ? CheckCircle : AlertTriangle
+  const variant = isSuccess ? "default" : "destructive"
 
   return (
-    // Tailwind equivalent of MUI Snackbar position (top-right, fixed)
-    <div 
-      className="fixed top-20 right-4 z-50 w-full max-w-sm transition-opacity duration-300"
+    <div
+      className={`fixed bottom-8 right-9 z-[9999] max-w-4xl transition-all duration-300 transform ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"
+      }`}
     >
-      <Alert className={`${alertClasses} shadow-lg relative`}>
+      <Alert
+        variant={variant}
+        className={`relative shadow-xl border rounded-xl p-4 flex items-start gap-3 ${
+          isSuccess ? "bg-green-50 border-green-300 text-green-800" : "bg-red-50 border-red-300 text-red-800"
+        }`}
+      >
+        <Icon
+          className={`h-5 w-5 mt-0.5 flex-shrink-0 ${
+            isSuccess ? "text-green-600" : "text-red-600"
+          }`}
+        />
+        <div className="flex-1">
+          <AlertTitle className="font-semibold text-base">
+            {isSuccess ? "Success" : "Error"}
+          </AlertTitle>
+          <AlertDescription className="text-sm leading-snug">
+            {message}
+          </AlertDescription>
+        </div>
+
         {/* Close Button */}
-        <button 
-          onClick={onClose} 
-          className="absolute top-3 right-3 p-1 rounded-full hover:bg-opacity-50 transition-colors"
+        <button
+          onClick={() => setVisible(false)}
+          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 transition"
           aria-label="Close alert"
         >
-          <X className="h-4 w-4 opacity-50 hover:opacity-100" />
+          <X className="h-4 w-4" />
         </button>
-
-        <Icon className={`h-4 w-4 ${iconClasses}`} />
-        <AlertTitle className="font-semibold text-base">{title}</AlertTitle>
-        <AlertDescription className="text-sm">
-          {message}
-        </AlertDescription>
       </Alert>
     </div>
-  );
-};
+  )
+}
 
-export default SnackbarAlert;
+export default SnackbarAlert
