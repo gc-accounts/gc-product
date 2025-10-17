@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://bootcamp.greycampus.com"),
+  metadataBase: new URL("https://www.greycampus.com"),
   alternates: { canonical: "/data-science-bootcamp" },
   openGraph: {
     title: "Data Science Bootcamp - Learn at ₹5,000 | Greycampus",
     description:
       "Master data science in 3-months. ₹5,000 bootcamp with 100% placement assistance. Expert instructors, real-world projects.",
-    url: "https://bootcamp.greycampus.com/data-science-bootcamp",
+    url: "https://www.greycampus.com/data-science-bootcamp",
     siteName: "Greycampus",
     images: [
       {
