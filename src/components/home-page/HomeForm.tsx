@@ -90,80 +90,77 @@ const HomeForm = () => {
     }
   };
 
-  return (
-    <Card className="bg-white shadow-lg rounded-2xl p-6 sm:p-8">
-      <CardContent className="p-0">
-        <form className="space-y-5" onSubmit={handleSubmit}>
-          {/* Name */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Input name="First Name" placeholder="First Name" required />
-            <Input name="Last Name" placeholder="Last Name" required />
-          </div>
+return (
+  <Card className="bg-white shadow-lg rounded-2xl p-6 sm:p-8">
+    <CardContent className="p-0">
+      <form className="space-y-5" onSubmit={handleSubmit}>
+        {/* Name */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <Input name="First Name" placeholder="First Name" required />
+          <Input name="Last Name" placeholder="Last Name" required />
+        </div>
 
-          {/* Email */}
-          <Input name="Email" placeholder="you@example.com" type="email" required />
+        {/* Email */}
+        <Input name="Email" placeholder="you@example.com" type="email" required />
 
-          {/* Country + Phone */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Input name="Country" placeholder="India" required />
-            <Input name="Phone" placeholder="+91 99999 99999" required />
-          </div>
+        {/* Country + Phone */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <Input name="Country" placeholder="India" required />
+          <Input name="Phone" placeholder="+91 99999 99999" required />
+        </div>
 
-          {/* Year of Graduation */}
-          <input type="hidden" name="Year of Graduation" value={graduation} />
-          <Select value={graduation} onValueChange={setGraduation}>
-            <SelectTrigger><SelectValue placeholder="Select Year of Graduation" /></SelectTrigger>
-            <Portal>
-              <SelectContent className="bg-white">
-                <SelectItem value="2025">2025</SelectItem>
-                <SelectItem value="2024">2024</SelectItem>
-                <SelectItem value="2023">2023</SelectItem>
-                <SelectItem value="Before 2023">Before 2023</SelectItem>
-              </SelectContent>
-            </Portal>
-          </Select>
+        {/* Year of Graduation */}
+        <Select value={graduation} onValueChange={setGraduation}>
+          <SelectTrigger><SelectValue placeholder="Select Year of Graduation" /></SelectTrigger>
+          <Portal>
+            <SelectContent className="bg-white">
+              <SelectItem value="2025">2025</SelectItem>
+              <SelectItem value="2024">2024</SelectItem>
+              <SelectItem value="2023">2023</SelectItem>
+              <SelectItem value="Before 2023">Before 2023</SelectItem>
+            </SelectContent>
+          </Portal>
+        </Select>
 
-          {/* Program */}
-          <input type="hidden" name="Program" value={program} />
-          <Select value={program} onValueChange={setProgram}>
-            <SelectTrigger><SelectValue placeholder="Select Program" /></SelectTrigger>
-            <Portal>
-              <SelectContent className="bg-white">
-                <SelectItem value="Data Science Bootcamp">Data Science Bootcamp</SelectItem>
-                <SelectItem value="Data Analyst Bootcamp">Data Analyst Bootcamp</SelectItem>
-                <SelectItem value="AI/ML Bootcamp">AI/ML Bootcamp</SelectItem>
-              </SelectContent>
-            </Portal>
-          </Select>
+        {/* Program - No hidden input, handled only in state */}
+        <Select value={program} onValueChange={setProgram}>
+          <SelectTrigger><SelectValue placeholder="Select Program" /></SelectTrigger>
+          <Portal>
+            <SelectContent className="bg-white">
+              <SelectItem value="GC Data Science Bootcamp">Data Science Bootcamp</SelectItem>
+              <SelectItem value="GC Data Analyst Bootcamp">Data Analyst Bootcamp</SelectItem>
+              <SelectItem value="GC AI/ML Bootcamp">AI/ML Bootcamp</SelectItem>
+            </SelectContent>
+          </Portal>
+        </Select>
 
-          {/* Work Experience */}
-          <input type="hidden" name="Work Experience Level" value={experience} />
-          <Select value={experience} onValueChange={setExperience}>
-            <SelectTrigger><SelectValue placeholder="Select Work Experience Level" /></SelectTrigger>
-            <Portal>
-              <SelectContent className="bg-white">
-                <SelectItem value="Fresher">Fresher</SelectItem>
-                <SelectItem value="1-3 Years">1-3 Years</SelectItem>
-                <SelectItem value="3-5 Years">3-5 Years</SelectItem>
-                <SelectItem value="5+ Years">5+ Years</SelectItem>
-              </SelectContent>
-            </Portal>
-          </Select>
+        {/* Work Experience */}
+        <Select value={experience} onValueChange={setExperience}>
+          <SelectTrigger><SelectValue placeholder="Select Work Experience Level" /></SelectTrigger>
+          <Portal>
+            <SelectContent className="bg-white">
+              <SelectItem value="Fresher">Fresher</SelectItem>
+              <SelectItem value="1-3 Years">1-3 Years</SelectItem>
+              <SelectItem value="3-5 Years">3-5 Years</SelectItem>
+              <SelectItem value="5+ Years">5+ Years</SelectItem>
+            </SelectContent>
+          </Portal>
+        </Select>
 
-          {/* Submit */}
-          <Button type="submit" disabled={loading} className="w-full bg-secondary-green hover:bg-primary-green text-white font-semibold py-3 rounded-lg mt-2 cursor-pointer">
-            {loading ? 'Submitting...' : 'Request More Information'}
-          </Button>
+        {/* Submit */}
+        <Button type="submit" disabled={loading} className="w-full bg-secondary-green hover:bg-primary-green text-white font-semibold py-3 rounded-lg mt-2 cursor-pointer">
+          {loading ? 'Submitting...' : 'Request More Information'}
+        </Button>
 
-          {/* Privacy Note */}
-          <p className="text-xs text-gray-500 text-center">
-            By providing your contact details, you agree to our{' '}
-            <a href="#" className="text-primary-green hover:underline">Privacy Policy</a>
-          </p>
-        </form>
-      </CardContent>
-    </Card>
-  );
+        {/* Privacy Note */}
+        <p className="text-xs text-gray-500 text-center">
+          By providing your contact details, you agree to our{' '}
+          <a href="#" className="text-primary-green hover:underline">Privacy Policy</a>
+        </p>
+      </form>
+    </CardContent>
+  </Card>
+);
 };
 
 export default HomeForm;
