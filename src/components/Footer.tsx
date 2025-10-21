@@ -20,7 +20,7 @@ export default function Footer() {
     <footer className="bg-dark-gray text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="py-12 lg:py-16">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
             {/* Column 1: About Greycampus */}
             <div className="space-y-4">
               <Link href="/" className="flex items-center space-x-2">
@@ -83,6 +83,14 @@ export default function Footer() {
               </ul>
             </div>
             
+            {/* Column 4: Resources */}
+                  <div className="space-y-4">
+              <h3 className="text-sm font-bold text-white">Resources</h3>
+              <ul className="space-y-2">
+                <li><a href="/blog" className="text-sm text-light-gray hover:text-primary-green transition-colors">Blog</a></li>
+                <li><a href="/opencampus" className="text-sm text-light-gray hover:text-primary-green transition-colors">Open Campus</a></li>
+              </ul>
+            </div>
        
 
           </div>
