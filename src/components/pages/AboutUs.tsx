@@ -62,7 +62,7 @@ export default function AboutUs() {
 
   return (
     <div className="min-h-screen">
-      <Navigation currentPage="about" />
+      <Navigation currentPage="about-us" />
 
       <main className="pt-16">
         {/* SECTION 1: HERO SECTION */}

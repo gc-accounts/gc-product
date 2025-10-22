@@ -180,7 +180,7 @@ export default function Corporate() {
 
   return (
     <div className="min-h-screen">
-      <Navigation currentPage="about" />
+      <Navigation currentPage="corporate" />
 
       <main className="pt-16">
 

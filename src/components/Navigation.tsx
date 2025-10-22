@@ -79,7 +79,7 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
             <a 
               href="/about-us" 
               className={`transition-colors ${
-                currentPage === 'about' 
+                currentPage === 'about-us' 
                   ? 'text-primary-green font-semibold' 
                   : 'text-medium-gray hover:text-primary-green'
               }`}
@@ -164,7 +164,7 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
               <a 
                 href="/about-us" 
                 className={`transition-colors ${
-                  currentPage === 'about' 
+                  currentPage === 'about-us' 
                     ? 'text-primary-green font-semibold' 
                     : 'text-medium-gray hover:text-primary-green'
                 }`}
