@@ -26,6 +26,7 @@ import { AIMLCertificateData } from '../data/AIMLCertificateData';
 import { AIMLTestimonialsData } from '../data/AIMLTestimonialsData';
 
 import { getUserCountry, PRICE_CONFIG } from '@/lib/country-detection';
+import AimlJobDrives from '../AimlJobDrives';
 interface Props{
   slug?:string;
 }
@@ -71,15 +72,16 @@ const AIMLBootcamp = ({slug}:Props) => {
           <WhyLearn title='Why Become an AI/ML Engineer?' subText='Fastest growing field with highest earning potential' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <WhyChooseSection sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <CareersAfter data={AIMLCareersAfterData}  title='Careers After Bootcamp' subText='Multiple paths to success with competitive salaries' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <HiringOrganizationSection title='Trusted by Leading Companies' subText='Our graduates work at Fortune 600+ companies and innovative startups worldwide' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <AimlCurriculum title="What You'll Learn" subText='3 months of comprehensive, industry-aligned curriculum' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <ProgramOutcomes data={AIMLOutcomesData}  title='Program Outcomes' subText='Real skills. Real impact. Real career transformation.' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <AIMLProjects title='Build Production AI Systems' subText='Apply your skills to projects used by real companies' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <HowEnroll title='How Do I Enroll?' subText='Simple 5-step process to start your data science journey' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <AIMLFeeModule basePrice={basePrice} currency={currency} title='Invest in Your Future at Affordable Prices' subText='The most cost-effective bootcamp without compromising quality' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <Certification sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={AIMLCertificateData} />
-          <AimlEnrollmentFormSection sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <Testimonials data={AIMLTestimonialsData} title='Success Stories' subText='Real students, real transformations, real careers' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <AimlJobDrives sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <HiringOrganizationSection title='Trusted by Leading Companies' subText='Our graduates work at Fortune 600+ companies and innovative startups worldwide' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <AimlCurriculum title="What You'll Learn" subText='3 months of comprehensive, industry-aligned curriculum' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <ProgramOutcomes data={AIMLOutcomesData}  title='Program Outcomes' subText='Real skills. Real impact. Real career transformation.' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <AIMLProjects title='Build Production AI Systems' subText='Apply your skills to projects used by real companies' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <HowEnroll title='How Do I Enroll?' subText='Simple 5-step process to start your data science journey' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <AIMLFeeModule basePrice={basePrice} currency={currency} title='Invest in Your Future at Affordable Prices' subText='The most cost-effective bootcamp without compromising quality' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <Certification sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={AIMLCertificateData} />
+          <AimlEnrollmentFormSection sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <Testimonials data={AIMLTestimonialsData} title='Success Stories' subText='Real students, real transformations, real careers' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
            <AimlFaqs/>
         </main>
         <Footer />

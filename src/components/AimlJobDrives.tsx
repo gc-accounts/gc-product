@@ -3,14 +3,14 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { MapPin, Building, BriefcaseBusiness, ChevronLeft, ChevronRight } from 'lucide-react';
-import { DsJobsDrives } from './data/DsJobsDrives';
+import { AimlJobsDrives } from './data/AimlJobsDrives';
 
 
 interface CardsProps {
   sectionClass?: string,
 }
 
-const JobDrives = ({ sectionClass }: CardsProps) => {
+const AimlJobDrives = ({ sectionClass }: CardsProps) => {
 
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start', containScroll: 'trimSnaps' });
@@ -54,7 +54,9 @@ const JobDrives = ({ sectionClass }: CardsProps) => {
           {/* Left: studentss */}
 
           <div className="lg:col-span-4">
-            <p className='md:mt-40'>Get a chance to hear directly from Hiring Managers and Business Heads about job roles, projects, growth opportunities, and the recruitment process. Ask questions, clarify doubts, and perform your best in the interview</p>
+            <p className='mb-2'>Get exclusive access to Hiring Sprints designed for AI and GenAI aspirants. These virtual events connect you directly with Hiring Managers and AI leads from top companies.</p>
+            <p className='mb-2'>Discover job openings, understand their expectations, ask questions, and make a lasting impression — before the interview even begins.</p>
+            <p>Every Sprint is a career breakthrough waiting to happen.</p>
           </div>
 
           <div className="lg:col-span-8">
@@ -76,7 +78,7 @@ const JobDrives = ({ sectionClass }: CardsProps) => {
           {/* Carousel */}
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
-              {DsJobsDrives.map((item) => (
+              {AimlJobsDrives.map((item) => (
                 <div key={item.id} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.33%] px-2">
                   <Card className={`bg-white border border-border-gray hover:border-primary-green transition-all duration-300 h-full`}>
                     <CardContent className="p-6 h-full flex flex-col justify-center">
@@ -144,4 +146,4 @@ const JobDrives = ({ sectionClass }: CardsProps) => {
   )
 }
 
-export default JobDrives;
+export default AimlJobDrives;
