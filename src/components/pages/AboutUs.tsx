@@ -24,14 +24,16 @@ const useCounter = (end: number) => {
 const teamMembers = [
   {
     name: "Deb",
+    img: "https://strapi.odinschool.com/uploads/Deb_bc6a9c9aec.webp",
     title: "CEO & Founder",
-    company: "Greycampus & OdinSchool",
-    bio: "Deb is the visionary behind Greycampus and OdinSchool. With 15+ years of experience in online education and tech training, Deb has led the mission to democratize professional development. Her passion for innovation and commitment to affordability has transformed thousands of careers.",
+    company: "Greycampus",
+    bio: "Deb is the visionary behind Greycampus and OdinSchool. With 15+ years of experience in online education and tech training, Deb has led the mission to make professional development accessible to everyone. Her passion for innovation and commitment to affordability has transformed thousands of careers.",
     avatar: "/api/placeholder/120/120",
     social: { linkedin: "#" }
   },
   {
     name: "Srinivas",
+    img: "https://strapi.odinschool.com/uploads/Srinivas_3f5cb08d93.webp",
     title: "Head of Product",
     company: "Greycampus",
     bio: "Srinivas brings 12+ years of product development expertise from leading tech companies. He oversees curriculum design, platform development, and ensures every course meets industry standards. His data-driven approach has consistently improved student outcomes.",
@@ -40,9 +42,10 @@ const teamMembers = [
   },
   {
     name: "Shruti",
+    img: "https://strapi.odinschool.com/uploads/Shruti_8a032072a7.webp",
     title: "Head of Enterprise Business",
     company: "Greycampus",
-    bio: "Shruti leads corporate partnerships and enterprise solutions at Greycampus. With 10+ years in B2B business development, she&apos;s built relationships with 500+ partner companies. Her strategic initiatives have expanded Greycampus&apos;s reach across industries and geographies.",
+    bio: "Shruti is the head of Corporate Partnerships and Enterprise Solutions for Greycampus. Bringing 10+ years of B2B business development expertise, she has successfully forged relationships with over 400 partner companies. She drives strategic initiatives that are vital to expanding Greycampus's footprint across diverse industries and global markets.",
     avatar: "/api/placeholder/120/120",
     social: { linkedin: "#" }
   }
@@ -53,11 +56,9 @@ const teamMembers = [
 export default function AboutUs() {
   // Counter hooks
   const studentsCount = useCounter(50000);
-  const placementCount = useCounter(95);
-  const salaryCount = useCounter(120);
-  const partnersCount = useCounter(500);
-  const ratingCount = useCounter(4.9);
-  const yearsCount = useCounter(7);
+  const partnersCount = useCounter(400);
+  const ratingCount = useCounter(85);
+  const yearsCount = useCounter(10);
 
   return (
     <div className="min-h-screen">
@@ -72,7 +73,7 @@ export default function AboutUs() {
               <div className="lg:col-span-12">
                 <div className="mb-4">
                   <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight mb-2">About <span className="text-gradient">Us</span></h1>
-                  <p className="text-lg text-medium-gray leading-relaxed">
+                  <p className="text-base text-medium-gray leading-relaxed">
                     Skilling Up Professionals to Enable Growth, Productivity and Efficiency
                   </p>
                   </div>
@@ -101,12 +102,12 @@ export default function AboutUs() {
                   
                   <div className="space-y-6">
                     <p className="md:text-base text-sm text-medium-gray leading-relaxed">
-                      At GreyCampus, we believe that every organisation should be able to skill up their workforce effectively in a professional, effective, and affordable manner. With that in mind, we have set out to create the world’s best-value platform where learners can access high-quality online courses, focused practical sessions from practitioners, and get their questions answered directly by experts.
+                      At GreyCampus, founded in 2014, we're committed to the belief that every individual and organization should have access to professional, effective, and affordable upskilling.
                     </p>
-                    <p className="md:text-base text-sm text-medium-gray leading-relaxed">
-                      After 7 years of successful skilling globally, we launched OdinSchool, our India- focussed brand, in 2021 to focus on upskilling graduates and working professionals in high-demand technologies for the Indian industry.
-                    </p>
-                    <p className="md:text-base text-sm text-medium-gray leading-relaxed">We believe the best-value learning experience need not necessarily involve attending a traditional classroom lecture. Instead, pairing up learning content created by top instructors with dedicated, 24×7 Q&A support from subject experts can deliver an equivalent (if not superior) learning experience.</p>
+                    <p className="md:text-base text-sm text-medium-gray leading-relaxed">Bridging the Gap Between Ambition and Opportunity. We set out to create a platform that delivers the world's best value in learning. We believe world-class technical training shouldn't cost a fortune. Our programs and intensive bootcamps combine deep industry expertise, practical, job-focused curriculum, and personalized mentorship—all at prices that are accessible.</p>
+                    <p className="md:text-base text-sm text-medium-gray leading-relaxed">Learners can access a wealth of resources, including high-quality online courses, focused practical sessions led by experienced practitioners, and direct support to get their questions answered by subject matter experts.</p>
+                    <p className="md:text-base text-sm text-medium-gray leading-relaxed">Following our sustained success in skilling professionals globally, we continue to refine our approach. We firmly believe that a high-value learning experience doesn't require a traditional classroom setting. Instead, by combining premium learning content created by top instructors with dedicated, 24x7 Q&A support from subject experts, we deliver an equivalent—if not superior—learning experience.</p>
+                    <p className="md:text-base text-sm text-medium-gray leading-relaxed">We've successfully trained over 50,000+ students who have gone on to transform their careers at leading companies worldwide.</p>
                   </div>
                   
                 </div>
@@ -122,7 +123,7 @@ export default function AboutUs() {
 
         {/* SECTION 3: OUR VALUES */}
         <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white to-green-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="container mx-auto">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Our Values
@@ -210,7 +211,7 @@ export default function AboutUs() {
 
         {/* SECTION 4: IMPACT & STATS */}
         <section className="py-10 sm:py-15 lg:py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="container mx-auto">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Our Impact
@@ -228,22 +229,6 @@ export default function AboutUs() {
                 <h3 className="text-xl font-semibold text-dark-gray mb-2">Students Trained</h3>
                 <p className="text-medium-gray">Professionals who&apos;ve transformed their careers</p>
               </div>
-{/* 
-              <div className="text-center">
-                <div ref={placementCount.ref} className="text-4xl lg:text-5xl font-bold text-primary-green mb-4">
-                  {placementCount.count}%
-                </div>
-                <h3 className="text-xl font-semibold text-dark-gray mb-2">Placement Rate</h3>
-                <p className="text-medium-gray">Success rate in career transitions</p>
-              </div> */}
-
-              {/* <div className="text-center">
-                <div ref={salaryCount.ref} className="text-4xl lg:text-5xl font-bold text-primary-green mb-4">
-                  {salaryCount.count}%
-                </div>
-                <h3 className="text-xl font-semibold text-dark-gray mb-2">Average Salary Increase</h3>
-                <p className="text-medium-gray">Typical salary boost after completion</p>
-              </div> */}
 
               <div className="text-center">
                 <div ref={partnersCount.ref} className="text-4xl lg:text-5xl font-bold text-primary-green mb-4">
@@ -255,10 +240,10 @@ export default function AboutUs() {
 
               <div className="text-center">
                 <div ref={ratingCount.ref} className="text-4xl lg:text-5xl font-bold text-primary-green mb-4">
-                  {ratingCount.count}/5
+                  {ratingCount.count}%
                 </div>
-                <h3 className="text-xl font-semibold text-dark-gray mb-2">Student Rating</h3>
-                <p className="text-medium-gray">Average satisfaction score</p>
+                <h3 className="text-xl font-semibold text-dark-gray mb-2">Net Promoter Score(NPS)</h3>
+                <p className="text-medium-gray">Reflecting strong student satisfaction</p>
               </div>
 
               <div className="text-center">
@@ -274,7 +259,7 @@ export default function AboutUs() {
 
         {/* SECTION 5: OUR TEAM */}
         <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white to-green-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="container mx-auto">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Meet Our Team
@@ -289,15 +274,15 @@ export default function AboutUs() {
                 <Card key={index} className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-border-gray hover:border-primary-green bg-white">
                   <CardContent className="p-8 h-full flex flex-col">
                     <div className="text-center mb-6">
-                      <div className="w-24 h-24 bg-primary-green/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span className="text-3xl">👨‍💼</span>
+                      <div className="w-24 h-24 flex items-center justify-center mx-auto mb-4">
+                          <img src={member.img} alt={member.name} className='rounded-full' />
                       </div>
                       <h3 className="text-xl font-semibold text-dark-gray mb-2">{member.name}</h3>
                       <p className="text-primary-green font-medium mb-1">{member.title}</p>
                       <p className="text-sm text-medium-gray">{member.company}</p>
                     </div>
                     
-                    <p className="text-medium-gray leading-relaxed flex-grow mb-6">
+                    <p className="text-medium-gray text-sm leading-relaxed flex-grow mb-6">
                       {member.bio}
                     </p>
                     
@@ -326,7 +311,7 @@ export default function AboutUs() {
             <div className="absolute bottom-20 left-20 w-64 h-64 bg-accent-blue/10 rounded-full blur-3xl"></div>
           </div>
           
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
+          <div className="container mx-auto relative z-10">
             <div className="text-center space-y-8">
               <div className="space-y-6">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray">
@@ -338,7 +323,7 @@ export default function AboutUs() {
               </div>
               
               <div className="max-w-4xl mx-auto">
-                <p className="text-lg text-medium-gray leading-relaxed mb-8">
+                <p className="text-base text-medium-gray leading-relaxed mb-8">
                   Whether you&apos;re looking to transform your career or help others do the same, there&apos;s a place for you in the Greycampus community.
                 </p>
                 
@@ -346,7 +331,7 @@ export default function AboutUs() {
                   <Button 
                     size="lg" 
                     className="bg-primary-green hover:bg-secondary-green text-white px-12 py-4 text-lg font-semibold w-full sm:w-auto"
-                    onClick={() => window.location.href = '/data-science-bootcamp'}
+                    onClick={() => window.location.href = '/#programs'}
                   >
                     Explore Bootcamps
                     <ArrowRight className="ml-2 w-5 h-5" />

@@ -26,7 +26,7 @@ const ProgramOutcomes = ({ sectionClass, title, subText, data }: Props) => {
 
   return (
     <section className={`${sectionClass ? sectionClass : ''}`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div className="container mx-auto">
 
         <div className="text-center mb-8 lg:mb-10 max-w-8xl">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-2 lg:mb-3">
@@ -48,7 +48,7 @@ const ProgramOutcomes = ({ sectionClass, title, subText, data }: Props) => {
                     <h3 className="text-lg font-semibold text-dark-gray mb-3">
                       {outcome.title}
                     </h3>
-                    <p className="text-sm text-medium-gray leading-relaxed flex-grow">
+                    <p className="text-sm text-medium-gray leading-relaxed grow">
                       {outcome.description}
                     </p>
                   </CardContent>

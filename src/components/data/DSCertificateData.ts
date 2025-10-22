@@ -21,5 +21,5 @@ export const DSCertificateData = {
       description: 'Grab the winning advantage in the job market with credible certificates'
     }
   ],
-  certificateImage: 'https://strapi.odinschool.com/uploads/DSB_3929c06998.webp'
+  certificateImage: 'https://strapi.odinschool.com/uploads/DSB_Cert_b7108ac82d.webp'
 }

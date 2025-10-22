@@ -8,6 +8,7 @@ const fieldMap: Record<string, string> = {
 };
 
 async function getZohoAccessToken() {
+  // Your token fetching code here (unchanged)
   const REFRESH_TOKEN = process.env.ZOHO_REFRESH_TOKEN || "1000.88dd3ca47fee4f42de4bcc7cf1adeefd.664f0f9983b8b29e69333c6fc7baf72d";
   const CLIENT_ID = process.env.ZOHO_CLIENT_ID || "1000.V6ZGOJHWW0P9T01QOKGVC3P9AK66JS";
   const CLIENT_SECRET = process.env.ZOHO_CLIENT_SECRET || "31c0ad8b4a4d8f51e699fe2a5eb2503988f460c9c8";
@@ -35,10 +36,8 @@ export async function POST(request: Request) {
     let body: any = {};
     const contentType = request.headers.get('content-type') || '';
 
-    // ✅ Safely parse body — prevents "Unexpected end of JSON input"
     if (contentType.includes('application/json')) {
-      const text = await request.text();
-      body = text ? JSON.parse(text) : {};
+      body = await request.json();
     } else {
       const formData = await request.formData();
       body = {};
@@ -86,9 +85,6 @@ export async function POST(request: Request) {
     return NextResponse.json(responseData);
   } catch (error) {
     console.error('Error pushing user metrics:', error);
-    return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Failed to push metrics' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error instanceof Error ? error.message : 'Failed to push metrics' }, { status: 500 });
   }
 }

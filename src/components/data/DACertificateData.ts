@@ -21,5 +21,5 @@ export const DACertificateData = {
       description: 'Grab the winning advantage in the job market with credible certificates'
     }
   ],
-  certificateImage: 'https://strapi.odinschool.com/uploads/DAB_d464c92b15.webp'
+  certificateImage: 'https://strapi.odinschool.com/uploads/DAB_cert_2d88d344fb.webp'
 }

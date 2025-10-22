@@ -1,7 +1,13 @@
 import React from 'react'
 import DsForm from './DsForm';
-const DsEnrollmentFormSection = () => {
-  
+
+  interface Props {
+  sectionClass?: string;
+}
+const DsEnrollmentFormSection = ({ sectionClass }: Props) => {
+
+
+
   const taglines = [
       {
         icon: '💡',
@@ -27,8 +33,8 @@ const DsEnrollmentFormSection = () => {
 
 
     return (
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <section className={`${sectionClass ? sectionClass : ''}`}>
+        <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Content */}
             <div className="space-y-6 lg:space-y-8">
@@ -39,8 +45,8 @@ const DsEnrollmentFormSection = () => {
               <div className="space-y-4 lg:space-y-6">
                 {taglines.map((tagline, index) => (
                   <div key={index} className="flex items-start space-x-4">
-                    <div className="text-2xl flex-shrink-0">{tagline.icon}</div>
-                    <p className="text-lg text-dark-gray leading-relaxed">
+                    <div className="text-2xl shrink-0">{tagline.icon}</div>
+                    <p className="text-base text-dark-gray leading-relaxed">
                       {tagline.text}
                     </p>
                   </div>

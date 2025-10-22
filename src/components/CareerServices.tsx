@@ -23,71 +23,6 @@ const data: BootcampData[] = [
     url: 'data-science-bootcamp',
     insights: [
       {
-        icon: "📈",
-        title: "High Demand, Higher Pay",
-        description: "3x more job openings than available candidates. Companies competing for talent.",
-      },
-      {
-        icon: "🤖",
-        title: "Future-Proof Career",
-        description: "AI and ML driving business decisions across all industries. Secure your future.",
-      },
-      {
-        icon: "💼",
-        title: "Ample Job Opportunities",
-        description: "The demand for data professionals is booming — over 11 million openings expected globally by 2026.",
-      }
-    ]
-  },
-  {
-    id: 2,
-    url: 'data-analyst-bootcamp',
-    insights: [
-      {
-        icon: "📈",
-        title: "High Demand, Higher Pay",
-        description: "More job openings than qualified candidates. Companies competing for talent.",
-      },
-      {
-        icon: "💼",
-        title: "Ample Job Opportunities",
-        description: "The demand for data professionals is booming — over 11 million openings expected globally by 2026.",
-      },
-      {
-        icon: "🚀",
-        title: "Clear Career Growth",
-        description: "Progress from Analyst → Senior Analyst → Analytics Manager → Director",
-      }
-    ]
-  },
-  // Third Bootcamp Data
-  {
-    id: 3,
-    url: 'aiml-bootcamp',
-    insights: [
-      {
-        icon: "💰",
-        title: "Highest Paid Tech Role",
-        description: "40% more salary than software engineers. Most valuable tech skill.",
-      },
-      {
-        icon: "💼",
-        title: "Ample Job Opportunities",
-        description: "The demand for AI/ML professionals is booming — over 22 million openings expected globally by 2026.",
-      },
-      {
-        icon: "🚀",
-        title: "Future of Tech",
-        description: "AI will define the next decade. Get ahead of the curve.",
-      }
-    ]
-  },
-  // Added Fourth Data for Homepage
-  {
-    id: 4,
-    url: '/',
-    insights: [
-      {
         icon: "🎯",
         title: "Interview Preparation",
         description: "Sessions focused on technical questions and behavioral interviews for data and AI roles.",
@@ -120,7 +55,7 @@ interface Props {
   url?: string;
 }
 
-const WhyLearn = ({ sectionClass, title, subText, url }: Props) => {
+const CareerServices = ({ sectionClass, title, subText, url }: Props) => {
   // Use usePathname to automatically detect the current URL path.
   const pathname = usePathname();
 
@@ -166,4 +101,4 @@ const WhyLearn = ({ sectionClass, title, subText, url }: Props) => {
   );
 };
 
-export default WhyLearn;
+export default CareerServices;

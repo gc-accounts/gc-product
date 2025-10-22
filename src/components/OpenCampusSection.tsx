@@ -41,7 +41,7 @@ const OpenCampusSection: React.FC<OpenCampusSectionProps> = ({posts}) => {
                 <ul className="space-y-3">
                         {listItems.map((item, index) => (
                             <li key={index} className="flex items-start">
-                                <span className="mr-3 flex-shrink-0">{item.icon}</span>
+                                <span className="mr-3 shrink-0">{item.icon}</span>
                                 <span className="text-base">{item.text}</span>
                             </li>
                         ))}

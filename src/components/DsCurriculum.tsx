@@ -102,7 +102,7 @@ const DsCurriculum = ({ sectionClass, title, subText }: Props) => {
                       <ul className="space-y-2">
                         {module.topics.map((topic, index) => (
                           <li key={index} className="flex items-start space-x-2">
-                            <div className="w-1.5 h-1.5 bg-primary-green rounded-full mt-2 flex-shrink-0"></div>
+                            <div className="w-1.5 h-1.5 bg-primary-green rounded-full mt-2 shrink-0"></div>
                             <span className="text-dark-gray text-sm leading-relaxed">{topic}</span>
                           </li>
                         ))}
@@ -114,7 +114,7 @@ const DsCurriculum = ({ sectionClass, title, subText }: Props) => {
                       <ul className="space-y-2">
                         {module.outcomes.map((outcome, index) => (
                           <li key={index} className="flex items-start space-x-2">
-                            <CheckCircle className="w-4 h-4 text-primary-green flex-shrink-0 mt-0.5" />
+                            <CheckCircle className="w-4 h-4 text-primary-green shrink-0 mt-0.5" />
                             <span className="text-dark-gray text-sm leading-relaxed">{outcome}</span>
                           </li>
                         ))}

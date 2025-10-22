@@ -31,7 +31,7 @@ const SnackbarAlert: React.FC<SnackbarAlertProps> = ({ alert, onClose }) => {
 
   return (
     <div
-      className={`fixed bottom-8 right-9 z-[9999] max-w-4xl transition-all duration-300 transform ${
+      className={`fixed bottom-8 right-9 z-9999 max-w-4xl transition-all duration-300 transform ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"
       }`}
     >
@@ -42,7 +42,7 @@ const SnackbarAlert: React.FC<SnackbarAlertProps> = ({ alert, onClose }) => {
         }`}
       >
         <Icon
-          className={`h-5 w-5 mt-0.5 flex-shrink-0 ${
+          className={`h-5 w-5 mt-0.5 shrink-0 ${
             isSuccess ? "text-green-600" : "text-red-600"
           }`}
         />

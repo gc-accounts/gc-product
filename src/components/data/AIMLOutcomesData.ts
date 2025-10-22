@@ -11,12 +11,12 @@ export const AIMLOutcomesData = [
         description: 'Work with LLMs, transformers, and NLP applications',
         color: 'border-t-accent-blue'
       },
-      {
-        icon: '👁️',
-        title: 'Computer Vision',
-        description: 'Build image recognition and detection systems',
-        color: 'border-t-primary-green'
-      },
+      // {
+      //   icon: '👁️',
+      //   title: 'Computer Vision',
+      //   description: 'Build image recognition and detection systems',
+      //   color: 'border-t-primary-green'
+      // },
       {
         icon: '🤖',
         title: 'Create AI Agents',
@@ -47,12 +47,12 @@ export const AIMLOutcomesData = [
         description: 'Build APIs and integrate LLMs into applications',
         color: 'border-t-accent-blue'
       },
-      {
-        icon: '🗄️',
-        title: 'Vector Databases',
-        description: 'Work with embeddings and semantic search',
-        color: 'border-t-primary-green'
-      },
+      // {
+      //   icon: '🗄️',
+      //   title: 'Vector Databases',
+      //   description: 'Work with embeddings and semantic search',
+      //   color: 'border-t-primary-green'
+      // },
       {
         icon: '📊',
         title: 'RAG Systems',

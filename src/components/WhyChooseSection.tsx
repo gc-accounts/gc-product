@@ -73,8 +73,8 @@ const WhyChooseSection = ({ sectionClass}: Props) => {
             },
             {
               icon: '🕐',
-              title: 'Flexible Learning',
-              description: '3-months LIVE online classes. Learn at your speed'
+              title: 'Live Online Classes:',
+              description: 'Live weekend classes with continuous support, recordings, and up-to-date materials.'
             },
              {
               icon: "🧠",
@@ -83,8 +83,8 @@ const WhyChooseSection = ({ sectionClass}: Props) => {
             },
             {
               icon: '✅',
-              title: 'Career Assistance',
-              description: '100% assistance until career starts'
+              title: 'Career Services',
+              description: 'Mock Interviews, Access to job portal, Interview Prep'
             }
           ].map((feature, index) => (
             <div key={index}>

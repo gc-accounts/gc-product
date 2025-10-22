@@ -5,6 +5,8 @@
   /* Design System Colors */
   --primary-green: #10B981;
   --secondary-green: #059669;
+  --yellow-1: #facc15;
+  --yellow-2: #eab308;
   --accent-gold: #F59E0B;
   --accent-blue: #3B82F6;
   --dark-gray: #1F2937;
@@ -24,6 +26,8 @@
   /* Colors */
   --color-primary-green: var(--primary-green);
   --color-secondary-green: var(--secondary-green);
+  --color-yellow-1: var(--color-yellow-300);
+  --color-yellow-2: var(--color-yellow-400);
   --color-accent-gold: var(--accent-gold);
   --color-accent-blue: var(--accent-blue);
   --color-dark-gray: var(--dark-gray);

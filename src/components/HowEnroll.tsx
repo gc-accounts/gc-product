@@ -2,38 +2,26 @@
 import React from 'react'
 import { Card, CardContent } from './ui/card';
 
- const steps = [
-      {
-        number: 1,
-        icon: '✍️',
-        title: 'Sign Up',
-        description: 'Fill out registration form. Takes 30 seconds.'
-      },
-      {
-        number: 2,
-        icon: '📥',
-        title: 'Get Course Guide',
-        description: 'Receive personalized guide via email'
-      },
-      {
-        number: 3,
-        icon: '📞',
-        title: 'Consultation Call',
-        description: 'Free 15-minute call with counselor (optional)'
-      },
-      {
-        number: 4,
-        icon: '🎓',
-        title: 'Enroll & Start',
-        description: 'Choose plan, pay, get instant access'
-      },
-      {
-        number: 5,
-        icon: '🚀',
-        title: 'Learn & Succeed',
-        description: 'Start learning, build projects, get hired'
-      }
-    ];
+const steps = [
+  {
+    number: 1,
+    icon: '📝',
+    title: 'Sign Up',
+    description: 'Fill out the quick registration form. Takes less than a minute.'
+  },
+  {
+    number: 2,
+    icon: '🎓',
+    title: 'Enroll',
+    description: 'Pay the fees, and get access to the learning portal and class schedule.'
+  },
+  {
+    number: 3,
+    icon: '🚀',
+    title: 'Start Learning!',
+    description: 'Join your live online classes, build portfolio projects, and get career-ready.'
+  }
+];
 
 interface Props {
   sectionClass?: string;
@@ -56,13 +44,13 @@ const HowEnroll = ({ sectionClass, title, subText }: Props) => {
           </p>
         </div>
 
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             {/* Desktop Layout */}
             <div className="hidden lg:flex items-center justify-between relative">
               {steps.map((step, index) => (
                 <div key={index} className="flex flex-col items-center relative z-10">
                   <div>
-                    <Card className="w-48 h-fit hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-border-gray">
+                    <Card className="w-80 h-fit hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-border-gray">
                       <CardContent className="p-5 h-full flex flex-col items-center text-center">
                         <div className="w-16 h-16 bg-primary-green rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
                           {step.number}
@@ -96,7 +84,7 @@ const HowEnroll = ({ sectionClass, title, subText }: Props) => {
                   key={index}
                   className="flex items-center space-x-4"
                 >
-                  <div className="flex-shrink-0">
+                  <div className="shrink-0">
                     <div className="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center text-white font-bold text-lg">
                       {step.number}
                     </div>
