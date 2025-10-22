@@ -15,7 +15,7 @@ export default function NotFound() {
       {/* 404 Content */}
       <main className="flex flex-1 flex-col items-center justify-center px-6 text-center">
          <section className='px-[20px] py-[50px] md:px-[30px] md:py-[70px]'>
-        <div className="container mt-10">
+        <div className="container max-w-7xl mt-10">
           <div className='border border-gray-200 md:p-6 p-4 rounded-lg shadow-md text-center'>
           <img src="https://strapi.odinschool.com/uploads/space_6128c5834b.png" className='mx-auto mb-4 md:w-[200px] md:h-[200px] w-[150px] h-[150px]' width={200} height={200} alt="not found" />
           <h1 className="section-title mb-2">Page Not Found</h1>

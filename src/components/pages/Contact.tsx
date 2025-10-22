@@ -126,8 +126,8 @@ export default function Contact() {
       
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white via-white to-green-50">
-          <div className="container mx-auto">
+        <section className="py-10 sm:py-15 lg:py-20 bg-linear-to-br from-off-white via-white to-green-50">
+          <div className="container max-w-7xl mx-auto">
               <div className="text-center space-y-6">
               <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight">
                 Get in Touch
@@ -141,7 +141,7 @@ export default function Contact() {
 
         {/* Contact Form & Details Section */}
         <section className="py-16 sm:py-20 lg:py-24 bg-white">
-          <div className="container mx-auto">
+          <div className="container max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
               
               {/* Left Section - Contact Form */}
@@ -407,8 +407,8 @@ export default function Contact() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white to-green-50">
-          <div className="container mx-auto">
+        <section className="py-10 sm:py-15 lg:py-20 bg-linear-to-br from-off-white to-green-50">
+          <div className="container max-w-7xl mx-auto">
                 <div className="text-center space-y-8">
               <div className="space-y-6">
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">

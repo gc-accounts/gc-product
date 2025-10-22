@@ -42,7 +42,7 @@ const WhyChooseSection = ({ sectionClass}: Props) => {
 
   return (
   <section id="why-choose" className={`${sectionClass ? sectionClass : ''}`}>
-      <div className="container mx-auto">
+      <div className="container max-w-7xl mx-auto">
 
         <div className="text-center mb-8 lg:mb-10 max-w-8xl">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
@@ -94,7 +94,7 @@ const WhyChooseSection = ({ sectionClass}: Props) => {
                   <h3 className="text-xl font-semibold text-dark-gray mb-3">
                     {feature.title}
                   </h3>
-                  <p className="text-medium-gray leading-relaxed flex-grow">
+                  <p className="text-medium-gray leading-relaxed grow">
                     {feature.description}
                   </p>
                 </CardContent>

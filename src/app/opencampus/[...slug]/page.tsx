@@ -105,7 +105,7 @@ export default async function OpenCampusBlogDetailsPage({ params }: Props) {
     <div className="flex flex-col min-h-screen bg-white text-gray-800">
           <Navigation currentPage="opencampus" />
           <main className="mt-16">
-            <div className="container mx-auto">
+            <div className="container max-w-7xl mx-auto">
             <Suspense fallback={<div className="flex justify-center py-20 text-[#0c868d]">Loading...</div>}>
               <OpenCampusBlogDetails blog={data.data[0]} />
             </Suspense>

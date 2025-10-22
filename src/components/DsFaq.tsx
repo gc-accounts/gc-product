@@ -68,7 +68,7 @@ const DsFaq = () => {
 
   return (
     <section id="faq" className="bg-white py-10 sm:py-15 lg:py-20">
-      <div className="container mx-auto">
+      <div className="container max-w-7xl mx-auto">
         <div className="text-center mb-12 lg:mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
             Frequently Asked Questions

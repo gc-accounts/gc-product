@@ -17,7 +17,7 @@ export default function Navigation({ currentPage = 'home' }: NavigationProps) {
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-border-gray z-50">
-      <div className="container mx-auto">
+      <div className="container max-w-7xl mx-auto">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2">

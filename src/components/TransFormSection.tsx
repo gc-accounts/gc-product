@@ -14,7 +14,7 @@ const TransFormSection = ({ sectionClass  }: Props) => {
 
     return (
     <section className={`${sectionClass ? sectionClass : ''}`}>
-           <div className="container mx-auto">
+           <div className="container max-w-7xl mx-auto">
             <div className="grid grid-cols-12 gap-5">
               <div className='md:col-span-6 col-span-12'>
                      <div className=" space-y-8">

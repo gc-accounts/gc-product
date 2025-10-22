@@ -60,7 +60,7 @@ import React, { useState } from 'react'
 
     return (
       <section id="faq" className="py-10 sm:py-15 lg:py-20 bg-white">
-        <div className="container mx-auto">
+        <div className="container max-w-7xl mx-auto">
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Frequently Asked Questions

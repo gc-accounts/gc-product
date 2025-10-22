@@ -57,7 +57,7 @@ const DSBProjects = ({ sectionClass, title, subText }: Props) => {
 
   return (
     <section className={`${sectionClass ? sectionClass : ''}`}>
-      <div className="container mx-auto">
+      <div className="container max-w-7xl mx-auto">
 
         <div className="text-center mb-8 lg:mb-10 max-w-8xl">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-2 lg:mb-3">
@@ -85,7 +85,7 @@ const DSBProjects = ({ sectionClass, title, subText }: Props) => {
                   </div>
 
                   <CardContent className="p-6 h-fit flex flex-col">
-                    <p className="text-dark-gray text-sm leading-relaxed mb-6 flex-grow">
+                    <p className="text-dark-gray text-sm leading-relaxed mb-6 grow">
                       {project.description}
                     </p>
 

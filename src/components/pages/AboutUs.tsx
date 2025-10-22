@@ -67,7 +67,7 @@ export default function AboutUs() {
       <main className="pt-16">
         {/* SECTION 1: HERO SECTION */}
         <section className="bg-gradient-hero px-[20px] py-[50px] md:px-[30px] md:py-[70px] flex items-center">
-          <div className="container mx-auto text-center">
+          <div className="container max-w-7xl mx-auto text-center">
             <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
 
               <div className="lg:col-span-12">
@@ -90,7 +90,7 @@ export default function AboutUs() {
 
         {/* SECTION 2: OUR STORY */}
         <section className="py-10 sm:py-15 lg:py-20 bg-white">
-          <div className="container mx-auto">
+          <div className="container max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
               {/* LEFT CONTENT */}
               <div className="col-span-7">
@@ -122,8 +122,8 @@ export default function AboutUs() {
         </section>
 
         {/* SECTION 3: OUR VALUES */}
-        <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white to-green-50">
-          <div className="container mx-auto">
+        <section className="py-10 sm:py-15 lg:py-20 bg-linear-to-br from-off-white to-green-50">
+          <div className="container max-w-7xl mx-auto">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Our Values
@@ -140,7 +140,7 @@ export default function AboutUs() {
                   <h3 className="text-xl font-semibold text-dark-gray mb-4">
                     Student Success First
                   </h3>
-                  <p className="text-medium-gray leading-relaxed flex-grow">
+                  <p className="text-medium-gray leading-relaxed grow">
                     Every decision we make is guided by one question: &quot;Will this help our students succeed?&quot; From curriculum design to support systems, student outcomes drive our priorities.
                   </p>
                 </CardContent>
@@ -152,7 +152,7 @@ export default function AboutUs() {
                   <h3 className="text-xl font-semibold text-dark-gray mb-4">
                     Affordable Excellence
                   </h3>
-                  <p className="text-medium-gray leading-relaxed flex-grow">
+                  <p className="text-medium-gray leading-relaxed grow">
                     Quality education shouldn&apos;t be a luxury. We&apos;re committed to delivering world-class training at prices that don&apos;t break the bank, making career transformation accessible to all.
                   </p>
                 </CardContent>
@@ -164,7 +164,7 @@ export default function AboutUs() {
                   <h3 className="text-xl font-semibold text-dark-gray mb-4">
                     Innovation & Growth
                   </h3>
-                  <p className="text-medium-gray leading-relaxed flex-grow">
+                  <p className="text-medium-gray leading-relaxed grow">
                     We continuously evolve our curriculum, technology, and teaching methods to stay ahead of industry trends and provide cutting-edge education.
                   </p>
                 </CardContent>
@@ -176,7 +176,7 @@ export default function AboutUs() {
                   <h3 className="text-xl font-semibold text-dark-gray mb-4">
                     Community & Support
                   </h3>
-                  <p className="text-medium-gray leading-relaxed flex-grow">
+                  <p className="text-medium-gray leading-relaxed grow">
                     Learning is better together. We foster a supportive community where students, instructors, and alumni help each other grow and succeed.
                   </p>
                 </CardContent>
@@ -188,7 +188,7 @@ export default function AboutUs() {
                   <h3 className="text-xl font-semibold text-dark-gray mb-4">
                     Data-Driven Decisions
                   </h3>
-                  <p className="text-medium-gray leading-relaxed flex-grow">
+                  <p className="text-medium-gray leading-relaxed grow">
                     We use data and analytics to continuously improve our programs, ensuring our curriculum stays relevant and effective for real-world success.
                   </p>
                 </CardContent>
@@ -200,7 +200,7 @@ export default function AboutUs() {
                   <h3 className="text-xl font-semibold text-dark-gray mb-4">
                     Global Impact
                   </h3>
-                  <p className="text-medium-gray leading-relaxed flex-grow">
+                  <p className="text-medium-gray leading-relaxed grow">
                     We&apos;re building a global community of skilled professionals who are driving innovation and growth in their organizations and communities worldwide.
                   </p>
                 </CardContent>
@@ -211,7 +211,7 @@ export default function AboutUs() {
 
         {/* SECTION 4: IMPACT & STATS */}
         <section className="py-10 sm:py-15 lg:py-20 bg-white">
-          <div className="container mx-auto">
+          <div className="container max-w-7xl mx-auto">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Our Impact
@@ -258,8 +258,8 @@ export default function AboutUs() {
         </section>
 
         {/* SECTION 5: OUR TEAM */}
-        <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white to-green-50">
-          <div className="container mx-auto">
+        <section className="py-10 sm:py-15 lg:py-20 bg-linear-to-br from-off-white to-green-50">
+          <div className="container max-w-7xl mx-auto">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Meet Our Team
@@ -282,7 +282,7 @@ export default function AboutUs() {
                       <p className="text-sm text-medium-gray">{member.company}</p>
                     </div>
                     
-                    <p className="text-medium-gray text-sm leading-relaxed flex-grow mb-6">
+                    <p className="text-medium-gray text-sm leading-relaxed grow mb-6">
                       {member.bio}
                     </p>
                     
@@ -305,13 +305,13 @@ export default function AboutUs() {
 
 
         {/* SECTION 9: CTA */}
-        <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white via-white to-blue-50 relative overflow-hidden">
+        <section className="py-10 sm:py-15 lg:py-20 bg-linear-to-br from-off-white via-white to-blue-50 relative overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-20 right-20 w-64 h-64 bg-primary-green/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-20 left-20 w-64 h-64 bg-accent-blue/10 rounded-full blur-3xl"></div>
           </div>
           
-          <div className="container mx-auto relative z-10">
+          <div className="container max-w-7xl mx-auto relative z-10">
             <div className="text-center space-y-8">
               <div className="space-y-6">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray">

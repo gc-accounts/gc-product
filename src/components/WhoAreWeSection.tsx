@@ -11,7 +11,7 @@ const WhoAreWeSection = ({ sectionClass  }: Props) => {
 
     return (
     <section className={`${sectionClass ? sectionClass : ''}`}>
-           <div className="container mx-auto">
+           <div className="container max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-8">
@@ -62,7 +62,7 @@ const WhoAreWeSection = ({ sectionClass  }: Props) => {
           <div className="relative">
             <div className="relative">
               {/* Abstract illustration representing transformation */}
-              <div className="w-full h-96 bg-gradient-to-br from-primary-green/20 to-accent-blue/20 rounded-2xl flex items-center justify-center relative overflow-hidden">
+              <div className="w-full h-96 bg-linear-to-br from-primary-green/20 to-accent-blue/20 rounded-2xl flex items-center justify-center relative overflow-hidden">
                 {/* Floating elements */}
                 <div className="absolute top-8 left-8 w-16 h-16 bg-primary-green/30 rounded-full animate-pulse"></div>
                 <div className="absolute top-16 right-12 w-12 h-12 bg-accent-blue/30 rounded-full animate-pulse delay-1000"></div>

@@ -28,7 +28,7 @@ const CareersAfter = ({ sectionClass, title, subText, data }: Props) => {
 
   return (
     <section className={sectionClass}>
-      <div className="container mx-auto">
+      <div className="container max-w-7xl mx-auto">
         <div className="text-center mb-8 lg:mb-10 max-w-8xl">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-2 lg:mb-3">
             {title}
@@ -54,7 +54,7 @@ const CareersAfter = ({ sectionClass, title, subText, data }: Props) => {
                   <p className="text-xs text-medium-gray italic mb-4">
                     {Array.isArray(item.companies) ? item.companies.join(', ') : item.companies}
                   </p>
-                  <div className="space-y-2 mb-4 flex-grow">
+                  <div className="space-y-2 mb-4 grow">
                     {item.responsibilities.map((resp: string, idx: number) => (
                       <div key={idx} className="flex items-start space-x-2">
                         <div className="w-1.5 h-1.5 bg-primary-green rounded-full mt-2 shrink-0"></div>

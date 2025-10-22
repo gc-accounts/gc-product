@@ -202,7 +202,7 @@ const AimlCurriculum = ({ sectionClass, title, subText }: Props) => {
 
     return (
    <section className={`${sectionClass ? sectionClass : ''}`}>
-      <div className="container mx-auto">
+      <div className="container max-w-7xl mx-auto">
 
         <div className="text-center mb-8 lg:mb-10 max-w-8xl">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-2 lg:mb-3">

@@ -27,7 +27,7 @@ const OpenCampusSection: React.FC<OpenCampusSectionProps> = ({posts}) => {
         <>
  
          <section className="bg-gradient-hero px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
-        <div className="container mx-auto">
+        <div className="container max-w-7xl mx-auto">
 
              <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight mb-3">
                 The {' '}
@@ -52,7 +52,7 @@ const OpenCampusSection: React.FC<OpenCampusSectionProps> = ({posts}) => {
 
 
    <section className="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]">
-        <div className="container mx-auto">
+        <div className="container max-w-7xl mx-auto">
             {/* Blog List Section: Using the Tailwind Grid Layout */}
             <div className="flex flex-col items-center bg-white px-4 md:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl w-full">

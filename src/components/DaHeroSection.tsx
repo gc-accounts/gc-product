@@ -18,7 +18,7 @@ const DaHeroSection = ({ sectionClass, currency, basePrice}: Props) => {
 
   return (
     <section className={`${sectionClass ? sectionClass : ''}`}>
-      <div className="container mx-auto">
+      <div className="container max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-16 items-center">
           
           {/* Left Content */}

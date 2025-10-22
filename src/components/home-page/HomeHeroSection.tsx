@@ -25,14 +25,14 @@ interface Props {
 
   const HomeHeroSection = ({ sectionClass, currency, basePrice}: Props) => {
 return (
-     <section className={`${sectionClass ? sectionClass : ''} bg-gradient-to-br from-off-white via-white to-green-50 flex items-center relative overflow-hidden`}>
+     <section className={`${sectionClass ? sectionClass : ''} bg-linear-to-br from-off-white via-white to-green-50 flex items-center relative overflow-hidden`}>
     {/* Background Elements */}
     <div className="absolute inset-0 overflow-hidden">
       <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-green/10 rounded-full blur-3xl"></div>
       <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent-blue/10 rounded-full blur-3xl"></div>
     </div>
 
-    <div className="container mx-auto relative z-10">
+    <div className="container max-w-7xl mx-auto relative z-10">
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         {/* Left Content */}
         <div className="space-y-8">

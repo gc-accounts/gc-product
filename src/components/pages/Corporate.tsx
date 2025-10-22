@@ -184,8 +184,8 @@ export default function Corporate() {
 
       <main className="pt-16">
 
-          <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-off-white to-green-50">
-          <div className="container mx-auto">
+          <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-linear-to-br from-off-white to-green-50">
+          <div className="container max-w-7xl mx-auto">
 
             <div className="grid md:grid-cols-12 gap-5 md:gap-8">
               <div className='col-span-6'>
@@ -201,7 +201,7 @@ export default function Corporate() {
 
         {/* SECTION 2: OUR STORY */}
         <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-white">
-          <div className="container mx-auto">
+          <div className="container max-w-7xl mx-auto">
             <div className="md:grid md:grid-cols-12 gap-8 lg:gap-10 items-center">
               {/* LEFT CONTENT */}
               <div className="md:col-span-4 col-span-12">
@@ -246,7 +246,7 @@ export default function Corporate() {
                                   <h3 className="text-xl font-semibold text-dark-gray mb-3">
                                     {feature.title}
                                   </h3>
-                                  <p className="text-medium-gray  flex-grow">
+                                  <p className="text-medium-gray  grow">
                                     {feature.description}
                                   </p>
                                 </CardContent>
@@ -260,8 +260,8 @@ export default function Corporate() {
         </section>
 
         {/* SECTION 3: OUR VALUES */}
-        <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-off-white to-green-50">
-          <div className="container mx-auto">
+        <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-linear-to-br from-off-white to-green-50">
+          <div className="container max-w-7xl mx-auto">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Custom Training for Your Organization
@@ -283,7 +283,7 @@ export default function Corporate() {
                   <h3 className="text-xl font-semibold text-dark-gray mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-sm md:text-base text-medium-gray  flex-grow">
+                  <p className="text-sm md:text-base text-medium-gray  grow">
                     {item.description}
                   </p>
                 </CardContent>
@@ -297,7 +297,7 @@ export default function Corporate() {
 
         {/* SECTION 4: IMPACT & STATS */}
         <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-white">
-          <div className="container mx-auto">
+          <div className="container max-w-7xl mx-auto">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 How we work
@@ -340,8 +340,8 @@ export default function Corporate() {
         </section>
 
         {/* SECTION 5: OUR TEAM */}
-        <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-off-white to-green-50">
-          <div className="container mx-auto">
+        <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-linear-to-br from-off-white to-green-50">
+          <div className="container max-w-7xl mx-auto">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Program Highlights
@@ -363,7 +363,7 @@ export default function Corporate() {
                               </div>
             
                               <CardContent className="p-6 h-fit flex flex-col">
-                                <p className="text-dark-gray text-sm leading-relaxed flex-grow">
+                                <p className="text-dark-gray text-sm leading-relaxed grow">
                                   {project.description}
                                 </p>
                               </CardContent>
@@ -375,8 +375,8 @@ export default function Corporate() {
         </section>
 
 
-    <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-off-white to-green-50">
-          <div className="container mx-auto">
+    <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-linear-to-br from-off-white to-green-50">
+          <div className="container max-w-7xl mx-auto">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Some of our areas of expertise
@@ -403,7 +403,7 @@ export default function Corporate() {
 
 
          <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-white">
-          <div className="container mx-auto">
+          <div className="container max-w-7xl mx-auto">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Our Enterprise Clients

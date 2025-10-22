@@ -82,7 +82,7 @@ const ProgramsCards = ({ sectionClass, currency, basePrice  }: Props) => {
 
     return (
     <section className={`${sectionClass ? sectionClass : ''}`} id='programs'>
-         <div className="container mx-auto">
+         <div className="container max-w-7xl mx-auto">
           <div className="text-center mb-8 lg:mb-12">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Choose Your Path to Success
@@ -127,7 +127,7 @@ const ProgramsCards = ({ sectionClass, currency, basePrice  }: Props) => {
                     </div>
                     
                     {/* Description */}
-                    <p className="text-base text-dark-gray leading-relaxed mb-6 flex-grow">
+                    <p className="text-base text-dark-gray leading-relaxed mb-6 grow">
                       {program.description}
                     </p>
                     
