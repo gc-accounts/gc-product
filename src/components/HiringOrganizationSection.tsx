@@ -36,19 +36,19 @@ const HiringOrganizationSection = ({ sectionClass, title, subText }: Props) => {
        <section className={`${sectionClass ? sectionClass : ''}`}>
       <div className="container mx-auto">
 
-        {/* <div className="text-center mb-8 lg:mb-10 max-w-8xl">
+        <div className="text-center mb-8 lg:mb-10 max-w-8xl">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-2 lg:mb-3">
-            {title}
+            400+ Hiring Associations
           </h2>
-          <p className="text-sm md:text-base text-medium-gray mx-auto leading-relaxed">
+          {/* <p className="text-sm md:text-base text-medium-gray mx-auto leading-relaxed">
             {subText}
-          </p>
-        </div> */}
+          </p> */}
+        </div>
           
           <div className="overflow-hidden">
             <div className="flex space-x-8 animate-scroll">
               {[...companies, ...companies].map((company, index) => (
-                <div key={index} className="flex-shrink-0 w-40 h-20 bg-off-white rounded-lg flex items-center justify-center border border-border-gray hover:border-primary-green transition-colors group">
+                <div key={index} className="shrink-0 w-40 h-20 bg-off-white rounded-lg flex items-center justify-center border border-border-gray hover:border-primary-green transition-colors group">
                   <img src={company} alt="logo" />
                   {/* <span className="text-sm font-semibold text-dark-gray group-hover:text-primary-green transition-colors">{company}</span> */}
                 </div>

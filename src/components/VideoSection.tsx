@@ -43,7 +43,7 @@ const VideoSection = () => {
           controls
           muted
           playsInline
-          poster={`${API_URL}/uploads/GC_20_20_Enterprise_20_Intro_65f395cc1d.webp`}
+          poster={`https://strapi.odinschool.com/uploads/GC_Enterprise_4a77570f99.png`}
           className="absolute top-0 left-0 w-full h-full object-cover"
         />
       )}

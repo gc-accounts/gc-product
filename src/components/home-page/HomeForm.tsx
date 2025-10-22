@@ -45,8 +45,22 @@ const HomeForm = () => {
     e.preventDefault();
     setLoading(true);
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
+
+       // ✅ Increment total form submits
+      let totalFormSubmits = Number(localStorage.getItem('total_form_submits') || '0');
+      totalFormSubmits += 1;
+      localStorage.setItem('total_form_submits', totalFormSubmits.toString());
+
+      // ✅ Extract form data
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+
+      // ✅ Store email in both localStorage & sessionStorage (like PrimaryForm)
+      const email = formData.get('Email') as string;
+      if (email) {
+        localStorage.setItem('submittedEmail', email);
+        sessionStorage.setItem('submittedEmail', email);
+      }
 
     // Attach controlled values
     formData.set('Program', program);
@@ -70,7 +84,8 @@ const HomeForm = () => {
       formData.append('UTM Term-First Page Seen', utm['UTM Term-First Page Seen'] ?? '');
       formData.append('UTM Content-First Page Seen', utm['UTM Content-First Page Seen'] ?? '');
       formData.append('ads_gclid', utm['ads_gclid'] ?? '');
-      formData.append('Total Form Submits', (Number(localStorage.getItem('total_form_submits') || 0) + 1).toString());
+      // ✅ Add total form submits field
+      formData.append('Total Form Submits', totalFormSubmits.toString());
 
       const res = await fetch('/api/zoho/course-form', { method: 'POST', body: formData });
       if (!res.ok) throw new Error((await res.json()).error || 'Submission failed');
@@ -81,7 +96,7 @@ const HomeForm = () => {
       setProgram('');
       setExperience('');
       setGraduation('');
-      localStorage.setItem('total_form_submits', (Number(localStorage.getItem('total_form_submits') || 0) + 1).toString());
+
     } catch (err: any) {
       console.error('Zoho form submission error:', err);
       toast({ title: 'Error', description: err.message || 'Failed to submit the form', type: 'error' });
@@ -148,7 +163,7 @@ return (
         </Select>
 
         {/* Submit */}
-        <Button type="submit" disabled={loading} className="w-full bg-secondary-green hover:bg-primary-green text-white font-semibold py-3 rounded-lg mt-2 cursor-pointer">
+        <Button type="submit" disabled={loading} className="w-full bg-red hover:bg-red text-white font-semibold py-3 rounded-lg mt-2 cursor-pointer">
           {loading ? 'Submitting...' : 'Request More Information'}
         </Button>
 

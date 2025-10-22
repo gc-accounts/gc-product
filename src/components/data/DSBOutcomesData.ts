@@ -55,8 +55,8 @@
       },
       {
         icon: '📚',
-        title: 'Continuous Learning',
-        description: 'Stay updated with latest tools and techniques',
+        title: 'Storytelling with Data',
+        description: 'Translate complex analysis into compelling narratives that drive business action',
         color: 'border-t-accent-blue'
       }
     ];

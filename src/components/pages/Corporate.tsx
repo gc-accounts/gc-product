@@ -9,6 +9,7 @@ import Footer from '@/components/Footer';
 import { Item } from '@radix-ui/react-select';
 import ContactUsForm from '../ContactUsForm';
 import VideoSection from '../VideoSection';
+import TransFormSection from '../TransFormSection';
 
 
 
@@ -136,6 +137,7 @@ const expertiseAreas = [
   "Project Management",
   "Design Thinking",
   "Team Building and Management",
+  "Quality Management",
   "and more...",
 ];
 
@@ -295,7 +297,7 @@ export default function Corporate() {
 
         {/* SECTION 4: IMPACT & STATS */}
         <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="container mx-auto">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 How we work
@@ -339,7 +341,7 @@ export default function Corporate() {
 
         {/* SECTION 5: OUR TEAM */}
         <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-off-white to-green-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="container mx-auto">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Program Highlights
@@ -374,7 +376,7 @@ export default function Corporate() {
 
 
     <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-gradient-to-br from-off-white to-green-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="container mx-auto">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Some of our areas of expertise
@@ -401,7 +403,7 @@ export default function Corporate() {
 
 
          <section className="px-[20px] py-[50px] md:px-[30px] md:py-[70px] bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="container mx-auto">
             <div className="text-center mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
                 Our Enterprise Clients
@@ -424,6 +426,8 @@ export default function Corporate() {
                       </div>
           </div>
         </section>
+
+        <TransFormSection sectionClass='px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
 
 
 

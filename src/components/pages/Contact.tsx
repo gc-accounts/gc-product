@@ -127,7 +127,7 @@ export default function Contact() {
       <main className="pt-16">
         {/* Hero Section */}
         <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white via-white to-green-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="container mx-auto">
               <div className="text-center space-y-6">
               <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight">
                 Get in Touch
@@ -141,14 +141,14 @@ export default function Contact() {
 
         {/* Contact Form & Details Section */}
         <section className="py-16 sm:py-20 lg:py-24 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="container mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
               
               {/* Left Section - Contact Form */}
                   <div className="space-y-8">
                 <div className="space-y-4">
                   <h2 className="text-3xl lg:text-4xl font-bold text-dark-gray">Contact Us</h2>
-                  <p className="text-lg text-medium-gray leading-relaxed">
+                  <p className="text-base text-medium-gray leading-relaxed">
                     Fill out the form below and we&apos;ll get back to you within 24 hours.
                   </p>
                 </div>
@@ -309,7 +309,7 @@ export default function Contact() {
                   <div className="space-y-8">
                 <div className="space-y-4">
                   <h2 className="text-3xl lg:text-4xl font-bold text-dark-gray">Contact Details</h2>
-                  <p className="text-lg text-medium-gray leading-relaxed">
+                  <p className="text-base text-medium-gray leading-relaxed">
                     Reach out to us through any of these channels.
                   </p>
                 </div>
@@ -320,7 +320,7 @@ export default function Contact() {
                   <Card className="bg-white border border-border-gray hover:border-primary-green hover:shadow-lg transition-all duration-300">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
-                        <div className="flex-shrink-0">
+                        <div className="shrink-0">
                           <div className="w-12 h-12 bg-primary-green/10 rounded-lg flex items-center justify-center">
                             <MapPin className="w-6 h-6 text-primary-green" />
                           </div>
@@ -342,14 +342,14 @@ export default function Contact() {
                   <Card className="bg-white border border-border-gray hover:border-primary-green hover:shadow-lg transition-all duration-300">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
-                        <div className="flex-shrink-0">
+                        <div className="shrink-0">
                           <div className="w-12 h-12 bg-primary-green/10 rounded-lg flex items-center justify-center">
                             <Phone className="w-6 h-6 text-primary-green" />
                           </div>
                         </div>
                         <div>
                           <h3 className="text-lg font-semibold text-dark-gray mb-2">Phone Number</h3>
-                          <p className="text-sm text-medium-gray">+91 935 501 1033</p>
+                          <p className="text-sm text-medium-gray">+91 799 606 4333</p>
                         </div>
                       </div>
                     </CardContent>
@@ -360,7 +360,7 @@ export default function Contact() {
                   <Card className="bg-white border border-border-gray hover:border-primary-green hover:shadow-lg transition-all duration-300">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
-                        <div className="flex-shrink-0">
+                        <div className="shrink-0">
                           <div className="w-12 h-12 bg-primary-green/10 rounded-lg flex items-center justify-center">
                             <Mail className="w-6 h-6 text-primary-green" />
                           </div>
@@ -408,7 +408,7 @@ export default function Contact() {
 
         {/* CTA Section */}
         <section className="py-10 sm:py-15 lg:py-20 bg-gradient-to-br from-off-white to-green-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="container mx-auto">
                 <div className="text-center space-y-8">
               <div className="space-y-6">
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
@@ -423,7 +423,7 @@ export default function Contact() {
                 <Button 
                   size="lg" 
                   className="bg-primary-green hover:bg-secondary-green text-white px-8 py-4 text-lg font-semibold"
-                  onClick={() => window.location.href = '/data-science-bootcamp'}
+                  onClick={() => window.location.href = '/#programs'}
                 >
                   Explore Bootcamps
                   <ArrowRight className="ml-2 w-5 h-5" />
@@ -432,7 +432,7 @@ export default function Contact() {
                   variant="outline" 
                   size="lg"
                   className="border-2 border-primary-green text-primary-green hover:bg-primary-green hover:text-white px-8 py-4 text-lg font-semibold"
-                  onClick={() => window.location.href = '/about'}
+                  onClick={() => window.location.href = '/about-us'}
                 >
                   Learn About Us
                 </Button>

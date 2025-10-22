@@ -75,14 +75,14 @@ const DSBProjects = ({ sectionClass, title, subText }: Props) => {
                 <Card className="h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2 border-border-gray hover:border-primary-green overflow-hidden">
                   {/* Header with gradient */}
                   <div className={`bg-gradient-to-r ${project.gradient} p-6 text-white relative`}>
-                    <h3 className="text-xl lg:text-2xl font-bold mb-2">
+                    <h3 className="text-base lg:text-xl font-semibold">
                       {project.title}
                     </h3>
-                    <div className="flex items-center space-x-4">
+                    {/* <div className="flex items-center space-x-4">
                       <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-semibold">
                         ⭐{'⭐'.repeat(project.difficulty - 1)}☆{'☆'.repeat(5 - project.difficulty)} ({project.difficulty}/5)
                       </span>
-                    </div>
+                    </div> */}
                   </div>
 
                   <CardContent className="p-6 h-fit flex flex-col">
@@ -107,7 +107,7 @@ const DSBProjects = ({ sectionClass, title, subText }: Props) => {
                         <ul className="space-y-1">
                           {project.learnings.map((learning, idx) => (
                             <li key={idx} className="flex items-start space-x-2">
-                              <div className="w-1 h-1 bg-primary-green rounded-full mt-2 flex-shrink-0"></div>
+                              <div className="w-1 h-1 bg-primary-green rounded-full mt-2 shrink-0"></div>
                               <span className="text-xs text-dark-gray leading-relaxed">{learning}</span>
                             </li>
                           ))}

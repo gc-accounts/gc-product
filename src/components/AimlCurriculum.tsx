@@ -202,7 +202,7 @@ const AimlCurriculum = ({ sectionClass, title, subText }: Props) => {
 
     return (
    <section className={`${sectionClass ? sectionClass : ''}`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div className="container mx-auto">
 
         <div className="text-center mb-8 lg:mb-10 max-w-8xl">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-2 lg:mb-3">
@@ -222,7 +222,7 @@ const AimlCurriculum = ({ sectionClass, title, subText }: Props) => {
                   onClick={() => setActiveModule(module.id)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeModule === module.id
                       ? 'bg-primary-green text-white shadow-md'
-                      : 'bg-light-gray text-dark-gray hover:bg-medium-gray hover:text-white'
+                      : 'bg-gray-200 text-dark-gray hover:bg-medium-gray hover:text-white'
                     }`}
                 >
                   {module.title}
@@ -231,7 +231,7 @@ const AimlCurriculum = ({ sectionClass, title, subText }: Props) => {
             </div>
 
             {/* Module Content */}
-            <div className="bg-white rounded-2xl shadow-lg border border-border-gray overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-lg border border-border-gray overflow-hidden max-w-5xl mx-auto">
               {modules.map((module) => (
                 <div
                   key={module.id}
@@ -261,7 +261,7 @@ const AimlCurriculum = ({ sectionClass, title, subText }: Props) => {
                         <ul className="space-y-2">
                           {module.topics.map((topic, index) => (
                             <li key={index} className="flex items-start space-x-2">
-                              <div className="w-1.5 h-1.5 bg-primary-green rounded-full mt-2 flex-shrink-0"></div>
+                              <div className="w-1.5 h-1.5 bg-primary-green rounded-full mt-2 shrink-0"></div>
                               <span className="text-dark-gray text-sm leading-relaxed">{topic}</span>
                             </li>
                           ))}
@@ -273,7 +273,7 @@ const AimlCurriculum = ({ sectionClass, title, subText }: Props) => {
                         <ul className="space-y-2">
                           {module.outcomes.map((outcome, index) => (
                             <li key={index} className="flex items-start space-x-2">
-                              <CheckCircle className="w-4 h-4 text-primary-green flex-shrink-0 mt-0.5" />
+                              <CheckCircle className="w-4 h-4 text-primary-green shrink-0 mt-0.5" />
                               <span className="text-dark-gray text-sm leading-relaxed">{outcome}</span>
                             </li>
                           ))}

@@ -47,7 +47,7 @@ const Certification = ({ sectionClass, data }: CertificateProps) => {
          <ul className="space-y-6 grid grid-cols-12 mb-4">
               {data.features.map((item) => (
                 <li key={item.id} className="flex items-center gap-4 col-span-4">
-                  <div className="flex-shrink-0 bg-primary-50 rounded-md p-2">
+                  <div className="shrink-0 bg-primary-50 rounded-md p-2">
                     <img
                       src={item.iconLabel}
                       alt={`${item.title} icon`}

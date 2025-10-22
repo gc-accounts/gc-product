@@ -60,7 +60,7 @@ import React, { useState } from 'react'
 
     return (
       <section id="faq" className="py-10 sm:py-15 lg:py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div className="container mx-auto">
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
               Frequently Asked Questions
@@ -80,7 +80,7 @@ import React, { useState } from 'react'
                   className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                     activeFAQCategory === category.id
                       ? 'bg-primary-green text-white shadow-md'
-                      : 'bg-light-gray text-dark-gray hover:bg-medium-gray hover:text-white'
+                      : 'bg-gray-200 text-dark-gray hover:bg-medium-gray hover:text-white'
                   }`}
                 >
                   {category.name}
@@ -99,7 +99,7 @@ import React, { useState } from 'react'
                     <div className="border border-border-gray rounded-lg overflow-hidden">
                       <button
                         onClick={() => toggleFAQ(activeFAQCategory, index)}
-                        className="w-full px-6 py-4 text-left bg-light-gray hover:bg-white transition-all duration-300 flex items-center justify-between"
+                        className="w-full px-6 py-4 text-left bg-gray-200 hover:bg-white transition-all duration-300 flex items-center justify-between"
                       >
                         <h3 className="text-base font-semibold text-dark-gray pr-4">
                           {faq.question}

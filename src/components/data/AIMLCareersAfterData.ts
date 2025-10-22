@@ -20,14 +20,15 @@ export const AIMLCareersAfterData = [
       skills: ["Python", "PyTorch", "LLMs", "APIs"]
     },
     {
-      title: "Deep Learning Specialist",
-      companies: ["Tesla", "NVIDIA", "Apple"],
-      responsibilities: [
-        "Develop neural networks",
-        "Computer vision models",
-        "Advanced ML algorithms"
-      ],
-      skills: ["Deep Learning", "Computer Vision", "PyTorch", "CUDA"]
+      title: "Gen AI Specialist",
+      companies: ["Microsoft", "NVIDIA", "Amazon (AWS)", "OpenAI"],
+"responsibilities": [
+    "Fine-tune Generative Models",
+    "Optimize Output via Prompting",
+    "Deploy Content AI",
+    "Ensure Ethical AI"
+  ],
+      skills: ["Python", "Deep Learning (PyTorch/TensorFlow)", "LLMs/Transformers", "Prompt Engineering"]
     },
     {
       title: "NLP Engineer",
@@ -39,16 +40,16 @@ export const AIMLCareersAfterData = [
       ],
       skills: ["NLP", "Transformers", "BERT", "GPT"]
     },
-    {
-      title: "Computer Vision Engineer",
-      companies: ["Tesla", "Waymo", "Apple"],
-      responsibilities: [
-        "Image recognition systems",
-        "Object detection models",
-        "Video analysis"
-      ],
-      skills: ["OpenCV", "CNNs", "YOLO", "TensorFlow"]
-    },
+    // {
+    //   title: "Computer Vision Engineer",
+    //   companies: ["Tesla", "Waymo", "Apple"],
+    //   responsibilities: [
+    //     "Image recognition systems",
+    //     "Object detection models",
+    //     "Video analysis"
+    //   ],
+    //   skills: ["OpenCV", "CNNs", "YOLO", "TensorFlow"]
+    // },
     {
       title: "ML Operations Engineer",
       companies: ["Netflix", "Uber", "Airbnb"],
@@ -69,16 +70,16 @@ export const AIMLCareersAfterData = [
       ],
       skills: ["Research", "PyTorch", "Statistics", "Publications"]
     },
-    {
-      title: "Data Scientist (Advanced)",
-      companies: ["Stripe", "Palantir", "Databricks"],
-      responsibilities: [
-        "Advanced analytics",
-        "ML model development",
-        "Business insights"
-      ],
-      skills: ["Python", "ML", "Statistics", "Business"]
-    },
+    // {
+    //   title: "Data Scientist (Advanced)",
+    //   companies: ["Stripe", "Palantir", "Databricks"],
+    //   responsibilities: [
+    //     "Advanced analytics",
+    //     "ML model development",
+    //     "Business insights"
+    //   ],
+    //   skills: ["Python", "ML", "Statistics", "Business"]
+    // },
     {
       title: "Autonomous Systems Engineer",
       companies: ["Tesla", "Waymo", "Cruise"],

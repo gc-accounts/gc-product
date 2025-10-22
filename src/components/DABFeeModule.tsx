@@ -21,12 +21,7 @@ const DABFeeModule = ({ sectionClass, title, subText, currency, basePrice  }: Pr
         color: "bg-primary-green", 
         spots: "Available: 15/20" 
       },
-      // { 
-      //   startDate: "Feb 12, 2025", 
-      //   status: "Limited", 
-      //   color: "bg-accent-gold", 
-      //   spots: "Available: 3/25" 
-      // },
+    { startDate: "29 November, 2025", status: "Limited", color: "bg-accent-gold", spots: "Available: 16/30" },
       // { 
       //   startDate: "Mar 10, 2025", 
       //   status: "Closed", 
@@ -37,7 +32,7 @@ const DABFeeModule = ({ sectionClass, title, subText, currency, basePrice  }: Pr
 
     return (
     <section className={`${sectionClass ? sectionClass : ''}`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div className="container mx-auto">
 
         <div className="text-center mb-8 lg:mb-10 max-w-8xl">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-2 lg:mb-3">
@@ -50,7 +45,7 @@ const DABFeeModule = ({ sectionClass, title, subText, currency, basePrice  }: Pr
 
           
           {/* Main Pricing Card */}
-          <div className="mx-auto mb-12 lg:mb-16">
+          <div className="mx-auto mb-12 lg:mb-16 max-w-5xl">
             <Card className="bg-white shadow-lg border-0 relative overflow-hidden">
               <CardContent className="p-8 lg:p-12">
                 <h3 className="text-2xl lg:text-3xl font-bold text-dark-gray mb-6 lg:mb-8 text-center">
@@ -67,7 +62,7 @@ const DABFeeModule = ({ sectionClass, title, subText, currency, basePrice  }: Pr
                     "Certificate of completion",
                   ].map((feature, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-primary-green flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="w-5 h-5 text-primary-green shrink-0 mt-0.5" />
                       <span className="text-dark-gray text-sm leading-relaxed">{feature}</span>
                     </div>
                   ))}
@@ -118,7 +113,7 @@ const DABFeeModule = ({ sectionClass, title, subText, currency, basePrice  }: Pr
             </p> */}
           </div>
           
-          <div className="flex justify-center max-w-5xl mx-auto">
+          <div className="flex justify-center max-w-[550px] mx-auto">
             {cohorts.map((cohort, index) => (
               <Card key={index} className={`${cohort.color} text-white border-0 hover:shadow-lg transition-all duration-300 h-full  w-fit mx-auto`}>
                 <CardContent className="p-6 text-center h-full flex flex-col justify-center">

@@ -18,7 +18,7 @@ const AIMLHeroSection = ({ sectionClass, basePrice, currency  }: Props) => {
 
   return(
   <section className={`${sectionClass ? sectionClass : ''}`}>
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <div className="container mx-auto">
       <div className="grid lg:grid-cols-5 gap-8 lg:gap-16 items-center">
         
         {/* Left Content */}
@@ -37,25 +37,25 @@ const AIMLHeroSection = ({ sectionClass, basePrice, currency  }: Props) => {
 
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <Target className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green flex-shrink-0 mt-0.5" />
+                <Target className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green shrink-0 mt-0.5" />
                 <span className="text-sm sm:text-base text-dark-gray leading-relaxed">
                   Production-ready AI projects
                 </span>
               </div>
               <div className="flex items-start space-x-3">
-                <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green flex-shrink-0 mt-0.5" />
+                <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green shrink-0 mt-0.5" />
                 <span className="text-sm sm:text-base text-dark-gray leading-relaxed">
-                  Learn from AI engineers at Google, Meta, Amazon
+                  Learn from industry professionals
                 </span>
               </div>
               <div className="flex items-start space-x-3">
-                <Briefcase className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green flex-shrink-0 mt-0.5" />
+                <Briefcase className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green shrink-0 mt-0.5" />
                 <span className="text-sm sm:text-base text-dark-gray leading-relaxed">
                   100% placement assistance
                 </span>
               </div>
                <div className="flex items-start space-x-3">
-                <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green flex-shrink-0 mt-0.5" />
+                <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-primary-green shrink-0 mt-0.5" />
                 <span className="text-sm sm:text-base text-dark-gray leading-relaxed">
                   Get dual certificate
                 </span>
@@ -67,7 +67,7 @@ const AIMLHeroSection = ({ sectionClass, basePrice, currency  }: Props) => {
               <Link href={'/course-checkout/aiml-bootcamp'}>
                 <Button
                   size="lg"
-                  className="bg-primary-green hover:bg-secondary-green text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto cursor-pointer"
+                  className="bg-yellow-1 hover:bg-yellow-2 px-8 py-4 text-lg font-semibold cursor-pointer"
                 >
                   Enroll Now
                 </Button>
@@ -87,7 +87,7 @@ const AIMLHeroSection = ({ sectionClass, basePrice, currency  }: Props) => {
                 </DialogTrigger>
 
                 <DialogContent
-                  className="max-w-[90vw] sm:max-w-[28rem] md:max-w-[32rem] w-full rounded-2xl p-0 overflow-hidden"
+                  className="max-w-[90vw] sm:max-w-112 md:max-w-128 w-full rounded-2xl p-0 overflow-hidden"
                 >
                   <div className="sticky top-0 z-10 bg-white border-b border-gray-100 flex items-center justify-between px-6 py-4">
                     <DialogTitle className="text-lg sm:text-xl font-semibold text-dark-gray text-center w-full">
