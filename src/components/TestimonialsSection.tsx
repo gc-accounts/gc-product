@@ -100,10 +100,10 @@ const TestimonialsSection = ({ sectionClass  }: Props) => {
         <div className="container max-w-7xl mx-auto">
           <div className="text-center mb-8 lg:mb-12">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-              Success Stories
+               Let’s Build the Future of Your Students, Together
             </h2>
             <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
-              Real students. Real transformations. Real careers.
+               Partner with GreyCampus to launch industry-driven Internship cum Training (ICT) Programs that prepare your students for the world of Data Science and AI.
             </p>
           </div>
           

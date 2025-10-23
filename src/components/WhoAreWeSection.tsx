@@ -17,34 +17,33 @@ const WhoAreWeSection = ({ sectionClass  }: Props) => {
           <div className="space-y-8">
             <div className="space-y-6">
                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-                Empowering Careers Through Affordable Education
+                Why Partner with GreyCampus
               </h2>
-              <p className="text-base text-medium-gray leading-relaxed">
-                Bridging the gap between ambition and opportunity
-              </p>
+          
               
               <div className="space-y-6">
                 <p className="text-base text-medium-gray leading-relaxed">
-                  With the rise in demand for AI and ML skills, we understand the challenge of getting affordable courses to every corner of the world. That's why Greycampus is dedicated to making world-class tech education accessible to everyone. We've designed our bootcamps to combine deep industry expertise, a practical, cutting-edge curriculum, and personalized mentorship—all delivered at prices that won't break the bank.
+                  Since 2014, GreyCampus has been at the forefront of skill-based education — helping institutions and learners stay ahead of emerging technologies.
+                   Our Internship cum Training (ICT) Programs bring together academic rigor, industry insights, and project-based learning to ensure every student graduates career-ready.
                 </p>
                 <p className="text-base text-medium-gray leading-relaxed">
-                  We've trained over 50,000+ students who have successfully transformed their careers at leading companies worldwide.
+                  We’ve empowered over 50,000+ students worldwide through programs designed with real-world relevance and guided by expert mentors from academia and industry.
                 </p>
               </div>
               
               {/* Stats Row */}
               <div className="grid grid-cols-3 gap-6 pt-6">
-                <div className="text-center">
+                <div className="">
                   <div className="text-3xl font-bold text-primary-green mb-2">50,000+</div>
                   <div className="text-sm text-medium-gray">Students Trained</div>
                 </div>
-                <div className="text-center">
+                <div className="">
                   <div className="text-3xl font-bold text-primary-green mb-2">85%</div>
-                  <div className="text-sm text-medium-gray">NPS</div>
+                  <div className="text-sm text-medium-gray">NPS (Industry-Leading Satisfaction)</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-green mb-2">400+</div>
-                  <div className="text-sm text-medium-gray">Hiring associations</div>
+                <div className="">
+                  <div className="text-3xl font-bold text-primary-green mb-2">10+</div>
+                  <div className="text-sm text-medium-gray">Years of Expertise in Career-Focused Education</div>
                 </div>
               </div>
               

@@ -3,11 +3,9 @@ import Home from '@/components/pages/Home'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "GreyCampus - Learn at ₹5,000 | Greycampus",
-  description:
-    "Master data science in 20 weeks. ₹5,000 bootcamp with 95% placement. Expert instructors, real-world projects, lifetime access.",
-  keywords:
-    "GreyCampus, affordable courses, career transformation, machine learning, python, SQL, data analysis",
+  title: "High-Impact Internship cum Training (IcT) Programs | Greycampus",
+  description: "Partner with GreyCampus to embed cutting-edge Data Science and AI expertise in your students, ensuring high-value career outcome",
+  keywords: "GreyCampus, affordable courses, career transformation, machine learning, python, SQL, data analysis",
   authors: [{ name: "Greycampus" }],
   creator: "Greycampus",
   publisher: "Greycampus",
@@ -19,9 +17,8 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.greycampus.com"),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "GreyCampus - Learn at ₹5,000 | Greycampus",
-    description:
-      "Master data science in 3-months. ₹5,000 bootcamp with 100% placement assistance. Expert instructors, real-world projects.",
+    title: "High-Impact Internship cum Training (IcT) Programs | Greycampus",
+    description: "Partner with GreyCampus to embed cutting-edge Data Science and AI expertise in your students, ensuring high-value career outcome",
     url: "https://www.greycampus.com/",
     siteName: "Greycampus",
     images: [
@@ -29,7 +26,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Greycampus GreyCampus",
+        alt: "Greycampus",
       },
     ],
     locale: "en_US",
@@ -37,9 +34,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "GreyCampus - Learn at ₹5,000 | Greycampus",
-    description:
-      "Master data science in 3-months. ₹5,000 bootcamp with 100% placement assistance. Expert instructors, real-world projects.",
+    title: "High-Impact Internship cum Training (IcT) Programs | Greycampus",
+    description: "Partner with GreyCampus to embed cutting-edge Data Science and AI expertise in your students, ensuring high-value career outcome",
     images: ["/og-image.jpg"],
   },
   robots: {

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import Navigation from '@/components/Navigation';
 import HomeHeroSection from '@/components/home-page/HomeHeroSection';
 import HiringOrganizationSection from '@/components/HiringOrganizationSection';
-import ProgramsCards from '@/components/ProgramsCards';
+import ProgramsCardsHome from '@/components/ProgramsCardsHome';
 import WhoAreWeSection from '@/components/WhoAreWeSection';
 import WhyGreycampusSection from '@/components/WhyGreycampusSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
@@ -16,6 +16,10 @@ import Footer from '@/components/Footer';
 
 import { getUserCountry, PRICE_CONFIG } from '@/lib/country-detection';
 import WhyLearn from '../WhyLearn';
+import TransformAcademic from '../TransformAcademic';
+import OpenStudents from '../OpenStudents';
+import IctPartnershipSection from '../IctPartnershipSection';
+import HomeJobDrives from '../HomeJobDrives';
 interface Props{
   slug?:string;
 }
@@ -59,8 +63,12 @@ const DataAnalystBootcamp = ({slug}:Props) => {
         <main className='mt-16'>
         <HomeHeroSection basePrice={basePrice} currency={currency} sectionClass='px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
         <HiringOrganizationSection sectionClass='px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
-        <ProgramsCards basePrice={basePrice} currency={currency} sectionClass='bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
+        <TransformAcademic sectionClass='bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px' />
+        <ProgramsCardsHome basePrice={basePrice} currency={currency} sectionClass=' px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
+        <OpenStudents title='Open to students from all disciplines' subText='Our programs ensure that every student, regardless of their core discipline, gains the essential, high-demand technological layer needed to secure a competitive edge in a global, data-driven econom' sectionClass='bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
         <WhoAreWeSection sectionClass='px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
+        <IctPartnershipSection sectionClass='bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
+        <HomeJobDrives sectionClass='px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
         <WhyGreycampusSection sectionClass='bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
         <WhyLearn title='Career Services' subText='Dedicated support to launch your career.' sectionClass="px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
         <TestimonialsSection sectionClass='bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
