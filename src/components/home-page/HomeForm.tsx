@@ -217,7 +217,7 @@ const HomeForm: React.FC<FormProps> = ({ isModal = false, onClose }) => {
           <Input name="Other City" placeholder="Location" required />
 
           {/* Submit */}
-          <Button type="submit" disabled={loading} className="w-full bg-red hover:bg-red text-white font-semibold py-3 rounded-lg mt-2 cursor-pointer">
+          <Button type="submit" disabled={loading} className="w-full bg-primary-green hover:bg-primary-green text-white font-semibold py-3 rounded-lg mt-2 cursor-pointer">
             {loading ? 'Submitting...' : 'Request More Information'}
           </Button>
 
