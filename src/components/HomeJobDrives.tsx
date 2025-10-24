@@ -76,8 +76,8 @@ const HomeJobDrives = ({ sectionClass }: CardsProps) => {
               {/* Carousel */}
               <div className="overflow-hidden" ref={emblaRef}>
                 <div className="flex">
-                  {jobsData.map((item) => (
-                    <div key={item.id} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.33%] px-2">
+                  {jobsData.map((item, idx) => (
+                    <div key={idx} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.33%] px-2">
                       <Card className={`bg-white border border-border-gray hover:border-primary-green transition-all duration-300 h-full`}>
                         <CardContent className="p-6 h-full flex flex-col justify-center">
                           <div className="mb-4">

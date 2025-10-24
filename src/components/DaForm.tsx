@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Card, CardContent } from './ui/card';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
@@ -10,6 +10,7 @@ import { getGaCookieValue } from './utils/cookieUtils';
 import { fetchUserLocation } from './utils/fetchUserLocation';
 import { getOriginalTrafficSource } from './utils/getOriginalTrafficSource';
 import { CountryCodeData } from './data/CountryCodeData';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 interface DaFormProps {
   isModal?: boolean;
@@ -18,11 +19,14 @@ interface DaFormProps {
 
 const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
   const { toast } = useToast();
+  const recaptchaRef = useRef<ReCAPTCHA | null>(null);
+
   const [utm, setUtm] = useState<Record<string, string>>({});
   const [gaClientId, setGaClientId] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [loading, setLoading] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
   const [countrySearch, setCountrySearch] = useState('');
   const [filteredCountries, setFilteredCountries] = useState(CountryCodeData);
@@ -65,19 +69,43 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget as HTMLFormElement;
     setLoading(true);
 
     try {
-      // ✅ Increment total form submits
-      let totalFormSubmits = Number(localStorage.getItem('total_form_submits') || '0');
-      totalFormSubmits += 1;
+      if (!captchaToken) {
+        toast({
+          title: 'Verification Required',
+          description: 'Please complete the reCAPTCHA verification.',
+          type: 'error',
+        });
+        setLoading(false);
+        return;
+      }
+
+      // ✅ Verify reCAPTCHA server-side
+      const verifyRes = await fetch('/api/verify-recaptcha', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: captchaToken }),
+      });
+
+      const verifyData = await verifyRes.json();
+      if (!verifyData.success) {
+        toast({
+          title: 'reCAPTCHA Failed',
+          description: 'Please verify you are not a robot.',
+          type: 'error',
+        });
+        recaptchaRef.current?.reset();
+        setLoading(false);
+        return;
+      }
+
+      let totalFormSubmits = Number(localStorage.getItem('total_form_submits') || '0') + 1;
       localStorage.setItem('total_form_submits', totalFormSubmits.toString());
 
-      // ✅ Extract form data
-      const form = e.currentTarget;
       const formData = new FormData(form);
-
-      // ✅ Store email in both localStorage & sessionStorage (like PrimaryForm)
       const email = formData.get('Email') as string;
       if (email) {
         localStorage.setItem('submittedEmail', email);
@@ -86,14 +114,11 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
 
       const phone = (formData.get('Phone') as string)?.trim();
       const fullPhone = `+${selectedCountry.code}${phone}`;
-
       formData.delete('Phone');
       formData.append('Phone', fullPhone);
       formData.append('Country', selectedCountry.country);
 
       const token = await getAccessToken();
-
-      // ✅ Append all other fields
       formData.append('accessToken', token);
       formData.append('Program', 'GC Data Analyst Bootcamp');
       formData.append('Ga_client_id', gaClientId);
@@ -101,55 +126,38 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
       formData.append('Source_Domain', isModal ? 'GC Brochure Form' : 'GC Course Form');
       formData.append('Other_City', city);
       formData.append('Other_State', state);
-
-      // ✅ UTM tracking
       formData.append('First Page Seen', utm['First Page Seen'] ?? '');
       formData.append('Original Traffic Source', getOriginalTrafficSource(utm));
-      formData.append('Original Traffic Source Drill-Down 1', utm['Original Traffic Source Drill-Down 1'] ?? '');
-      formData.append('Original Traffic Source Drill-Down 2', utm['Original Traffic Source Drill-Down 2'] ?? '');
-      formData.append('UTM Term-First Page Seen', utm['UTM Term-First Page Seen'] ?? '');
-      formData.append('UTM Content-First Page Seen', utm['UTM Content-First Page Seen'] ?? '');
       formData.append('ads_gclid', utm['ads_gclid'] ?? '');
-
-      // ✅ Add total form submits field
       formData.append('Total Form Submits', totalFormSubmits.toString());
 
-      // ✅ Submit to Zoho API
-      const res = await fetch('/api/zoho/course-form', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.error || 'Submission failed');
-      }
+      const res = await fetch('/api/zoho/course-form', { method: 'POST', body: formData });
+      if (!res.ok) throw new Error('Submission failed');
 
       toast({
         title: 'Success!',
         description: 'Your details have been submitted successfully!',
       });
 
-      // ✅ Facebook Pixel Lead Event
       if (typeof window !== 'undefined' && (window as any).fbq) {
         (window as any).fbq('track', 'Lead');
       }
 
-      // ✅ If modal form, open brochure and close
       if (isModal) {
-        const brochurePath = '/Data Analyst Bootcamp.pdf';
-        window.open(brochurePath, '_blank');
-        if (onClose) onClose();
+        window.open('/Data Analyst Bootcamp.pdf', '_blank');
+        onClose?.();
       }
 
       form.reset();
+      recaptchaRef.current?.reset();
+      setCaptchaToken(null);
       setCountrySearch(selectedCountry.country);
     } catch (err: any) {
       console.error('Zoho form submission error:', err);
       toast({
         title: 'Error',
         description: err.message || 'Failed to submit the form',
-         type: 'error',
+        type: 'error',
       });
     } finally {
       setLoading(false);
@@ -160,16 +168,13 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
     <Card className={`${isModal ? 'shadow-none' : 'bg-white shadow-lg rounded-2xl p-6 sm:p-8'}`}>
       <CardContent className="p-0">
         <form className="space-y-5" onSubmit={handleSubmit}>
-          {/* Name Fields */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input name="First Name" placeholder="First Name" required />
             <Input name="Last Name" placeholder="Last Name" required />
           </div>
 
-          {/* Email */}
           <Input name="Email" placeholder="you@example.com" type="email" required />
 
-          {/* Country + Phone */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative">
             <div className="relative">
               <Input
@@ -200,35 +205,19 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
                 </ul>
               )}
             </div>
-
             <Input name="Phone" placeholder={`+${selectedCountry.code} 99999 99999`} required />
           </div>
 
-          {/* Year of Graduation */}
-          <select
-            name="Year of Graduation"
-            className="w-full border border-gray-300 rounded-md p-2"
-            required
-          >
+          <select name="Year of Graduation" className="w-full border border-gray-300 rounded-md p-2" required>
             <option value="">Select Year of Graduation</option>
-            <option value="Before 2018">Before 2018</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
-            <option value="2025">2025</option>
-            <option value="After 2025">After 2025</option>
+            {['Before 2018', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', 'After 2025'].map((y) => (
+              <option key={y} value={y}>
+                {y}
+              </option>
+            ))}
           </select>
 
-          {/* Work Experience */}
-          <select
-            name="Work Experience Level"
-            className="w-full border border-gray-300 rounded-md p-2"
-            required
-          >
+          <select name="Work Experience Level" className="w-full border border-gray-300 rounded-md p-2" required>
             <option value="">Select Work Experience Level</option>
             <option value="Fresher">Fresher</option>
             <option value="1-3 Years">1-3 Years</option>
@@ -236,7 +225,15 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
             <option value="5+ Years">5+ Years</option>
           </select>
 
-          {/* Submit */}
+          {/* ✅ reCAPTCHA widget */}
+          <div className="flex justify-center">
+            <ReCAPTCHA
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+              ref={recaptchaRef}
+              onChange={(token) => setCaptchaToken(token)}
+            />
+          </div>
+
           <Button
             type="submit"
             disabled={loading}
