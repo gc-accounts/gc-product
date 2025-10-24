@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Card, CardContent } from '../ui/card';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
@@ -10,6 +10,7 @@ import { getGaCookieValue } from '../utils/cookieUtils';
 import { fetchUserLocation } from '../utils/fetchUserLocation';
 import { getOriginalTrafficSource } from '../utils/getOriginalTrafficSource';
 import { CountryCodeData } from '../data/CountryCodeData';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 interface FormProps {
   isModal?: boolean;
@@ -17,39 +18,40 @@ interface FormProps {
 }
 
 const HomeForm: React.FC<FormProps> = ({ isModal = false, onClose }) => {
-
   const { toast } = useToast();
+  const recaptchaRef = useRef<ReCAPTCHA | null>(null);
+
   const [utm, setUtm] = useState<Record<string, string>>({});
   const [gaClientId, setGaClientId] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [loading, setLoading] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
-  // Country picker state
   const [countrySearch, setCountrySearch] = useState('');
   const [filteredCountries, setFilteredCountries] = useState(CountryCodeData);
   const [selectedCountry, setSelectedCountry] = useState({ country: 'India', code: '91' });
   const [showDropdown, setShowDropdown] = useState(false);
-
-  // Phone input state
   const [phone, setPhone] = useState('');
 
-  // Fetch UTM, GA, location
+  // Fetch UTM, GA, and location info
   useEffect(() => {
     setUtm(getUTMTrackingData());
     setGaClientId(getGaCookieValue() || '');
     fetchUserLocation().then((loc) => {
       setCity(loc.city);
       setState(loc.region);
-      // Attempt to auto-select country if match exists
+      // Auto-select country if available
       if (loc.country) {
-        const match = CountryCodeData.find(c =>
-          c.country.toLowerCase() === loc.country.toLowerCase());
+        const match = CountryCodeData.find(
+          (c) => c.country.toLowerCase() === loc.country.toLowerCase()
+        );
         if (match) setSelectedCountry({ country: match.country, code: match.code });
       }
     });
   }, []);
 
+  // Filter country list
   useEffect(() => {
     if (countrySearch.trim() === '') {
       setFilteredCountries(CountryCodeData);
@@ -74,15 +76,45 @@ const HomeForm: React.FC<FormProps> = ({ isModal = false, onClose }) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget as HTMLFormElement;
     setLoading(true);
 
     try {
-      // ✅ Total Form Submits Tracking
-      let totalFormSubmits = Number(localStorage.getItem('total_form_submits') || '0');
-      totalFormSubmits += 1;
+      // ✅ Check if reCAPTCHA is completed
+      if (!captchaToken) {
+        toast({
+          title: 'Verification Required',
+          description: 'Please complete the reCAPTCHA verification.',
+          type: 'error',
+        });
+        setLoading(false);
+        return;
+      }
+
+      // ✅ Verify reCAPTCHA on server
+      const verifyRes = await fetch('/api/verify-recaptcha', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: captchaToken }),
+      });
+      const verifyData = await verifyRes.json();
+
+      if (!verifyData.success) {
+        toast({
+          title: 'reCAPTCHA Failed',
+          description: 'Please verify you are not a robot.',
+          type: 'error',
+        });
+        recaptchaRef.current?.reset();
+        setCaptchaToken(null);
+        setLoading(false);
+        return;
+      }
+
+      // ✅ Track total submissions
+      let totalFormSubmits = Number(localStorage.getItem('total_form_submits') || '0') + 1;
       localStorage.setItem('total_form_submits', totalFormSubmits.toString());
 
-      const form = e.currentTarget;
       const formData = new FormData(form);
 
       const email = formData.get('Email') as string;
@@ -91,13 +123,13 @@ const HomeForm: React.FC<FormProps> = ({ isModal = false, onClose }) => {
         sessionStorage.setItem('submittedEmail', email);
       }
 
-      // Generate full phone value with country code
-      const phoneValue = phone.trim();
-      const fullPhone = `+${selectedCountry.code}${phoneValue}`;
+      // ✅ Format phone with country code
+      const fullPhone = `+${selectedCountry.code}${phone.trim()}`;
       formData.delete('Phone');
       formData.append('Phone', fullPhone);
       formData.append('Country', selectedCountry.country);
 
+      // ✅ Append tracking fields
       const token = await getAccessToken();
       formData.append('accessToken', token);
       formData.append('Ga_client_id', gaClientId);
@@ -114,6 +146,7 @@ const HomeForm: React.FC<FormProps> = ({ isModal = false, onClose }) => {
       formData.append('ads_gclid', utm['ads_gclid'] ?? '');
       formData.append('Total Form Submits', totalFormSubmits.toString());
 
+      // ✅ Submit to Zoho API
       const res = await fetch('/api/zoho/home-form', {
         method: 'POST',
         body: formData,
@@ -126,25 +159,26 @@ const HomeForm: React.FC<FormProps> = ({ isModal = false, onClose }) => {
 
       toast({
         title: 'Success!',
-        description: 'Your details have been submitted successfully. Our team will contact you soon!'
+        description: 'Your details have been submitted successfully. Our team will contact you soon!',
       });
 
-       if (isModal) {
+      if (isModal) {
         const brochurePath = '/GreyCampus-programs.pdf';
         window.open(brochurePath, '_blank');
-        if (onClose) onClose();
+        onClose?.();
       }
 
       form.reset();
       setPhone('');
+      recaptchaRef.current?.reset();
+      setCaptchaToken(null);
       setCountrySearch(selectedCountry.country);
-
     } catch (err: any) {
       console.error('Zoho form submission error:', err);
       toast({
         title: 'Error',
         description: err.message || 'Failed to submit the form',
-        type: 'error'
+        type: 'error',
       });
     } finally {
       setLoading(false);
@@ -155,7 +189,7 @@ const HomeForm: React.FC<FormProps> = ({ isModal = false, onClose }) => {
     <Card className={`${isModal ? 'shadow-none' : 'bg-white shadow-lg rounded-2xl p-6 sm:p-8'}`}>
       <CardContent className="p-0">
         <form className="space-y-5" onSubmit={handleSubmit}>
-          {/* Name */}
+          {/* Name Fields */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input name="First Name" placeholder="First Name" required />
             <Input name="Last Name" placeholder="Last Name" required />
@@ -198,11 +232,12 @@ const HomeForm: React.FC<FormProps> = ({ isModal = false, onClose }) => {
                 </ul>
               )}
             </div>
+
             <Input
               name="Phone"
               placeholder={`+${selectedCountry.code} 99999 99999`}
               value={phone}
-              onChange={e => setPhone(e.target.value)}
+              onChange={(e) => setPhone(e.target.value)}
               required
             />
           </div>
@@ -213,18 +248,33 @@ const HomeForm: React.FC<FormProps> = ({ isModal = false, onClose }) => {
           {/* College Name */}
           <Input name="College Name" placeholder="University/College Name" required />
 
-          {/* Other City */}
+          {/* City */}
           <Input name="Other City" placeholder="Location" required />
 
+          {/* ✅ reCAPTCHA */}
+          <div className="flex justify-center">
+            <ReCAPTCHA
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+              ref={recaptchaRef}
+              onChange={(token) => setCaptchaToken(token)}
+            />
+          </div>
+
           {/* Submit */}
-          <Button type="submit" disabled={loading} className="w-full bg-primary-green hover:bg-primary-green text-white font-semibold py-3 rounded-lg mt-2 cursor-pointer">
+          <Button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-primary-green hover:bg-primary-green text-white font-semibold py-3 rounded-lg mt-2 cursor-pointer"
+          >
             {loading ? 'Submitting...' : 'Request More Information'}
           </Button>
 
           {/* Privacy Note */}
           <p className="text-xs text-gray-500 text-center">
             By providing your contact details, you agree to our{' '}
-            <a href="#" className="text-primary-green hover:underline">Privacy Policy</a>
+            <a href="#" className="text-primary-green hover:underline">
+              Privacy Policy
+            </a>
           </p>
         </form>
       </CardContent>
