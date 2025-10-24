@@ -15,7 +15,7 @@ interface Props {
       {
         icon: '👨‍🏫',
         title: 'Expert Instructors',
-        description: 'Learn from engineers with 10+ years at Google, Meta, Amazon, and Microsoft.'
+        description: 'Learn from Industry Professionals with 10+ years of real-world experience, guiding your growth.'
       },
       {
         icon: '🎯',
