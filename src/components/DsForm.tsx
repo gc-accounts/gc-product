@@ -266,7 +266,7 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
           <Button
             type="submit"
             disabled={loading}
-            className="w-full bg-red hover:bg-red text-white font-semibold py-3 rounded-lg mt-2 cursor-pointer"
+            className="w-full bg-primary-green text-white font-semibold py-3 rounded-lg mt-2 cursor-pointer"
           >
             {loading ? 'Submitting...' : 'Request More Information'}
           </Button>
