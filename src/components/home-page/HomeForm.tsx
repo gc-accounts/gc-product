@@ -11,6 +11,7 @@ import { fetchUserLocation } from '../utils/fetchUserLocation';
 import { getOriginalTrafficSource } from '../utils/getOriginalTrafficSource';
 import { CountryCodeData } from '../data/CountryCodeData';
 import ReCAPTCHA from 'react-google-recaptcha';
+import Link from 'next/link';
 
 interface FormProps {
   isModal?: boolean;
@@ -272,9 +273,9 @@ const HomeForm: React.FC<FormProps> = ({ isModal = false, onClose }) => {
           {/* Privacy Note */}
           <p className="text-xs text-gray-500 text-center">
             By providing your contact details, you agree to our{' '}
-            <a href="#" className="text-primary-green hover:underline">
+            <Link href="/privacyPolicy" className="text-primary-green hover:underline">
               Privacy Policy
-            </a>
+            </Link>
           </p>
         </form>
       </CardContent>
