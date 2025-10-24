@@ -65,7 +65,7 @@ const DataAnalystBootcamp = ({slug}:Props) => {
         <HiringOrganizationSection sectionClass='px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
         <TransformAcademic sectionClass='bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px' />
         <ProgramsCardsHome basePrice={basePrice} currency={currency} sectionClass=' px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
-        <OpenStudents title='Open to students from all disciplines' subText='Our programs ensure that every student, regardless of their core discipline, gains the essential, high-demand technological layer needed to secure a competitive edge in a global, data-driven econom' sectionClass='bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
+        <OpenStudents title='Open to students from all disciplines' subText='Our programs ensure that every student, regardless of their core discipline, gains the essential, high-demand technological layer needed to secure a competitive edge in a global, data-driven economy' sectionClass='bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
         <WhoAreWeSection sectionClass='px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
         <IctPartnershipSection sectionClass='bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
         <HomeJobDrives sectionClass='px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />

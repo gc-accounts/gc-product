@@ -38,7 +38,7 @@ const data: BootcampData[] = [
         icon: "📈",
         title: "Universal Application",
         description:
-          "Deep analytics and AI agents are utilized for multiple use cases across all areas of work.",
+          "Deep analytics and AI agents are used for multiple use cases across all areas of work. These powerful tools offer solutions for a broad spectrum of real-world challenges.",
       },
       {
         icon: "🎓",

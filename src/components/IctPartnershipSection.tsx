@@ -19,13 +19,13 @@ const partnershipSteps = [
     icon: <Users className="w-10 h-10 text-primary-green mb-3" />,
     title: "Hybrid Learning Delivery",
     description:
-      "Live weekend sessions led by industry experts, weekday mentorship and project guidance, plus 25 hours of on-campus workshops ensure a balanced and engaging learning journey.",
+      "Live weekend sessions led by industry experts, weekday mentorship and project guidance, plus on-campus workshops, ensure a balanced and engaging learning journey.",
   },
   {
     icon: <CheckCircle2 className="w-10 h-10 text-primary-green mb-3" />,
     title: "Project Evaluation & Certification",
     description:
-      "Students complete capstone projects, receive detailed feedback, and are awarded Internship & Course Completion Certificates from GreyCampus Edutech Pvt Ltd.",
+      "Once students complete capstone projects, they are awarded Internship & Course Completion Certificates from GreyCampus Edutech Pvt Ltd.",
   },
 ];
 
@@ -35,7 +35,7 @@ const postProgramBenefit = {
   description: (
     <>
       All successful participants gain <span className="text-primary-green font-medium">exclusive access to the GreyCampus Placement Portal</span>,
-      enabling them to apply for internships and full-time opportunities with our network of <span className="font-semibold">500+ hiring partners</span>.
+      enabling them to apply for internships and full-time opportunities with our network of <span className="font-semibold">400+ hiring partners</span>.
     </>
   ),
 };

@@ -27,7 +27,7 @@ const ProgramsCardsHome = ({ sectionClass, currency, basePrice }: Props) => {
       title: 'Internship cum Training Program in Data Science',
       price: currency === 'INR' ? '₹5,000 + GST' : `$${basePrice}`,
       duration: ['12 weeks | Hybrid | Total Hours: 125'],
-      description: 'This program is designed to prepare students for roles such as Data Scientist, Machine Learning Engineer, Research Analyst, and Data Consultant, with hands-on exposure to Python, SQL, Power BI, and AI tools.',
+      description: 'This program is designed to prepare students for roles such as Data Analyst, Research Analyst, Junior Data Scientist, and Data Consultant, with hands-on exposure to Python, SQL, Power BI, and AI tools.',
       highlights: [
         'Applied Statistics & Python for Data Science',
         'SQL for Data Management',
