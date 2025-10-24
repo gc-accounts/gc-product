@@ -11,7 +11,7 @@ export async function getUserCountry(): Promise<{
     }
     
     const data = await response.json();
-    const country = data.country || 'US';
+    const country = data.country || 'IN'; // Changed from 'US' to 'IN'
     const isIndia = country === 'IN';
     const currency = isIndia ? 'INR' : 'USD';
     
@@ -22,15 +22,14 @@ export async function getUserCountry(): Promise<{
     };
   } catch (error) {
     console.error('Error detecting country:', error);
-    // Fallback to USD if detection fails
+    // Fallback to INR/India if detection fails
     return {
-      country: 'US',
-      currency: 'USD',
-      isIndia: false
+      country: 'IN', // Changed from 'US' to 'IN'
+      currency: 'INR', // Changed from 'USD' to 'INR'
+      isIndia: true // Changed from false to true
     };
   }
 }
-
 // Price configuration
 export const PRICE_CONFIG = {
   INR: {
