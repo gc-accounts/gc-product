@@ -11,6 +11,8 @@ import { fetchUserLocation } from './utils/fetchUserLocation';
 import { getOriginalTrafficSource } from './utils/getOriginalTrafficSource';
 import { CountryCodeData } from './data/CountryCodeData';
 import ReCAPTCHA from 'react-google-recaptcha';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface DaFormProps {
   isModal?: boolean;
@@ -20,6 +22,7 @@ interface DaFormProps {
 const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
   const { toast } = useToast();
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
+  const router= useRouter()
 
   const [utm, setUtm] = useState<Record<string, string>>({});
   const [gaClientId, setGaClientId] = useState('');
@@ -152,6 +155,11 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
       recaptchaRef.current?.reset();
       setCaptchaToken(null);
       setCountrySearch(selectedCountry.country);
+
+            if(!isModal){
+        router.push('/course-checkout/data-analyst-bootcamp')
+      }
+
     } catch (err: any) {
       console.error('Zoho form submission error:', err);
       toast({
@@ -237,16 +245,16 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
           <Button
             type="submit"
             disabled={loading}
-            className="w-full bg-primary-green text-white font-semibold py-3 rounded-lg mt-2 cursor-pointer"
+            className="w-full bg-primary-green hover:bg-primary-green text-white font-semibold py-3 rounded-lg mt-2 cursor-pointer"
           >
-            {loading ? 'Submitting...' : 'Request More Information'}
+            {loading ? 'Submitting...' : 'Pay Now'}
           </Button>
 
           <p className="text-xs text-gray-500 text-center">
             By providing your contact details, you agree to our{' '}
-            <a href="#" className="text-primary-green hover:underline">
+            <Link href="/privacyPolicy" className="text-primary-green hover:underline">
               Privacy Policy
-            </a>
+            </Link>
           </p>
         </form>
       </CardContent>
