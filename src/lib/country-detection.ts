@@ -4,42 +4,51 @@ export async function getUserCountry(): Promise<{
   isIndia: boolean;
 }> {
   try {
-    const response = await fetch('https://ipinfo.io/json?token=30d6ad207d1162');
+    // ✅ ipwho.is doesn’t require a token or authentication
+    const response = await fetch('https://ipwho.is/');
     
     if (!response.ok) {
-      throw new Error('Failed to fetch country info');
+      throw new Error(`Failed to fetch country info (HTTP ${response.status})`);
     }
-    
+
     const data = await response.json();
-    const country = data.country || 'IN'; // Changed from 'US' to 'IN'
+
+    if (!data.success) {
+      throw new Error('Invalid response from ipwho.is');
+    }
+
+    const country = data.country_code || 'IN';
     const isIndia = country === 'IN';
     const currency = isIndia ? 'INR' : 'USD';
-    
+
     return {
       country,
       currency,
       isIndia
     };
+
   } catch (error) {
     console.error('Error detecting country:', error);
-    // Fallback to INR/India if detection fails
+    // 🛡️ Fallback to India defaults if detection fails
     return {
-      country: 'IN', // Changed from 'US' to 'IN'
-      currency: 'INR', // Changed from 'USD' to 'INR'
-      isIndia: true // Changed from false to true
+      country: 'IN',
+      currency: 'INR',
+      isIndia: true
     };
   }
 }
-// Price configuration
+
+// -------------------- Price Configuration --------------------
+
 export const PRICE_CONFIG = {
   INR: {
-    basePrice: 5000,
+    basePrice: 1,
     currency: 'INR',
     symbol: '₹'
   },
   USD: {
     basePrice: 100,
-    currency: 'USD', 
+    currency: 'USD',
     symbol: '$'
   }
 };

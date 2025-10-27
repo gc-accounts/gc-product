@@ -1,16 +1,33 @@
 // utils/fetchUserLocation.ts
-export async function fetchUserLocation(token: string = '30d6ad207d1162') {
+
+export async function fetchUserLocation() {
   try {
-    const response = await fetch(`https://ipinfo.io/json?token=${token}`);
+    // ✅ ipwho.is does not need any token or authentication
+    const response = await fetch("https://ipwho.is/");
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
 
     const data = await response.json();
+
+    if (!data.success) {
+      throw new Error("Invalid response from ipwho.is");
+    }
+
     // Returns the entire location object (city, region, country, etc.)
-    return data;
+    return {
+      ip: data.ip || "Unknown",
+      city: data.city || "Unknown",
+      region: data.region || "Unknown",
+      country: data.country || "Unknown",
+      country_code: data.country_code || "Unknown",
+      latitude: data.latitude || null,
+      longitude: data.longitude || null,
+      isp: data.connection?.isp || "Unknown",
+      timezone: data.timezone?.id || "Unknown",
+    };
   } catch (error) {
-    console.error('Error fetching user location:', error);
-    return null; // return null so caller can handle gracefully
+    console.error("Error fetching user location:", error);
+    return null; // Return null so caller can handle gracefully
   }
 }
