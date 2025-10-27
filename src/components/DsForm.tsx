@@ -149,6 +149,20 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
       formData.append('ads_gclid', utm['ads_gclid'] ?? '');
       formData.append('Total Form Submits', totalFormSubmits.toString());
 
+      // ✅ NEW FEATURE: Save submitted data to localStorage for Checkout Prefill
+      const prefillData = {
+        firstName: formData.get('First Name') as string,
+        lastName: formData.get('Last Name') as string,
+        email: email,
+        phone: phone,
+        year: formData.get('Year of Graduation') as string,
+        workExp: formData.get('Work Experience Level') as string,
+        country: selectedCountry.country,
+        program: 'GC Data Science Bootcamp',
+      };
+      localStorage.setItem('checkoutPrefill', JSON.stringify(prefillData));
+      console.log('💾 Saved prefill data to localStorage:', prefillData);
+
       // ✅ Submit to Zoho API
       const res = await fetch('/api/zoho/course-form', {
         method: 'POST',
@@ -162,7 +176,7 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
 
       toast({
         title: 'Success!',
-        description: 'Your details have been submitted successfully. Our team will get in touch soon!',
+        description: 'Thankyou for submitting the form',
       });
 
       // Track lead conversion (Facebook Pixel)
@@ -183,8 +197,9 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
       setCaptchaToken(null);
       setCountrySearch(selectedCountry.country);
 
-      if(!isModal){
-        router.push('/course-checkout/data-science-bootcamp')
+      // ✅ Redirect to checkout (after saving prefill data)
+      if (!isModal) {
+        router.push('/course-checkout/data-science-bootcamp');
       }
     } catch (err: any) {
       console.error('Zoho form submission error:', err);

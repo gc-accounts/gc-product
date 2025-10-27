@@ -22,7 +22,7 @@ interface DaFormProps {
 const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
   const { toast } = useToast();
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
-  const router= useRouter()
+  const router = useRouter();
 
   const [utm, setUtm] = useState<Record<string, string>>({});
   const [gaClientId, setGaClientId] = useState('');
@@ -134,12 +134,26 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
       formData.append('ads_gclid', utm['ads_gclid'] ?? '');
       formData.append('Total Form Submits', totalFormSubmits.toString());
 
+      // ✅ NEW FEATURE: Save submitted data to localStorage for Checkout Prefill
+      const prefillData = {
+        firstName: formData.get('First Name') as string,
+        lastName: formData.get('Last Name') as string,
+        email: email,
+        phone: phone,
+        year: formData.get('Year of Graduation') as string,
+        workExp: formData.get('Work Experience Level') as string,
+        country: selectedCountry.country,
+        program: 'GC Data Analyst Bootcamp',
+      };
+      localStorage.setItem('checkoutPrefill', JSON.stringify(prefillData));
+      console.log('💾 Saved prefill data to localStorage:', prefillData);
+
       const res = await fetch('/api/zoho/course-form', { method: 'POST', body: formData });
       if (!res.ok) throw new Error('Submission failed');
 
       toast({
         title: 'Success!',
-        description: 'Your details have been submitted successfully!',
+        description: 'Thankyou for submitting the form',
       });
 
       if (typeof window !== 'undefined' && (window as any).fbq) {
@@ -151,13 +165,15 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
         onClose?.();
       }
 
+      // ✅ Reset form and captcha
       form.reset();
       recaptchaRef.current?.reset();
       setCaptchaToken(null);
       setCountrySearch(selectedCountry.country);
 
-            if(!isModal){
-        router.push('/course-checkout/data-analyst-bootcamp')
+      // ✅ Redirect to checkout (after saving prefill data)
+      if (!isModal) {
+        router.push('/course-checkout/data-analyst-bootcamp');
       }
 
     } catch (err: any) {
@@ -247,8 +263,7 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
             disabled={loading}
             className="w-full bg-primary-green hover:bg-primary-green text-white font-semibold py-3 rounded-lg mt-2 cursor-pointer"
           >
-               {loading ? 'Submitting...' : isModal ? 'Request More Information' : 'Pay Now'}
-
+            {loading ? 'Submitting...' : isModal ? 'Request More Information' : 'Pay Now'}
           </Button>
 
           <p className="text-xs text-gray-500 text-center">

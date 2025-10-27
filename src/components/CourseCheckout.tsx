@@ -42,6 +42,9 @@ const CourseCheckout = () => {
   const [basePrice, setBasePrice] = useState<number>(5000);
   const device = getDeviceType();
 
+  // ✅ NEW: Local state to hold prefill data
+  const [prefillData, setPrefillData] = useState<any>({});
+
   const GST_RATE = 0.18;
 
   // ✅ Dynamically detect program name based on URL
@@ -59,6 +62,18 @@ const CourseCheckout = () => {
     setGaClientId(getGaCookieValue() || '');
     fetchUserLocation();
     detectUserCountry();
+
+    // ✅ Fetch prefill data from localStorage (added)
+    const storedData = localStorage.getItem('checkoutPrefill');
+    if (storedData) {
+      try {
+        const parsed = JSON.parse(storedData);
+        setPrefillData(parsed);
+        console.log('💾 Loaded checkout prefill data:', parsed);
+      } catch (error) {
+        console.error('Error parsing checkout prefill data:', error);
+      }
+    }
   }, []);
 
   const fetchUserLocation = async () => {
@@ -180,6 +195,9 @@ const CourseCheckout = () => {
         });
 
         await handlePayment(formData);
+
+        // ✅ Clear prefill data after submission (added)
+        localStorage.removeItem('checkoutPrefill');
       } else {
         throw new Error('Failed to create contact in CRM');
       }
@@ -286,12 +304,22 @@ const CourseCheckout = () => {
               <div className='space-y-8 bg-white p-6 rounded-lg shadow-sm'>
                 <div>
                   <h2 className='text-xl font-semibold mb-4'>Enter Your Details</h2>
+
+                  {/* ✅ Prefill data applied here */}
                   <DynamicForm
                     fields={checkoutFormFields}
-                    initialValues={{}}
+                    initialValues={{
+                      firstName: prefillData.firstName || '',
+                      lastName: prefillData.lastName || '',
+                      email: prefillData.email || '',
+                      phone: prefillData.phone || '',
+                      year: prefillData.year || '',
+                      countryCode: prefillData.country || '',
+                    }}
                     onSubmit={handleSubmit}
                     buttonText={submitting ? 'Submitting...' : 'Submit & Proceed to Payment'}
                   />
+
                   <p className='text-center text-sm text-gray-500 mt-4 flex items-center justify-center'>
                     <ShieldCheck className='h-4 w-4 mr-1' /> Secure registration process
                   </p>
@@ -303,7 +331,6 @@ const CourseCheckout = () => {
               <Card>
                 <CardHeader className='pb-3'>
                   <CardTitle>Order Summary</CardTitle>
-               
                 </CardHeader>
                 <CardContent className='space-y-4'>
                   <div className='flex justify-between'>
