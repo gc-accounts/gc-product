@@ -14,18 +14,21 @@ export async function fetchUserLocation() {
       throw new Error("Invalid response from ipwho.is");
     }
 
+
+    return data
+
     // Returns the entire location object (city, region, country, etc.)
-    return {
-      ip: data.ip || "Unknown",
-      city: data.city || "Unknown",
-      region: data.region || "Unknown",
-      country: data.country || "Unknown",
-      country_code: data.country_code || "Unknown",
-      latitude: data.latitude || null,
-      longitude: data.longitude || null,
-      isp: data.connection?.isp || "Unknown",
-      timezone: data.timezone?.id || "Unknown",
-    };
+    // return {
+    //   ip: data.ip || "Unknown",
+    //   city: data.city || "Unknown",
+    //   region: data.region || "Unknown",
+    //   country: data.country || "Unknown",
+    //   country_code: data.country_code || "Unknown",
+    //   latitude: data.latitude || null,
+    //   longitude: data.longitude || null,
+    //   isp: data.connection?.isp || "Unknown",
+    //   timezone: data.timezone?.id || "Unknown",
+    // };
   } catch (error) {
     console.error("Error fetching user location:", error);
     return null; // Return null so caller can handle gracefully
