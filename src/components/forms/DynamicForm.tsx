@@ -12,7 +12,7 @@ import {
 } from '../ui/select';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '../ui/form';
 import { Loader2 } from 'lucide-react';
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { CountryCodeData } from '../data/CountryCodeData';
 import { Portal } from '@radix-ui/react-select';
 
@@ -46,6 +46,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
   buttonText,
   onSubmit,
 }) => {
+  // ✅ Build default field values
   const extendedDefaults = fields.reduce((acc, field) => {
     if (field.type === 'checkbox') {
       acc[field.name] = initialValues[field.name] ?? (field.defaultValue as boolean) ?? false;
@@ -55,6 +56,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
     return acc;
   }, {} as Record<string, any>);
 
+  // ✅ Initialize React Hook Form
   const form = useForm({ defaultValues: extendedDefaults });
   const {
     reset,
@@ -66,10 +68,22 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
     getValues,
   } = form;
 
+  // ✅ NEW EFFECT: Reapply prefill data when initialValues change
+  useEffect(() => {
+    if (initialValues && Object.keys(initialValues).length > 0) {
+      reset({
+        ...extendedDefaults,
+        ...initialValues,
+      });
+      console.log('🧩 DynamicForm reset with new initialValues:', initialValues);
+    }
+  }, [initialValues, reset]);
+
   const [countrySearch, setCountrySearch] = useState('');
   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
   const phoneInputRef = React.useRef<HTMLInputElement>(null);
 
+  // ✅ Filter countries dynamically
   const filteredCountries = useMemo(() => {
     if (countrySearch.trim() === '') return [];
     const searchTerm = countrySearch.toLowerCase();
@@ -88,6 +102,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
     [setValue]
   );
 
+  // ✅ Form submission handler
   const handleFormSubmit = async (data: any) => {
     await onSubmit(data, () => reset(extendedDefaults));
   };

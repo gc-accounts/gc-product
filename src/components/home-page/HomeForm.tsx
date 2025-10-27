@@ -160,7 +160,7 @@ const HomeForm: React.FC<FormProps> = ({ isModal = false, onClose }) => {
 
       toast({
         title: 'Success!',
-        description: 'Your details have been submitted successfully. Our team will contact you soon!',
+        description: 'Thankyou for submitting the form',
       });
 
       if (isModal) {

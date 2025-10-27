@@ -13,6 +13,7 @@ import { CountryCodeData } from './data/CountryCodeData';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+
 interface AIMLFormProps {
   isModal?: boolean;
   onClose?: () => void;
@@ -21,7 +22,7 @@ interface AIMLFormProps {
 const AIMLForm: React.FC<AIMLFormProps> = ({ isModal = false, onClose }) => {
   const { toast } = useToast();
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
-  const router = useRouter()
+  const router = useRouter();
 
   const [utm, setUtm] = useState<Record<string, string>>({});
   const [gaClientId, setGaClientId] = useState('');
@@ -139,13 +140,27 @@ const AIMLForm: React.FC<AIMLFormProps> = ({ isModal = false, onClose }) => {
       formData.append('ads_gclid', utm['ads_gclid'] ?? '');
       formData.append('Total Form Submits', totalFormSubmits.toString());
 
+      // ✅ NEW FEATURE: Save submitted data to localStorage for Checkout Prefill
+      const prefillData = {
+        firstName: formData.get('First Name') as string,
+        lastName: formData.get('Last Name') as string,
+        email: email,
+        phone: phone,
+        year: formData.get('Year of Graduation') as string,
+        workExp: formData.get('Work Experience Level') as string,
+        country: selectedCountry.country,
+        program: 'GC AI/ML Bootcamp',
+      };
+      localStorage.setItem('checkoutPrefill', JSON.stringify(prefillData));
+      console.log('💾 Saved prefill data to localStorage:', prefillData);
+
       // ✅ Submit to Zoho
       const res = await fetch('/api/zoho/course-form', { method: 'POST', body: formData });
       if (!res.ok) throw new Error('Submission failed');
 
       toast({
         title: 'Success!',
-        description: 'Your details have been submitted successfully!',
+        description: 'Thankyou for submitting the form',
       });
 
       if (typeof window !== 'undefined' && (window as any).fbq) {
@@ -158,15 +173,16 @@ const AIMLForm: React.FC<AIMLFormProps> = ({ isModal = false, onClose }) => {
         onClose?.();
       }
 
+      // ✅ Reset form and captcha
       form.reset();
       recaptchaRef.current?.reset();
       setCaptchaToken(null);
       setCountrySearch(selectedCountry.country);
 
-                 if(!isModal){
-        router.push('/course-checkout/aiml-bootcamp')
+      // ✅ Redirect to checkout (after saving prefill data)
+      if (!isModal) {
+        router.push('/course-checkout/aiml-bootcamp');
       }
-
 
     } catch (err: any) {
       console.error('Zoho form submission error:', err);
@@ -261,12 +277,12 @@ const AIMLForm: React.FC<AIMLFormProps> = ({ isModal = false, onClose }) => {
             disabled={loading}
             className="w-full bg-primary-green hover:bg-primary-green text-white font-semibold py-3 rounded-lg mt-2 cursor-pointer"
           >
-          {loading ? 'Submitting...' : isModal ? 'Request More Information' : 'Pay Now'}
+            {loading ? 'Submitting...' : isModal ? 'Request More Information' : 'Pay Now'}
           </Button>
 
           <p className="text-xs text-gray-500 text-center">
             By providing your contact details, you agree to our{' '}
-          <Link href="/privacyPolicy" className="text-primary-green hover:underline">
+            <Link href="/privacyPolicy" className="text-primary-green hover:underline">
               Privacy Policy
             </Link>
           </p>
