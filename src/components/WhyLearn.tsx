@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 // FIX: Import the necessary hook from Next.js navigation system
-import { usePathname } from 'next/navigation'; 
+import { usePathname } from 'next/navigation';
 import { Card, CardContent } from './ui/card';
 
 // Define interfaces for better type safety
@@ -82,9 +82,35 @@ const data: BootcampData[] = [
       }
     ]
   },
-  // Added Fourth Data for Homepage
+
+  // Fourth Bootcamp Data 
+
   {
     id: 4,
+    url: 'investment-banking-bootcamp',
+    insights: [
+      {
+        icon: "📈",
+        title: "High Demand, Strong Growth",
+        description: "India’s financial sector is expanding rapidly with growing demand for skilled professionals in investment banking, trade operations, and risk management across top firms like JP Morgan, Goldman Sachs, and ICICI.",
+      },
+      {
+        icon: "💼",
+        title: "Lucrative & Rewarding Career",
+        description: "Finance professionals in India earn competitive packages and enjoy clear growth paths. With increasing foreign investments and expanding capital markets, the opportunities are more lucrative than ever.",
+      },
+      {
+        icon: "🏦",
+        title: "Wide Range of Career Roles",
+        description: "Build your career in roles like Investment Banking Analyst, Trade Operations Associate, Financial Analyst, or Compliance Executive — in India’s leading banks and financial institutions.",
+      }
+    ]
+
+  },
+
+  // Added 5th Data for Homepage
+  {
+    id: 5,
     url: '/',
     insights: [
       {
