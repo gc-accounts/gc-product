@@ -19,7 +19,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   
   const BASE_URL = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT!;
   const BLOG_BASE = "https://www.greycampus.com/blog";
-  const post_url = `${BLOG_BASE}/${awaitedParams.slug.join("/")}`; // <-- Use awaitedParams
+  // ✅ post_url is correctly constructed as the clean, canonical URL
+  const post_url = `${BLOG_BASE}/${awaitedParams.slug.join("/")}`; 
 
   const res = await fetch(
     `${BASE_URL}/api/blogs?populate=*&filters[post_url][$eq]=${encodeURIComponent(post_url)}&timestamp=${Date.now()}`,
@@ -43,10 +44,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     authors: [{ name: blog.author || "GreyCampus" }],
     creator: "GreyCampus",
     publisher: "GreyCampus",
+    // 💡 FIX: Explicitly setting the canonical URL via the alternates field
+    alternates: {
+      canonical: post_url,
+    },
     openGraph: {
       title: blog.post_seo_title || blog.post_title,
       description: blog.meta_description,
-      url: post_url,
+      url: post_url, // ✅ Ensure og:url is the clean canonical URL
       siteName: "GreyCampus",
       locale: "en_US",
       type: "article",
