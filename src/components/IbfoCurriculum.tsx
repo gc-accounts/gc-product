@@ -85,9 +85,9 @@ const IbfoCurriculum = ({ sectionClass, title, subText }: Props) => {
                         {module.title}
                       </h3>
                       <div className="flex items-center space-x-4">
-                        <span className="bg-primary-green text-white px-3 py-1 rounded-full text-sm font-semibold">
+                       {module.duration && <span className="bg-primary-green text-white px-3 py-1 rounded-full text-sm font-semibold">
                           {module.duration}
-                        </span>
+                        </span> } 
                         <span className="text-sm text-medium-gray">
                           Difficulty: {getDifficultyStars(module.difficulty)} ({module.difficulty}/5)
                         </span>

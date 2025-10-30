@@ -1,5 +1,6 @@
 import React from 'react'
 import DsForm from './DsForm';
+import IBFOForm from './IBFOForm';
 
   interface Props {
   sectionClass?: string;
@@ -56,7 +57,7 @@ Your Investment Banking Career Starts Here
             
             {/* Right Content - Form */}
             <div className="mt-8 lg:mt-0">
-                      <DsForm/>
+              <IBFOForm/>
 
             </div>
           </div>

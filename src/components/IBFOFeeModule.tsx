@@ -88,7 +88,7 @@ const IBFOFeeModule = ({ sectionClass, title, subText, currency, basePrice }: Pr
                 <p className='mb-8 text-center text-secondary-green text-sm'>(Limited-time introductory offer)</p>
 
                 <div className="space-y-3">
-                  <Link href={'/course-checkout/data-science-bootcamp'}>
+                  <Link href={'/course-checkout/investment-banking-bootcamp'}>
                     <Button className="w-full bg-yellow-1 hover:bg-yellow-2 px-8 py-4 text-lg font-semibold cursor-pointer">
                       Enroll Now
                     </Button>

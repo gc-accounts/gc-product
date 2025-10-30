@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { MapPin, Building, BriefcaseBusiness, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, Building, BriefcaseBusiness, ChevronLeft, ChevronRight, Check } from 'lucide-react';
 import { DsJobsDrives } from './data/DsJobsDrives';
 
 interface CardsProps {
@@ -36,112 +36,59 @@ const IbfoJobDrive = ({ sectionClass }: CardsProps) => {
   }, [emblaApi]);
 
   return (
-    <section className={`${sectionClass ?? 'px-5 py-12 md:px-8 md:py-16 bg-primary-50'}` }>
+    <section className={`${sectionClass ?? 'px-5 py-12 md:px-8 md:py-16 bg-primary-50'}`}>
       <div className="container max-w-7xl mx-auto">
 
-               <div className="text-center mb-8 lg:mb-10 max-w-8xl">
+        <div className="text-center mb-8 lg:mb-10 max-w-8xl">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-2 lg:mb-3">
             Job Drives
           </h2>
-          {/* <p className="text-sm md:text-base text-medium-gray mx-auto leading-relaxed">
-            {subText}
-          </p> */}
-        </div>
 
-        {/* Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Left: studentss */}
-
-          <div className="lg:col-span-4">
-            <p className='mb-2'>Get exclusive access to Hiring Sprints designed for AI and GenAI aspirants. These virtual events connect you directly with Hiring Managers and AI leads from top companies.</p>
-            <p className='mb-2'>Discover job openings, understand their expectations, ask questions, and make a lasting impression — before the interview even begins.</p>
-            <p>Every Sprint is a career breakthrough waiting to happen.</p>
-          </div>
-
-          <div className="lg:col-span-8">
-          <div className="relative px-6">
-          {/* Arrows */}
-          <button
-            onClick={scrollPrev}
-            className="absolute z-10 top-1/2 left-0 -translate-y-1/2 bg-white  shadow p-2 rounded-full hover:bg-primary-50 text-primary-600 cursor-pointer"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          <button
-            onClick={scrollNext}
-            className="absolute z-10 top-1/2 right-0 -translate-y-1/2 bg-white  shadow p-2 rounded-full hover:bg-primary-50 text-primary-600 cursor-pointer"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-
-          {/* Carousel */}
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex">
-              {DsJobsDrives.map((item) => (
-                <div key={item.id} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.33%] px-2">
-                  <Card className={`bg-white border border-border-gray hover:border-primary-green transition-all duration-300 h-full`}>
-                    <CardContent className="p-6 h-full flex flex-col justify-center">
-                      <div className="mb-4">
-                        <div className="relative mb-6 flex items-center rounded-md shadow-sm border border-gray-100 px-3 py-2 w-fit">
-                          <img
-                            src={item.jobCompanyLogo}
-                            alt={item.jobDesignation}
-                            className="w-[100px] h-[40px]"
-                            loading="lazy"
-                            width={100}
-                            height={40}
-                          />
-                        </div>
-                        <h3 className="font-bold text-md mb-1 text-gray-900">{item.jobDesignation}</h3>
-                      </div>
-
-                      <div className="mb-4 space-y-2 text-sm text-gray-600">
-                        <div className="flex items-center">
-                          <MapPin size={16} className="mr-2" />
-                          {item.jobLocation}
-                        </div>
-                        <div className="flex items-center">
-                          <Building size={16} className="mr-2" />
-                          Full-time
-                        </div>
-                        <div className="flex items-center">
-                          <BriefcaseBusiness size={16} className="mr-2" />
-                          {item.jobExp}
-                        </div>
-                      </div>
-
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {item.jobSkills.map((skill: string, idx: number) => (
-                          <Badge key={idx} className="bg-gray-100">
-                            {skill}
-                          </Badge>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Pagination Dots */}
-          <div className="flex justify-center flex-wrap mt-6 gap-2">
-            {dots.map((index) => (
-              <button
-                key={index}
-                onClick={() => scrollTo(index)}
-                className={`md:w-2 md:h-2  w-[0.4rem] h-[0.4rem] rounded-full transition-all duration-200 ${index === selectedIndex ? 'bg-blue-600 md:w-[28px] w-[1.5rem] shadow' : 'bg-gray-300'
-                  }`}
-              />
-            ))}
-          </div>
-        </div>
-
+      <div className='max-w-5xl flex flex-col items-center mx-auto'>
+       <p>Get exclusive access to Hiring Sprints designed for AI and GenAI aspirants — virtual events that connect you directly with Hiring Managers and AI leads from top companies. Discover job openings, understand their expectations, ask questions, and make a lasting impression before the interview even begins. Every Sprint is a career breakthrough waiting to happen.</p>
           </div>
 
         </div>
-      </div>
-    </section>
+
+          <div className='md:max-w-5xl max-w-full mx-auto'>
+  
+        <h2 className="section-title mb-6 text-yellow-400 text-xl md:text-2xl font-bold text-start">
+      🔔 J.P. Morgan, through Pride Global, has successfully conducted two Job drives with us
+    </h2>
+
+    <h3 className="text-black text-base font-medium mb-6 leading-relaxed text-start">
+       Get a chance to hear directly from Hiring Managers and Business Heads about job roles, projects, growth opportunities, and the recruitment process. Ask questions, clarify doubts, and perform your best in the interview.
+    </h3>
+
+    <div className="text-black space-y-4 mb-6 text-start inline-block">
+      <p className="flex items-start gap-2">
+        <Check  className="w-6 h-6 text-green-400 shrink-0 mt-0.5" />
+        2 drives completed
+      </p>
+      <p className="flex items-start gap-2">
+        <Check className="w-6 h-6 text-green-400 shrink-0 mt-0.5" />
+        350+ participants
+      </p>
+      <p className="flex items-start gap-2">
+        <Check className="w-6 h-6 text-green-400 shrink-0 mt-0.5" />
+        Candidates from Commerce & Finance backgrounds – B.Com, BBA, MBA, and
+        related fields
+      </p>
+    </div>
+
+   <p className="text-black italic font-medium text-base md:text-lg  mb-6">
+      These hiring sprints have opened exciting opportunities for students to
+      launch their careers with one of the world’s leading financial institutions.
+    </p>
+
+    <p className="text-yellow-400 font-semibold text-lg md:text-xl">
+      👉 You could be part of the next hiring sprint — stay tuned for details!
+    </p>
+  </div>
+
+
+    </div>
+    </section >
   )
 }
 

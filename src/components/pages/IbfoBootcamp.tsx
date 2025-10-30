@@ -72,25 +72,36 @@ const IbfoBootcamp = ({slug}:Props) => {
         <Navigation currentPage="data-science-bootcamp" />
         <main className='mt-16'>
           <IbfoHeroSection basePrice={basePrice} currency={currency}  sectionClass="bg-gradient-hero px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <WhyLearn title='Why Learn Investment Banking & Finance Operations?' subText='Global demand, career growth, and lucrative opportunities in the world of finance.' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+
+          <WhyLearn title='Why Learn Investment Banking & Finance Operations?' subText='Global demand, career growth, and lucrative opportunities in the world of finance.' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+
           <WhyChooseSection sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+
           <CareersAfter data={IbfoCarrersAfterData}  title='Careers After Bootcamp' subText='Multiple career paths in banking, financial operations, and investment management.' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-                    <HiringOrganizationSection title='Trusted by Leading Companies' subText='Our graduates work at Fortune 600+ companies and innovative startups worldwide' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          
+          <HiringOrganizationSection title='Trusted by Leading Companies' subText='Our graduates work at Fortune 600+ companies and innovative startups worldwide' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
 
           <IbfoJobDrive sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <JpMorganFold/>
+          {/* <JpMorganFold/> */}
+
           <IbfoCurriculum title="What You'll Learn" subText='3 months of comprehensive, industry-aligned curriculum' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <CareerServices title='Career Services' subText='Dedicated support to launch your career.' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+
+          <CareerServices title='Career Services' subText='Dedicated support to launch your career.' sectionClass=" bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+
           <ProgramOutcomes data={IBFOOutcomesData}  title='Program Outcomes' subText='Real-world finance skills. Real impact. Real career transformation.' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <IbfoProjects title='Build Real-World Projects' subText='Apply your financial operations knowledge to real-world simulations used by top global banks.' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+
+          <IbfoProjects title='Build Real-World Projects' subText='Apply your financial operations knowledge to real-world simulations used by top global banks.' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
 
           <HowEnroll title='How Do I Enroll?' subText='Simple 3-step process to start your Generative AI journey' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           
-          <IBFOFeeModule currency={currency} basePrice={basePrice}  title='Invest in Your Future at Affordable Prices' subText='The most cost-effective finance bootcamp designed to prepare you for high-demand roles in banking and financial operations.' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <IBFOFeeModule currency={currency} basePrice={basePrice}  title='Invest in Your Future at Affordable Prices' subText='The most cost-effective finance bootcamp designed to prepare you for high-demand roles in banking and financial operations.' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
 
           <Certification sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={IBFOCertificateData} />
-          <IbfoEnrollmentFormSection sectionClass=' px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
+
+          <IbfoEnrollmentFormSection sectionClass='bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
+
           <Testimonials data={IBFOBTestimonialsData} title='Student Testimonials' subText='The IBFO Bootcamp gave me a real understanding of how global banking operations work. The settlement simulations were incredibly close to what I do now.' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          
           <IBFOFaq />
         </main>
         <Footer />

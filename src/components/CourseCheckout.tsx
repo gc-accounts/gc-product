@@ -52,6 +52,7 @@ const CourseCheckout = () => {
     if (pathname.includes('data-science-bootcamp')) return 'GC Data Science Bootcamp';
     if (pathname.includes('data-analyst-bootcamp')) return 'GC Data Analyst Bootcamp';
     if (pathname.includes('aiml-bootcamp')) return 'GC AI/ML Bootcamp';
+    if (pathname.includes('investment-banking-bootcamp')) return 'GC Investment Banking Bootcamp';
     return 'Static Product Checkout';
   };
 

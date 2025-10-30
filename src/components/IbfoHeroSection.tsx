@@ -4,8 +4,8 @@ import React, { useState } from 'react'
 import { BookOpen, Briefcase, Target, ShieldCheck, X } from 'lucide-react'
 import { Button } from './ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
-import DsForm from './DsForm'
 import Link from 'next/link'
+import IBFOForm from './IBFOForm'
 
 interface Props {
   sectionClass?: String;
@@ -61,7 +61,7 @@ const IbfoHeroSection = ({ sectionClass, currency, basePrice }: Props) => {
 
               {/* Buttons */}
               <div className="pt-4 flex flex-col sm:flex-row gap-4">
-                <Link href={'/course-checkout/data-science-bootcamp'}>
+                <Link href={'/course-checkout/investment-banking-bootcamp'}>
                   <Button
                     size="lg"
                     className="bg-yellow-1 hover:bg-yellow-2 px-8 py-4 text-lg font-semibold cursor-pointer"
@@ -103,7 +103,7 @@ const IbfoHeroSection = ({ sectionClass, currency, basePrice }: Props) => {
 
                     {/* Scrollable Body */}
                     <div className="max-h-[85vh] overflow-y-auto px-6 pb-6 pt-2">
-                      <DsForm isModal={true} onClose={() => setIsDialogOpen(false)} />
+                      <IBFOForm isModal={true} onClose={() => setIsDialogOpen(false)} />
                     </div>
                   </DialogContent>
                 </Dialog>
@@ -113,7 +113,7 @@ const IbfoHeroSection = ({ sectionClass, currency, basePrice }: Props) => {
 
           {/* Right Side Form */}
           <div className="lg:col-span-2">
-            <DsForm />
+            <IBFOForm />
           </div>
         </div>
       </div>
