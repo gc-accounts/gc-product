@@ -58,7 +58,7 @@ const IctPartnershipSection = ({ sectionClass }: Props) => (
       </div>
       <div className="flex flex-col lg:flex-row gap-0 lg:gap-8">
         {/* Steps */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 flex-1 gap-6 mb-8 lg:mb-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 flex-1 gap-6 mb-8 lg:mb-0">
           {partnershipSteps.map((step, idx) => (
             <div
               key={idx}

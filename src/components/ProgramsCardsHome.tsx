@@ -72,6 +72,23 @@ const ProgramsCardsHome = ({ sectionClass, currency, basePrice }: Props) => {
       badge: 'Cutting Edge',
       icon: '🤖',
       link: '/aiml-bootcamp',
+    },
+     {
+      id: 'IBFO',
+      title: 'Internship cum Training Program in Investment Banking & Finance Operations',
+      price: currency === 'INR' ? '₹5,000 + GST' : `$${basePrice}`,
+      duration: ['12 weeks | Hybrid | Total Hours: 125'],
+      description: 'This program is designed to prepare students and professionals for roles in global banking and financial operations. Learn real-world processes across investment banking, trade settlements, fund accounting, and corporate actions through live simulations and mentor-led sessions.',
+      highlights: [
+        'Fundamentals of Financial Markets and Investment Banking',
+        'Trade Life Cycle, Settlements, and Reconciliation',
+        'Derivatives, Collateral, and Corporate Actions',
+        'Asset Management & Compliance Processes (AML/KYC)',
+        'Industry-Aligned, Project-Based Curriculum',
+      ],
+      badge: 'High Demand',
+      icon: '💼',
+      link: '/investment-banking-bootcamp',
     }
   ];
 
@@ -83,44 +100,51 @@ const ProgramsCardsHome = ({ sectionClass, currency, basePrice }: Props) => {
             Choose Your Path to Success
           </h2>
           <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
-            Three comprehensive bootcamps designed for career transformation
+            Comprehensive bootcamps designed for career transformation
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
-          {programs.map((program) => (
-            <div key={program.id}>
-              <Card className="h-full hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-border-gray hover:border-primary-green bg-white relative overflow-hidden">
-                <div className="absolute top-4 right-4 z-10">
-                  <span className="bg-primary-green text-white px-3 py-1 rounded-full text-xs font-semibold">{program.badge}</span>
-                </div>
-                <CardContent className="p-8 h-full flex flex-col">
-                  <div className="text-6xl mb-6">{program.icon}</div>
-                  <h3 className="text-2xl font-bold text-dark-gray mb-4">{program.title}</h3>
-                  <div className="space-y-2 mb-8">
-                    {program.duration.map((item, idx) => (
-                      <div key={idx} className="flex items-center space-x-2">
-                        <Check className="w-4 h-4 text-primary-green shrink-0" />
-                        <p className="text-sm text-medium-gray">{item}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <p className="text-sm text-dark-gray leading-relaxed mb-6 grow">{program.description}</p>
-                  <div className="space-y-2">
-                    {program.highlights.map((highlight, idx) => (
-                      <div key={idx} className="flex items-center space-x-2">
-                        <CheckCircle className="w-4 h-4 text-primary-green shrink-0" />
-                        <span className="text-sm text-dark-gray">{highlight}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
+   <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6 lg:gap-8">
+  {programs.map((program) => (
+    <div key={program.id}>
+      <Card className="h-full hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-border-gray hover:border-primary-green bg-white relative overflow-hidden">
+        <div className="absolute top-4 right-4 z-10">
+          <span className="bg-primary-green text-white px-3 py-1 rounded-full text-xs font-semibold">
+            {program.badge}
+          </span>
         </div>
+        <CardContent className="p-6 h-full flex flex-col">
+          <div className="text-5xl mb-4">{program.icon}</div>
+          <h3 className="text-lg md:text-xl font-bold text-dark-gray mb-3">
+            {program.title}
+          </h3>
+          <div className="space-y-1 mb-5">
+            {program.duration.map((item, idx) => (
+              <div key={idx} className="flex items-center space-x-2">
+                <Check className="w-4 h-4 text-primary-green shrink-0" />
+                <p className="text-sm text-medium-gray">{item}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-dark-gray leading-relaxed mb-4 grow">
+            {program.description}
+          </p>
+          <div className="space-y-1">
+            {program.highlights.map((highlight, idx) => (
+              <div key={idx} className="flex items-center space-x-2">
+                <CheckCircle className="w-4 h-4 text-primary-green shrink-0" />
+                <span className="text-sm text-dark-gray">{highlight}</span>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  ))}
+</div>
 
-        <div className="mt-10 flex justify-center gap-4">
+
+        <div className="mt-10 flex sm:flex-row flex-col justify-center gap-4">
 
           <Dialog open={isContactModalOpen} onOpenChange={setIsContactModalOpen}>
             <DialogTrigger asChild>

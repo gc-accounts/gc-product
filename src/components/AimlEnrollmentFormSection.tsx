@@ -32,7 +32,7 @@ const AimlEnrollmentFormSection = ({ sectionClass }: Props) => {
     return (
        <section className={`${sectionClass ? sectionClass : ''}`}>
         <div className="container max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 grid-cols-1 gap-12 lg:gap-16 items-center">
             {/* Left Content */}
             <div className="space-y-6 lg:space-y-8">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-gray mb-6 lg:mb-8">
