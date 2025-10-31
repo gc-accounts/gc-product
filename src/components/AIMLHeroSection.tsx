@@ -19,10 +19,10 @@ const AIMLHeroSection = ({ sectionClass, basePrice, currency  }: Props) => {
   return(
   <section className={`${sectionClass ? sectionClass : ''}`}>
     <div className="container max-w-7xl mx-auto">
-      <div className="grid lg:grid-cols-5 gap-8 lg:gap-16 items-center">
+      <div className="grid lg:grid-cols-2 grid-cols-1 gap-12 lg:gap-16 items-center">
         
         {/* Left Content */}
-        <div className="lg:col-span-3 space-y-6 lg:space-y-8">
+        <div className="space-y-6 lg:space-y-8">
           <div className="space-y-6">
             <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight">
               Master AI/ML at{' '}
@@ -113,7 +113,7 @@ const AIMLHeroSection = ({ sectionClass, basePrice, currency  }: Props) => {
         </div>
 
         {/* Right Form */}
-        <div className="lg:col-span-2">
+        <div>
           <AimlForm />
         </div>
       </div>

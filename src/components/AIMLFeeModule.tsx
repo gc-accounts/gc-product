@@ -16,12 +16,12 @@ interface Props {
 const AIMLFeeModule = ({ sectionClass, title, subText, basePrice, currency }: Props) => {
     const cohorts = [
       {
-        startDate: "31 October 2025",
+        startDate: "29 November 2025",
         status: "Open",
         color: "bg-primary-green",
         spots: "Available: 15/20"
       },
-      { startDate: "29 November, 2025", status: "Limited", color: "bg-accent-gold", spots: "Available: 16/30" },
+      { startDate: "27 December, 2025", status: "Limited", color: "bg-accent-gold", spots: "Available: 16/30" },
       // { 
       //   startDate: "Mar 1, 2025", 
       //   status: "Limited", 

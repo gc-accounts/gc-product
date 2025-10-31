@@ -112,7 +112,7 @@ const IbfoHeroSection = ({ sectionClass, currency, basePrice }: Props) => {
           </div>
 
           {/* Right Side Form */}
-          <div className="">
+          <div>
             <IBFOForm />
           </div>
         </div>
