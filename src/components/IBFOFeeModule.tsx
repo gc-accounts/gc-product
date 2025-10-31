@@ -111,7 +111,7 @@ const IBFOFeeModule = ({ sectionClass, title, subText, currency, basePrice }: Pr
             </p> */}
           </div>
 
-          <div className="flex justify-center max-w-[550px] mx-auto">
+          <div className="md:flex justify-center md:max-w-[550px] max-w-full mx-auto md:space-y-0 space-y-4">
             {cohorts.map((cohort, index) => (
               <Card key={index} className={`${cohort.color} text-white border-0 hover:shadow-lg transition-all duration-300 h-full w-fit mx-auto`}>
                 <CardContent className="p-6 text-center h-full flex flex-col justify-center">
