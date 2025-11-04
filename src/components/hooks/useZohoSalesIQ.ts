@@ -1,5 +1,8 @@
 'use client';
 import { useEffect } from 'react';
+import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
+import { getOriginalTrafficSource } from '@/components/utils/getOriginalTrafficSource';
+import { fetchUserLocation } from '@/components/utils/fetchUserLocation'; // already used in your form
 
 declare global {
   interface Window {
@@ -9,14 +12,14 @@ declare global {
 
 export default function useZohoSalesIQ() {
   useEffect(() => {
-    // prevent multiple script loads
+    // prevent duplicate injection
     if (document.getElementById('zsiqscript')) return;
 
-    // initialize Zoho global object
+    // Initialize Zoho global object
     window.$zoho = window.$zoho || {};
     window.$zoho.salesiq = window.$zoho.salesiq || { ready: function () {} };
 
-    // create script element
+    // Load Zoho SalesIQ widget script dynamically
     const script = document.createElement('script');
     script.id = 'zsiqscript';
     script.src =
@@ -24,10 +27,58 @@ export default function useZohoSalesIQ() {
     script.defer = true;
     document.body.appendChild(script);
 
-    // optional cleanup if component unmounts
+    // Once SalesIQ is ready
+    window.$zoho.salesiq.ready = async function () {
+      try {
+        // Get UTM + GA tracking info
+        const utm = getUTMTrackingData();
+        const originalTrafficSource = getOriginalTrafficSource(utm);
+
+        // Get user location (city, state, country)
+        const location = await fetchUserLocation();
+
+        // Detect current page path (so you can vary Source_Domain dynamically)
+        const currentPath = window.location.pathname;
+        let sourceDomain = 'GC Home Form';
+        if (currentPath.includes('data-science')) {
+          sourceDomain = 'GC Data Science Chatbot';
+        } else if (currentPath.includes('ai')) {
+          sourceDomain = 'GC AI Chatbot';
+        }
+
+        // Push info into Zoho SalesIQ session
+        window.$zoho.salesiq.visitor.info({
+          // --- UTM / Source Tracking ---
+          "Original Traffic Source": originalTrafficSource,
+          "Original Traffic Source Drill-Down 1": utm["Original Traffic Source Drill-Down 1"] || "",
+          "Original Traffic Source Drill-Down 2": utm["Original Traffic Source Drill-Down 2"] || "",
+          "UTM Term-First Page Seen": utm["UTM Term-First Page Seen"] || "",
+          "UTM Content-First Page Seen": utm["UTM Content-First Page Seen"] || "",
+          "First Page Seen": utm["First Page Seen"] || "",
+          "ads_gclid": utm["ads_gclid"] || "",
+          "Source_Domain": 'GC Home Form',
+
+          // --- Location Info ---
+          "Other_City": location?.city || "",
+          "Other_State": location?.region || "",
+          "Country": location?.country || "",
+        });
+
+        console.log("✅ SalesIQ visitor info set:", {
+          ...utm,
+          originalTrafficSource,
+          sourceDomain,
+          location,
+        });
+      } catch (err) {
+        console.error("❌ Failed to set Zoho SalesIQ visitor info:", err);
+      }
+    };
+
+    // Cleanup on unmount
     return () => {
-      const existingScript = document.getElementById('zsiqscript');
-      if (existingScript) existingScript.remove();
+      const el = document.getElementById('zsiqscript');
+      if (el) el.remove();
     };
   }, []);
 }
