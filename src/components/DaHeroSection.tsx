@@ -118,7 +118,7 @@ const DaHeroSection = ({ sectionClass, currency, basePrice}: Props) => {
 
           {/* Right Form */}
           <div>
-            {/* <DaForm /> */}
+            <DaForm />
           </div>
         </div>
       </div>

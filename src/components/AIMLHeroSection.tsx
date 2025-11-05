@@ -17,7 +17,7 @@ interface Props {
 const AIMLHeroSection = ({ sectionClass, basePrice, currency  }: Props) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
     // 👇 Initialize Zoho SalesIQ chat widget (only runs in browser)
-    useZohoSalesIQ();
+  useZohoSalesIQ();
 
   return(
   <section className={`${sectionClass ? sectionClass : ''}`}>
@@ -117,7 +117,7 @@ const AIMLHeroSection = ({ sectionClass, basePrice, currency  }: Props) => {
 
         {/* Right Form */}
         <div>
-          {/* <AimlForm /> */}
+          <AimlForm />
         </div>
       </div>
     </div>

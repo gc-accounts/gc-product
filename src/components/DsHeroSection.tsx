@@ -118,7 +118,7 @@ const DsHeroSection = ({ sectionClass, currency, basePrice}: Props) => {
 
           {/* Right Side Form */}
           <div>
-            {/* <DsForm /> */}
+            <DsForm />
           </div>
         </div>
       </div>

@@ -61,10 +61,13 @@ export default function useZohoSalesIQ() {
         // Push visitor info
         window.$zoho.salesiq.visitor.info({
           'Original Traffic Source': originalTrafficSource,
-          'Original Traffic Source Drill-Down 1': utm['Original Traffic Source Drill-Down 1'] || '',
-          'Original Traffic Source Drill-Down 2': utm['Original Traffic Source Drill-Down 2'] || '',
+          'Original Traffic Source Drill-Down 1':
+            utm['Original Traffic Source Drill-Down 1'] || '',
+          'Original Traffic Source Drill-Down 2':
+            utm['Original Traffic Source Drill-Down 2'] || '',
           'UTM Term-First Page Seen': utm['UTM Term-First Page Seen'] || '',
-          'UTM Content-First Page Seen': utm['UTM Content-First Page Seen'] || '',
+          'UTM Content-First Page Seen':
+            utm['UTM Content-First Page Seen'] || '',
           'First Page Seen': utm['First Page Seen'] || '',
           ads_gclid: utm['ads_gclid'] || '',
           Source_Domain: sourceDomain,
