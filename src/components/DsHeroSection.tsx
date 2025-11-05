@@ -6,6 +6,7 @@ import { Button } from './ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import DsForm from './DsForm'
 import Link from 'next/link'
+import useZohoSalesIQ from './hooks/useZohoSalesIQ'
 
 interface Props {
   sectionClass?: String;
@@ -15,6 +16,9 @@ interface Props {
 
 const DsHeroSection = ({ sectionClass, currency, basePrice}: Props) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
+
+    // 👇 Initialize Zoho SalesIQ chat widget (only runs in browser)
+    useZohoSalesIQ();
 
   return (
     <section className={`${sectionClass ? sectionClass : ''}`}>

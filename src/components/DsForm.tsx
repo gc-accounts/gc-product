@@ -13,6 +13,7 @@ import { CountryCodeData } from './data/CountryCodeData';
 import { useRouter } from 'next/navigation';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Link from 'next/link';
+import { openZohoChatbot } from './utils/openZohoChatbot';
 
 interface DsFormProps {
   isModal?: boolean;
@@ -199,7 +200,8 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
 
       // ✅ Redirect to checkout (after saving prefill data)
       if (!isModal) {
-        router.push('/course-checkout/data-science-bootcamp');
+        // router.push('/course-checkout/data-science-bootcamp');
+        openZohoChatbot()
       }
     } catch (err: any) {
       console.error('Zoho form submission error:', err);
@@ -288,7 +290,7 @@ const DsForm: React.FC<DsFormProps> = ({ isModal = false, onClose }) => {
             disabled={loading}
             className="w-full bg-primary-green hover:bg-primary-green text-white font-semibold py-3 rounded-lg mt-2 cursor-pointer"
           >
-            {loading ? 'Submitting...' : isModal ? 'Request More Information' : 'Pay Now'}
+            {loading ? 'Submitting...' : isModal ? 'Request More Information' : 'Talk to us'}
           </Button>
 
           <p className="text-xs text-gray-500 text-center">
