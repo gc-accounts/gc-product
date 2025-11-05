@@ -16,20 +16,51 @@ export default function useZohoSalesIQ() {
 
   // ✅ Clear chat flag + trigger auto-open on every route change
   useEffect(() => {
-    // Clear session flag when navigating to a new page
+    // Clear chat flag on route change
     sessionStorage.removeItem('chatAutoOpened');
 
-    // Wait 10 seconds, then auto-click chat button if available
-    const timer = setTimeout(() => {
-      const chatButton = document.getElementById('zsiq_float');
-      if (chatButton && !sessionStorage.getItem('chatAutoOpened')) {
-        chatButton.click();
-        sessionStorage.setItem('chatAutoOpened', 'true');
-      }
-    }, 10000);
+    let autoOpenTimer: NodeJS.Timeout | null = null;
+    let manualClickListener: (() => void) | null = null;
 
-    // Cleanup timer when leaving page
-    return () => clearTimeout(timer);
+    const startAutoOpenTimer = () => {
+      // Wait 10 seconds, then auto-click chat button if available and not opened manually
+      autoOpenTimer = setTimeout(() => {
+        const chatButton = document.getElementById('zsiq_float');
+        if (chatButton && !sessionStorage.getItem('chatAutoOpened')) {
+          chatButton.click();
+          sessionStorage.setItem('chatAutoOpened', 'true');
+        }
+      }, 10000);
+    };
+
+    // Watch for user manually clicking chat widget
+    const watchManualChatOpen = () => {
+      const chatButton = document.getElementById('zsiq_float');
+      if (chatButton) {
+        manualClickListener = () => {
+          // User manually opened chatbot
+          sessionStorage.setItem('chatAutoOpened', 'true');
+          if (autoOpenTimer) clearTimeout(autoOpenTimer);
+        };
+        chatButton.addEventListener('click', manualClickListener);
+      } else {
+        // Retry until button loads
+        setTimeout(watchManualChatOpen, 500);
+      }
+    };
+
+    // Start both
+    startAutoOpenTimer();
+    watchManualChatOpen();
+
+    // Cleanup on route change
+    return () => {
+      if (autoOpenTimer) clearTimeout(autoOpenTimer);
+      const chatButton = document.getElementById('zsiq_float');
+      if (chatButton && manualClickListener) {
+        chatButton.removeEventListener('click', manualClickListener);
+      }
+    };
   }, [pathname]);
 
   // ✅ Run once — inject and configure Zoho SalesIQ

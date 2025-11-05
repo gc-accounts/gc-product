@@ -290,7 +290,7 @@ const IBFOForm: React.FC<IBFOFormProps> = ({ isModal = false, onClose }) => {
             disabled={loading}
             className="w-full bg-primary-green hover:bg-primary-green text-white font-semibold py-3 rounded-lg mt-2 cursor-pointer"
           >
-            {loading ? 'Submitting...' : isModal ? 'Request More Information' : 'Pay Now'}
+            {loading ? 'Submitting...' : isModal ? 'Request More Information' : 'Talk to us'}
           </Button>
 
           <p className="text-xs text-gray-500 text-center">
