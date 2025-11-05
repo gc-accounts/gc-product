@@ -13,6 +13,7 @@ import { CountryCodeData } from './data/CountryCodeData';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { openZohoChatbot } from './utils/openZohoChatbot';
 
 interface DaFormProps {
   isModal?: boolean;
@@ -173,7 +174,9 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
 
       // ✅ Redirect to checkout (after saving prefill data)
       if (!isModal) {
-        router.push('/course-checkout/data-analyst-bootcamp');
+        // router.push('/course-checkout/data-analyst-bootcamp');
+        openZohoChatbot()
+        
       }
 
     } catch (err: any) {

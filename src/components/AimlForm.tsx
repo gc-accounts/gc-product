@@ -13,6 +13,7 @@ import { CountryCodeData } from './data/CountryCodeData';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { openZohoChatbot } from './utils/openZohoChatbot';
 
 interface AIMLFormProps {
   isModal?: boolean;
@@ -181,7 +182,9 @@ const AIMLForm: React.FC<AIMLFormProps> = ({ isModal = false, onClose }) => {
 
       // ✅ Redirect to checkout (after saving prefill data)
       if (!isModal) {
-        router.push('/course-checkout/aiml-bootcamp');
+        // router.push('/course-checkout/aiml-bootcamp');
+        openZohoChatbot()
+        
       }
 
     } catch (err: any) {

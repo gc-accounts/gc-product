@@ -1,5 +1,6 @@
 'use client';
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
 import { getOriginalTrafficSource } from '@/components/utils/getOriginalTrafficSource';
 import { fetchUserLocation } from '@/components/utils/fetchUserLocation';
@@ -11,15 +12,33 @@ declare global {
 }
 
 export default function useZohoSalesIQ() {
+  const pathname = usePathname();
+
+  // ✅ Clear chat flag + trigger auto-open on every route change
   useEffect(() => {
-    // Prevent duplicate injection
+    // Clear session flag when navigating to a new page
+    sessionStorage.removeItem('chatAutoOpened');
+
+    // Wait 10 seconds, then auto-click chat button if available
+    const timer = setTimeout(() => {
+      const chatButton = document.getElementById('zsiq_float');
+      if (chatButton && !sessionStorage.getItem('chatAutoOpened')) {
+        chatButton.click();
+        sessionStorage.setItem('chatAutoOpened', 'true');
+      }
+    }, 10000);
+
+    // Cleanup timer when leaving page
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
+  // ✅ Run once — inject and configure Zoho SalesIQ
+  useEffect(() => {
     if (document.getElementById('zsiqscript')) return;
 
-    // Initialize Zoho global object
     window.$zoho = window.$zoho || {};
     window.$zoho.salesiq = window.$zoho.salesiq || { ready: function () {} };
 
-    // Load Zoho SalesIQ script dynamically
     const script = document.createElement('script');
     script.id = 'zsiqscript';
     script.src =
@@ -27,14 +46,12 @@ export default function useZohoSalesIQ() {
     script.defer = true;
     document.body.appendChild(script);
 
-    // --- When SalesIQ is ready ---
     window.$zoho.salesiq.ready = async function () {
       try {
         const utm = getUTMTrackingData();
         const originalTrafficSource = getOriginalTrafficSource(utm);
         const location = await fetchUserLocation();
 
-        // Detect page context for tracking (optional)
         const currentPath = window.location.pathname;
         let sourceDomain = 'GC Website Chatbot';
         if (currentPath.includes('data-science')) {
@@ -43,7 +60,6 @@ export default function useZohoSalesIQ() {
           sourceDomain = 'GC AI Chatbot';
         }
 
-        // Push visitor info
         window.$zoho.salesiq.visitor.info({
           'Original Traffic Source': originalTrafficSource,
           'Original Traffic Source Drill-Down 1':
@@ -61,14 +77,7 @@ export default function useZohoSalesIQ() {
           Country: location?.country || '',
         });
 
-        console.log('✅ SalesIQ visitor info set:', {
-          ...utm,
-          originalTrafficSource,
-          sourceDomain,
-          location,
-        });
-
-        // --- Adjust widget positioning ---
+        // --- Adjust widget styling ---
         setTimeout(() => {
           const widgetContainer = document.getElementById('zsiq_float');
           const chatWindow = document.querySelector('#zsiqwidget') as HTMLElement;
@@ -87,15 +96,12 @@ export default function useZohoSalesIQ() {
             chatWindow.style.zIndex = '1000';
             chatWindow.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
           }
-
-          console.log('💬 Chatbox loaded globally and positioned properly.');
         }, 2000);
-      } catch (err) {
-        console.error('❌ Failed to initialize Zoho SalesIQ:', err);
+      } catch {
+        // silent fail
       }
     };
 
-    // Cleanup on unmount
     return () => {
       const el = document.getElementById('zsiqscript');
       if (el) el.remove();
