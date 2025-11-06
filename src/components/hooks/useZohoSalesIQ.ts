@@ -109,25 +109,39 @@ export default function useZohoSalesIQ() {
         });
 
         // --- Adjust widget styling ---
-        setTimeout(() => {
-          const widgetContainer = document.getElementById('zsiq_float');
-          const chatWindow = document.querySelector('#zsiqwidget') as HTMLElement;
+setTimeout(() => {
+  const widgetContainer = document.getElementById('zsiq_float');
+  const chatWindow = document.querySelector('#zsiqwidget') as HTMLElement;
 
-          if (widgetContainer) {
-            widgetContainer.style.bottom = '20px';
-            widgetContainer.style.right = '20px';
-            widgetContainer.style.zIndex = '9999';
-          }
+  if (widgetContainer) {
+    widgetContainer.style.position = 'fixed';
+    widgetContainer.style.bottom = '20px';
+    widgetContainer.style.right = '20px';
+    widgetContainer.style.zIndex = '9999';
+  }
 
-          if (chatWindow) {
-            chatWindow.style.top = '80px';
-            chatWindow.style.height = 'calc(100vh - 100px)';
-            chatWindow.style.borderRadius = '12px';
-            chatWindow.style.overflow = 'hidden';
-            chatWindow.style.zIndex = '1000';
-            chatWindow.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
-          }
-        }, 2000);
+  if (chatWindow) {
+    chatWindow.style.position = 'fixed';
+    chatWindow.style.right = '20px';
+    chatWindow.style.bottom = '100px'; // fixed gap above widget (adjust as needed)
+    chatWindow.style.maxHeight = 'calc(100vh - 120px)'; // ensures it fits in smaller screens
+    chatWindow.style.width = '380px';
+    chatWindow.style.borderRadius = '12px';
+    chatWindow.style.overflow = 'hidden';
+    chatWindow.style.zIndex = '10000';
+    chatWindow.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+    chatWindow.style.transform = 'none'; // removes scaling behavior
+  }
+
+  // Reapply on resize to ensure fixed behavior
+  window.addEventListener('resize', () => {
+    if (chatWindow) {
+      chatWindow.style.right = '20px';
+      chatWindow.style.bottom = '100px';
+    }
+  });
+}, 2500);
+
       } catch {
         // silent fail
       }

@@ -380,6 +380,7 @@ select:focus-visible {
 
 
 
+
 #zsiq_chat_wrap{
-  top: 1rem !important;
+  min-height: 420px !important;
 }
