@@ -99,7 +99,7 @@ const DaHeroSection = ({ sectionClass, currency, basePrice }: Props) => {
           {/* ---------- Right Side Image ---------- */}
           <div className="relative w-full h-[380px] sm:h-[450px] lg:h-[500px]">
             <Image
-              src="https://strapi.odinschool.com/uploads/DA_2db8c7abc5.webp"
+              src="https://strapi.greycampus.com/uploads/data_analyst_3ac770ea7e.webp"
               alt="Data Analytics Illustration"
               fill
               priority

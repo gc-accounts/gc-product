@@ -99,7 +99,7 @@ const AIMLHeroSection = ({ sectionClass, basePrice, currency }: Props) => {
           {/* ---------- Right Side Image ---------- */}
           <div className="relative w-full h-[380px] sm:h-[450px] lg:h-[500px]">
             <Image
-              src="https://strapi.odinschool.com/uploads/AIML_1_427ec343a4.webp"
+              src="https://strapi.greycampus.com/uploads/aiml_a2ca2863c0.webp"
               alt="AI ML Illustration"
               fill
               priority

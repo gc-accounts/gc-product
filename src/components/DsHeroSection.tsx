@@ -98,7 +98,7 @@ const DsHeroSection = ({ sectionClass, currency, basePrice }: Props) => {
           {/* ---------- Right Side Image ---------- */}
           <div className="relative w-full h-[380px] sm:h-[450px] lg:h-[500px]">
             <Image
-              src="https://strapi.odinschool.com/uploads/DS_3_74d4ad65db.webp"
+              src="https://strapi.greycampus.com/uploads/data_science_95cd095255.webp"
               alt="Data Science Illustration"
               fill
               priority

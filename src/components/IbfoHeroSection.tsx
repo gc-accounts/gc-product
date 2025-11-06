@@ -98,7 +98,7 @@ const IbfoHeroSection = ({ sectionClass, currency, basePrice }: Props) => {
           {/* ---------- Right Side Image ---------- */}
           <div className="relative w-full h-[380px] sm:h-[450px] lg:h-[500px]">
             <Image
-              src="https://strapi.odinschool.com/uploads/IBFO_7d691ad40b.webp"
+              src="https://strapi.greycampus.com/uploads/ibfo_d37f602920_03366aa036.webp"
               alt="Investment Banking and Finance Operations Illustration"
               fill
               priority
