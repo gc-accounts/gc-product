@@ -30,7 +30,7 @@ export default function useZohoSalesIQ() {
           chatButton.click();
           sessionStorage.setItem('chatAutoOpened', 'true');
         }
-      }, 10000);
+      }, 5000);
     };
 
     // Watch for user manually clicking chat widget

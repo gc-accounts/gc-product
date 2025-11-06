@@ -5,11 +5,11 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 
 const nextConfig: NextConfig = {
-  // ✅ TypeScript & ESLint
+  // ✅ TypeScript & ESLint settings
   eslint: { ignoreDuringBuilds: false },
   typescript: { ignoreBuildErrors: false },
 
-  // ✅ Image domains
+  // ✅ Image domains and remote patterns
   images: {
     remotePatterns: [
       {
@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
         pathname: "/uploads/**",
       },
       {
+        protocol: "https",
+        hostname: "strapi.odinschool.com", // ✅ Added for OdinSchool Strapi images
+        pathname: "/uploads/**",
+      },
+      {
         protocol: "http",
         hostname: "localhost",
         port: "1337",
@@ -31,7 +36,7 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  // ✅ Static asset caching
+  // ✅ Static asset caching for better performance
   async headers() {
     return [
       {
@@ -55,16 +60,13 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // ✅ Redirect rules
+  // ✅ Redirect rules (imported from /redirects/rules)
   async redirects() {
     return redirectsList;
   },
 
-  // ✅ Turbopack configuration (new standard)
-  turbopack: {
-    // Example future-proof area (safe empty object)
-    // You can add rules here later if needed
-  },
+  // ✅ Turbopack placeholder (future config ready)
+  turbopack: {},
 };
 
 export default withBundleAnalyzer(nextConfig);
