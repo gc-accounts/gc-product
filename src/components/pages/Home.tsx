@@ -26,7 +26,7 @@ const DataAnalystBootcamp: React.FC<Props> = ({ slug }) => {
   const [basePrice, setBasePrice] = useState<number>(5000);
 
   // 👇 Initialize Zoho SalesIQ chat widget (only runs in browser)
-  useZohoSalesIQ();
+  // useZohoSalesIQ();
 
   const detectUserCountry = async () => {
     try {
