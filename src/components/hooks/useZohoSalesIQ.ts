@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
 import { getOriginalTrafficSource } from '@/components/utils/getOriginalTrafficSource';
 import { fetchUserLocation } from '@/components/utils/fetchUserLocation';
-
+import { getDeviceType } from '../utils/getDeviceType';
 declare global {
   interface Window {
     $zoho?: any;
@@ -13,6 +13,8 @@ declare global {
 
 export default function useZohoSalesIQ() {
   const pathname = usePathname();
+  const device = getDeviceType();
+  
 
   // ✅ Clear chat flag + trigger auto-open on every route change
   useEffect(() => {
@@ -106,6 +108,8 @@ export default function useZohoSalesIQ() {
           Other_City: location?.city || '',
           Other_State: location?.region || '',
           Country: location?.country || '',
+          Business_Unit: 'GreyCampus',
+          Device_Type1 : device,
         });
 
         // --- Adjust widget styling ---
