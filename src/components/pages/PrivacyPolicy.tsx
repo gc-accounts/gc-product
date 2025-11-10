@@ -42,15 +42,20 @@ export default function PrivacyPolicy() {
             <p className="text-medium-gray">
               The purpose of this Privacy Policy is to describe how **GreyCampus, Inc. and GreyCampus Edutech Private Limited** ("GreyCampus," "us," "we," or "our") collects, uses and shares information about you through our online interfaces (e.g., websites and mobile applications) owned and controlled by us, including `www.greycampus.com` (collectively referred to herein as the "Site"). Please read this notice carefully to understand what we do. If you do not understand any aspects of our Privacy Policy, please feel free to contact us at <a href="mailto:compliance@greycampus.com" className="text-primary-green underline hover:no-underline">compliance@greycampus.com</a>.
             </p>
+
             <p className="text-medium-gray">
-              GreyCampus is an Edtech firm with a principal place of business at **II Floor, Block 1, My Home Hub, HITEC City, Madhapur, Hyderabad - 500081**. GreyCampus is both a data controller and a data processor of all Personally Identifiable Information (defined below) collected via the site and of certain Personally Identifiable Information collected from third parties.
+              GreyCampus is an Edtech firm with a principal place of business at B-Block, GreyCampus Edutech Pvt. Ltd Aikya Vihar, Plot 218, Kavuri Hills Phase 2 Rd, Hyderabad, Telangana 500033.GreyCampus is both a data controller and a data processor of all Personally Identifiable Information (defined below) collected via the site and of certain Personally Identifiable Information collected from third parties.
             </p>
+
             <p className="text-medium-gray">
-              This Privacy Policy covers information we collect from you through our Site. Some of our Site’s functionality can be used without sharing any Personally Identifiable Information, though, for features or services related to the Courses, **Personally Identifiable Information is required**. In order to access certain features and benefits on our Site, you may need to submit, or we may collect Personally Identifiable Information.
+              This policy control applies to all systems, people, and processes that constitute the organization’s information systems, including board members, directors, employees, and other third parties who have access to Personal Data available within GreyCampus.
             </p>
+
             <p className="text-medium-gray">
-              "**Personally Identifiable Information**" (i.e., information that can be used to identify you). Personally, Identifiable Information can include information such as your name and email address, among other things. If you reside or are located in the EEA, it can also include your IP address or device identifier. You are responsible for ensuring the accuracy of the Personally Identifiable Information you submit to GreyCampus. Inaccurate information may affect your ability to use the Site, the information you receive when using the Site, and our ability to contact you. For example, your email address should be kept current because that is one of the primary manners in which we communicate with you.
+          The user's WhatsApp data may be shared with trusted third-party service providers (such as CRM platforms, analytics partners, and WhatsApp API providers) solely for business operations, communication, and service improvement purposes. These providers are contractually required to protect your data and use it only for GreyCampus’s purposes.
             </p>
+
+            <p className="text-medium-gray">The company is also committed to ensuring that its employees conduct themselves in line with this and other related policies where third parties process data on behalf of GreyCampus. The Company endeavors to obtain assurances from such third parties that your Personal Data will be safeguarded consistently.</p>
 
 
             {/* --- WHAT INFORMATION DO WE COLLECT? --- */}
@@ -59,9 +64,21 @@ export default function PrivacyPolicy() {
               We collect information about you only if we need the information for some legitimate purpose. GreyCampus will have information about you only if:
             </p>
             <ol className="list-decimal list-outside space-y-3 pl-5 text-medium-gray mb-6">
-              <li>you have provided the information yourself,</li>
-              <li>GreyCampus has automatically collected the information, or</li>
-              <li>GreyCampus has obtained the information from a third party.</li>
+              <li>You have provided the information yourself for a product/ service</li>
+
+              <li>Your name, title, gender, date of birth, email address, telephone number (home/work/mobile telephonic number), profile/display picture, login name, screen name, nickname, or handle, country/state/postcode or city of residence, postal or other physical address, name(s) of the school/university (including grades and graduation year), name(s) of the workplace, job position/designation (including salary), resume/CV, information related to social profiles, such as Facebook, Google, GitHub etc., IP addresses and other information collected passively (as further detailed in the “Passive Collection” section below), may be collected; and</li>
+
+              <li>When you interact with GreyCampus via WhatsApp, we collect your name, phone number, and the content of your WhatsApp messages. This information is used to provide customer support, send updates about your courses or orders, share relevant offers, and improve our services.</li>
+
+              <li>Any other information you may choose to further provide us, without limitation, any information to update your account and profile, if required, to fill out any forms, provide your feedback to surveys, write any articles on the Company Systems, or to use any features of Company Systems.</li>
+
+              <li>Account registration, use of certain Product features, creating or taking tests, generating reports based on information collected from the use of our Products.</li>
+
+              <li>Requesting service and support for our Products and providing such support, registering for an event, participating in an online survey, participating in discussion groups or forums.</li>
+
+              <li>Registering for newsletter subscriptions, customizing the content you see as per relevance.We collect and/or process your Personal Data as a part of the following activities related to our Products:</li>
+
+              <li>We do not collect any payment information processed by third-party payment gateway providers.</li>
             </ol>
             
             <h3 className="text-xl font-semibold text-dark-gray mt-6 mb-3">Information that you provide us</h3>
@@ -90,17 +107,53 @@ export default function PrivacyPolicy() {
             {/* --- WHAT DO WE DO WITH THE INFORMATION? --- */}
             <h2 className="text-2xl font-bold text-dark-gray mt-10 mb-4 border-b pb-2">WHAT DO WE DO WITH THE INFORMATION?</h2>
             <p className="text-medium-gray mb-4">
-              Below are the purposes for which the information collected may be used:
+              We collect your Personal Data for the following purposes
             </p>
             <ul className="list-disc list-outside space-y-3 pl-5 text-medium-gray">
-              <li>To communicate with you (such as through email) about products that you have downloaded and services that you have signed up for, changes to this Privacy Policy, changes to the Terms of Service, or important notices;</li>
-              <li>To keep you posted on new products and services, upcoming events, offers, promotions and other information that we think will be of interest to you;</li>
-              <li>To ask you to participate in surveys, or to solicit feedback on our products and services;</li>
-              <li>To understand how users use our products and services, to monitor and prevent problems, and to improve our products and services;</li>
-              <li>To provide customer support, and to analyze and improve our interactions with customers;</li>
-              <li>To detect and prevent fraudulent transactions and other illegal activities, to report spam, and to protect the rights and interests of GreyCampus, GreyCampus’ users, third parties and the public;</li>
-              <li>To analyze trends, administer our websites, and track visitor navigations on our websites to understand what visitors are looking for and to better help them;</li>
-              <li>To monitor and improve marketing campaigns and make suggestions relevant to the user.</li>
+              <li>To fulfill or meet the reason you provided the information;</li>
+
+              <li>We use your information for managing and processing purposes, including, but not limited to, tracking attendance, progress and completion of a Program. As part of our management and processing of the Program, we will use certain Personal Data in order to administer exams, projects, and other assessments for the Program. For example, as part of an exam, we may use certain information collected from you in order to verify your identity or to monitor your performance during the exam to confirm that you are abiding by the applicable testing rules or requirements;</li>
+
+              <li>To send you updates about the Programs, other  events, platform maintenance or new services provided by GreyCampus, among other things, through itself or through third parties, via WhatsApp, email, SMS, phone call or any other medium;
+             </li>
+
+              <li>Compliance with legal obligations, including adherence to all applicable data protection laws and Meta’s requirements for WhatsApp Business communications. This includes respecting user rights, ensuring data security, and maintaining transparency in data processing.</li>
+
+
+              <li>To enhance the quality of our content and product offerings;</li>
+
+
+              <li>Compliance with security and other mandatory policies and building access;</li>
+
+
+              <li>Providing information to relevant external authorities for tax, social security and other purposes as legally required;</li>
+
+
+              <li>Conducting surveys to assess your satisfaction, including but not limited to its processes or policies;</li>
+
+              <li>Setting up and maintaining accounts and subscriptions with third parties that provide information and research services or communication services;</li>
+
+              <li>Making decisions about your continued engagement, employment or membership;</li>
+
+              <li>Dealing with legal or regulatory disputes or investigations involving you, our work, or other partners, employees, workers, and contractors, including accidents at work, potential and actual negligence claims, and professional discipline matters;</li>
+
+              <li>To monitor the use of our information and communication systems to ensure compliance with our IT and document management policies;</li>
+
+              <li>To ensure network and information security, including preventing unauthorized access to our computer and electronic communications systems and preventing malicious software distribution;</li>
+
+              <li>Business management and planning, including accounting, auditing and insuring;</li>
+
+              <li>Planning or reviewing options in relation to the operation or management;</li>
+
+              <li>Keeping registers required by law or regulation;</li>
+
+              <li>Communicating with you, for example, to respond to inquiries;</li>
+
+              <li>Enhancing the safety and security of the services and preventing fraud, or protecting our or our customers’, or your rights or property;</li>
+
+              <li>Enforcing applicable terms and conditions and other applicable policies.</li>
+
+
             </ul>
 
             <h3 className="text-xl font-semibold text-dark-gray mt-6 mb-3">Legal bases for collecting and using information</h3>
@@ -236,9 +289,51 @@ export default function PrivacyPolicy() {
               At GreyCampus, we take data security very seriously. We have taken steps to implement **appropriate administrative, technical & physical safeguards** to prevent unauthorized access, use, modification, disclosure or destruction of the information you entrust to us. If you have any concerns regarding the security of your data, we encourage you to write to us at <a href="mailto:compliance@greycampus.com" className="text-primary-green underline hover:no-underline">compliance@greycampus.com</a> with any questions.
             </p>
 
+            <p  className="text-medium-gray">Failure to follow the Company’s rules on data security may be dealt with via the Company’s disciplinary procedure. Appropriate sanctions include dismissal with or without notice dependent on the severity of the failure.</p>
+
+            <p className="text-medium-gray">We take reasonable steps to ensure that our service providers, contractors, and other third parties maintain a comparable level of data protection when processing your Personal Data. However, while we strive to safeguard your information, please note that 100% security cannot be guaranteed. GreyCampus shall not be liable for any misuse, loss, or unauthorized access of Personal Data by third-party cloud service providers. Additionally, GreyCampus is not responsible for any damages arising from the misuse of WhatsApp by third parties, technical failures, or security incidents beyond our control. Please note that WhatsApp is operated by Meta and governed by their own terms and conditions.</p>
+
+            <h3 className="text-xl font-semibold text-dark-gray mt-6 mb-3">Advertising and Marketing</h3>
+
+            <p className="text-medium-gray">We strive to provide you with choices regarding certain Personal Data uses, particularly around marketing and advertising. You will receive marketing communications from us if you have requested information from us or if you provided us with your details and expressly consented to receiving that marketing.</p>
+
+            <p  className="text-medium-gray">We may use your Personal Identification, Identity, Contact, Electronic, and User-generated Data to form a view on what we think you may want or need, or what may be of interest to you. This is how we decide which services and offers may be relevant for you.</p>
+
+            <p className="text-medium-gray">We also enter into agreements with third parties to serve Ads on our behalf across the internet, social networking sites and blogs. These third parties may collect Personal Data about your visits to our platform and your interactions with our products and use this information to target advertisements for goods and services.</p>
+
+            <p className="text-medium-gray">Where electronic direct marketing communications are being sent, you have the option to opt-out in each communication sent, and this choice will be recognized and adhered to by us.</p>
+
+            <p className="text-medium-gray">You may also opt-out of WhatsApp messages at any time by replying “STOP” to any WhatsApp message from us or by contacting <a href="mailto:compliance@greycampus.com" className="text-primary-green underline hover:no-underline">compliance@greycampus.com</a>. After opting out, you will not receive further WhatsApp communications except those required by law or essential service updates.</p>
+
+
+            <h3 className="text-xl font-semibold text-dark-gray mt-6 mb-3">Consent</h3>
+
+            <p className="text-medium-gray">Your decision to provide Personal Data to GreyCampus is at your sole discretion and is deemed obtained when you register and create your account on our Company Systems. Please note that you may not be able to access certain options, offers, and services if they require Personal Data that you have not provided. You can sign-up, and therefore consent, to receive email or newsletter communication from us. If you would like to discontinue receiving this communication, you can update your preferences by using the ‘Unsubscribe’ link at the end of such emails or by contacting us through email at <a href="mailto:compliance@greycampus.com" className="text-primary-green underline hover:no-underline">compliance@greycampus.com</a>.</p>
+
+            <p className="text-medium-gray">We will only process your Personal Data if we have a lawful basis for doing so, which includes but is not limited to consent, contractual necessity (i.e. processing that is necessary for the performance of a contract with you, such as your user agreement with us that allows us to provide you with the Products) and our legitimate interests or the legitimate interest of others (e.g. our users) such as:</p>
+            <ul className="list-disc list-outside space-y-3 pl-5 text-medium-gray">
+              <li>Provide you with the websites and services, together with any support you may request.</li>
+              <li>By providing your phone number and initiating a WhatsApp conversation with GreyCampus, you consent to receive WhatsApp messages, including transactional and promotional communications, from us.</li>
+              <li>Respond to your inquiries or fulfill your requests.</li>
+              <li>Diagnose Website and Service technical problems.</li>
+              <li>Send you information that we believe may be of interest to you, such as Service.</li>
+              <li>Announcements, newsletters, educational materials, and event information.</li>
+              <li>Send you administrative information such as notices related to the Services or policy changes.</li>
+              <li>Understand how the Websites and Services are being used in order to enhance and optimize them.</li>
+              <li>Prevent, detect, mitigate, and investigate fraudulent or illegal activity.</li>
+            </ul>
+
+            <p className="text-medium-gray">As described to you at the point of collection of the information.</p>
+            <p className="text-medium-gray">Complying with our legal obligations, resolving disputes with users, and enforcing our agreements.</p>
+
+            <p className="text-medium-gray">Protecting, investigating, and deterring fraudulent, harmful, unauthorized, or illegal activity.</p>
+
+            <p className="text-medium-gray">If you refuse or withdraw your consent, or if you choose not to provide us with any required Personal Data, we may not be able to provide you with the services that can be offered on our Platform.</p>
+
+
             <h3 className="text-xl font-semibold text-dark-gray mt-6 mb-3">Data Protection Officer</h3>
             <p className="text-medium-gray">
-              We have appointed a **Data Protection Officer** to oversee our management of your personal information in accordance with this Privacy Policy. If you have any questions or concerns about our privacy practices with respect to your personal information, you can reach out to our Data Protection Officer by sending an email to <a href="mailto:compliance@greycampus.com" className="text-primary-green underline hover:no-underline">compliance@greycampus.com</a> or by writing to Data Protection Officer, GreyCampus Edutech Pvt. Ltd, II Floor, Block 1, My Home Hub, HITEC City, Madhapur, Hyderabad – 500081, India.
+              We have appointed a **Data Protection Officer** to oversee our management of your personal information in accordance with this Privacy Policy. If you have any questions or concerns about our privacy practices with respect to your personal information, you can reach out to our Data Protection Officer by sending an email to <a href="mailto:compliance@greycampus.com" className="text-primary-green underline hover:no-underline">compliance@greycampus.com</a> or by writing to Data Protection Officer, B-Block, GreyCampus Edutech Pvt. Ltd Aikya Vihar, Plot 218, Kavuri Hills Phase 2 Rd, Hyderabad, Telangana 500033
             </p>
 
             <h3 className="text-xl font-semibold text-dark-gray mt-6 mb-3">Do Not Track (DNT) requests</h3>
