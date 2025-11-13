@@ -1,10 +1,11 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { getUTMTrackingData } from '@/components/utils/getUTMTrackingData';
 import { getOriginalTrafficSource } from '@/components/utils/getOriginalTrafficSource';
 import { fetchUserLocation } from '@/components/utils/fetchUserLocation';
 import { getDeviceType } from '../utils/getDeviceType';
+import { getGaCookieValue } from '../utils/cookieUtils';
 declare global {
   interface Window {
     $zoho?: any;
@@ -14,12 +15,15 @@ declare global {
 export default function useZohoSalesIQ() {
   const pathname = usePathname();
   const device = getDeviceType();
+    const [gaClientId, setGaClientId] = useState('');
+  
   
 
   // ✅ Clear chat flag + trigger auto-open on every route change
   useEffect(() => {
     // Clear chat flag on route change
     sessionStorage.removeItem('chatAutoOpened');
+    
 
     let autoOpenTimer: NodeJS.Timeout | null = null;
     let manualClickListener: (() => void) | null = null;
@@ -66,8 +70,12 @@ export default function useZohoSalesIQ() {
   }, [pathname]);
 
   // ✅ Run once — inject and configure Zoho SalesIQ
-  useEffect(() => {
+  useEffect(() => {        
+
     if (document.getElementById('zsiqscript')) return;
+
+    setGaClientId(getGaCookieValue() || '');
+
 
     window.$zoho = window.$zoho || {};
     window.$zoho.salesiq = window.$zoho.salesiq || { ready: function () {} };
@@ -94,15 +102,13 @@ export default function useZohoSalesIQ() {
         }
 
         window.$zoho.salesiq.visitor.info({
-          'Original Traffic Source': originalTrafficSource,
-          'Original Traffic Source Drill-Down 1':
-            utm['Original Traffic Source Drill-Down 1'] || '',
-          'Original Traffic Source Drill-Down 2':
-            utm['Original Traffic Source Drill-Down 2'] || '',
-          'UTM Term-First Page Seen': utm['UTM Term-First Page Seen'] || '',
-          'UTM Content-First Page Seen':
-            utm['UTM Content-First Page Seen'] || '',
-          'First Page Seen': utm['First Page Seen'] || '',
+          'Latest_Page_Seen': utm['First Page Seen'],
+          'Latest_Traffic_Source': originalTrafficSource,
+          'Latest_Traffic_Source_Drill_Down_1': utm['Original Traffic Source Drill-Down 1'] ?? '',
+          'Latest_Traffic_Source_Drill_Down_2': utm['Original Traffic Source Drill-Down 2'] ?? '',
+          'UTM_Term_First_Page_Seen': utm['UTM Term-First Page Seen'] ?? '',
+          'UTM_Content_First_Page_Seen': utm['UTM Content-First Page Seen'] ?? '' ,
+          ga_client_id: gaClientId,
           ads_gclid: utm['ads_gclid'] || '',
           Source_Domain: sourceDomain,
           Other_City: location?.city || '',
