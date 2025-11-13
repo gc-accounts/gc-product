@@ -1,162 +1,171 @@
   export const DABCurriculumData = [
-      {
-        id: 'statistics',
-        title: 'Statistics Fundamentals',
-        duration: '2 weeks',
-        difficulty: 1,
-        topics: [
-          'Descriptive statistics',
-          'Probability theory',
-          'Distributions and hypothesis testing',
-          'Statistical inference',
-          'Application to real-world problems'
-        ],
-        outcomes: [
-          'Understand statistical fundamentals',
-          'Perform statistical analysis',
-          'Interpret results for business insights'
-        ],
-        tools: ['Python', 'SciPy', 'Statsmodels'],
-        projects: 'None yet (foundation module)'
-      },
-      {
-        id: 'python',
-        title: 'Python for Data Wizards',
-        duration: '2 weeks',
-        difficulty: 1,
-        topics: [
-          'Python basics and data structures',
-          'NumPy and Pandas mastery',
-          'Data manipulation and cleaning',
-          'File I/O and data formats',
-          'Basic visualization with Matplotlib'
-        ],
-        outcomes: [
-          'Master Python for data science',
-          'Handle large datasets efficiently',
-          'Clean and preprocess data'
-        ],
-        tools: ['Python', 'NumPy', 'Pandas', 'Matplotlib'],
-        projects: 'Data cleaning challenge'
-      },
-      {
-        id: 'sql',
-        title: 'SQL Mastery',
-        duration: '2 weeks',
-        difficulty: 2,
-        topics: [
-          'Database fundamentals',
-          'Complex queries and joins',
-          'Window functions and CTEs',
-          'Query optimization',
-          'Database design principles'
-        ],
-        outcomes: [
-          'Write complex SQL queries',
-          'Optimize database performance',
-          'Design efficient database schemas'
-        ],
-        tools: ['MySQL', 'SQLite'],
-        projects: 'E-commerce database analysis'
-      },
-      {
-        id: 'eda',
-        title: 'EDA in Python',
-        duration: '2 weeks',
-        difficulty: 2,
-        topics: [
-          'Exploratory data analysis techniques',
-          'Statistical visualization',
-          'Correlation and causation',
-          'Outlier detection and treatment',
-          'Data quality assessment'
-        ],
-        outcomes: [
-          'Perform comprehensive EDA',
-          'Create compelling visualizations',
-          'Identify data quality issues'
-        ],
-        tools: ['Seaborn', 'Plotly', 'Pandas', 'Matplotlib'],
-        projects: 'Customer behavior analysis'
-      },
-      {
-        id: 'powerbi',
-        title: 'Power BI',
-        duration: '2 weeks',
-        difficulty: 2,
-        topics: [
-          'Power BI interface and basics',
-          'Data modeling and relationships',
-          'DAX formulas and measures',
-          'Interactive dashboards',
-          'Report publishing and sharing'
-        ],
-        outcomes: [
-          'Build interactive dashboards',
-          'Create business intelligence reports',
-          'Share insights with stakeholders'
-        ],
-        tools: ['Power BI', 'DAX', 'Power Query'],
-        projects: 'Sales performance dashboard'
-      },
-      {
-        id: 'ml',
-        title: 'Machine Learning',
-        duration: '4 weeks',
-        difficulty: 4,
-        topics: [
-          'Supervised and unsupervised learning',
-          'Regression and classification algorithms',
-          'Model evaluation and validation',
-          'Feature engineering and selection',
-          'Hyperparameter tuning'
-        ],
-        outcomes: [
-          'Build and deploy ML models',
-          'Evaluate model performance',
-          'Apply ML to real business problems'
-        ],
-        tools: ['Scikit-learn', 'TensorFlow'],
-        projects: 'Predictive modeling challenge'
-      },
-      {
-        id: 'genai',
-        title: 'Generative AI Frontier',
-        duration: '2 weeks',
-        difficulty: 3,
-        topics: [
-          'Large Language Models (LLMs)',
-          'Prompt engineering techniques',
-          'AI integration in data workflows',
-          'Ethical AI considerations',
-          'Future of AI in data science'
-        ],
-        outcomes: [
-          'Leverage AI tools effectively',
-          'Integrate LLMs in data projects',
-          'Stay ahead of AI trends'
-        ],
-        tools: ['OpenAI API', 'Hugging Face', 'LangChain'],
-        projects: 'AI-powered data analysis tool'
-      },
-      {
-        id: 'capstone',
-        title: 'Capstone Challenge',
-        duration: '4 weeks',
-        difficulty: 5,
-        topics: [
-          'End-to-end project planning',
-          'Data pipeline development',
-          'Model deployment and monitoring',
-          'Business presentation skills',
-          'Portfolio development'
-        ],
-        outcomes: [
-          'Complete a full data science project',
-          'Present findings to stakeholders',
-          'Build a professional portfolio'
-        ],
-        tools: ['All previous tools', 'Docker', 'AWS', 'Git'],
-        projects: 'Industry capstone project'
-      }
+   {
+      "id": "statistics",
+      "title": "Statistical Thinking for Analysts",
+      "duration": "2 weeks",
+      "difficulty": 1,
+      "topics": [
+        "Data types, distributions, and descriptive summaries",
+        "Probability concepts and real-world interpretation",
+        "Hypothesis testing and decision-making under uncertainty",
+        "Correlation and trend interpretation",
+        "Statistical inference for business applications"
+      ],
+      "outcomes": [
+        "Build confidence in interpreting business data statistically",
+        "Apply hypothesis testing for analytical decisions",
+        "Draw insights from correlation and trend patterns"
+      ],
+      "tools": ["Python", "SciPy", "Statsmodels"],
+      "projects": "Descriptive and inferential analysis mini tasks"
+    },
+    {
+      "id": "adv_excel",
+      "title": "Advanced Excel for Business Analysis",
+      "duration": "2 weeks",
+      "difficulty": 1,
+      "topics": [
+        "Advanced functions and logical operations",
+        "Lookup functions and automation using formulas",
+        "Conditional formatting and data validation",
+        "Interactive dashboards using Pivot tables and charts"
+      ],
+      "outcomes": [
+        "Build professional dashboards for reporting",
+        "Analyze and summarize large datasets efficiently",
+        "Use Excel as a quick analytical tool for decisions"
+      ],
+      "tools": ["Microsoft Excel"],
+      "projects": "KPI Dashboard and Sales Analysis Sheets"
+    },
+    {
+      "id": "sql",
+      "title": "SQL for Data Analytics",
+      "duration": "2 weeks",
+      "difficulty": 2,
+      "topics": [
+        "Relational database concepts and data types",
+        "Querying data using SELECT, WHERE, and JOIN",
+        "Aggregations, filters, and data grouping",
+        "Subqueries, functions, and data preparation"
+      ],
+      "outcomes": [
+        "Write queries to retrieve and summarize business data",
+        "Prepare datasets for reporting and dashboarding",
+        "Support performance tracking with SQL queries"
+      ],
+      "tools": ["MySQL", "PostgreSQL"],
+      "projects": "Included in SQL Project module"
+    },
+    {
+      "id": "sql_project",
+      "title": "SQL Case Project",
+      "duration": "1 week",
+      "difficulty": 2,
+      "topics": [
+        "Query optimization for reporting",
+        "Generating KPIs and summaries",
+        "Data cleaning and relational joins"
+      ],
+      "outcomes": [
+        "Apply SQL in real-world analytics problems",
+        "Build automated data pipelines for reports"
+      ],
+      "tools": ["MySQL", "Power BI"],
+      "projects": "Retail Performance and HR Analytics Reports"
+    },
+    {
+      "id": "power_bi",
+      "title": "Power BI for Data Visualization",
+      "duration": "2 weeks",
+      "difficulty": 2,
+      "topics": [
+        "Data modeling and relationship mapping",
+        "DAX calculations and business measures",
+        "Visual storytelling through dashboards",
+        "Sharing and publishing insights"
+      ],
+      "outcomes": [
+        "Design professional business dashboards",
+        "Translate raw data into interactive visuals",
+        "Present insights effectively to decision-makers"
+      ],
+      "tools": ["Power BI", "DAX"],
+      "projects": "Sales and Operations Dashboards"
+    },
+    {
+      "id": "python",
+      "title": "Python for Data Analytics",
+      "duration": "3 weeks",
+      "difficulty": 2,
+      "topics": [
+        "Data manipulation using Pandas and NumPy",
+        "Data cleaning and formatting",
+        "Visualization using Matplotlib and Seaborn",
+        "Analyzing business data through Python scripts"
+      ],
+      "outcomes": [
+        "Clean, analyze, and visualize datasets programmatically",
+        "Automate repetitive analysis tasks using Python",
+        "Generate insights through reproducible scripts"
+      ],
+      "tools": ["Python", "NumPy", "Pandas", "Matplotlib"],
+      "projects": "Retail and HR Dataset Analysis"
+    },
+    {
+      "id": "machine_learning",
+      "title": "Applied Machine Learning for Analysts",
+      "duration": "3 weeks",
+      "difficulty": 3,
+      "topics": [
+        "Predictive analytics concepts",
+        "Regression and classification for forecasting",
+        "Segmentation and clustering for customer insights",
+        "Model evaluation and interpretation"
+      ],
+      "outcomes": [
+        "Use machine learning for business forecasting",
+        "Segment and profile data to improve decisions",
+        "Communicate model results in simple business terms"
+      ],
+      "tools": ["Python", "Scikit-learn", "Pandas"],
+      "projects": "Predictive Insights Project"
+    },
+    {
+      "id": "generative_ai",
+      "title": "Generative AI Applications for Analysts",
+      "duration": "2 weeks",
+      "difficulty": 3,
+      "topics": [
+        "Introduction to generative AI in business contexts",
+        "Prompt design and automation use cases",
+        "Customizing generative tools for analytics workflows"
+      ],
+      "outcomes": [
+        "Use AI tools to automate reporting tasks",
+        "Build prompt-based data summarization workflows",
+        "Leverage AI for faster decision-making"
+      ],
+      "tools": ["OpenAI API", "Python"],
+      "projects": "AI-powered Report Generator"
+    },
+    {
+      "id": "capstone",
+      "title": "Capstone Project",
+      "duration": "3 weeks",
+      "difficulty": 4,
+      "topics": [
+        "End-to-end analytics workflow",
+        "Data preparation, visualization, and insight generation",
+        "Business presentation and storytelling"
+      ],
+      "outcomes": [
+        "Execute a full-cycle data analytics project",
+        "Present results with a professional business narrative"
+      ],
+      "tools": ["Python", "Power BI", "SQL"],
+      "projects": "Business Operations Dashboard and Report"
+    },
+
+
     ];

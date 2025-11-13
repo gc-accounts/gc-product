@@ -2,8 +2,7 @@
 import { CheckCircle } from 'lucide-react';
 import React from 'react'
 import { useState, useEffect } from 'react'; // Added useEffect
-import { DABCurriculumData } from './data/DABCurriculumData';
-
+import { DSBCurriculumData } from './data/DSBCurriculumData';
 interface Props {
   sectionClass?: string;
   title?: string;
@@ -54,7 +53,7 @@ const DsCurriculum = ({ sectionClass, title, subText }: Props) => {
         <div className="max-w-6xl mx-auto">
           {/* Module Tabs */}
           <div className="flex flex-wrap justify-center gap-2 mb-8 lg:mb-12">
-            {DABCurriculumData.map((module) => (
+            {DSBCurriculumData.map((module) => (
               <button
                 key={module.id}
                 onClick={() => setActiveModule(module.id)}
@@ -72,7 +71,7 @@ const DsCurriculum = ({ sectionClass, title, subText }: Props) => {
 
           {/* Module Content */}
           <div className="bg-white rounded-2xl shadow-lg border border-border-gray overflow-hidden">
-            {DABCurriculumData.map((module) => (
+            {DSBCurriculumData.map((module) => (
               <div
                 key={module.id}
                 className={`transition-all duration-500 ${

@@ -12,189 +12,142 @@ interface Props {
 const AimlCurriculum = ({ sectionClass, title, subText }: Props) => {
 
     const modules = [
-      {
-        id: 'python1',
-        title: 'Python for AI Applications – Part I',
-        duration: '2 weeks',
-        difficulty: 1,
-        topics: [
-          'Advanced Python concepts',
-          'Functional programming',
-          'Performance optimization',
-          'Real-world Python best practices'
-        ],
-        outcomes: [
-          'Master advanced Python',
-          'Write optimized code',
-          'Real-world problem solving'
-        ],
-        tools: ['Python 3.9+', 'libraries']
-      },
-      {
-        id: 'python2',
-        title: 'Python for AI Applications – Part II',
-        duration: '2 weeks',
-        difficulty: 2,
-        topics: [
-          'NumPy mastery',
-          'Pandas data processing',
-          'Data manipulation techniques',
-          'Performance optimization'
-        ],
-        outcomes: [
-          'Data processing expertise',
-          'NumPy/Pandas mastery',
-          'Efficient data handling'
-        ],
-        tools: ['NumPy', 'Pandas', 'Scikit-learn']
-      },
-      {
-        id: 'eda1',
-        title: 'Exploratory Data Analysis (EDA) – Part I',
-        duration: '2 weeks',
-        difficulty: 2,
-        topics: [
-          'Data visualization techniques',
-          'Statistical analysis methods',
-          'Pattern recognition',
-          'Data quality assessment'
-        ],
-        outcomes: [
-          'Comprehensive EDA skills',
-          'Statistical analysis',
-          'Data visualization mastery'
-        ],
-        tools: ['Matplotlib', 'Seaborn', 'Plotly']
-      },
-      {
-        id: 'eda2',
-        title: 'Exploratory Data Analysis (EDA) – Part II',
-        duration: '2 weeks',
-        difficulty: 3,
-        topics: [
-          'Advanced visualization',
-          'Feature engineering',
-          'Data preprocessing',
-          'Statistical modeling'
-        ],
-        outcomes: [
-          'Advanced EDA techniques',
-          'Feature engineering skills',
-          'Statistical modeling'
-        ],
-        tools: ['Python', 'advanced visualization']
-      },
-      {
-        id: 'ml1',
-        title: 'Machine Learning – Part I (Supervised)',
-        duration: '3 weeks',
-        difficulty: 3,
-        topics: [
-          'Regression algorithms',
-          'Classification methods',
-          'Model optimization',
-          'Cross-validation techniques'
-        ],
-        outcomes: [
-          'Supervised learning mastery',
-          'Model optimization skills',
-          'Performance evaluation'
-        ],
-        tools: ['Scikit-learn', 'LightGBM']
-      },
-      {
-        id: 'ml2',
-        title: 'Machine Learning – Part II (Unsupervised & Deep Learning)',
-        duration: '3 weeks',
-        difficulty: 4,
-        topics: [
-          'Clustering algorithms',
-          'Neural networks fundamentals',
-          'CNNs and RNNs',
-          'Deep learning architectures'
-        ],
-        outcomes: [
-          'Unsupervised learning skills',
-          'Deep learning fundamentals',
-          'Neural network design'
-        ],
-        tools: ['TensorFlow', 'Keras', 'PyTorch']
-      },
-      {
-        id: 'llm',
-        title: 'Foundational Language Models & Fine-tuning',
-        duration: '2 weeks',
-        difficulty: 4,
-        topics: [
-          'Transformer architecture',
-          'BERT and GPT models',
-          'Fine-tuning techniques',
-          'Transfer learning'
-        ],
-        outcomes: [
-          'LLM understanding',
-          'Fine-tuning expertise',
-          'Transfer learning skills'
-        ],
-        tools: ['Hugging Face', 'PyTorch', 'TensorFlow']
-      },
-      {
-        id: 'rag',
-        title: 'Retrieval Augmented Generation (RAGs)',
-        duration: '1 week',
-        difficulty: 4,
-        topics: [
-          'Vector databases',
-          'Semantic search',
-          'RAG system architecture',
-          'Embedding techniques'
-        ],
-        outcomes: [
-          'RAG system design',
-          'Vector database skills',
-          'Semantic search implementation'
-        ],
-        tools: ['LangChain', 'OpenAI APIs', 'Pinecone']
-      },
-      {
-        id: 'agents',
-        title: 'AI Agents, Deployment & Projects',
-        duration: '2 weeks',
-        difficulty: 5,
-        topics: [
-          'Autonomous agents design',
-          'Docker containerization',
-          'Cloud deployment',
-          'Production monitoring'
-        ],
-        outcomes: [
-          'AI agent development',
-          'Production deployment',
-          'System monitoring'
-        ],
-        tools: ['Docker', 'Kubernetes', 'AWS', 'GCP', 'Azure']
-      },
-      {
-        id: 'capstone',
-        title: 'Capstone Project – Production AI System',
-        duration: '1 week',
-        difficulty: 5,
-        topics: [
-          'End-to-end project development',
-          'Production deployment',
-          'System monitoring',
-          'Performance optimization'
-        ],
-        outcomes: [
-          'Complete AI system',
-          'Production deployment',
-          'Real-world application'
-        ],
-        tools: ['All learned tools']
-      }
+     {
+      "id": "python_ai",
+      "title": "Python in AI Applications",
+      "duration": "1 week",
+      "difficulty": 1,
+      "topics": [
+        "Lists and tuples for AI data management",
+        "Dictionaries and data structuring for model input",
+        "Libraries for AI: NumPy, Pandas, Matplotlib",
+        "File handling, modular programming, and OOP for AI applications"
+      ],
+      "outcomes": [
+        "Write Python scripts tailored for AI and ML workflows",
+        "Manage and preprocess datasets effectively",
+        "Build reusable functions and classes for AI pipelines"
+      ],
+      "tools": ["Python", "NumPy", "Pandas", "Matplotlib"],
+      "projects": "Basic Python Project for AI (Data handling and automation tasks)"
+    },
+    {
+      "id": "ml_models",
+      "title": "Machine Learning Models",
+      "duration": "1 week",
+      "difficulty": 2,
+      "topics": [
+        "Introduction to supervised learning",
+        "Regression and classification algorithms",
+        "Model training, testing, and evaluation metrics",
+        "Hyperparameter tuning and optimization"
+      ],
+      "outcomes": [
+        "Build foundational ML models for prediction tasks",
+        "Apply regression and classification in real data scenarios",
+        "Evaluate model performance and improve accuracy"
+      ],
+      "tools": ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
+      "projects": "Supervised Learning Case Study"
+    },
+    {
+      "id": "deep_learning_nlp",
+      "title": "Deep Learning (CNN & RNN) and Natural Language Processing",
+      "duration": "2 weeks",
+      "difficulty": 4,
+      "topics": [
+        "CNN architecture and working principles",
+        "RNN and sequence modeling fundamentals",
+        "Tokenization, embeddings, and word vectors",
+        "Text classification and sentiment analysis"
+      ],
+      "outcomes": [
+        "Understand and implement CNN and RNN architectures",
+        "Apply deep learning for image and text data",
+        "Use NLP for text analytics and automation"
+      ],
+      "tools": ["TensorFlow", "Keras", "PyTorch", "NLTK", "Hugging Face"],
+      "projects": "Image Classification and Text Analysis Tasks"
+    },
+    {
+      "id": "foundation_llm",
+      "title": "Foundational Language Models & Fine-tuning (PEFT, LoRA, QLoRA)",
+      "duration": "3 weeks",
+      "difficulty": 4,
+      "topics": [
+        "Introduction to LLMs (GPT, LLaMA, Mistral)",
+        "Tokenization, embeddings, and architecture",
+        "Fine-tuning with PEFT, LoRA, and QLoRA",
+        "Evaluating and optimizing LLM performance"
+      ],
+      "outcomes": [
+        "Understand the inner workings of modern LLMs",
+        "Fine-tune pre-trained models for custom datasets",
+        "Optimize LLM performance using efficient fine-tuning methods"
+      ],
+      "tools": ["Hugging Face", "Transformers", "PEFT", "LoRA", "QLoRA"],
+      "projects": "Custom Model Fine-tuning (Domain-Specific Chat Model)"
+    },
+    {
+      "id": "rags",
+      "title": "RAGs: Chunking, Embedding & Frameworks (LangChain, LlamaIndex, OpenAI)",
+      "duration": "1.5 weeks",
+      "difficulty": 3,
+      "topics": [
+        "Chunking and embedding text for retrieval",
+        "Building vector databases and search pipelines",
+        "Implementing RAG workflows",
+        "Using LangChain, LlamaIndex, and OpenAI APIs"
+      ],
+      "outcomes": [
+        "Implement retrieval-augmented generation workflows",
+        "Integrate vector search into AI systems",
+        "Build knowledge-based chatbot systems"
+      ],
+      "tools": ["LangChain", "LlamaIndex", "OpenAI API", "Pinecone", "FAISS"],
+      "projects": "Knowledge Retrieval Chatbot"
+    },
+    {
+      "id": "ai_agents",
+      "title": "AI Agents, AutoGen & Deployment: Vision, Contact Center, and Automation",
+      "duration": "1.5 weeks",
+      "difficulty": 4,
+      "topics": [
+        "Multi-agent systems and agentic workflows",
+        "Function calling and automation frameworks",
+        "Vision and document AI applications",
+        "Deploying AI agents for real-world use cases"
+      ],
+      "outcomes": [
+        "Understand AI agent architecture and workflows",
+        "Automate complex reasoning and task orchestration",
+        "Deploy AI models into real-world business applications"
+      ],
+      "tools": ["AutoGen", "LangChain", "OpenAI API", "Streamlit", "FastAPI"],
+      "projects": "AI Contact Center Agent or Vision-based Automation"
+    },
+    {
+      "id": "capstone",
+      "title": "Capstone Project",
+      "duration": "1 week",
+      "difficulty": 4,
+      "topics": [
+        "Problem definition and data preparation",
+        "Model development and deployment",
+        "Solution presentation and demonstration"
+      ],
+      "outcomes": [
+        "Build an end-to-end applied AI project",
+        "Showcase the ability to implement production-level solutions"
+      ],
+      "tools": ["Python", "LLMs", "LangChain", "AutoGen", "Streamlit"],
+      "projects": "Industry-specific Applied AI Project"
+    },
+
+
     ];
 
-    const [activeModule, setActiveModule] = useState('python1');
+    const [activeModule, setActiveModule] = useState('python_ai');
 
     const getDifficultyStars = (difficulty: number) => {
       return '⭐'.repeat(difficulty) + '☆'.repeat(5 - difficulty);
