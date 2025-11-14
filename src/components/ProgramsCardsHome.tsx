@@ -27,9 +27,9 @@ const ProgramsCardsHome = ({ sectionClass, currency, basePrice }: Props) => {
       title: 'Internship cum Training Program in Data Science',
       price: currency === 'INR' ? '₹5,000 + GST' : `$${basePrice}`,
       duration: ['12 weeks | Hybrid | Total Hours: 125'],
-      description: 'This program is designed to prepare students for roles such as Data Analyst, Research Analyst, Junior Data Scientist, and Data Consultant, with hands-on exposure to Python, SQL, Power BI, and AI tools.',
+      description: 'Prepares students for roles such as Data Analyst, Research Analyst, Junior Data Scientist, and Data Consultant — supported by hands-on exposure to Python, SQL, Power BI, and AI tools.',
       highlights: [
-        'Applied Statistics & Python for Data Science',
+        'Applied Statistics & Python',
         'SQL for Data Management',
         'Machine Learning Models & Capstone Projects',
         'Generative AI Applications',
@@ -44,12 +44,12 @@ const ProgramsCardsHome = ({ sectionClass, currency, basePrice }: Props) => {
       title: 'Internship cum Training Program in Data Analytics',
       price: currency === 'INR' ? '₹5,000 + GST' : `$${basePrice}`,
       duration: ['12 weeks | Hybrid | Total Hours: 125'],
-      description: 'This program is designed to prepare students for roles such as Data Analyst, Business Analyst, Business Intelligence Developer, and Product Analyst, helping them translate data into actionable business insights.',
+      description: 'Designed for students moving into Business Analyst, Data Analyst, BI Developer, and Product Analyst roles, with a focus on turning data into actionable insights.',
       highlights: [
-        'Excel & SQL for Business Insights',
-        'Power BI and Data Visualization',
+        'Excel & SQL for Insights',
+        'Power BI & Data Visualization',
         'Exploratory Data Analysis & Reporting',
-        'Data Storytelling & Dashboard Design',
+        'Dashboard Design & Storytelling',
         'Real-World Analytics Projects',
       ],
       badge: 'High Demand',
@@ -58,14 +58,14 @@ const ProgramsCardsHome = ({ sectionClass, currency, basePrice }: Props) => {
     },
     {
       id: 'ai-ml',
-      title: 'Internship cum Training Program in AI and ML',
+      title: 'Internship cum Training Program in AI & ML',
       price: currency === 'INR' ? '₹5,000 + GST' : `$${basePrice}`,
       duration: ['12 weeks | Hybrid | Total Hours: 125'],
-      description: 'This program is designed to prepare students for roles such as AI Engineer, ML Engineer, Data Scientist, and AI Research Associate, focusing on intelligent systems, LLMs, and deployment frameworks.',
+      description: 'Equips students for emerging roles such as AI Engineer, ML Engineer, and AI Research Associate, with training on intelligent systems and deployment frameworks.',
       highlights: [
         'Python for AI Applications',
         'Supervised & Unsupervised Learning',
-        'Language Models & Fine-Tuning (LORA, RAG)',
+        'LLMs, RAG, and Model Fine-Tuning',
         'AI Agents & Deployment',
         'Project-Based Learning',
       ],
@@ -78,12 +78,12 @@ const ProgramsCardsHome = ({ sectionClass, currency, basePrice }: Props) => {
       title: 'Internship cum Training Program in Investment Banking & Finance Operations',
       price: currency === 'INR' ? '₹5,000 + GST' : `$${basePrice}`,
       duration: ['12 weeks | Hybrid | Total Hours: 125'],
-      description: 'This program is designed to prepare students and professionals for roles in global banking and financial operations. Learn real-world processes across investment banking, trade settlements, fund accounting, and corporate actions through live simulations and mentor-led sessions.',
+      description: 'Develops job-ready talent for global banking and finance operations by simulating real-world processes across trading, settlements, risk, and corporate actions.',
       highlights: [
-        'Fundamentals of Financial Markets and Investment Banking',
-        'Trade Life Cycle, Settlements, and Reconciliation',
+        'Financial Markets & Investment Banking Fundamentals',
+        'Trade Life Cycle, Settlements & Reconciliation',
         'Derivatives, Collateral, and Corporate Actions',
-        'Asset Management & Compliance Processes (AML/KYC)',
+        'Asset Management & Compliance (AML/KYC)',
         'Industry-Aligned, Project-Based Curriculum',
       ],
       badge: 'High Demand',
@@ -97,14 +97,14 @@ const ProgramsCardsHome = ({ sectionClass, currency, basePrice }: Props) => {
       <div className="container max-w-7xl mx-auto">
         <div className="text-center mb-8 lg:mb-12">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-            Choose Your Path to Success
+           Modern Internship Programs Built for Today’s Job Market
           </h2>
-          <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
-            Comprehensive bootcamps designed for career transformation
+          <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-4xl">
+            Equip your learners with industry-aligned Internship cum Training (IcT) programs that map directly to emerging job roles. Each program integrates practical tools, structured learning, and employer-relevant project work.
           </p>
         </div>
 
-   <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6 lg:gap-8">
+   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
   {programs.map((program) => (
     <div key={program.id}>
       <Card className="h-full hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-border-gray hover:border-primary-green bg-white relative overflow-hidden">

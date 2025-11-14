@@ -38,13 +38,11 @@ return (
         <div className="space-y-8">
           <div className="space-y-6">
             <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight">
-              High-Impact Internship cum{' '}
-              <span className="text-gradient">Training (IcT) Programs</span>
+              High-Impact <span className="text-gradient">Internship cum Training (IcT) Programs</span>
             </h1>
 
             <p className="text-base sm:text-xl text-medium-gray leading-relaxed max-w-8xl">
-              Partner with GreyCampus to embed cutting-edge Data Science and AI expertise in your students, ensuring high-value career outcome
-              {/* Master Data Science, Analytics, and AI/ML at {currency === 'INR' ? '₹5,000' : `$${basePrice}`}. Real skills. Real careers. Real transformation. */}
+              Equip your students with in-demand skills and recognized internship certificates that strengthen placement readiness and academic outcomes.
             </p>
 
 <div className="space-y-4">
@@ -54,7 +52,7 @@ return (
       <Cpu className="w-4 h-4 text-primary-green" />
     </div>
     <div>
-      <span className="text-base font-semibold text-dark-gray">Designed with In-demand tools</span>
+      <span className="text-base font-semibold text-dark-gray">Designed with in-demand tools & real-world projects</span>
     </div>
   </div>
 
@@ -64,7 +62,7 @@ return (
       <BookOpen className="w-4 h-4 text-primary-green" />
     </div>
     <div>
-      <span className="text-base font-semibold text-dark-gray">Dual Certification</span>
+      <span className="text-base font-semibold text-dark-gray">Dual Certification: Internship + Skill Certification</span>
     </div>
   </div>
 
@@ -74,7 +72,8 @@ return (
       <Target className="w-4 h-4 text-primary-green" />
     </div>
     <div>
-      <span className="text-base font-semibold text-dark-gray">Access to our dedicated Placement Portal on successful completion</span>
+      <span className="text-base font-semibold text-dark-gray">Dedicated Placement Portal for student career support
+      </span>
     </div>
   </div>
 
@@ -84,7 +83,7 @@ return (
       <Building className="w-4 h-4 text-primary-green" />
     </div>
     <div>
-      <span className="text-base font-semibold text-dark-gray">400+ Hiring Partners</span>
+      <span className="text-base font-semibold text-dark-gray">400+ Hiring Partners enabling strong career outcomes</span>
     </div>
   </div>
 </div>

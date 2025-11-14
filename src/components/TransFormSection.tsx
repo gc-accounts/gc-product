@@ -20,10 +20,10 @@ const TransFormSection = ({ sectionClass  }: Props) => {
                      <div className=" space-y-8">
                     <div className="space-y-6">
                       <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-                        Ready to Transform Your Career?
+                        Let’s Build the Future of Your Students, Together
                       </h2>
                       <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
-                        Join thousands of professionals who&apos;ve already taken the leap with our affordable, industry-focused bootcamps.
+                        Partner with GreyCampus to launch industry-aligned Internship cum Training (IcT) programs across Data Science, Data Analytics, AI & ML, and Investment Banking & Finance Operations.
                       </p>
                     </div>
                     

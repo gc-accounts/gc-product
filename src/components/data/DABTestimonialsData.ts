@@ -1,50 +1,56 @@
-  export const DABTestimonialsData = [
-      {
-        name: 'Priya Sharma',
-        role: 'Data Analyst at Microsoft',
-        achievement: '₹3L → ₹7L (+133%)',
-        quote: 'This bootcamp transformed my career. From support role to Data Analyst in 2 months. Excellent mentorship and practical projects.',
-        rating: 5,
-        avatar: '👩‍💼'
-      },
-      {
-        name: 'Rahul Verma',
-        role: 'BI Developer at Amazon',
-        achievement: 'First tech role secured',
-        quote: 'Coming from non-tech background, I was nervous. The instructors made everything clear. Got placed at Amazon within 3 weeks of completion.',
-        rating: 5,
-        avatar: '👨‍💻'
-      },
-      {
-        name: 'Anjali Patel',
-        role: 'Marketing Analyst at Google',
-        achievement: 'Career switch in 4 weeks',
-        quote: 'The power BI and Python modules were fantastic. Real-world projects helped me demonstrate skills in interviews. Best investment I made!',
-        rating: 5,
-        avatar: '👩‍📊'
-      },
-      {
-        name: 'Vikram Kumar',
-        role: 'Financial Analyst at JPMorgan Chase',
-        achievement: 'SQL expertise led to promotion',
-        quote: 'The SQL module alone was worth the entire bootcamp cost. Advanced my career significantly. Highly recommended for finance professionals.',
-        rating: 5,
-        avatar: '👨‍💼'
-      },
-      {
-        name: 'Neha Singh',
-        role: 'Business Analyst at Deloitte',
-        achievement: 'From HR to analytics in 6 weeks',
-        quote: 'Flexible schedule allowed me to learn while working. Great mentorship and job support. My salary doubled after placement.',
-        rating: 5,
-        avatar: '👩‍💻'
-      },
-      {
-        name: 'Arjun Nair',
-        role: 'Analytics Engineer at Stripe',
-        achievement: 'Python mastery led to technical growth',
-        quote: 'The combination of SQL, Python, and BI tools made me a complete data professional. Got multiple offers and chose Stripe.',
-        rating: 5,
-        avatar: '👨‍🔬'
-      }
-    ];
+export const DABTestimonialsData = [
+  {
+    name: 'Aisha Nair',
+    role: 'Data Analyst at Capgemini',
+    achievement: 'Salary progression: ₹3L → ₹7L',
+    quote:
+      'The bootcamp helped me transition from a support role into analytics. The mentorship and practical assignments played a major role in my career growth.',
+    rating: 5,
+    avatar: '👩‍💼'
+  },
+  {
+    name: 'Kunal Bhatia',
+    role: 'BI Developer at Amazon',
+    achievement: 'First tech role secured',
+    quote:
+      'Coming from a non-tech background, I appreciated how clearly everything was taught. The structured learning path helped me secure my first tech role.',
+    rating: 5,
+    avatar: '👨‍💻'
+  },
+  {
+    name: 'Meera Joshi',
+    role: 'Marketing Analyst at GlobalData',
+    achievement: 'Successfully moved into analytics',
+    quote:
+      'The Power BI and Python modules were extremely practical. The real-world projects made it easy to demonstrate my skills during interviews.',
+    rating: 5,
+    avatar: '👩‍📊'
+  },
+  {
+    name: 'Arvind Menon',
+    role: 'Financial Analyst at Bajaj Finance',
+    achievement: 'Promotion driven by SQL expertise',
+    quote:
+      'The SQL module alone was invaluable. It strengthened my technical foundation and played a key role in my career advancement in finance.',
+    rating: 5,
+    avatar: '👨‍💼'
+  },
+  {
+    name: 'Tanvi Kapoor',
+    role: 'Business Analyst at Deloitte',
+    achievement: 'Career transition supported by structured guidance',
+    quote:
+      'The flexibility was perfect for learning while working. The mentorship and interview preparation helped me transition smoothly from HR to analytics.',
+    rating: 5,
+    avatar: '👩‍💻'
+  },
+  {
+    name: 'Rohan Mehta',
+    role: 'Data Reporting Analyst at Accenture',
+    achievement: 'Portfolio-led career break',
+    quote:
+      'The bootcamp gave me a clear understanding of data visualization and reporting. The projects helped me build a strong portfolio that stood out.',
+    rating: 5,
+    avatar: '👨‍🔬'
+  }
+];

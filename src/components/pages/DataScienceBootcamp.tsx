@@ -16,6 +16,7 @@ import DSBFeeModule from '../DSBFeeModule';
 import Certification from '../Certification';
 import DsEnrollmentFormSection from '../DsEnrollmentFormSection';
 import Testimonials from '../Testimonials';
+import ToolsMasterSection from '../ToolsMasterSection';
 import DsFaq from '../DsFaq';
 import Footer from '@/components/Footer';
 import { getUserCountry, PRICE_CONFIG } from '@/lib/country-detection';
@@ -24,6 +25,7 @@ import { DSBCareersAfterData } from '../data/DSBCareersAfterData';
 import { DSBOutcomesData } from '../data/DSBOutcomesData';
 import { DSCertificateData } from '../data/DSCertificateData';
 import { DSBTestimonialsData } from '../data/DSBTestimonialsData';
+import { DSBToolsData } from '../data/DSBToolsData';
 import CareerServices from '../CareerServices';
 import JobDrives from '../JobDrives';
 
@@ -76,14 +78,15 @@ const DataScienceBootcamp = ({slug}:Props) => {
           <JobDrives sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <HiringOrganizationSection title='Trusted by Leading Companies' subText='Our graduates work at Fortune 600+ companies and innovative startups worldwide' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <DsCurriculum title="What You'll Learn" subText='3 months of comprehensive, industry-aligned curriculum' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <CareerServices title='Career Services' subText='Dedicated support to launch your career.' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <ProgramOutcomes data={DSBOutcomesData}  title='Program Outcomes' subText='Real skills. Real impact. Real career transformation.' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <DSBProjects title='Build Real-World Projects' subText='Apply your skills to projects used by real companies' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <HowEnroll title='How Do I Enroll?' subText='Simple 3-step process to start your Generative AI journey' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <DSBFeeModule currency={currency} basePrice={basePrice}  title='Invest in Your Future at Affordable Prices' subText='The most cost-effective bootcamp without compromising quality' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <Certification sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={DSCertificateData} />
-          <DsEnrollmentFormSection sectionClass=' px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
-          <Testimonials data={DSBTestimonialsData} title='Success Stories' subText='Real students, real transformations, real careers' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <ToolsMasterSection tools={DSBToolsData} sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]"/>
+          <CareerServices title='Career Services' subText='Dedicated support to launch your career.' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <ProgramOutcomes data={DSBOutcomesData}  title='Program Outcomes' subText='Real skills. Real impact. Real career transformation.' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <DSBProjects title='Build Real-World Projects' subText='Apply your skills to projects used by real companies' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <HowEnroll title='How Do I Enroll?' subText='Simple 3-step process to start your Generative AI journey' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <DSBFeeModule currency={currency} basePrice={basePrice}  title='Invest in Your Future at Affordable Prices' subText='The most cost-effective bootcamp without compromising quality' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <Certification sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={DSCertificateData} />
+          <DsEnrollmentFormSection sectionClass='bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
+          <Testimonials data={DSBTestimonialsData} title='Success Stories' subText='Real students, real transformations, real careers' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <DsFaq />
         </main>
         <Footer />

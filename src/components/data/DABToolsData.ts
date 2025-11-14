@@ -1,0 +1,17 @@
+export const DABToolsData = [
+  { path: "https://strapi.odinschool.com/uploads/Power_BI_eaa71186a4.webp", name: "Power BI" },
+  { path: "https://strapi.odinschool.com/uploads/Co_pilot_c78d676a96.webp", name: "Co-Pilot" },
+  { path: "https://strapi.odinschool.com/uploads/Power_BI_DAX_1_1c93ae4728.webp", name: "Power BI DAX" },
+  { path: "https://strapi.odinschool.com/uploads/SQL_2_390a4748d3.webp", name: "MySQL" },
+  { path: "https://strapi.odinschool.com/uploads/python_1_3333c6d3fc.webp", name: "Python" },
+  { path: "https://strapi.odinschool.com/uploads/numpy_1_00df5e42fd.webp", name: "NumPy" },
+  { path: "https://strapi.odinschool.com/uploads/pandas_1_85c7171a6a.webp", name: "Pandas" },
+  { path: "https://strapi.odinschool.com/uploads/matplotlib_1_dd5b669343.webp", name: "Matplotlib" },
+  { path: "https://strapi.odinschool.com/uploads/Seaborn_1_6c43d61a75.webp", name: "Seaborn" },
+  { path: "https://strapi.odinschool.com/uploads/Scikit_20_Learn_1_81c75b0d2d.webp", name: "Scikit-learn" },
+  { path: "https://strapi.odinschool.com/uploads/plotly_e86dbe83f4.webp", name: "Plotly" },
+  { path: "https://strapi.odinschool.com/uploads/n8n_5a2ea5ac44.webp", name: "n8n" },
+  { path: "https://strapi.odinschool.com/uploads/MS_20_Excel_eeebe0b81a.png", name: "Excel" },
+  { path: "https://strapi.odinschool.com/uploads/Claude_AI_2845cec6a1.webp", name: "Claude" },
+  { path: "https://strapi.odinschool.com/uploads/AI_2sql_2cc93c6c2b.png", name: "AI2sql" },
+];

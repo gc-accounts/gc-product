@@ -14,7 +14,7 @@ const TestimonialsSection = ({ sectionClass  }: Props) => {
             name: 'Amit Sharma',
             role: 'Data Scientist at ADA',
             achievement: '₹4L → ₹11L (+175%)',
-            quote: 'The Data Science bootcamp changed my life. Within 2 months of completion, I had offers from Google and Amazon. The hands-on projects made all the difference.',
+            quote: 'The Data Science bootcamp changed my life. The hands-on projects and expert mentorship helped me secure a Data Scientist role at ADA soon after completing the program.',
             rating: 5,
             avatar: '👨‍💼'
           },
@@ -22,7 +22,7 @@ const TestimonialsSection = ({ sectionClass  }: Props) => {
             name: 'Priya Gupta',
             role: 'Data Analyst at Flipkart',
             achievement: 'First tech role after CA',
-            quote: 'Coming from finance, I was nervous. But the curriculum was so clear and practical. Now analyzing data at Microsoft and loving every moment.',
+            quote: 'Coming from a non-tech background, I was nervous. But the curriculum was clear, practical, and beginner-friendly. Today, I analyze data at Flipkart and genuinely enjoy my work.',
             rating: 5,
             avatar: '👩‍💻'
           },
@@ -30,7 +30,7 @@ const TestimonialsSection = ({ sectionClass  }: Props) => {
             name: 'Rohit Patel',
             role: 'ML Engineer at Amazon',
             achievement: '₹8L → ₹16L (+100%)',
-            quote: 'AI/ML bootcamp gave me production-ready skills. The LLM and RAG modules were incredible. Got placed at Meta within 3 weeks.',
+            quote: 'The AI/ML bootcamp gave me production-ready skills. The LLM and RAG modules gave me a huge edge during interviews. I landed an ML Engineer position at Amazon shortly after.',
             rating: 5,
             avatar: '👨‍🔬'
           },
@@ -38,7 +38,7 @@ const TestimonialsSection = ({ sectionClass  }: Props) => {
             name: 'Sneha Das',
             role: 'Business Analyst at Accenture',
             achievement: 'Career switch in 3 months',
-            quote: 'I was stuck in marketing. The Data Analyst bootcamp opened doors I didn&apos;t know existed. Now working with data at Amazon.',
+            quote: 'I was stuck in a marketing role. The Data Analytics bootcamp opened new opportunities for me. Now I work as a Business Analyst at Accenture.',
             rating: 5,
             avatar: '👩‍📊'
           },
@@ -46,7 +46,7 @@ const TestimonialsSection = ({ sectionClass  }: Props) => {
             name: 'Vikram Singh',
             role: 'AI Software Engineer at Prolifics',
             achievement: '₹10L → ₹20L (+100%)',
-            quote: 'The depth of AI/ML curriculum is unmatched. Computer vision and deployment modules prepared me perfectly for Nvidia.',
+            quote: 'The depth of the AI/ML curriculum is unmatched. The computer vision and deployment modules prepared me exceptionally well for my role at Prolifics.',
             rating: 5,
             avatar: '👨‍💼'
           },
@@ -54,7 +54,7 @@ const TestimonialsSection = ({ sectionClass  }: Props) => {
             name: 'Ananya Verma',
             role: 'Senior Data Analyst at Lowe’s',
             achievement: 'Promoted twice in 1 year',
-            quote: 'Data Science bootcamp gave me confidence to lead analytics initiatives. Skills learned here transformed my career trajectory.',
+            quote: 'The Data Science bootcamp gave me the confidence and skills to lead analytics initiatives. It played a major role in shaping my career growth at Lowe’s.',
             rating: 5,
             avatar: '👩‍💻'
           },
@@ -62,7 +62,7 @@ const TestimonialsSection = ({ sectionClass  }: Props) => {
             name: 'Karthik Reddy',
             role: ' AI/ ML Specialist at Capgemini ',
             achievement: 'From backend to AI leadership',
-            quote: 'AI/ML bootcamp taught me not just coding but product thinking. Now shaping AI products at OpenAI.',
+            quote: 'The AI/ML bootcamp taught me not just coding, but product thinking. Today, I contribute to AI solutions at Capgemini with a strong foundation.',
             rating: 5,
             avatar: '👨‍🔬'
           },
@@ -70,7 +70,7 @@ const TestimonialsSection = ({ sectionClass  }: Props) => {
             name: 'Divya Malhotra',
             role: 'Senior Research Analyst at GlobalData',
             achievement: '₹5L → ₹9L (+80%)',
-            quote: 'The SQL and visualization modules were game-changing. Built dashboards that impressed LinkedIn interviewers.',
+            quote: 'The SQL and visualization modules were game-changing. The dashboards I built during the program helped me stand out in interviews and secure a role at GlobalData.',
             rating: 5,
             avatar: '👩‍📊'
           }
@@ -100,10 +100,10 @@ const TestimonialsSection = ({ sectionClass  }: Props) => {
         <div className="container max-w-7xl mx-auto">
           <div className="text-center mb-8 lg:mb-12">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-dark-gray mb-3 lg:mb-4">
-               Let’s Build the Future of Your Students, Together
+               Student Outcomes That Speak for Themselves
             </h2>
             <p className="text-sm lg:text-lg text-medium-gray mx-auto leading-relaxed max-w-8xl">
-               Partner with GreyCampus to launch industry-driven Internship cum Training (ICT) Programs that prepare your students for the world of Data Science and AI.
+               A glimpse into the real results our programs deliver.
             </p>
           </div>
           

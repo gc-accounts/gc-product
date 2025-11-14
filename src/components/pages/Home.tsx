@@ -58,8 +58,8 @@ const DataAnalystBootcamp: React.FC<Props> = ({ slug }) => {
         <TransformAcademic sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
         <ProgramsCardsHome basePrice={basePrice} currency={currency} sectionClass="px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
         <OpenStudents
-          title="Open to students from all disciplines"
-          subText="Our programs ensure that every student, regardless of their core discipline, gains the essential, high-demand technological layer needed to secure a competitive edge in a global, data-driven economy"
+          title="Designed for Students Across All Streams — Technical & Non-Technical"
+          subText="Our programs are open to students from all academic backgrounds, enabling every department to participate in high-demand areas such as Data Science, Data Analytics, AI & ML, and Investment Banking & Finance Operations."
           sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]"
         />
         <WhoAreWeSection sectionClass="px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />

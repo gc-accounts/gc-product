@@ -34,7 +34,7 @@ const postProgramBenefit = {
   title: "Post-Program Benefit:",
   description: (
     <>
-      All successful participants gain <span className="text-primary-green font-medium">exclusive access to the GreyCampus Placement Portal</span>,
+      All successful participants gain <span className="text-white font-medium">exclusive access to the GreyCampus Placement Portal</span>,
       enabling them to apply for internships and full-time opportunities with our network of <span className="font-semibold">400+ hiring partners</span>.
     </>
   ),
@@ -72,10 +72,10 @@ const IctPartnershipSection = ({ sectionClass }: Props) => (
         </div>
         {/* Benefit Box */}
         <div className="lg:w-1/4 flex-shrink-0">
-          <div className="bg-[#E6F8F1] border border-primary-green rounded-lg p-6 flex flex-col items-center text-center shadow-md h-full min-h-[220px]">
+          <div className="bg-primary-green border border-white rounded-lg p-6 flex flex-col items-center text-center shadow-md h-full min-h-[220px]">
             {postProgramBenefit.icon}
-              <h4 className="text-lg font-bold text-primary-green mb-1">{postProgramBenefit.title}</h4>
-              <p className="text-dark-gray text-sm leading-relaxed">{postProgramBenefit.description}</p>
+              <h4 className="text-lg font-bold text-white mb-1">{postProgramBenefit.title}</h4>
+              <p className="text-white text-sm leading-relaxed">{postProgramBenefit.description}</p>
 
           </div>
         </div>

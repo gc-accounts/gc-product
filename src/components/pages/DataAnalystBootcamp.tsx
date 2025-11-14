@@ -18,12 +18,14 @@ import DaEnrollmentFormSection from '../DaEnrollmentFormSection';
 import Testimonials from '../Testimonials';
 import DaFaq from '../DaFaq';
 import Footer from '@/components/Footer';
+import ToolsMasterSection from '../ToolsMasterSection';
 
 
 import { DABCareersAfterData } from '../data/DABCareersAfterData';
 import { DABOutcomesData } from '../data/DABOutcomesData';
 import { DACertificateData } from '../data/DACertificateData';
 import { DABTestimonialsData } from '../data/DABTestimonialsData';
+import { DABToolsData } from '../data/DABToolsData';
 import { getUserCountry, PRICE_CONFIG } from '@/lib/country-detection';
 import JobDrives from '../JobDrives';
 import CareerServices from '../CareerServices';
@@ -75,14 +77,15 @@ const DataAnalystBootcamp = ({slug}:Props) => {
           <JobDrives sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <HiringOrganizationSection title='Trusted by Leading Companies' subText='Our graduates work at Fortune 600+ companies and innovative startups worldwide' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <DaCurriculum title="What You'll Learn" subText='3 months of comprehensive, industry-aligned curriculum' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <CareerServices title='Career Services' subText='Dedicated support to launch your career.' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <ProgramOutcomes data={DABOutcomesData}  title='Program Outcomes' subText='Real skills. Real impact. Real career transformation.' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <DABProjects title='Build Real-World Projects' subText='Apply your skills to projects used by real companies' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <HowEnroll title='How Do I Enroll?' subText='Simple 5-step process to start your data science journey' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <DABFeeModule currency={currency} basePrice={basePrice} title='Invest in Your Future at Affordable Prices' subText='The most cost-effective bootcamp without compromising quality' sectionClass=" px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <Certification sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={DACertificateData} />
-          <DaEnrollmentFormSection sectionClass=' px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
-          <Testimonials data={DABTestimonialsData} title='Success Stories' subText='Real students, real transformations, real careers' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <ToolsMasterSection tools={DABToolsData}  sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <CareerServices title='Career Services' subText='Dedicated support to launch your career.' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <ProgramOutcomes data={DABOutcomesData}  title='Program Outcomes' subText='Real skills. Real impact. Real career transformation.' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <DABProjects title='Build Real-World Projects' subText='Apply your skills to projects used by real companies' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <HowEnroll title='How Do I Enroll?' subText='Simple 5-step process to start your data science journey' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <DABFeeModule currency={currency} basePrice={basePrice} title='Invest in Your Future at Affordable Prices' subText='The most cost-effective bootcamp without compromising quality' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          <Certification sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={DACertificateData} />
+          <DaEnrollmentFormSection sectionClass='bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
+          <Testimonials data={DABTestimonialsData} title='Success Stories' subText='Real students, real transformations, real careers' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <DaFaq />
         </main>
         <Footer />
