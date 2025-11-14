@@ -1,4 +1,5 @@
   'use client'
+import Image from 'next/image';
 import React from 'react';
 
 interface Props {
@@ -58,20 +59,13 @@ const WhoAreWeSection = ({ sectionClass  }: Props) => {
           </div>
           
           {/* Right Content - Visual */}
-          <div className="relative">
-            <div className="relative">
-              {/* Abstract illustration representing transformation */}
-              <div className="w-full h-96 bg-linear-to-br from-primary-green/20 to-accent-blue/20 rounded-2xl flex items-center justify-center relative overflow-hidden">
-                {/* Floating elements */}
-                <div className="absolute top-8 left-8 w-16 h-16 bg-primary-green/30 rounded-full animate-pulse"></div>
-                <div className="absolute top-16 right-12 w-12 h-12 bg-accent-blue/30 rounded-full animate-pulse delay-1000"></div>
-                <div className="absolute bottom-12 left-12 w-20 h-20 bg-accent-gold/30 rounded-full animate-pulse delay-2000"></div>
-                <div className="absolute bottom-8 right-8 w-14 h-14 bg-primary-green/30 rounded-full animate-pulse delay-500"></div>
-                
-                {/* Central icon */}
-                <div className="text-8xl">🚀</div>
-              </div>
-            </div>
+          <div className="relative w-full h-full">
+                  <Image 
+                  src={'https://strapi.odinschool.com/uploads/GC_Home_8ec8094e0f.webp'}
+                  alt='who are we bg'
+                  fill
+                  className='object-cover'
+                  />
           </div>
         </div>
       </div>
