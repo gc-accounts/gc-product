@@ -38,7 +38,7 @@ return (
         <div className="space-y-8">
           <div className="space-y-6">
             <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-dark-gray leading-tight">
-              High-Impact <span className="text-gradient">Internship cum Training (IcT) Programs</span>
+              High-Impact <span className="text-gradient">Internship Program with Taraining</span>
             </h1>
 
             <p className="text-base sm:text-xl text-medium-gray leading-relaxed max-w-8xl">
