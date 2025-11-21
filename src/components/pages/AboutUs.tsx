@@ -27,7 +27,7 @@ const teamMembers = [
     img: "https://strapi.odinschool.com/uploads/Deb_bc6a9c9aec.webp",
     title: "CEO & Founder",
     company: "Greycampus",
-    bio: "Deb is the visionary behind Greycampus. With 15+ years of experience in online education and tech training, Deb has led the mission to make professional development accessible to everyone. Her passion for innovation and commitment to affordability has transformed thousands of careers.",
+    bio: "Deb is the visionary behind Greycampus. With 15+ years of experience in online education and tech training, Deb has led the mission to make professional development accessible to everyone. His passion for innovation and commitment to affordability has transformed thousands of careers.",
     avatar: "/api/placeholder/120/120",
     social: { linkedin: "#" }
   },
