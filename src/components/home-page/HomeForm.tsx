@@ -36,34 +36,42 @@ const HomeForm: React.FC<FormProps> = ({ isModal = false, onClose }) => {
   const [phone, setPhone] = useState('');
 
   // Fetch UTM, GA, and location info
-  useEffect(() => {
-    setUtm(getUTMTrackingData());
-    setGaClientId(getGaCookieValue() || '');
-    fetchUserLocation().then((loc) => {
-      setCity(loc.city);
-      setState(loc.region);
-      // Auto-select country if available
-      if (loc.country) {
-        const match = CountryCodeData.find(
-          (c) => c.country.toLowerCase() === loc.country.toLowerCase()
-        );
-        if (match) setSelectedCountry({ country: match.country, code: match.code });
+useEffect(() => {
+  setUtm(getUTMTrackingData());
+  setGaClientId(getGaCookieValue() || '');
+
+  // Set default visible value in input
+  setCountrySearch('India');
+
+  fetchUserLocation().then((loc) => {
+    setCity(loc.city);
+    setState(loc.region);
+
+    if (loc.country) {
+      const match = CountryCodeData.find(
+        (c) => c.country.toLowerCase() === loc.country.toLowerCase()
+      );
+      if (match) {
+        setSelectedCountry({ country: match.country, code: match.code });
+        setCountrySearch(match.country); // also prefill the input
       }
-    });
-  }, []);
+    }
+  });
+}, []);
+
 
   // Filter country list
-  useEffect(() => {
-    if (countrySearch.trim() === '') {
-      setFilteredCountries(CountryCodeData);
-    } else {
-      setFilteredCountries(
-        CountryCodeData.filter((c) =>
-          c.country.toLowerCase().startsWith(countrySearch.toLowerCase())
-        )
-      );
-    }
-  }, [countrySearch]);
+useEffect(() => {
+  if (countrySearch.trim() === '') {
+    setFilteredCountries([]);
+  } else {
+    setFilteredCountries(
+      CountryCodeData.filter((c) =>
+        c.country.toLowerCase().includes(countrySearch.toLowerCase())
+      )
+    );
+  }
+}, [countrySearch]);
 
   const getAccessToken = async () => {
     const res = await fetch('/api/auth/course-form-token', {
@@ -205,38 +213,51 @@ const HomeForm: React.FC<FormProps> = ({ isModal = false, onClose }) => {
               <Input
                 type="text"
                 placeholder="Search Country"
-                value={countrySearch || selectedCountry.country}
+                value={countrySearch}
                 onChange={(e) => {
                   setCountrySearch(e.target.value);
                   setShowDropdown(true);
                 }}
-                onFocus={() => setShowDropdown(true)}
-                onBlur={() => setTimeout(() => setShowDropdown(false), 150)}
+                onFocus={() => {
+                  // Show dropdown ONLY when user types
+                  if (countrySearch.length > 0) {
+                    setShowDropdown(true);
+                  }
+                }}
+                onBlur={() => {
+                  setTimeout(() => setShowDropdown(false), 120);
+                }}
                 autoComplete="off"
                 required
               />
-              {showDropdown && (
+
+              {showDropdown && countrySearch.length > 0 && (
                 <ul className="absolute z-50 bg-white border border-gray-200 rounded-md mt-1 w-full max-h-48 overflow-y-auto shadow-lg">
-                  {filteredCountries.map((c) => (
-                    <li
-                      key={c.id}
-                      className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                      onMouseDown={() => {
-                        setSelectedCountry({ country: c.country, code: c.code });
-                        setCountrySearch(c.country);
-                        setShowDropdown(false);
-                      }}
-                    >
-                      {c.country} (+{c.code})
-                    </li>
-                  ))}
+                  {filteredCountries.length > 0 ? (
+                    filteredCountries.map((c) => (
+                      <li
+                        key={c.id}
+                        className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
+                        onMouseDown={() => {
+                          setSelectedCountry({ country: c.country, code: c.code });
+                          setCountrySearch(c.country); // update the shown text
+                          setShowDropdown(false);
+                        }}
+                      >
+                        {c.country} (+{c.code})
+                      </li>
+                    ))
+                  ) : (
+                    <li className="px-3 py-2 text-gray-400">No results found</li>
+                  )}
                 </ul>
               )}
             </div>
 
+
             <Input
               name="Phone"
-              placeholder={`+${selectedCountry.code} 99999 99999`}
+              placeholder="Phone"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               required
