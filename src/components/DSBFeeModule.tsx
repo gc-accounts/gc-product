@@ -7,12 +7,12 @@ import { Button } from './ui/button';
 
  const cohorts = [
       {
-        startDate: "27 Dec 2025",
+        startDate: "20 Dec 2025",
         status: "Open",
         color: "bg-primary-green",
         spots: "Available: 12/20"
       },
-      { startDate: "31 Jan 2026", status: "Limited", color: "bg-accent-gold", spots: "Available: 16/30" },
+      { startDate: "30 Dec 2025", status: "Limited", color: "bg-accent-gold", spots: "Available: 16/30" },
     ];
 
 interface Props {

@@ -16,12 +16,12 @@ interface Props {
 const DABFeeModule = ({ sectionClass, title, subText, currency, basePrice  }: Props) => {
     const cohorts = [
    { 
-       startDate: "27 Dec 2025", 
+       startDate: "20 Dec 2025", 
         status: "Open", 
         color: "bg-primary-green", 
         spots: "Available: 15/20" 
       },
-    { startDate: "31 Jan 2026", status: "Limited", color: "bg-accent-gold", spots: "Available: 16/30" },
+    { startDate: "30 Dec 2025", status: "Limited", color: "bg-accent-gold", spots: "Available: 16/30" },
       // { 
       //   startDate: "Mar 10, 2025", 
       //   status: "Closed", 
