@@ -18,7 +18,7 @@ interface Props {
 const IbfoHeroSection = ({ sectionClass, currency, basePrice }: Props) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   // Initialize Zoho SalesIQ chat widget
-    useZohoSalesIQ()
+  useZohoSalesIQ()
 
   return (
     <section className={`py-16 md:py-24 ${sectionClass || ''}`}>
@@ -73,8 +73,10 @@ const IbfoHeroSection = ({ sectionClass, currency, basePrice }: Props) => {
                   </Button>
                 </DialogTrigger>
 
-                <DialogContent className="max-w-[90vw] sm:max-w-112 md:max-w-128 w-full rounded-2xl p-0 overflow-hidden">
-                  <div className="sticky top-0 z-10 bg-white border-b border-gray-100 flex items-center justify-between px-6 py-4">
+                {/* Removed 'overflow-hidden' to prevent clipping of reCAPTCHA popups */}
+                <DialogContent className="max-w-[90vw] sm:max-w-112 md:max-w-128 w-full rounded-2xl p-0">
+                  {/* Added 'rounded-t-2xl' to header div for proper visual styling */}
+                  <div className="sticky top-0 z-10 bg-white border-b border-gray-100 flex items-center justify-between px-6 py-4 rounded-t-2xl">
                     <DialogTitle className="text-lg sm:text-xl font-semibold text-dark-gray text-center w-full">
                       Download Brochure
                     </DialogTitle>

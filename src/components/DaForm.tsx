@@ -41,8 +41,8 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   useEffect(() => {
-  // Set default visible value in input
-  setCountrySearch('India');
+    // Set default visible value in input
+    setCountrySearch('India');
     setUtm(getUTMTrackingData());
     setGaClientId(getGaCookieValue() || '');
     fetchUserLocation().then((loc) => {
@@ -51,17 +51,17 @@ const DaForm: React.FC<DaFormProps> = ({ isModal = false, onClose }) => {
     });
   }, []);
 
-useEffect(() => {
-  if (countrySearch.trim() === '') {
-    setFilteredCountries([]);
-  } else {
-    setFilteredCountries(
-      CountryCodeData.filter((c) =>
-        c.country.toLowerCase().includes(countrySearch.toLowerCase())
-      )
-    );
-  }
-}, [countrySearch]);
+  useEffect(() => {
+    if (countrySearch.trim() === '') {
+      setFilteredCountries([]);
+    } else {
+      setFilteredCountries(
+        CountryCodeData.filter((c) =>
+          c.country.toLowerCase().includes(countrySearch.toLowerCase())
+        )
+      );
+    }
+  }, [countrySearch]);
 
   const getAccessToken = async () => {
     const res = await fetch('/api/auth/course-form-token', {
@@ -177,8 +177,7 @@ useEffect(() => {
       // ✅ Redirect to checkout (after saving prefill data)
       if (!isModal) {
         // router.push('/course-checkout/data-analyst-bootcamp');
-        openZohoChatbot()
-        
+        openZohoChatbot();
       }
 
     } catch (err: any) {
@@ -195,6 +194,23 @@ useEffect(() => {
 
   return (
     <Card className={`${isModal ? 'shadow-none' : 'bg-white shadow-lg rounded-2xl p-6 sm:p-8'}`}>
+      {/* 🛑 CRITICAL FIX: Force reCAPTCHA above ShadCN Dialogs */}
+      <style jsx global>{`
+        body > div[style*="position: absolute"][style*="z-index"] {
+            z-index: 2147483647 !important;
+            pointer-events: auto !important;
+        }
+        iframe[title*="recaptcha challenge"],
+        iframe[src*="google.com/recaptcha/api2/bframe"] {
+            z-index: 2147483647 !important;
+            pointer-events: auto !important;
+            position: relative !important;
+        }
+        .g-recaptcha-bubble-arrow {
+            z-index: 2147483647 !important;
+        }
+      `}</style>
+
       <CardContent className="p-0">
         <form className="space-y-5" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -205,50 +221,50 @@ useEffect(() => {
           <Input name="Email" placeholder="you@example.com" type="email" required />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative">
-               <div className="relative">
-                     <Input
-                       type="text"
-                       placeholder="Search Country"
-                       value={countrySearch}
-                       onChange={(e) => {
-                         setCountrySearch(e.target.value);
-                         setShowDropdown(true);
-                       }}
-                       onFocus={() => {
-                         // Show dropdown ONLY when user types
-                         if (countrySearch.length > 0) {
-                           setShowDropdown(true);
-                         }
-                       }}
-                       onBlur={() => {
-                         setTimeout(() => setShowDropdown(false), 120);
-                       }}
-                       autoComplete="off"
-                       required
-                     />
-       
-                     {showDropdown && countrySearch.length > 0 && (
-                       <ul className="absolute z-50 bg-white border border-gray-200 rounded-md mt-1 w-full max-h-48 overflow-y-auto shadow-lg">
-                         {filteredCountries.length > 0 ? (
-                           filteredCountries.map((c) => (
-                             <li
-                               key={c.id}
-                               className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                               onMouseDown={() => {
-                                 setSelectedCountry({ country: c.country, code: c.code });
-                                 setCountrySearch(c.country); // update the shown text
-                                 setShowDropdown(false);
-                               }}
-                             >
-                               {c.country} (+{c.code})
-                             </li>
-                           ))
-                         ) : (
-                           <li className="px-3 py-2 text-gray-400">No results found</li>
-                         )}
-                       </ul>
-                     )}
-                   </div>
+            <div className="relative">
+              <Input
+                type="text"
+                placeholder="Search Country"
+                value={countrySearch}
+                onChange={(e) => {
+                  setCountrySearch(e.target.value);
+                  setShowDropdown(true);
+                }}
+                onFocus={() => {
+                  if (countrySearch.length > 0) {
+                    setShowDropdown(true);
+                  }
+                }}
+                onBlur={() => {
+                  setTimeout(() => setShowDropdown(false), 120);
+                }}
+                autoComplete="off"
+                required
+              />
+
+              {showDropdown && countrySearch.length > 0 && (
+                // Increased z-index to 100
+                <ul className="absolute z-[100] bg-white border border-gray-200 rounded-md mt-1 w-full max-h-48 overflow-y-auto shadow-lg">
+                  {filteredCountries.length > 0 ? (
+                    filteredCountries.map((c) => (
+                      <li
+                        key={c.id}
+                        className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
+                        onMouseDown={() => {
+                          setSelectedCountry({ country: c.country, code: c.code });
+                          setCountrySearch(c.country);
+                          setShowDropdown(false);
+                        }}
+                      >
+                        {c.country} (+{c.code})
+                      </li>
+                    ))
+                  ) : (
+                    <li className="px-3 py-2 text-gray-400">No results found</li>
+                  )}
+                </ul>
+              )}
+            </div>
             <Input name="Phone" placeholder="Phone" required />
           </div>
 
