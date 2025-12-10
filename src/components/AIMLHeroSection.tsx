@@ -73,8 +73,10 @@ const AIMLHeroSection = ({ sectionClass, basePrice, currency }: Props) => {
                   </Button>
                 </DialogTrigger>
 
-                <DialogContent className="max-w-[90vw] sm:max-w-112 md:max-w-128 w-full rounded-2xl p-0 overflow-hidden">
-                  <div className="sticky top-0 z-10 bg-white border-b border-gray-100 flex items-center justify-between px-6 py-4">
+                {/* Removed 'overflow-hidden' to fix ReCAPTCHA click issues */}
+                <DialogContent className="max-w-[90vw] sm:max-w-112 md:max-w-128 w-full rounded-2xl p-0">
+                  {/* Added 'rounded-t-2xl' to header for proper styling */}
+                  <div className="sticky top-0 z-10 bg-white border-b border-gray-100 flex items-center justify-between px-6 py-4 rounded-t-2xl">
                     <DialogTitle className="text-lg sm:text-xl font-semibold text-dark-gray text-center w-full">
                       Download Brochure
                     </DialogTitle>
