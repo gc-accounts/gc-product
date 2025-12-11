@@ -329,9 +329,7 @@ export default function Contact() {
                           <h3 className="text-lg font-semibold text-dark-gray mb-2">Office Address</h3>
                           <p className="text-sm text-medium-gray leading-relaxed">
                             GreyCampus Edutech Private Limited,<br />
-                            Aikya Vihar, Plot 218, B Block,<br />
-                            Kavuri Hills Phase - II,<br />
-                            Hyderabad - 500033
+                            RAM SVR, Plot No 4/2, Sector 1, Madhapur, HUDA Techno Enclave, HITEC City, Hyderabad, Telangana 500081
                           </p>
                         </div>
                       </div>

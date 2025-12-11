@@ -44,7 +44,8 @@ export default function PrivacyPolicy() {
             </p>
 
             <p className="text-medium-gray">
-              GreyCampus is an Edtech firm with a principal place of business at B-Block, GreyCampus Edutech Pvt. Ltd Aikya Vihar, Plot 218, Kavuri Hills Phase 2 Rd, Hyderabad, Telangana 500033.GreyCampus is both a data controller and a data processor of all Personally Identifiable Information (defined below) collected via the site and of certain Personally Identifiable Information collected from third parties.
+              GreyCampus is an Edtech firm with a principal place of business at B-Block, GreyCampus Edutech Pvt. Ltd RAM SVR, Plot No 4/2, Sector 1, Madhapur, HUDA Techno Enclave, HITEC City, Hyderabad, Telangana 500081
+.GreyCampus is both a data controller and a data processor of all Personally Identifiable Information (defined below) collected via the site and of certain Personally Identifiable Information collected from third parties.
             </p>
 
             <p className="text-medium-gray">
@@ -333,7 +334,7 @@ export default function PrivacyPolicy() {
 
             <h3 className="text-xl font-semibold text-dark-gray mt-6 mb-3">Data Protection Officer</h3>
             <p className="text-medium-gray">
-              We have appointed a **Data Protection Officer** to oversee our management of your personal information in accordance with this Privacy Policy. If you have any questions or concerns about our privacy practices with respect to your personal information, you can reach out to our Data Protection Officer by sending an email to <a href="mailto:compliance@greycampus.com" className="text-primary-green underline hover:no-underline">compliance@greycampus.com</a> or by writing to Data Protection Officer, B-Block, GreyCampus Edutech Pvt. Ltd Aikya Vihar, Plot 218, Kavuri Hills Phase 2 Rd, Hyderabad, Telangana 500033
+              We have appointed a **Data Protection Officer** to oversee our management of your personal information in accordance with this Privacy Policy. If you have any questions or concerns about our privacy practices with respect to your personal information, you can reach out to our Data Protection Officer by sending an email to <a href="mailto:compliance@greycampus.com" className="text-primary-green underline hover:no-underline">compliance@greycampus.com</a> or by writing to Data Protection Officer, B-Block, GreyCampus Edutech Pvt. Ltd RAM SVR, Plot No 4/2, Sector 1, Madhapur, HUDA Techno Enclave, HITEC City, Hyderabad, Telangana 500081
             </p>
 
             <h3 className="text-xl font-semibold text-dark-gray mt-6 mb-3">Do Not Track (DNT) requests</h3>
