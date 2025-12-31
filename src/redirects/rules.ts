@@ -4542,5 +4542,11 @@ export const redirectsList = [
         "destination": "https://www.greycampus.com/",
         "permanent": true
       },
+        {
+    source: "/course-checkout/:slug*",
+    destination: "https://www.greycampus.com",
+    permanent: true,
+  },
+
 
 ];
