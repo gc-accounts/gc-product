@@ -337,7 +337,7 @@ export default function Contact() {
                   </Card>
 
                   {/* Phone */}
-                  <Card className="bg-white border border-border-gray hover:border-primary-green hover:shadow-lg transition-all duration-300">
+                  {/* <Card className="bg-white border border-border-gray hover:border-primary-green hover:shadow-lg transition-all duration-300">
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
                         <div className="shrink-0">
@@ -351,7 +351,7 @@ export default function Contact() {
                         </div>
                       </div>
                     </CardContent>
-                  </Card>
+                  </Card> */}
 
                   {/* Email */}
                   {/* Email */}

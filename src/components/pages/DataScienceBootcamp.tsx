@@ -83,7 +83,7 @@ const DataScienceBootcamp = ({slug}:Props) => {
           <ProgramOutcomes data={DSBOutcomesData}  title='Program Outcomes' subText='Real skills. Real impact. Real career transformation.' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <DSBProjects title='Build Real-World Projects' subText='Apply your skills to projects used by real companies' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           <HowEnroll title='How Do I Enroll?' subText='Simple 3-step process to start your Generative AI journey' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
-          <DSBFeeModule currency={currency} basePrice={basePrice}  title='Invest in Your Future at Affordable Prices' subText='The most cost-effective bootcamp without compromising quality' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          {/* <DSBFeeModule currency={currency} basePrice={basePrice}  title='Invest in Your Future at Affordable Prices' subText='The most cost-effective bootcamp without compromising quality' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" /> */}
           <Certification sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={DSCertificateData} />
           <DsEnrollmentFormSection sectionClass='bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]' />
           <Testimonials data={DSBTestimonialsData} title='Success Stories' subText='Real students, real transformations, real careers' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />

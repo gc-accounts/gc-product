@@ -94,7 +94,7 @@ const IbfoBootcamp = ({slug}:Props) => {
 
           <HowEnroll title='How Do I Enroll?' subText='Simple 3-step process to start your Generative AI journey' sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
           
-          <IBFOFeeModule currency={currency} basePrice={basePrice}  title='Invest in Your Future at Affordable Prices' subText='The most cost-effective finance bootcamp designed to prepare you for high-demand roles in banking and financial operations.' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" />
+          {/* <IBFOFeeModule currency={currency} basePrice={basePrice}  title='Invest in Your Future at Affordable Prices' subText='The most cost-effective finance bootcamp designed to prepare you for high-demand roles in banking and financial operations.' sectionClass="bg-white px-[20px] py-[50px] md:px-[30px] md:py-[70px]" /> */}
 
           <Certification sectionClass="bg-gray-50 px-[20px] py-[50px] md:px-[30px] md:py-[70px]" data={IBFOCertificateData} />
 

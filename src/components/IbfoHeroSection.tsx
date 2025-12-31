@@ -51,14 +51,14 @@ const IbfoHeroSection = ({ sectionClass, currency, basePrice }: Props) => {
 
             {/* CTA Buttons */}
             <div className="pt-6 flex flex-col sm:flex-row gap-4">
-              <Link href={'/course-checkout/investment-banking-bootcamp'}>
+              {/* <Link href={'/course-checkout/investment-banking-bootcamp'}>
                 <Button
                   size="lg"
                   className="bg-yellow-1 hover:bg-yellow-2 px-8 py-4 text-lg font-semibold cursor-pointer shadow-lg"
                 >
                   Enroll Now
                 </Button>
-              </Link>
+              </Link> */}
 
               {/* Download Brochure Modal */}
               <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
